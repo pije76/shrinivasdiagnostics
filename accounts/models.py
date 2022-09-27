@@ -20,10 +20,10 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField(null=True, blank=False)
     gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default='male')
 
-    # is_active = models.BooleanField(default=False, blank=True, null=True)
-    # is_staff = models.BooleanField(default=False)
-    # is_admin = models.BooleanField(default=False)
-    # is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False, blank=True, null=True)
+    is_staff = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
 
     email_verified = models.BooleanField(default=False, null=True, blank=True)
