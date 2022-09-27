@@ -16,8 +16,8 @@ class MyLoginView(LoginView):
     authentication_form = MyLoginForm
     form_class = MyLoginForm
     success_message = 'Success: You were successfully logged in.'
-    success_url = reverse_lazy('homepage:index')
-    extra_context = dict(success_url=reverse_lazy('homepage:index'))
+    success_url = reverse_lazy('core:home')
+    extra_context = dict(success_url=reverse_lazy('core:home'))
     # next = request.POST.get('next', '/')
     # return HttpResponseRedirect(next)
 

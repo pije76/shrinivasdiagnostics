@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
     'fontawesome_5',
     'core',
-    'homepage',
     'accounts',
     # 'subscription',
     # 'market',

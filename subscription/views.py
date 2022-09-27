@@ -46,7 +46,7 @@ def index(request):
 	# if get_trial == 1 and getstatus_trial == "expired":
 	# 	messages.warning(request, "You're Trial Package is expired. Please choose a package to continue")
 		# return render(request, 'subscription.html', context)
-		# return redirect('homepage:index')
+		# return redirect('core:home')
 
 	# if len(getstatus_trial) > 0:
 	# if getstatus_trial is not None:
@@ -112,7 +112,7 @@ def trial(request):
 	# if get_trial == 1 and getstatus_trial == "expired":
 	# 	messages.warning(request, "You're Trial Package is expired. Please choose a package to continue")
 		# return render(request, 'subscription.html', context)
-		# return redirect('homepage:index')
+		# return redirect('core:home')
 
 
 	# if get_status == "expired":
@@ -128,7 +128,7 @@ def trial(request):
 		# 	try:
 		# 		if get_active == "active":
 	# 				# return render(request, 'subscription/subscription.html', context)
-					# return redirect('homepage:index')
+					# return redirect('core:home')
 				# else:
 			# 		messages.success(request, "Your Trial package is active.")
 			# except Subscription.DoesNotExist:
@@ -164,9 +164,9 @@ def trial(request):
 				obj_instance.membership_type = "trial"
 				obj_instance.save(update_fields=['membership_type'])
 
-				# return redirect('homepage:index')
+				# return redirect('core:home')
 				messages.success(request, "Your Trial package is active.")
-				return redirect('homepage:index')
+				return redirect('core:home')
 		else:
 			messages.warning(request, form.errors)
 	else:
@@ -221,7 +221,7 @@ def basic(request):
 # 		try:
 # 			if get_active == "active":
 # # 				# return render(request, 'subscription/subscription.html', context)
-# 				return redirect('homepage:index')
+# 				return redirect('core:home')
 # 			else:
 # 				messages.warning(request, "You're already use Basic Package. Please choose a package to continue")
 # 		except Subscription.DoesNotExist:
@@ -252,9 +252,9 @@ def basic(request):
 			obj_instance.save(update_fields=['membership_type'])
 
 
-			# return redirect('homepage:index')
+			# return redirect('core:home')
 			messages.info(request, "You are subscribe to Basic package. Please make payment to activate it.")
-			return redirect('homepage:index')
+			return redirect('core:home')
 		else:
 			messages.warning(request, form.errors)
 	else:
@@ -305,8 +305,8 @@ def professional(request):
 			save_plan.status = form.cleaned_data.get('status')
 			save_plan.save()
 
-			# return redirect('homepage:index')
-			return redirect('homepage:index')
+			# return redirect('core:home')
+			return redirect('core:home')
 		else:
 			messages.warning(request, form.errors)
 	else:
@@ -357,8 +357,8 @@ def enterprise(request):
 			save_plan.status = form.cleaned_data.get('status')
 			save_plan.save()
 
-			# return redirect('homepage:index')
-			return redirect('homepage:index')
+			# return redirect('core:home')
+			return redirect('core:home')
 		else:
 			messages.warning(request, form.errors)
 	else:
@@ -390,11 +390,11 @@ def plan(request, planname):
 			try:
 				if request.user.active == "active":
 					# return render(request, 'subscription/subscription.html', context)
-					return redirect('homepage:index')
+					return redirect('core:home')
 			except Subscription.DoesNotExist:
 				return redirect('subscription:subscribe')
 		return redirect('subscription:subscribe')
-		# return redirect('homepage:index')
+		# return redirect('core:home')
 	else:
 		return render(request, 'subscription/plan_detail.html', context)
 
