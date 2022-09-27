@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-g3ury6i6%=d*yu1ss%1ho8-6$!=e1#18sk5z96@e0%hq3k&9(-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shrinivasdiagnostics.com', 'localhost']
+ALLOWED_HOSTS = ['shrinivasdiagnostics.com', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
+    # 'subscription',
+    # 'market',
+    # 'phonenumber_field',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +61,7 @@ ROOT_URLCONF = 'shrinivasdiagnostics.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +82,10 @@ WSGI_APPLICATION = 'shrinivasdiagnostics.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shrinivasdiagnostics',
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'NAME': 'shrinivasdiagnostics',
         'USER': 'shrinivas',
         'PASSWORD': 'Shrinivas29*',
         'HOST': 'localhost',
@@ -119,9 +128,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'assets/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTH_USER_MODEL = 'accounts.Profile'
