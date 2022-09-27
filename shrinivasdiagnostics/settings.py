@@ -39,13 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'fontawesome_5',
     'core',
     'accounts',
     # 'subscription',
     # 'market',
-    # 'phonenumber_field',
+
+    'fontawesome_5',
+    'phonenumber_field',
     'django_summernote',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'shrinivasdiagnostics.urls'
@@ -151,4 +154,10 @@ AUTH_USER_MODEL = 'accounts.Profile'
 PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'IN'
 PHONENUMBER_DEFAULT_FORMAT = 'E164'
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
