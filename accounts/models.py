@@ -9,7 +9,7 @@ from .managers import UserManager
 GENDER_CHOICES = (
     ("male", _('Male')),
     ("female", _('Female')),
-    ("unknown", _('Unknown'))
+    # ("unknown", _('Unknown'))
 )
 
 # Create your models here.
@@ -18,7 +18,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='Email Address', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
     phone_number = PhoneNumberField(blank=True)
     birth_date = models.DateField(null=True, blank=False)
-    gender = models.IntegerField(choices=GENDER_CHOICES, default='unknown')
+    gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default='male')
 
     # is_active = models.BooleanField(default=False, blank=True, null=True)
     # is_staff = models.BooleanField(default=False)

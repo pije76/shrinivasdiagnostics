@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'fontawesome_5',
     'core',
+    'homepage',
     'accounts',
     # 'subscription',
     # 'market',
@@ -147,3 +148,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'accounts.Profile'
+
+PHONENUMBER_DB_FORMAT = 'E164'
+PHONENUMBER_DEFAULT_REGION = 'IN'
+PHONENUMBER_DEFAULT_FORMAT = 'E164'
+
