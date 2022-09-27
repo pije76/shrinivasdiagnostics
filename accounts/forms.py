@@ -22,7 +22,7 @@ from datetime import datetime, date
 
 from .models import *
 # from .lookups import *
-from subscription.models import *
+# from subscription.models import *
 
 # from easy_select2 import *
 
