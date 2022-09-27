@@ -11,3 +11,4 @@ simplejson==3.17.6
 six==1.16.0
 sqlparse==0.4.3
 webencodings==0.5.1
+django-fontawesome==5-1.0.18

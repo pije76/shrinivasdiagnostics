@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-g3ury6i6%=d*yu1ss%1ho8-6$!=e1#18sk5z96@e0%hq3k&9(-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shrinivasdiagnostics.com', '127.0.0.1']
+ALLOWED_HOSTS = ['shrinivasdiagnostics.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'fontawesome_5',
+    'core',
     'accounts',
     # 'subscription',
     # 'market',
