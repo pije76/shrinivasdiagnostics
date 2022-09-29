@@ -13,3 +13,6 @@ simplejson==3.17.6
 six==1.16.0
 sqlparse==0.4.3
 webencodings==0.5.1
+django-oscar==3.1
+sorl-thumbnail==12.9.0
+pysolr==3.9.0
