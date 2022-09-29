@@ -23,7 +23,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'phone_number',
         'birth_date',
         # 'membership_type',
-        'date_joined',
+        # 'date_joined',
         'is_active',
         # 'email_verified',
     ]
@@ -57,3 +57,5 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Address)
+admin.site.register(Patient)
