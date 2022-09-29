@@ -1,0 +1,140 @@
+{% load static %}
+
+<navbar class="site-navbar">
+	<section class="container-fluid">
+		<section class="pt-4">
+			<div class="container-fluid">
+				<div class="row d-flex">
+					<div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
+						<div class="logo">
+							<a href="/" title="logo">
+								<img class="img-fluid" src="{% static 'images/PathkindLogo.png' %}" alt="logo"> 
+							</a>					
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-5 col-md-8 col-sm-12">
+						<div class="search-section d-flex">
+							<div class="search-by-city">
+								<input type="search" class="form-control" placeholder="Search City" />
+							</div>
+							<div class="search-by-keyword w-100 position-relative">
+								<i class="fas fa-search position-absolute text-muted"></i>
+								<input type="search" class="form-control" placeholder="Search for a test, health package" />
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12">
+						<div class="tools-section position-relative">
+							<button class="navbar-toggler position-absolute rounded-circle shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+								<i class="fas fa-bars"></i>
+							</button>
+
+							<div class="text-right">
+								<ul class="list-unstyled d-flex justify-content-end align-items-center">
+									<li class="call pe-3">
+										<a href="tel:7500075111" title="call us" class="d-flex align-items-center fw-bold">
+											<i class="fas fa-phone" class="fs-5"></i>
+											<span class="ms-2">Call Us 75000 75111</span>
+										</a>					
+									</li>
+									<li class="cart pe-3">
+										<a href="https://www.pathkindlabs.com/pathkind_app/shopping-cart" title="Cart" class="position-relative">
+											<div class="ratio ratio-1x1 rounded-circle shadow-sm">
+												<div class="d-flex justify-content-center align-items-center"><i class="fas fa-shopping-bag"></i></div>
+											</div>
+										</a>
+									</li>
+									<li class="user">
+										<a href="https://www.pathkindlabs.com/pathkind_app/shopping-cart" title="User" class="position-relative">
+											<div class="ratio ratio-1x1 rounded-circle shadow-sm">
+												<div class="d-flex justify-content-center align-items-center"><i class="fas fa-user"></i></div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="navigation tab-navigation">
+			<div class="container-fluid">
+				<div class="row d-flex">
+					<div class="col-xl-3 col-lg-12 col-md-12 col-sm-12"></div>
+					<div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
+						<nav class="navbar navbar-expand-lg text-uppercase p-0">
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+									<li class="nav-item">
+										<a class="nav-link" href="#">Home</a>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle d-sm-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Patients
+										</a>
+										<ul class="dropdown-menu">
+											<li><a class="nav-link" href="#">Explore Full Test menu</a></li>
+											<li><a class="nav-link" href="#">COVID-19</a></li>
+											<li><a class="nav-link" href="#">Covid-19 Drive Thru</a></li>
+											<li><a class="nav-link" href="#">FAQs</a></li>
+											<li><a class="nav-link" href="#">Blogs</a></li>
+											<li><a class="nav-link" href="#">Videos</a></li>
+											<li><a class="nav-link" href="#">PR Media</a></li>
+											<li><a class="nav-link" href="#">Share Your Feedback</a></li>
+										</ul>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Book a Test</a>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle d-sm-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Doctors
+										</a>
+										<ul class="dropdown-menu">
+											<li><a class="nav-link" href="#">National Reference Lab</a></li>
+											<li><a class="nav-link" href="#">Research and Development</a></li>
+											<li><a class="nav-link" href="#">Download Forms</a></li>
+											<li><a class="nav-link" href="#">Scientific Literature</a></li>
+											<li><a class="nav-link" href="#">Webinars</a></li>
+										</ul>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Lab Locator</a>
+									</li>
+								</ul>
+
+								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+									<li class="nav-item">
+										<a class="nav-link d-flex align-items-center" href="#">
+											<i class="fas fa-download"></i>
+											<span class="ms-2">Download Report</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link d-flex align-items-center" href="#">
+											<i class="fas fa-upload"></i>
+											<span class="ms-2">Upload Prescription</span>
+										</a>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle d-sm-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Partner With Us
+										</a>
+										<ul class="dropdown-menu dropdown-menu-lg-end">
+											<li class="nav-item"><a class="nav-link" href="#">Franchising Opportunities</a></li>
+											<li class="nav-item"><a class="nav-link" href="#">Corporate Wellness</a></li>
+											<li class="nav-item"><a class="nav-link" href="#">Hospital Lab Management</a></li>
+											<li class="nav-item"><a class="nav-link" href="#">Organise Camps</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</navbar>
