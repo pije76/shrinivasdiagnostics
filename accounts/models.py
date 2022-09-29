@@ -28,7 +28,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 	email = models.EmailField(verbose_name='Email Address', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(blank=True)
 	birth_date = models.DateField(null=True, blank=False)
-	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default='male')
+	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None)
 
 	is_active = models.BooleanField(default=False, blank=True, null=True)
 	is_staff = models.BooleanField(default=False)
@@ -129,8 +129,8 @@ class Patient(models.Model):
 	email = models.EmailField(verbose_name='Email Address', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(blank=True)
 	birth_date = models.DateField(null=True, blank=False)
-	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default='male')
-	relation = models.CharField(max_length=255, choices=RELATION_CHOICES, default='father')
+	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None)
+	relation = models.CharField(max_length=255, choices=RELATION_CHOICES, default=None)
 
 	class Meta:
 		verbose_name = _('Patient')
