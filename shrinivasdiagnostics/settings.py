@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'orders',
     'payment',
 
+    'fontawesome_5',
     'phonenumber_field',
     'django_summernote',
     'debug_toolbar',
