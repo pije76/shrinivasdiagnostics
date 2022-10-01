@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     # 'subscription',
-    # 'market',
+    'shop',
+    'cart',
+    'orders',
+    'payment',
 
     'phonenumber_field',
     'django_summernote',
@@ -152,38 +155,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 AUTH_USER_MODEL = 'accounts.Profile'
 
 AUTHENTICATION_BACKENDS = [
-    # 'social_core.backends.open_id.OpenIdAuth',
-    # 'social_core.backends.google.GoogleOpenId',
-    # 'social_core.backends.google.GoogleOAuth',
-    # 'social_core.backends.google.GoogleOAuth2',
-    # 'social_core.backends.twitter.TwitterOAuth',
-    # 'social_core.backends.facebook.FacebookOAuth2',
-    # 'social_core.backends.github.GithubOAuth2',
-    # 'social_core.backends.yahoo.YahooOpenId',
+
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+SITE_ID = 1
 
 PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'IN'
 PHONENUMBER_DEFAULT_FORMAT = 'E164'
 
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    # ...
-]
+CART_SESSION_ID = 'cart'
 
-SITE_ID = 1
+############ test ##################### 
+# RAZORPAY_PUBLIC_KEY=config('RAZORPAY_TEST_PUBLIC_KEY')
+# RAZORPAY_SECRET_KEY= config('RAZORPAY_TEST_SECRET_KEY')
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr',
-        'INCLUDE_SPELLING': True,
-    },
-}
-
+# ########## live #####################
+# RAZORPAY_PUBLIC_KEY=config('RAZORPAY_PUBLIC_KEY')
+# RAZORPAY_SECRET_KEY=config('RAZORPAY_SECRET_KEY')
