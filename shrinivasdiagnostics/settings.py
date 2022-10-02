@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 import os
 
@@ -175,9 +176,21 @@ PHONENUMBER_DEFAULT_FORMAT = 'E164'
 
 CART_SESSION_ID = 'cart'
 
+PAYMENT_VARIANTS = {
+    'razorpay': 
+    (
+        'django_payments_razorpay.RazorPayProvider', 
+        {
+            'public_key': 'RAZORPAY_PUBLIC_KEY',
+            'secret_key': 'RAZORPAY_SECRET_KEY'
+        }
+    )
+}
+
+
 ############ test ##################### 
-# RAZORPAY_PUBLIC_KEY=config('RAZORPAY_TEST_PUBLIC_KEY')
-# RAZORPAY_SECRET_KEY= config('RAZORPAY_TEST_SECRET_KEY')
+# RAZORPAY_PUBLIC_KEY=config('xg583qt1rc*lec39dy6mtdlg@#v+m0a51no&2@l9fz^nkh&1f')
+# RAZORPAY_SECRET_KEY= config('xg583qt1rc*lec39dy6mtdlg@#v+m0a51no&2@l9fz^nkh&1f')
 
 # ########## live #####################
 # RAZORPAY_PUBLIC_KEY=config('RAZORPAY_PUBLIC_KEY')

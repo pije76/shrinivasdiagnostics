@@ -7,6 +7,7 @@ from django.shortcuts import render
 client =razorpay.Client(auth=(settings.RAZORPAY_PUBLIC_KEY,settings.RAZORPAY_SECRET_KEY))
 client.set_app_details({"title" : "Django", "version" : "1.8.17"})
 amount=0
+
 def create_order(request):
     order_id=request.session.get('order_id')
     order=get_object_or_404(Order,id=order_id)
