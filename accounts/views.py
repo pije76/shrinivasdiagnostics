@@ -11,7 +11,7 @@ from .forms import *
 class MyLoginView(LoginView):
 # class MyLoginView(BSModalLoginView):
 #class MyLoginView(BSModalUpdateView):
-    template_name = 'registration/login.html'
+    template_name = 'accounts/login.html'
     # template_name = 'registration/login_modal.html'
     authentication_form = MyLoginForm
     form_class = MyLoginForm

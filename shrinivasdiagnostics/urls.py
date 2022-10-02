@@ -23,7 +23,7 @@ from core import urls as core_urls
 urlpatterns = [
     path('', include(core_urls)),
     path('admin/', admin.site.urls),
-    # path('accounts/', include('accounts.urls')),
+    path('profile/', include('accounts.urls')),
     path('shop/', include('shop.urls', namespace='shop')),
     # path('cart/',include('cart.urls',namespace='cart')),
     # path('orders/', include('orders.urls', namespace='orders')),
