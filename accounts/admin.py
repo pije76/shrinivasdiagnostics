@@ -59,3 +59,4 @@ class ProfileAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Address)
 admin.site.register(Patient)
+admin.site.register(UOTP)

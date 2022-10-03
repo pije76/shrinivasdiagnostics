@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'rest_framework',
     'core',
     'accounts',
     # 'subscription',
@@ -54,7 +55,6 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_summernote',
     'debug_toolbar',
-
 ]
 
 MIDDLEWARE = [
@@ -193,3 +193,42 @@ PAYMENT_VARIANTS = {
 # ########## live #####################
 # RAZORPAY_PUBLIC_KEY=config('RAZORPAY_PUBLIC_KEY')
 # RAZORPAY_SECRET_KEY=config('RAZORPAY_SECRET_KEY')
+
+# Django Rest Framework (DRF)
+# ------------------------------------------------------------------------------
+# https://www.django-rest-framework.org/
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/minute',
+        'user': '100/minute'
+    },
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication'
+    ],
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'PAGE_SIZE': 25
+}

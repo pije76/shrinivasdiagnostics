@@ -1,8 +1,11 @@
+import pyotp
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 
 from phonenumber_field.modelfields import PhoneNumberField
 from .managers import UserManager
@@ -139,3 +142,65 @@ class Patient(models.Model):
 	def __str__(self):
 		return self.name
 
+
+class UOTPManagerQuerySet(models.QuerySet):
+	def generate(self, issuer):
+		"""Create new otp object if valid_until greather than now
+		or update if valid_until lower than now"""
+		secret = pyotp.random_base32()
+		otp = pyotp.TOTP(secret).now()
+		valid_until = timezone.now() + timezone.timedelta(hours=2)
+		valid_until_timestamp = valid_until \
+			.replace(microsecond=0) \
+			.timestamp()
+
+		data = {
+			'valid_until': valid_until,
+			'valid_until_timestamp': valid_until_timestamp,
+			'secret': secret,
+			'otp': otp
+		}
+
+		instance, _created = self.filter(valid_until__gt=timezone.now()) \
+			.update_or_create(**data, defaults={'issuer': issuer})
+
+		return instance
+
+	def validate(self, issuer, otp, secret):
+		"""Return True if valid and False if invalid"""
+		try:
+			instance = self.get(issuer=issuer, otp=otp, secret=secret)
+		except ObjectDoesNotExist:
+			return False
+		
+		if instance.valid_until < timezone.now():
+			return False
+			
+		totp = pyotp.TOTP(instance.secret)
+		return totp.verify(instance.otp)
+
+	def get_user_from_issuer(self, issuer):
+		"""Get user instance from issuer"""
+		try:
+			return Profile.objects.get(phone_number=issuer)
+		except ObjectDoesNotExist:
+			return None
+
+
+class UOTP(models.Model):
+	create_at = models.DateTimeField(auto_now_add=True, db_index=True)
+	update_at = models.DateTimeField(auto_now=True)
+
+	issuer = models.CharField(
+        max_length=255,
+        help_text=_("One of Email or Msisdn"),
+    )
+	otp = models.CharField(max_length=10, db_index=True)
+	secret = models.CharField(max_length=255, db_index=True)
+	valid_until = models.DateTimeField(blank=True, null=True, editable=False)
+	valid_until_timestamp = models.IntegerField(blank=True, null=True)
+
+	objects = UOTPManagerQuerySet.as_manager()
+
+	def __str__(self) -> str:
+		return self.otp
