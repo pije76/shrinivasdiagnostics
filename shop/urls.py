@@ -1,11 +1,14 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from . import views 
+from .views import *
 
 app_name='shop'
 
 urlpatterns = [
-     path('', views.product_list, name='product_list'),
-     path('<slug:category_slug>/', views.product_list, name='product_list_by_category'),
-     path('<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
+     path('', product_list, name='product_list'),
+     path('<slug:category_slug>/', product_list, name='product_list_by_category'),
+     path('<int:id>/<slug:slug>/', product_detail, name='product_detail'),
+     re_path(r'^product/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),
+     re_path(r'^search/autocomplete/$', autocomplete),
+     re_path(r'^find/', FacetedSearchView.as_view(), name='haystack_search'),
 ]

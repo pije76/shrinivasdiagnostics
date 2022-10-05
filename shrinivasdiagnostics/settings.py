@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'accounts',
-    'testpackage',
     'shop',
     'cart',
     'orders',
@@ -193,6 +192,14 @@ PAYMENT_VARIANTS = {
 # ########## live #####################
 # RAZORPAY_PUBLIC_KEY=config('RAZORPAY_PUBLIC_KEY')
 # RAZORPAY_SECRET_KEY=config('RAZORPAY_SECRET_KEY')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'products_tutorial',
+    },
+}
 
 # Django Rest Framework (DRF)
 # ------------------------------------------------------------------------------
