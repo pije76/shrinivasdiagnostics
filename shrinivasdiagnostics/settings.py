@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'fontawesome_5',
     'phonenumber_field',
     'django_summernote',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'shrinivasdiagnostics.urls'
@@ -161,11 +159,11 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-
 SITE_ID = 1
+
+####################################################################################################
+
+SUMMERNOTE_THEME = 'bs4'
 
 PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'IN'
@@ -173,33 +171,18 @@ PHONENUMBER_DEFAULT_FORMAT = 'E164'
 
 CART_SESSION_ID = 'cart'
 
-PAYMENT_VARIANTS = {
-    'razorpay': 
-    (
-        'django_payments_razorpay.RazorPayProvider', 
-        {
-            'public_key': 'RAZORPAY_PUBLIC_KEY',
-            'secret_key': 'RAZORPAY_SECRET_KEY'
-        }
-    )
-}
-
-
-############ test ##################### 
-# RAZORPAY_PUBLIC_KEY=config('xg583qt1rc*lec39dy6mtdlg@#v+m0a51no&2@l9fz^nkh&1f')
-# RAZORPAY_SECRET_KEY= config('xg583qt1rc*lec39dy6mtdlg@#v+m0a51no&2@l9fz^nkh&1f')
-
-# ########## live #####################
-# RAZORPAY_PUBLIC_KEY=config('RAZORPAY_PUBLIC_KEY')
-# RAZORPAY_SECRET_KEY=config('RAZORPAY_SECRET_KEY')
-
 HAYSTACK_CONNECTIONS = {
-    'default': {
+    'default': 
+    {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
         'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'products_tutorial',
+        # 'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+        'INDEX_NAME': 'shop_products',
     },
 }
+
+####################################################################################################
 
 # Django Rest Framework (DRF)
 # ------------------------------------------------------------------------------
@@ -239,3 +222,65 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'PAGE_SIZE': 25
 }
+
+
+####################################################################################################
+
+# Override settings here
+if DEBUG:
+    INSTALLED_APPS += (
+        'debug_toolbar',
+	)
+    INTERNAL_IPS = (
+        '127.0.0.1',
+    )
+    DEBUG_TOOLBAR_CONFIG = {
+		'INTERCEPT_REDIRECTS': False,
+	}
+    MIDDLEWARE += (
+		'debug_toolbar.middleware.DebugToolbarMiddleware',
+	)
+    TEMPLATES = [
+		{
+			'BACKEND': 'django.template.backends.django.DjangoTemplates',
+			'DIRS': [os.path.join(BASE_DIR, 'templates')],
+			'APP_DIRS': True,
+			'OPTIONS': 
+            {
+				"debug": DEBUG,
+				'context_processors': 
+                [
+					'django.template.context_processors.debug',
+					'django.template.context_processors.request',
+					'django.contrib.auth.context_processors.auth',
+					'django.template.context_processors.i18n',
+					'django.template.context_processors.media',
+					'django.template.context_processors.static',
+					'django.template.context_processors.tz',
+					'django.contrib.messages.context_processors.messages',
+
+				],
+				"string_if_invalid": '<< MISSING VARIABLE "%s" >>' if DEBUG else "",
+			},
+		},
+	]
+
+    PAYMENT_VARIANTS = {
+        'razorpay': 
+        (
+            'django_payments_razorpay.RazorPayProvider', 
+            {
+                'public_key': 'RAZORPAY_PUBLIC_KEY',
+                'secret_key': 'RAZORPAY_SECRET_KEY'
+            }
+        )
+    }
+
+
+    ############ test ##################### 
+    # RAZORPAY_PUBLIC_KEY=config('rzp_test_tA7AbSk6m2cdv2')
+    # RAZORPAY_SECRET_KEY= config('vPGDTwajuC4X6KDxln8ZvQRv')
+
+    # ########## live #####################
+    # RAZORPAY_PUBLIC_KEY=config('rzp_test_tA7AbSk6m2cdv2')
+    # RAZORPAY_SECRET_KEY=config('vPGDTwajuC4X6KDxln8ZvQRv')

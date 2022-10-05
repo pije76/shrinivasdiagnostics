@@ -26,8 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('profile/', include('accounts.urls')),
     path('shop/', include('shop.urls')),
-    # path('cart/',include('cart.urls',namespace='cart')),
-    # path('orders/', include('orders.urls', namespace='orders')),
+    path('cart/',include('cart.urls',namespace='cart')),
+    path('orders/', include('orders.urls', namespace='orders')),
     # path('payment/', include('payment.urls', namespace='payment')),
     
     path('summernote/', include('django_summernote.urls')),

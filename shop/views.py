@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.detail import DetailView
+from django.views.generic import TemplateView
 from django.http import JsonResponse
 
 from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
@@ -22,6 +23,9 @@ def product_detail(request, id, slug):
     cart_product_form=CartAddProductForm()
     return render(request, 'shop/product/detail.html', {'product': product, 'cart_product_form': cart_product_form})
 
+
+class HomeView(TemplateView):
+    template_name = "home.html"
 
 class ProductView(DetailView):
     template_name = "product.html"
