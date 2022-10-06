@@ -1,142 +1,37 @@
 {% load static %}
 
-<navbar class="site-navbar">
-
-	<section class="container-fluid">
-		<section class="pt-4">
-			<div class="container-fluid">
-				<div class="row d-flex">
-					<div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
-						<div class="logo">
-							<a href="/" title="logo">
-								<img class="img-fluid" src="{% static 'images/shrinivasdiagnostics_logo.png' %}" alt="logo">
-							</a>					
-						</div>
-					</div>
-					<div class="col-xl-6 col-lg-5 col-md-8 col-sm-12">
-						<div class="search-section d-flex">
-							<div class="search-by-city">
-								<input type="search" class="form-control" placeholder="Search City" />
-							</div>
-							<div class="search-by-keyword w-100 position-relative">
-								<i class="fas fa-search position-absolute text-muted"></i>
-								<input type="search" class="form-control" placeholder="Search for a test, health package" />
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12">
-						<div class="tools-section position-relative pt-md-3">
-							<button class="d-block d-lg-none navbar-toggler position-absolute rounded-circle shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-								<i class="fas fa-bars"></i>
-							</button>
-
-							<div class="text-right">
-								<ul class="list-unstyled d-flex justify-content-end align-items-center">
-									<li class="call pe-3">
-										<a href="tel:7500075111" title="call us" class="d-flex align-items-center fw-bold">
-											<i class="fas fa-phone" class="fs-5"></i>
-											<span class="ms-2">Call Us 75000 75111</span>
-										</a>					
-									</li>
-									<li class="cart pe-3">
-										<a href="/shopping-cart/" title="Cart" class="position-relative">
-											<div class="ratio ratio-1x1 rounded-circle shadow-sm">
-												<div class="d-flex justify-content-center align-items-center"><i class="fas fa-shopping-bag"></i></div>
-											</div>
-										</a>
-									</li>
-									<li class="user">
-										<a href="/profile/" title="User" class="position-relative">
-											<div class="ratio ratio-1x1 rounded-circle shadow-sm">
-												<div class="d-flex justify-content-center align-items-center"><i class="fas fa-user"></i></div>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+<section class="navigation tab-navigation">
+	<div class="container-fluid">
+		<div class="row custom-flex">
+			<div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
 			</div>
-		</section>
-
-		<section class="navigation tab-navigation">
-			<div class="container-fluid">
-				<div class="row d-flex">
-					<div class="col-xl-3 col-lg-12 col-md-12 col-sm-12"></div>
-					<div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
-						<nav class="navbar navbar-expand-lg text-uppercase p-0">
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-										<a class="nav-link" href="#">Home</a>
-									</li>
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle d-sm-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Patients
-										</a>
-										<ul class="dropdown-menu">
-											<li><a class="nav-link" href="#">Explore Full Test menu</a></li>
-											<li><a class="nav-link" href="#">COVID-19</a></li>
-											<li><a class="nav-link" href="#">Covid-19 Drive Thru</a></li>
-											<li><a class="nav-link" href="#">FAQs</a></li>
-											<li><a class="nav-link" href="#">Blogs</a></li>
-											<li><a class="nav-link" href="#">Videos</a></li>
-											<li><a class="nav-link" href="#">PR Media</a></li>
-											<li><a class="nav-link" href="#">Share Your Feedback</a></li>
-										</ul>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Book a Test</a>
-									</li>
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle d-sm-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Doctors
-										</a>
-										<ul class="dropdown-menu">
-											<li><a class="nav-link" href="#">National Reference Lab</a></li>
-											<li><a class="nav-link" href="#">Research and Development</a></li>
-											<li><a class="nav-link" href="#">Download Forms</a></li>
-											<li><a class="nav-link" href="#">Scientific Literature</a></li>
-											<li><a class="nav-link" href="#">Webinars</a></li>
-										</ul>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Lab Locator</a>
-									</li>
-								</ul>
-
-								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-										<a class="nav-link d-flex align-items-center" href="#">
-											<i class="fas fa-download"></i>
-											<span class="ms-2">Download Report</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link d-flex align-items-center" href="#">
-											<i class="fas fa-upload"></i>
-											<span class="ms-2">Upload Prescription</span>
-										</a>
-									</li>
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle d-sm-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Partner With Us
-										</a>
-										<ul class="dropdown-menu dropdown-menu-lg-end">
-											<li class="nav-item"><a class="nav-link" href="#">Franchising Opportunities</a></li>
-											<li class="nav-item"><a class="nav-link" href="#">Corporate Wellness</a></li>
-											<li class="nav-item"><a class="nav-link" href="#">Hospital Lab Management</a></li>
-											<li class="nav-item"><a class="nav-link" href="#">Organise Camps</a></li>
-										</ul>
-									</li>
-								</ul>
+			<div class="col-xs-12 col-lg-9 col-md-12 col-sm-12">
+				<div class="mainmenu" id="mainmenu">
+					<div class="region region-primary-menu">
+						<div id="block-popupblock" class="block block-block-content block-block-contentf2313798-0896-4cff-a94b-3b414bd49787">
+							<div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i>Dear Esteemed Customers/Patients</i></b></p>
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i> </i></b></p>
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i>We are aware, you are going through difficult times. We at Pathkind are committed to serve you to the best of our ability despite the overwhelming rush we are witnessing in all our centres. Despite our teams working 24*7 we are observing delays in our services like reports delivery, call waiting time by our customer care team and accepting home collection requests. Please bear with us.</i></b></p>
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i> </i></b></p>
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i>We will reach out to you as promptly as we can.</i></b></p>
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i> </i></b></p>
+								<p class="MsoNormal" style="margin: 0px; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><b><i>We wish you good luck, good health &amp; God Oversight.</i></b></p>
 							</div>
-						</nav>
+						</div>
+						<div id="block-mainnavigation" class="block block-superfish block-superfishmain">
+							<ul id="superfish-main" class="menu sf-menu sf-main sf-horizontal sf-style-none">
+								<li id="main-menu-link-content002c078a-c18f-4a8d-84a4-8f753b9c7b33" class="active-trail sf-depth-1 sf-no-children"><a href="/" class="is-active sf-depth-1" title="Home">Home</a></li><li id="main-menu-link-content7817632b-5ef1-48e8-ab0d-0c202bd07e6a" class="sf-depth-1 menuparent"><span class="sf-depth-1 menuparent nolink">Patients</span><ul><li id="main-menu-link-content08cfefc7-b35c-41f8-9505-155931386d56" class="sf-depth-2 sf-no-children"><a href="https://pathkindlabs.com/pathkind_app/book-blood-test-online-in-india/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI0MzE0MiIsInRpbWVzdGFtcCI6IjIwMjItMDktMjkgMTc6MDU6MzkifQ.FQq5dUMIgFlX5TILInZ5cx__BogbXmmvfOckBDd-gv4" class="sf-depth-2 sf-external" title="Explore Full Test menu">Explore Full Test menu</a></li><li id="main-menu-link-contenta171d764-1218-4db4-83ee-0ab5959b59b1" class="sf-depth-2 sf-no-children"><a href="/know-about-covid-19" class="sf-depth-2" title="COVID-19">COVID-19</a></li><li id="main-menu-link-content39f02c5e-cf48-4ec8-b807-0bb0ce613a3b" class="sf-depth-2 sf-no-children"><a href="/contactless-covid-19-drive-thru-testing" class="sf-depth-2" title="Covid-19 Drive Thru">Covid-19 Drive Thru</a></li><li id="main-menu-link-contentb68482f7-7281-4b11-9a86-d0e4b4d582ec" class="sf-depth-2 sf-no-children"><a href="/covid-19-faq" class="sf-depth-2" title="FAQs">FAQs</a></li><li id="main-menu-link-content9cd95321-381c-4fbf-aef7-d6c0bc2b283f" class="sf-depth-2 sf-no-children"><a href="/blogs" class="sf-depth-2" title="Blogs">Blogs</a></li><li id="main-menu-link-content8e3ed4fa-fb3f-47bd-a36f-e972fd835de0" class="sf-depth-2 sf-no-children"><a href="/covid-19-video" class="sf-depth-2" title="Videos">Videos</a></li><li id="main-menu-link-content3e4a8c89-9879-46e5-889f-9e30d5c397f9" class="sf-depth-2 sf-no-children"><a href="/press-release" class="sf-depth-2" title="PR Media">PR Media</a></li><li id="main-menu-link-contente45e75c3-f014-41bd-ba07-bc3bead3ae8a" class="sf-depth-2 sf-no-children"><a href="/feedback-reviews" class="sf-depth-2" title="Share Your Feedback">Share Your Feedback</a></li></ul></li><li id="main-menu-link-content7711ea7f-036e-4ab3-892a-6500f31b97ff" class="sf-depth-1 sf-no-children"><a href="/pathkind_app/book-blood-test-online-in-india/" class="sf-depth-1">Book a Test</a></li><li id="main-menu-link-content5f282920-3abd-4ec6-aa74-88b94cce3b6b" class="sf-depth-1 menuparent"><span class="sf-depth-1 menuparent nolink" title="DOCTORS">DOCTORS</span><ul><li id="main-menu-link-contentf7a921d4-3484-4ac9-9046-0be4423a147a" class="sf-depth-2 sf-no-children"><a href="/national-reference-laboratory" class="sf-depth-2" title="National Reference Lab">National Reference Lab</a></li><li id="main-menu-link-content23359502-f0f0-4750-a74e-b7819e9da0c8" class="sf-depth-2 sf-no-children"><a href="/general-clinic-research-and-development" class="sf-depth-2" title="Research and Development">Research and Development</a></li><li id="main-menu-link-content2b2ca2df-d86f-43cf-8aa3-aa74f2c40d45" class="sf-depth-2 sf-no-children"><a href="/download-test-forms" class="sf-depth-2" title="/download-forms">Download Forms</a></li><li id="main-menu-link-contentf5033c90-4514-48a8-b1b4-665bea6f7e3e" class="sf-depth-2 sf-no-children"><a href="/scientific-literature" class="sf-depth-2" title="Scientific Literature">Scientific Literature</a></li><li id="main-menu-link-content1c4e1219-940b-4f29-849a-1f753f776b77" class="sf-depth-2 sf-no-children"><a href="/webinar-conferences" class="sf-depth-2" title="Webinars">Webinars</a></li></ul></li><li id="main-menu-link-content688ff7e9-4161-48a7-a8c6-6700a2ecdd9b" class="sf-depth-1 sf-no-children"><a href="https://nearby.pathkindlabs.com/" class="sf-depth-1 sf-external" title="Lab Locator">Lab Locator</a></li>
+							</ul>
+						</div>
+						<div id="block-mainmenurightsection" class="block block-superfish block-superfishmain-menu-right-section">
+							<ul id="superfish-main-menu-right-section" class="menu sf-menu sf-main-menu-right-section sf-horizontal sf-style-none">
+								<li id="main-menu-right-section-menu-link-content5e5db3b4-b30c-4c20-9fc1-a26b2889a6e8" class="sf-depth-1 sf-no-children"><a href="http://104.211.117.133/download/PatientLogin.aspx" class="download sf-depth-1 sf-external" target="_blank" title="DOWNLOAD REPORT">DOWNLOAD REPORT</a></li><li id="main-menu-right-section-menu-link-contentbd90c216-b8f7-457d-82fe-ed9682f021f8" class="sf-depth-1 sf-no-children"><a href="/upload-prescription" class="upload sf-depth-1" title="Upload Prescription">UPLOAD PRESCRIPTION</a></li><li id="main-menu-right-section-menu-link-content9c4ba0fd-f57a-494c-8f2e-acfba6c238c5" class="sf-depth-1 menuparent"><span class="sf-depth-1 menuparent nolink" title="PARTNER WITH US">PARTNER WITH US</span><ul><li id="main-menu-right-section-menu-link-content50cbf917-d551-4ba9-bd42-d1c43ca49e58" class="sf-depth-2 sf-no-children"><a href="/franchise-business-opportunities" class="sf-depth-2" title="Franchising Opportunities">Franchising Opportunities</a></li><li id="main-menu-right-section-menu-link-content092f2553-7f9f-4656-b90f-7acccd98fef6" class="sf-depth-2 sf-no-children"><a href="/annual-corporate-wellness-program" class="sf-depth-2" title="Corporate Wellness">Corporate Wellness</a></li><li id="main-menu-right-section-menu-link-contenta25adb3f-46fc-4efa-a907-5ba2df530b89" class="sf-depth-2 sf-no-children"><a href="/hospital-lab-management" class="sf-depth-2" title="Hospital Lab Management">Hospital Lab Management</a></li><li id="main-menu-right-section-menu-link-contenta58d05c0-bab2-409d-8b01-81baa7fb9ddb" class="sf-depth-2 sf-no-children"><a href="/organise-free-health-check-up-camps" class="sf-depth-2" title="Organise Camps">Organise Camps</a></li></ul></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-
-</navbar>
+	</div>
+</section>

@@ -22,7 +22,6 @@
 
     <link href="{% static 'css/based.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css" />
 
     <link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css" />
@@ -41,24 +40,12 @@
     {% endblock %}
 
 </head>
-{% include "header.html" %}
+<body class="path-frontpage en puser">
+    {% include "header.html" %}
 
-<body data_from_url="{{ user.username }}">
-    {% include "navbar.html" %}
-
-    <div class="container-fluid d-flex flex-column">
-        <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content"></div>
-            </div>
-        </div>
-
-        {% block is_auth %}
-        {% endblock %}
-
-        {% block content %}
-        {% endblock %}
-    </div>
+    {% block content %}
+    {% include "home.html" %}
+    {% endblock %}
 
     {% include "footer.html" %}
 
