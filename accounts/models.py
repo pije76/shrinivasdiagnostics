@@ -4,11 +4,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 
 from phonenumber_field.modelfields import PhoneNumberField
 from .managers import UserManager
+
 
 GENDER_CHOICES = (
 	("male", _('Male')),
@@ -186,8 +186,25 @@ class UOTPManagerQuerySet(models.QuerySet):
 		except ObjectDoesNotExist:
 			return None
 
+	def get_or_create_user_from_issuer(self, issuer):
+		"""If user not exists create one"""
+		fake_username = issuer
+		fake_email = '{}@gmail.com'.format(issuer)
+		fake_password = '{}'.format(issuer)
+
+		user = self.get_user_from_issuer(issuer)
+		if user is None:
+			user = Profile.objects.create_user(fake_username, fake_email, fake_password)
+			user.phone_number = issuer
+			user.save()
+
+		return user
+
 
 class UOTP(models.Model):
+	class PurposeChoices(models.TextChoices):
+		SIGNIN = 'signin', _("Sign In")
+
 	create_at = models.DateTimeField(auto_now_add=True, db_index=True)
 	update_at = models.DateTimeField(auto_now=True)
 
@@ -195,6 +212,11 @@ class UOTP(models.Model):
         max_length=255,
         help_text=_("One of Email or Msisdn"),
     )
+	purpose = models.CharField(
+		max_length=15, 
+		choices=PurposeChoices.choices,
+		default=PurposeChoices.SIGNIN
+	)
 	otp = models.CharField(max_length=10, db_index=True)
 	secret = models.CharField(max_length=255, db_index=True)
 	valid_until = models.DateTimeField(blank=True, null=True, editable=False)

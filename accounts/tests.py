@@ -29,3 +29,10 @@ class UOTPTestCase(TestCase):
 	def test_uotp_is_secret_invalid(self):
 		is_valid = UOTP.objects.validate(self.issuer, self.otp, 'secret53985398539')
 		self.assertEqual(is_valid, False)
+	
+	def test_create_and_get_user_from_issuer(self):
+		user = UOTP.objects.get_or_create_user_from_issuer(self.issuer)
+		self.assertEqual(user.id, 1)
+
+		user_otp = UOTP.objects.get_user_from_issuer(self.issuer)
+		self.assertEqual(user_otp.phone_number, self.issuer)
