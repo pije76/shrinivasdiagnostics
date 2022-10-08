@@ -9362,7 +9362,7 @@ html[xmlns] .flexslider .slides {
 .dropdown.location a.dropdown-toggle::before {
     content: "";
     display: block;
-    background-image: url(/assets/img/arrow-down-white.png);
+    background-image: url(/assets/images/arrow-down-white.png);
     width: 10px;
     height: 10px;
     background-size: 10px;
@@ -9375,7 +9375,7 @@ html[xmlns] .flexslider .slides {
     color: #004368!important;
 }
 .navbar-toggler-icon {
-    background-image: url(/assets/img/menu.png)!important;
+    background-image: url(/assets/images/menu.png)!important;
 }
 .site-header .text-right {
     text-align: center!important;
@@ -10380,7 +10380,7 @@ p {
 .right-infos ul li.lang-select a {
     text-transform: uppercase;
     font-weight: 600;
-    background: url(/assets/img/drop-down.png) no-repeat;
+    background: url(/assets/images/drop-down.png) no-repeat;
     padding-right: 16px;
     background-position: 96% 50%;
     background-size: 10px;
@@ -10417,7 +10417,7 @@ p {
 .city-drpdwn a:after {
     content: '';
     display: block;
-    background: url(/assets/img/drop-down.png) no-repeat;
+    background: url(/assets/images/drop-down.png) no-repeat;
     background-size: 10px;
     width: 20px;
     height: 20px;
@@ -10445,7 +10445,7 @@ input#search-bar {
     outline: none;
     border-left: 1px solid rgba(0, 67, 104, 0.1);
     position: relative;
-    background: url(/assets/img/search.png) no-repeat #e4ebed;
+    background: url(/assets/images/search.png) no-repeat #e4ebed;
     background-position: 3% 50%;
 }
 input#search-bar:focus {
@@ -10453,7 +10453,7 @@ input#search-bar:focus {
     color: #008abf;
 }
 .fivestar-basic div.fivestar-widget-static .star span.on {
-    background-image: url(/assets/img/star.png) !important;
+    background-image: url(/assets/images/star.png) !important;
     background-position: 100% 100%;
     background-size: 18px;
 }
@@ -10483,7 +10483,7 @@ input#search-bar:focus {
 .navigation .nav-link.dropdown-toggle::before, .dropdown.location a.dropdown-toggle::before {
     content: "";
     display: block;
-    background-image: url(/assets/img/arrow-down.png);
+    background-image: url(/assets/images/arrow-down.png);
     width: 10px;
     height: 10px;
     background-size: 10px;
@@ -10571,7 +10571,7 @@ ul#superfish-main-menu-right-section {
 ul.sf-menu .sf-sub-indicator:after {
     content: '';
     display: block;
-    background: url(/assets/img/drop-down.svg) no-repeat;
+    background: url(/assets/images/drop-down.svg) no-repeat;
     background-size: 20px;
     width: 25px;
     height: 25px;
@@ -10620,13 +10620,13 @@ ul.sf-menu ul li:hover {
 }
 }
 .sf-main-menu-right-section li a.download {
-    background: url(/assets/img/download.svg) no-repeat;
+    background: url(/assets/images/download.svg) no-repeat;
     background-position: 0 55%;
     padding-left: 20px;
     background-size: 18px;
 }
 .sf-main-menu-right-section li a.upload {
-    background: url(/assets/img/upload.svg) no-repeat;
+    background: url(/assets/images/upload.svg) no-repeat;
     background-position: 0 55%;
     padding-left: 20px;
     background-size: 18px;
@@ -10798,7 +10798,7 @@ ul.sf-menu ul li:hover {
     padding: 7px 14px 7px 14px;
     color: #343434;
     font-weight: 600;
-    background: url(/assets/img/next.png) #fff no-repeat;
+    background: url(/assets/images/next.png) #fff no-repeat;
     background-position: 90% 50%;
     background-size: 10%;
     border-radius: 50px;
@@ -10880,7 +10880,7 @@ ul.sf-menu ul li:hover {
     border-radius: 100px;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 31%);
     width: 30%;
-    background: url(/assets/img/shopping-bag.png) no-repeat #fff;
+    background: url(/assets/images/shopping-bag.png) no-repeat #fff;
     background-size: 12px;
     background-position: 14% 49%;
     transition: 0.3s ease-out;
@@ -11256,14 +11256,14 @@ ul.sf-menu ul li:hover {
     opacity: 1 !important;
     left: -28px !important;
     top: 47%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
 }
 .blogs .flexslider:hover .flex-direction-nav .flex-next, .blogs .flexslider .flex-direction-nav .flex-next {
     opacity: 1 !important;
     right: -45px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
 }
 .blogs .flex-direction-nav a:before {
@@ -11393,7 +11393,7 @@ ul.sf-menu ul li:hover {
 .block-views-blockvideo-gallery-block-3 .view-display-id-block_3 .views-field-field-youtube-video a:before, .video-section .view-video-gallery .views-field.views-field-field-youtube-video a:before, .spv-popup-link a:before, .view-id-video_gallery.view-display-id-block_3 .video-info a:before {
     content: '';
     display: block;
-    background: url(/assets/img/play.png) no-repeat;
+    background: url(/assets/images/play.png) no-repeat;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -11476,28 +11476,28 @@ ul#superfish-social-media-menu li span, ul#superfish-social-media-menu li a {
     margin-bottom: 0px;
 }
 ul#superfish-social-media-menu li a[title~=facebook] {
-    background-image: url(/assets/img/facebook.png);
+    background-image: url(/assets/images/facebook.png);
 }
 ul#superfish-social-media-menu li a[title~=facebook]:hover {
-    background-image: url(/assets/img/facebook-hover.png);
+    background-image: url(/assets/images/facebook-hover.png);
 }
 ul#superfish-social-media-menu li a[title~=twitter] {
-    background-image: url(/assets/img/twitter.png);
+    background-image: url(/assets/images/twitter.png);
 }
 ul#superfish-social-media-menu li a[title~=twitter]:hover {
-    background-image: url(/assets/img/twitter-hover.png);
+    background-image: url(/assets/images/twitter-hover.png);
 }
 ul#superfish-social-media-menu li a[title~=linkedin] {
-    background-image: url(/assets/img/linkedin.png);
+    background-image: url(/assets/images/linkedin.png);
 }
 ul#superfish-social-media-menu li a[title~=linkedin]:hover {
-    background-image: url(/assets/img/linkedin-hover.png);
+    background-image: url(/assets/images/linkedin-hover.png);
 }
 ul#superfish-social-media-menu li a[title~=Instagram] {
-    background-image: url(/assets/img/instagram.png);
+    background-image: url(/assets/images/instagram.png);
 }
 ul#superfish-social-media-menu li a[title~=Instagram]:hover {
-    background-image: url(/assets/img/instagram-hover.png);
+    background-image: url(/assets/images/instagram-hover.png);
 }
 .navigation .we-mega-menu-ul>.we-mega-menu-li>a, .navigation .we-mega-menu-ul>.we-mega-menu-li>span {
     font-size: 97% !important;
@@ -11573,7 +11573,7 @@ table caption {
     position: absolute;
     right: 20px;
     top: 45%;
-    background: url(/assets/img/drop-down.png) no-repeat;
+    background: url(/assets/images/drop-down.png) no-repeat;
     width: 13px;
     height: 13px;
     background-size: 13px;
@@ -11764,7 +11764,7 @@ h3#Generic {
 }
 .page-term-events_category #block-pathkind-content .view-events .view-content .views-row .views-field-field-address {
     padding: 0px 20px;
-    background: url(/assets/img/location-pin.png) no-repeat;
+    background: url(/assets/images/location-pin.png) no-repeat;
     background-size: 12px;
     background-position: 5% 45%;
     padding-left: 40px;
@@ -11778,7 +11778,7 @@ h3#Generic {
 }
 .page-term-events_category #block-pathkind-content .view-events .view-content .views-row .views-field-field-date- {
     padding: 0 20px 25px 20px;
-    background: url(/assets/img/calendar.png) no-repeat;
+    background: url(/assets/images/calendar.png) no-repeat;
     background-size: 15px;
     background-position: 5% 0%;
     padding-left: 40px;
@@ -11904,7 +11904,7 @@ div.fivestar-widget-static .star {
     margin: 16px 110px 22px 0px;
 }
 .page-term-downloads_form .view-content .views-row .views-field-title {
-    background: url(/assets/img/form.png) no-repeat;
+    background: url(/assets/images/form.png) no-repeat;
     background-position: 0 55%;
     padding-left: 20px;
     float: left;
@@ -11934,7 +11934,7 @@ div.fivestar-widget-static .star {
 }
 .page-term-downloads_form .view-content .views-row .views-field-field-attachment .field-content {
     margin: -16px 0px 0px -2px;
-    background: url(/assets/img/view.png) no-repeat;
+    background: url(/assets/images/view.png) no-repeat;
     background-position: 0 55%;
     padding-left: 28px;
     padding-top: 2px;
@@ -11949,7 +11949,7 @@ div.fivestar-widget-static .star {
 }
 .page-term-downloads_form .view-content .views-row .views-field-field-attachment-1 .field-content {
     margin: -16px 0px 0px -2px;
-    background: url(/assets/img/download-w.png) no-repeat;
+    background: url(/assets/images/download-w.png) no-repeat;
     background-position: 0 55%;
     padding-left: 28px;
     padding-top: 2px;
@@ -11984,7 +11984,7 @@ div.fivestar-widget-static .star {
     letter-spacing: -0.18px;
     color: #004368;
     text-decoration: none;
-    background: url(/assets/img/back.png) no-repeat;
+    background: url(/assets/images/back.png) no-repeat;
     background-position: 0 55%;
     padding-left: 30px;
 }
@@ -12109,7 +12109,7 @@ div.fivestar-widget-static .star {
     margin-bottom: -140px;
 }
 .path-contact-us .container-fluid .feedback-con {
-    background: url(/assets/img/feedback.png) no-repeat;
+    background: url(/assets/images/feedback.png) no-repeat;
     padding-left: 100px;
     padding-top: 20px;
 }
@@ -12123,12 +12123,12 @@ div.fivestar-widget-static .star {
     margin-bottom: 61px;
 }
 .path-contact-us .container-fluid .call-us {
-    background: url(/assets/img/phone.png) no-repeat;
+    background: url(/assets/images/phone.png) no-repeat;
     padding-left: 100px;
     padding-top: 20px;
 }
 .path-contact-us .container-fluid .email-add {
-    background: url(/assets/img/email.png) no-repeat;
+    background: url(/assets/images/email.png) no-repeat;
     padding-left: 100px;
     padding-top: 20px;
     margin-top: 36px;
@@ -12168,7 +12168,7 @@ div.fivestar-widget-static .star {
 .path-contact-us .email-add ul {
 }
 .path-contact-us .container-fluid .address {
-    background: url(/assets/img/address.png) no-repeat;
+    background: url(/assets/images/address.png) no-repeat;
     padding-left: 100px;
     padding-top: 20px;
     margin-bottom: 75px;
@@ -12208,7 +12208,7 @@ div.fivestar-widget-static .star {
 }
 .page-term-pr_media_category .view-pr-media .view-content .views-row .views-field-field-address {
     padding: 0px 20px;
-    background: url(/assets/img/location-pin.png) no-repeat;
+    background: url(/assets/images/location-pin.png) no-repeat;
     background-size: 12px;
     background-position: 5% 45%;
     padding-left: 40px;
@@ -12222,7 +12222,7 @@ div.fivestar-widget-static .star {
 }
 .page-term-pr_media_category .view-pr-media .view-content .views-row .views-field-field-date- {
     padding: 0 20px 25px 20px;
-    background: url(/assets/img/calendar.png) no-repeat;
+    background: url(/assets/images/calendar.png) no-repeat;
     background-size: 15px;
     background-position: 5% 0%;
     padding-left: 40px;
@@ -12240,7 +12240,7 @@ div.fivestar-widget-static .star {
     margin: 16px 110px 22px 0px;
 }
 .page-term-scientific_literature_category .view-content .views-row .views-field-title {
-    background: url(/assets/img/form.png) no-repeat;
+    background: url(/assets/images/form.png) no-repeat;
     background-position: 0 55%;
     float: left;
     width: 65%;
@@ -12265,7 +12265,7 @@ div.fivestar-widget-static .star {
     float: left;
 }
 .page-term-scientific_literature_category .view-content .views-row .views-field-field-attachment .field-content {
-    background: url(/assets/img/view.png) no-repeat;
+    background: url(/assets/images/view.png) no-repeat;
     background-position: 16px 55%;
 }
 .page-term-scientific_literature_category .view-content .views-row .views-field-field-attachment .field-content a {
@@ -12282,7 +12282,7 @@ div.fivestar-widget-static .star {
     padding: 0px 32px 0px 23px;
 }
 .page-term-scientific_literature_category .view-content .views-row .views-field-field-attachment-1 .field-content {
-    background: url(/assets/img/download-w.png) no-repeat;
+    background: url(/assets/images/download-w.png) no-repeat;
     background-position: 12px 55%;
     border-radius: 20px;
     box-shadow: 0px 4px 6px 0 rgb(0 0 0 / 12%);
@@ -12311,7 +12311,7 @@ div.fivestar-widget-static .star {
     margin: 16px 110px 22px 0px;
 }
 .page-term-research_and_development_categor .view-content .views-row .views-field-title {
-    background: url(/assets/img/form.png) no-repeat;
+    background: url(/assets/images/form.png) no-repeat;
     background-position: 0 55%;
     float: left;
     width: 71%;
@@ -12340,7 +12340,7 @@ div.fivestar-widget-static .star {
 }
 .page-term-research_and_development_categor .view-content .views-row .views-field-field-attachment .field-content {
     margin: -16px 0px 0px -2px;
-    background: url(/assets/img/view.png) no-repeat;
+    background: url(/assets/images/view.png) no-repeat;
     background-position: 0 55%;
     padding-left: 28px;
     padding-top: 2px;
@@ -12358,7 +12358,7 @@ div.fivestar-widget-static .star {
 }
 .page-term-research_and_development_categor .view-content .views-row .views-field-field-attachment-1 .field-content {
     margin: -16px 0px 0px -2px;
-    background: url(/assets/img/download-w.png) no-repeat;
+    background: url(/assets/images/download-w.png) no-repeat;
     background-position: 0 55%;
     padding-left: 28px;
     padding-top: 2px;
@@ -12484,7 +12484,7 @@ div.fivestar-widget-static .star {
 .page-node-type-webinar .view-id-webinar_node_view .view-content .views-row .views-field-field-youtube-video .field-content a:before {
     content: '';
     display: block;
-    background: url(/assets/img/play.png) no-repeat;
+    background: url(/assets/images/play.png) no-repeat;
     position: absolute;
     left: 50%;
     top: 20%;
@@ -12789,14 +12789,14 @@ div.fivestar-widget-static .star {
     opacity: 1 !important;
     right: -45px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
 }
 .page-node-type-announcements .related-item .block-views .flexslider .flex-direction-nav .flex-prev {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
 }
 .page-node-type-announcements .related-item .block-views .flexslider .flex-direction-nav a:before {
@@ -12847,25 +12847,25 @@ div.fivestar-widget-static .star {
     padding-left: 124px;
 }
 .page-term-offers_and_announcements .view-offer-and-announcement .view-content .views-row .views-field-field-coupon-code {
-    background: url(/assets/img/offer.png) no-repeat;
+    background: url(/assets/images/offer.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 18px;
     height: 32px;
 }
 .page-term-offers_and_announcements .view-offer-and-announcement .view-content .views-row .views-field-field-for-all-employees {
-    background: url(/assets/img/offer.png) no-repeat;
+    background: url(/assets/images/offer.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 18px;
     height: 32px;
 }
 .page-term-offers_and_announcements .view-offer-and-announcement .view-content .views-row .views-field-field-in-all-location {
-    background: url(/assets/img/address-transarent.png) no-repeat;
+    background: url(/assets/images/address-transarent.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 18px;
     height: 32px;
 }
 .page-term-offers_and_announcements .view-offer-and-announcement .view-content .views-row .views-field-field-date {
-    background: url(/assets/img/calendar-transparent.png) no-repeat;
+    background: url(/assets/images/calendar-transparent.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 10px 24px;
     height: 32px;
@@ -13012,25 +13012,25 @@ div.fivestar-widget-static .star {
     margin-right: 4px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .views-row .views-field-field-coupon-code {
-    background: url(/assets/img/offer.png) no-repeat;
+    background: url(/assets/images/offer.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 0px;
     height: 32px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .views-row .views-field-field-for-all-employees {
-    background: url(/assets/img/offer.png) no-repeat;
+    background: url(/assets/images/offer.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 0px;
     height: 32px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .views-row .views-field-field-in-all-location {
-    background: url(/assets/img/address-transarent.png) no-repeat;
+    background: url(/assets/images/address-transarent.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 0px;
     height: 32px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .views-row .views-field-field-date {
-    background: url(/assets/img/calendar-transparent.png) no-repeat;
+    background: url(/assets/images/calendar-transparent.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 10px 6px;
     height: 32px;
@@ -13112,25 +13112,25 @@ div.fivestar-widget-static .star {
     color: #48585f;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .flexslider ul li .views-field-field-coupon-code {
-    background: url(/assets/img/offer.png) no-repeat;
+    background: url(/assets/images/offer.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 18px;
     height: 32px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .flexslider ul li .views-field-field-for-all-employees {
-    background: url(/assets/img/offer.png) no-repeat;
+    background: url(/assets/images/offer.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 18px;
     height: 32px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .flexslider ul li .views-field-field-in-all-location {
-    background: url(/assets/img/address-transarent.png) no-repeat;
+    background: url(/assets/images/address-transarent.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 4px 18px;
     height: 32px;
 }
 .page-node-type-offers-and-announcements .view-offer-and-announcement .view-content .flexslider ul li .views-field-field-date {
-    background: url(/assets/img/calendar-transparent.png) no-repeat;
+    background: url(/assets/images/calendar-transparent.png) no-repeat;
     background-position: 0 55%;
     margin: 4px 9px 10px 24px;
     height: 32px;
@@ -13223,14 +13223,14 @@ div.fivestar-widget-static .star {
     opacity: 1 !important;
     right: -45px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
 }
 .page-node-type-offers-and-announcements .related-item .block-views .flexslider .flex-direction-nav .flex-prev {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
 }
 .page-node-type-offers-and-announcements .related-item .block-views .flexslider .flex-direction-nav a:before {
@@ -13299,19 +13299,19 @@ div.fivestar-widget-static .star {
     color: #394e59;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body .container ul li.about-col {
-    background: url(/assets/img/collection.png) left center no-repeat;
+    background: url(/assets/images/collection.png) left center no-repeat;
     background-size: 9%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body .container ul li.about-sat {
-    background: url(/assets/img/pro.png) left center no-repeat;
+    background: url(/assets/images/pro.png) left center no-repeat;
     background-size: 9%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body .container ul li.about-world {
-    background: url(/assets/img/lab.png) left center no-repeat;
+    background: url(/assets/images/lab.png) left center no-repeat;
     background-size: 9%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body .container ul li.about-lab {
-    background: url(/assets/img/lab.png) left center no-repeat;
+    background: url(/assets/images/lab.png) left center no-repeat;
     background-size: 9%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body .container img {
@@ -13739,7 +13739,7 @@ h2.view-title:after {
     color: #fff;
 }
 .path-node .region-content .node-feedback-form .field--name-field-what-did-you-like-the-most fieldset .fieldset-wrapper .js-form-item input[type=checkbox] {
-    background: url(/assets/img/path.png) no-repeat !important;
+    background: url(/assets/images/path.png) no-repeat !important;
     appearance: none;
     width: 20px;
     height: 20px;
@@ -13816,7 +13816,7 @@ h2.view-title:after {
     display: none;
 }
 .path-node .region-content .node-feedback-form .field--name-field-help-us-improve .feeback-img {
-    background: url(/assets/img/document.png) no-repeat;
+    background: url(/assets/images/document.png) no-repeat;
     width: 47px;
     height: 40px;
     margin: 28px 768px 16px 1px;
@@ -13841,7 +13841,7 @@ h2.view-title:after {
 .optionset-testimonial-slider .slides li a:before {
     content: '';
     display: block;
-    background: url(/assets/img/play.png) no-repeat;
+    background: url(/assets/images/play.png) no-repeat;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -13870,7 +13870,7 @@ h2.view-title:after {
     min-width: 270px;
 }
 #temp-health .slides>li:hover .pkg-secondary-data .opencart-icon {
-    background: url(/assets/img/light.svg)no-repeat;
+    background: url(/assets/images/light.svg)no-repeat;
     height: 40px;
 }
 #temp-health .slides>li .pkg-secondary-data .pkg-secondary-cntnt {
@@ -13904,7 +13904,7 @@ h2.view-title:after {
 #temp-health .slides>li .pkg-secondary-data .test-20:before {
     content: '';
     display: block;
-    background: url(/assets/img/yellow-shape.png) no-repeat;
+    background: url(/assets/images/yellow-shape.png) no-repeat;
     position: relative;
     left: -20px;
     top: -9px;
@@ -14048,17 +14048,17 @@ h2.view-title:after {
     z-index: 999;
 }
 .temp-health .search-health {
-    background: url(/assets/img/health-search.png) no-repeat;
+    background: url(/assets/images/health-search.png) no-repeat;
     height: 40px;
 }
 #temp-health .slides>li:hover .temp-health .search-health {
-    background: url(/assets/img/y-search.svg) no-repeat;
+    background: url(/assets/images/y-search.svg) no-repeat;
 }
 .health-packages .flexslider:hover .flex-direction-nav .flex-prev, .health-packages .flexslider .flex-direction-nav .flex-prev {
     opacity: 1 !important;
     left: -25px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     width: 16px;
     height: 30px;
@@ -14069,7 +14069,7 @@ h2.view-title:after {
     opacity: 1 !important;
     right: -25px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
     width: 16px;
@@ -14281,7 +14281,7 @@ h2.view-title:after {
     line-height: 36px;
 }
 .research-section .view-content .views-row .views-field-title {
-    background: url(/assets/img/form.png) no-repeat;
+    background: url(/assets/images/form.png) no-repeat;
     background-position: 0 55%;
     float: left;
     width: 85%;
@@ -14310,14 +14310,14 @@ h2.view-title:after {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
 }
 .covid19-story-content .flexslider:hover .flex-direction-nav .flex-next, .covid19-story-content .flexslider .flex-direction-nav .flex-next {
     opacity: 1 !important;
     right: -45px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
 }
 .path-testimonials .view-id-testimonials.view-display-id-page_1 .views-row {
@@ -14352,7 +14352,7 @@ h2.view-title:after {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
 }
@@ -14360,7 +14360,7 @@ h2.view-title:after {
     opacity: 1 !important;
     right: -45px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
 }
@@ -14460,7 +14460,7 @@ h2.view-title:after {
     outline: none;
     border-left: 1px solid rgba(0, 67, 104, 0.1) !important;
     position: relative;
-    background: url(/assets/img/search.png) no-repeat #e4ebed;
+    background: url(/assets/images/search.png) no-repeat #e4ebed;
     background-position: 3% 50%;
 }
 .path-search-center {
@@ -14571,7 +14571,7 @@ h2.view-title:after {
     border-width: 0px;
 }
 .ui-widget.webform-confirmation-modal>.ui-dialog-titlebar .ui-dialog-titlebar-close .ui-icon.ui-icon-closethick {
-    background: url(/assets/img/close-w.png);
+    background: url(/assets/images/close-w.png);
     background-size: 11px;
     background-repeat: no-repeat;
     background-position: 100% 50%;
@@ -14622,7 +14622,7 @@ h2.view-title:after {
     right: 1px;
     width: 20px;
     display: block;
-    background: url(/assets/img/drop-down.svg) no-repeat;
+    background: url(/assets/images/drop-down.svg) no-repeat;
     background-size: 20px;
     width: 25px !important;
     height: 25px !important;
@@ -14784,15 +14784,15 @@ h2.view-title:after {
     border-bottom: solid 2px #e9e9e9;
 }
 .path-current-openings .container .user_dashboard .field--type-text-with-summary .container ul li:nth-child(1) {
-    background: url(/assets/img/collection.png) no-repeat left center;
+    background: url(/assets/images/collection.png) no-repeat left center;
     background-size: 9%;
 }
 .path-current-openings .container .user_dashboard .field--type-text-with-summary .container ul li:nth-child(2) {
-    background: url(/assets/img/pro.png) no-repeat left center;
+    background: url(/assets/images/pro.png) no-repeat left center;
     background-size: 9%;
 }
 .path-current-openings .container .user_dashboard .field--type-text-with-summary .container ul li:nth-child(3) {
-    background: url(/assets/img/lab.png) no-repeat left center;
+    background: url(/assets/images/lab.png) no-repeat left center;
     background-size: 9%;
 }
 .path-current-openings .container .col-lg-6.col-md-6 p img {
@@ -15027,7 +15027,7 @@ h2.view-title:after {
     position: fixed !important;
     top: 0px !important;
     height: 80px !important;
-    background: #194265 url(/assets/img/group_popup.png) no-repeat 265px top !important;
+    background: #194265 url(/assets/images/group_popup.png) no-repeat 265px top !important;
     width: 100% !important;
     margin-left: -22px !important;
 }
@@ -15133,13 +15133,13 @@ h2.view-title:after {
     color: #394e59;
     ;
     display: block;
-    background-image: url(/assets/img/bullet.png);
+    background-image: url(/assets/images/bullet.png);
     background-repeat: no-repeat;
     background-position: 0%;
     padding: 2px 0px 0px 14px;
 }
 #drupal-off-canvas .webform-ajax-form-wrapper .webform-submission-apply-for-job-form .webform-document-file .js-hide {
-    background-image: url(/assets/img/upload.png);
+    background-image: url(/assets/images/upload.png);
     background-repeat: no-repeat;
     background-position: 95% 50%;
     border: none;
@@ -15197,7 +15197,7 @@ h2.view-title:after {
     line-height: 2.86;
     color: #004368;
     text-decoration: none;
-    background: url(/assets/img/back.png) no-repeat;
+    background: url(/assets/images/back.png) no-repeat;
     background-position: 0 55%;
     padding-left: 30px;
 }
@@ -15298,7 +15298,7 @@ h2.view-title:after {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url(/assets/img/drop-down-drive.png);
+    background-image: url(/assets/images/drop-down-drive.png);
     background-repeat: no-repeat;
     background-position: 95% 58%;
     font-size: 15px;
@@ -15344,7 +15344,7 @@ h2.view-title:after {
     color: #818c93;
     border: none;
     float: left;
-    background-image: url(/assets/img/calendar-transparent.png);
+    background-image: url(/assets/images/calendar-transparent.png);
     background-repeat: no-repeat;
     background-position: 88%;
 }
@@ -15370,7 +15370,7 @@ h2.view-title:after {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url(/assets/img/drop-down-drive.png);
+    background-image: url(/assets/images/drop-down-drive.png);
     background-repeat: no-repeat;
     background-position: 93% 58%;
     margin: 16px 0px 0px 0;
@@ -15395,7 +15395,7 @@ h2.view-title:after {
     font-weight: 500;
     color: #394e59;
     display: block;
-    background-image: url(/assets/img/bullet.png);
+    background-image: url(/assets/images/bullet.png);
     background-repeat: no-repeat;
     background-position: 0%;
     padding: 2px 0px 0px 14px;
@@ -15411,7 +15411,7 @@ h2.view-title:after {
     font-size: 15px;
     font-weight: 500;
     color: #818c93;
-    background-image: url(/assets/img/time.png);
+    background-image: url(/assets/images/time.png);
     background-repeat: no-repeat;
     background-position: 88%;
 }
@@ -15435,7 +15435,7 @@ h2.view-title:after {
     color: #394e59;
 }
 .path-webform .dialog-off-canvas-main-canvas .user_dashboard .region-covid-thru-test .block-block-content .field--name-body .covid-drive {
-    background: url(/assets/img/address.png) no-repeat;
+    background: url(/assets/images/address.png) no-repeat;
     padding-left: 100px;
     padding-top: 4px;
     margin-bottom: 75px;
@@ -15455,7 +15455,7 @@ h2.view-title:after {
     max-height: 446px !important;
 }
 .path-webform .dialog-off-canvas-main-canvas .region .block-views-blockinner-banner-block-6 .view-display-id-block_6 .view-content .views-row .drive-img {
-    background: url(/assets/img/wuhan-coronavirus.png) no-repeat;
+    background: url(/assets/images/wuhan-coronavirus.png) no-repeat;
     padding-left: 100px;
     margin-bottom: 75px;
     position: absolute;
@@ -15488,14 +15488,14 @@ h2.view-title:after {
     border: none;
 }
 .path-node .fivestar-basic div.fivestar-widget .star, .path-node .fivestar-basic div.fivestar-widget .star a {
-    background-image: url(/assets/img/star-large-grey.png) !important;
+    background-image: url(/assets/images/star-large-grey.png) !important;
     width: 70px;
     height: 66px;
     margin: 0px 9px 72px 0px;
     background-position: 100% 100%;
 }
 .path-node .fivestar-basic div.fivestar-widget .star.hover, .path-node .fivestar-basic div.fivestar-widget .star.hover a, .path-node .fivestar-basic div.fivestar-widget .star.on, .path-node .fivestar-basic div.fivestar-widget .star.on a {
-    background-image: url(/assets/img/star-large.png) !important;
+    background-image: url(/assets/images/star-large.png) !important;
 }
 .page-term-partners_with_us_category .dialog-off-canvas-main-canvas .user_dashboard .inner-content .region-content .block-webform-block {
     background: linear-gradient(357deg, #0043681a, white);
@@ -15536,7 +15536,7 @@ h2.view-title:after {
     display: block;
     content: '';
     position: absolute;
-    background: url(/assets/img/collect.svg) no-repeat;
+    background: url(/assets/images/collect.svg) no-repeat;
     top: -40px;
     left: 0;
     width: 30px;
@@ -15578,7 +15578,7 @@ h2.view-title:after {
 .page-term-partners_with_us_category .region-partner-banner #block-views-block-partners-with-us-block-1 .top-img {
     height: 600px;
     width: 100%;
-    background: url(/assets/img/partners.png) no-repeat;
+    background: url(/assets/images/partners.png) no-repeat;
     background-size: cover;
     position: relative;
 }
@@ -15596,7 +15596,7 @@ h2.view-title:after {
 .page-term-partners_with_us_category .region-partner-banner #block-views-block-partners-with-us-block-1 .top-img h2:before {
     content: '';
     display: block;
-    background: url(/assets/img/handshake.svg) no-repeat;
+    background: url(/assets/images/handshake.svg) no-repeat;
     width: 80px;
     height: 80px;
     background-size: 80px;
@@ -15615,7 +15615,7 @@ h2.view-title:after {
     font-size: 14px;
     font-weight: 500;
     color: #f4f7f8;
-    background: url(/assets/img/check.svg) no-repeat;
+    background: url(/assets/images/check.svg) no-repeat;
     background-size: 20px;
     padding-left: 30px;
     margin: 17px 0 15px 0;
@@ -15677,16 +15677,16 @@ h2.view-title:after {
     border-bottom: 2px solid #e8e9e9;
 }
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-2 .views-field-nothing-1 .field-content .des-content ul li:nth-child(1) {
-    background: url(/assets/img/collection.svg) no-repeat left center;
+    background: url(/assets/images/collection.svg) no-repeat left center;
     border-top: 2px solid #e8e9e9;
     background-size: 9%;
 }
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-2 .views-field-nothing-1 .field-content .des-content ul li:nth-child(2) {
-    background: url(/assets/img/pro.svg) no-repeat left center;
+    background: url(/assets/images/pro.svg) no-repeat left center;
     background-size: 9%;
 }
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-2 .views-field-nothing-1 .field-content .des-content ul li:nth-child(3) {
-    background: url(/assets/img/lab.svg) no-repeat left center;
+    background: url(/assets/images/lab.svg) no-repeat left center;
     background-size: 9%;
 }
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-2 .views-field-nothing-1 .field-content .des-img img {
@@ -15713,7 +15713,7 @@ h2.view-title:after {
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-3 ul li:nth-child(1):before, .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-3 ul li:nth-child(4):before {
     content: '';
     display: block;
-    background: url(/assets/img/pad-svgrepo-com.svg) #e4ebed no-repeat;
+    background: url(/assets/images/pad-svgrepo-com.svg) #e4ebed no-repeat;
     width: 40px;
     height: 40px;
     background-size: 22px;
@@ -15726,7 +15726,7 @@ h2.view-title:after {
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-3 ul li:nth-child(2):before, .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-3 ul li:nth-child(5):before {
     content: '';
     display: block;
-    background: url(/assets/img/draws-floor-svgrepo-com.svg) #e4ebed no-repeat;
+    background: url(/assets/images/draws-floor-svgrepo-com.svg) #e4ebed no-repeat;
     width: 40px;
     height: 40px;
     background-size: 22px;
@@ -15739,7 +15739,7 @@ h2.view-title:after {
 .page-term-partners_with_us_category .block-views-blockpartners-with-us-block-3 ul li:nth-child(3):before {
     content: '';
     display: block;
-    background: url(/assets/img/rupee-svgrepo-com.svg) #e4ebed no-repeat;
+    background: url(/assets/images/rupee-svgrepo-com.svg) #e4ebed no-repeat;
     width: 40px;
     height: 40px;
     position: absolute;
@@ -15753,10 +15753,10 @@ h2.view-title:after {
     border-bottom: 0px !important;
 }
 .ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar-close:hover {
-    background-image: url(/assets/img/close.svg);
+    background-image: url(/assets/images/close.svg);
 }
 .ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar-close {
-    background-image: url(/assets/img/close.svg);
+    background-image: url(/assets/images/close.svg);
     right: 0.3em !important;
     top: 0.8em !important;
     box-shadow: 0 0 7px #00000040;
@@ -15830,7 +15830,7 @@ form.webform-submission-upload-prescription-form .js-form-item.js-form-type-webf
     display: none !important;
 }
 form.webform-submission-upload-prescription-form .js-form-item.js-form-type-webform-document-file .js-form-file {
-    background: url(/assets/img/upload.svg) no-repeat !important;
+    background: url(/assets/images/upload.svg) no-repeat !important;
     background-position: 95% 50% !important;
 }
 form.webform-submission-apply-for-job-form .form-actions .js-form-submit {
@@ -15925,20 +15925,20 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
     border-bottom: 2px solid #e8e9e9;
 }
 .page-node-228 .view-national-reference-laboratory.view-id-national_reference_laboratory.view-display-id-block_3 ul li:nth-child(1) {
-    background: url(/assets/img/collection.svg) no-repeat;
+    background: url(/assets/images/collection.svg) no-repeat;
     border-top: 2px solid #e8e9e9;
     background-size: 10%;
 }
 .page-node-228 .view-national-reference-laboratory.view-id-national_reference_laboratory.view-display-id-block_3 ul li:nth-child(2) {
-    background: url(/assets/img/pro.svg) no-repeat;
+    background: url(/assets/images/pro.svg) no-repeat;
     background-size: 10%;
 }
 .page-node-228 .view-national-reference-laboratory.view-id-national_reference_laboratory.view-display-id-block_3 ul li:nth-child(3) {
-    background: url(/assets/img/lab.svg) no-repeat;
+    background: url(/assets/images/lab.svg) no-repeat;
     background-size: 10%;
 }
 .page-node-228 .view-national-reference-laboratory.view-id-national_reference_laboratory.view-display-id-block_3 ul li:nth-child(4) {
-    background: url(/assets/img/lab.svg) no-repeat;
+    background: url(/assets/images/lab.svg) no-repeat;
     background-size: 10%;
 }
 .page-node-228 .block-views-blocknational-reference-lab-departments-taxonomy-listing-block-1 {
@@ -16057,7 +16057,7 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
     margin-bottom: 15px;
 }
 .page-node-228 .block-views-blocknational-reference-laboratory-block-8 .views-field-body .field-content .row .time-img {
-    background: url(/assets/img/time-svgrepo-com.svg)no-repeat #e4ebed;
+    background: url(/assets/images/time-svgrepo-com.svg)no-repeat #e4ebed;
     width: 45px;
     height: 45px;
     background-position: 50% 50%;
@@ -16066,7 +16066,7 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
     margin-bottom: 10px;
 }
 .page-node-228 .block-views-blocknational-reference-laboratory-block-8 .views-field-body .field-content .row .star-img {
-    background: url(/assets/img/quality.svg)no-repeat #e4ebed;
+    background: url(/assets/images/quality.svg)no-repeat #e4ebed;
     width: 45px;
     height: 45px;
     background-position: 50% 50%;
@@ -16232,7 +16232,7 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
 .page-term-nrl_departments_category .block-page-title-block .page-title:before {
     content: '';
     display: block;
-    background: url(/assets/img/histopathology.svg)no-repeat;
+    background: url(/assets/images/histopathology.svg)no-repeat;
     position: absolute;
     top: -90px;
     left: -15px;
@@ -16250,7 +16250,7 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
 .page-term-partners_with_us_category .webform-submission-form h3:before, .page-term-partners_with_us_category .webform-submission-form h1:before {
     content: '';
     display: block;
-    background: url(/assets/img/collect.svg)no-repeat;
+    background: url(/assets/images/collect.svg)no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
@@ -16311,7 +16311,7 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
     -ms-appearance: none;
     appearance: none;
     outline: 0;
-    background: url(/assets/img/arrow-down-white.png) no-repeat #ffffff21;
+    background: url(/assets/images/arrow-down-white.png) no-repeat #ffffff21;
     background-size: 12px;
     background-position: 96% 54%;
 }
@@ -16342,16 +16342,16 @@ form.webform-submission-apply-for-job-form .js-form-item-upload-resume label {
     border-bottom: 2px solid #e8e9e9;
 }
 .page-term-nrl_departments_category .view-id-national_reference_laboratory.view-display-id-block_7 ul li:nth-child(1) {
-    background: url(/assets/img/collection.svg) no-repeat;
+    background: url(/assets/images/collection.svg) no-repeat;
     border-top: 2px solid #e8e9e9;
     background-size: 10%;
 }
 .page-term-nrl_departments_category .view-id-national_reference_laboratory.view-display-id-block_7 ul li:nth-child(2) {
-    background: url(/assets/img/pro.svg) no-repeat;
+    background: url(/assets/images/pro.svg) no-repeat;
     background-size: 10%;
 }
 .page-term-nrl_departments_category .view-id-national_reference_laboratory.view-display-id-block_7 ul li:nth-child(3) {
-    background: url(/assets/img/lab.svg) no-repeat;
+    background: url(/assets/images/lab.svg) no-repeat;
     background-size: 10%;
 }
 .page-term-nrl_departments_category .block-views-blocknational-reference-laboratory-block-1 {
@@ -16704,7 +16704,7 @@ section.health-pack {
 .optionset-health-checkup-packages-slider ul.slides li .views-field-nothing .field-content .check-des .check-20:before {
     content: '';
     display: block;
-    background: url(/assets/img/yellow-shape.png) no-repeat;
+    background: url(/assets/images/yellow-shape.png) no-repeat;
     position: relative;
     left: -20px;
     top: -8px;
@@ -16714,7 +16714,7 @@ section.health-pack {
 .optionset-health-checkup-packages-slider ul.slides li .views-field-nothing .field-content .check-des .search-check {
     width: 35px;
     height: 35px;
-    background: url(/assets/img/info.svg)no-repeat;
+    background: url(/assets/images/info.svg)no-repeat;
     background-size: 32px;
     margin: 20px 0 12px 0;
 }
@@ -16815,28 +16815,28 @@ section.health-pack {
     color: #394e59;
 }
 .page-node-291.path-node.page-node-type-page .benefits-info .benefits-box .price-img {
-    background: url(/assets/img/price.png)no-repeat;
+    background: url(/assets/images/price.png)no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
     margin: 6px 0 10px 0;
 }
 .page-node-291.path-node.page-node-type-page .benefits-info .benefits-box .home-img {
-    background: url(/assets/img/sick.png)no-repeat;
+    background: url(/assets/images/sick.png)no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
     margin: 6px 0 10px 0;
 }
 .page-node-291.path-node.page-node-type-page .benefits-info .benefits-box .heart-img {
-    background: url(/assets/img/no-stress.png)no-repeat;
+    background: url(/assets/images/no-stress.png)no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
     margin: 6px 0 10px 0;
 }
 .page-node-291.path-node.page-node-type-page .benefits-info .benefits-box .info-img {
-    background: url(/assets/img/awareness.png)no-repeat;
+    background: url(/assets/images/awareness.png)no-repeat;
     width: 40px;
     height: 40px;
     background-size: 40px;
@@ -16899,13 +16899,13 @@ section.health-pack {
 .optionset-health-checkup-packages-slider:hover .flex-direction-nav .flex-prev, .optionset-health-checkup-packages-slider .flex-direction-nav .flex-prev {
     opacity: 1 !important;
     left: -20px !important;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 40px;
 }
 .optionset-health-checkup-packages-slider:hover .flex-direction-nav .flex-next, .optionset-health-checkup-packages-slider .flex-direction-nav .flex-next {
     opacity: 1 !important;
     right: -20px !important;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 40px;
 }
 .optionset-health-checkup-packages-slider .flex-direction-nav a:before {
@@ -17022,7 +17022,7 @@ section.health-pack {
     display: block !important;
 }
 .covid19-img {
-    background: url(/assets/img/covid-img.svg)no-repeat;
+    background: url(/assets/images/covid-img.svg)no-repeat;
     height: 80px;
     width: 80px;
     background-size: 80px;
@@ -17240,7 +17240,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url(/assets/img/drop-down-drive.png);
+    background-image: url(/assets/images/drop-down-drive.png);
     background-repeat: no-repeat;
     background-position: 93% 58%;
     margin: 16px 0px 0px 0;
@@ -17378,7 +17378,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     width: 16px;
     height: 50px;
@@ -17389,7 +17389,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     right: -30px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
     width: 16px;
@@ -17490,7 +17490,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     width: 16px;
     height: 50px;
@@ -17501,7 +17501,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     right: -30px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
     width: 16px;
@@ -17610,7 +17610,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     width: 16px;
     height: 50px;
@@ -17620,7 +17620,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     right: -30px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
     width: 16px;
@@ -17634,7 +17634,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     left: -30px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     width: 16px;
     height: 50px;
@@ -17644,7 +17644,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     right: -30px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
     width: 16px;
@@ -17706,7 +17706,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     height: auto;
 }
 .page-node-228 .ui-dialog .ui-dialog-titlebar-close {
-    background: url(/assets/img/cross-sign.png) no-repeat #3e3d38;
+    background: url(/assets/images/cross-sign.png) no-repeat #3e3d38;
     background-size: 13px;
     padding: 10px;
     width: 30px;
@@ -17740,7 +17740,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     left: -15px !important;
     top: 48%;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     background-size: 16px;
     width: 18px;
     height: 50px;
@@ -17751,7 +17751,7 @@ ul.sf-menu li:hover>ul, ul.sf-menu li.sfHover>ul {
     opacity: 1 !important;
     right: -15px !important;
     top: 48%;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     background-size: 16px;
     display: block;
     width: 18px;
@@ -17845,7 +17845,7 @@ form.webform-submission-form #edit-please-fill-otp .form-type-webform-multiple t
     height: auto;
 }
 .navigation.tab-navigation .block-superfishmain #superfish-main-toggle {
-    background: url(/assets/img/menu-image.svg) no-repeat;
+    background: url(/assets/images/menu-image.svg) no-repeat;
     background-size: 42px;
     width: 50px;
     height: 50px;
@@ -17866,19 +17866,19 @@ form.webform-submission-form #edit-please-fill-otp .form-type-webform-multiple t
     padding: 12px 6px;
 }
 .sf-main-menu-right-section li a.download {
-    background: url(/assets/img/download-white.png) no-repeat;
+    background: url(/assets/images/download-white.png) no-repeat;
     background-size: 18px;
     background-position: 0 55%;
 }
 .sf-main-menu-right-section li a.upload {
-    background: url(/assets/img/upload-white.png) no-repeat;
+    background: url(/assets/images/upload-white.png) no-repeat;
     background-size: 18px;
     background-position: 0 55%;
 }
 .navigation.tab-navigation .block-superfishmain-menu-right-section .sf-main-menu-right-section ul.sf-menu .sf-sub-indicator:after {
     content: '';
     display: block;
-    background: url(/assets/img/drop-down-ehite.png) no-repeat;
+    background: url(/assets/images/drop-down-ehite.png) no-repeat;
     background-size: 20px;
     width: 25px;
     height: 25px;
@@ -17915,7 +17915,7 @@ form.webform-submission-form #edit-please-fill-otp .form-type-webform-multiple t
 }
 ul.sf-menu .sf-sub-indicator:after {
     content: '' !important;
-    background: url(/assets/img/drop-down-white.png) no-repeat;
+    background: url(/assets/images/drop-down-white.png) no-repeat;
     background-size: 27px;
     width: 30px;
     height: 30px;
@@ -18162,7 +18162,7 @@ form.webform-submission-header-search-form-form #edit-markup {
 #homeflexslider .flex-direction-nav a.flex-prev, #homeflexslider:hover .flex-direction-nav a.flex-prev {
     left: 10px;
     opacity: 1;
-    background: url(/assets/img/prev.png) no-repeat;
+    background: url(/assets/images/prev.png) no-repeat;
     width: 30px;
     height: 30px;
     background-size: 15px;
@@ -18170,7 +18170,7 @@ form.webform-submission-header-search-form-form #edit-markup {
 #homeflexslider .flex-direction-nav a.flex-next, #homeflexslider:hover .flex-direction-nav a.flex-next {
     right: 10px;
     opacity: 1;
-    background: url(/assets/img/next.png) no-repeat;
+    background: url(/assets/images/next.png) no-repeat;
     width: 30px;
     height: 30px;
     background-size: 15px;
@@ -18185,7 +18185,7 @@ form.webform-submission-header-search-form-form #edit-markup {
 #happyTestimonial .flex-direction-nav a.flex-prev {
     left: -26px;
     opacity: 1;
-    background: url(/assets/img/left-arrow.png) no-repeat;
+    background: url(/assets/images/left-arrow.png) no-repeat;
     width: 25px;
     height: 30px;
     background-size: 16px;
@@ -18196,7 +18196,7 @@ form.webform-submission-header-search-form-form #edit-markup {
 #happyTestimonial .flex-direction-nav a.flex-next {
     right: -26px;
     opacity: 1;
-    background: url(/assets/img/right-arrow.png) no-repeat;
+    background: url(/assets/images/right-arrow.png) no-repeat;
     width: 25px;
     height: 30px;
     background-size: 16px;
@@ -18206,7 +18206,7 @@ form.webform-submission-header-search-form-form #edit-markup {
 #homeflexslider:hover .flex-direction-nav a.flex-prev {
     left: 7px;
     opacity: 1;
-    background: url(/assets/img/left-arrow-w.png) no-repeat #ffffff75;
+    background: url(/assets/images/left-arrow-w.png) no-repeat #ffffff75;
     width: 25px;
     height: 46px;
     background-size: 11px;
@@ -18217,7 +18217,7 @@ form.webform-submission-header-search-form-form #edit-markup {
 #homeflexslider:hover .flex-direction-nav a.flex-next {
     right: 7px;
     opacity: 1;
-    background: url(/assets/img/right-arrow-w.png) no-repeat #ffffff75;
+    background: url(/assets/images/right-arrow-w.png) no-repeat #ffffff75;
     width: 25px;
     height: 46px;
     background-size: 10px;
@@ -18559,7 +18559,7 @@ form.webform-submission-header-search-form-form #edit-markup {
     height: 45px;
     z-index: 99;
     border-radius: 50%;
-    background: url(/assets/img/whatsapp.png);
+    background: url(/assets/images/whatsapp.png);
     background-position: 50% 0;
 }
 #whatsapp.whatsapp {
@@ -18747,7 +18747,7 @@ form.webform-submission-health-checkups-sp-node-1450-add-form .js-form-item.form
     line-height: 1.5;
     color: #394e59;
     display: block;
-    background-image: url(/assets/img/bullet.png);
+    background-image: url(/assets/images/bullet.png);
     background-repeat: no-repeat;
     background-position: 0%;
     padding: 2px 0px 0px 14px;
@@ -18944,7 +18944,7 @@ form.webform-submission-health-checkups-sp-node-1450-add-form .js-form-item.form
     height: 32px !important;
     min-width: 260px!important;
     outline: 0 !important;
-    background: url(/assets/img/otpback.png) no-repeat;
+    background: url(/assets/images/otpback.png) no-repeat;
 }
 .page-term-partners_with_us_category  .webform-submission-form .js-form-item input.custom-otp-form-control {
     padding: 0px 12px 0px 10px!important;
@@ -18956,7 +18956,7 @@ form.webform-submission-health-checkups-sp-node-1450-add-form .js-form-item.form
     height: 32px !important;
     min-width: 260px!important;
     outline: 0 !important;
-    background: url(/assets/img/otpback.png) no-repeat;
+    background: url(/assets/images/otpback.png) no-repeat;
     margin-left: 20px;
 }
 .custom-otp-options {
@@ -19063,7 +19063,7 @@ form.webform-submission-header-search-form-form .js-form-type-webform-autocomple
     height: 230px;
 }
 #mobile-v .covid19-img {
-    background: url(/assets/img/covid-img.svg)no-repeat;
+    background: url(/assets/images/covid-img.svg)no-repeat;
     height: 60px;
     width: 60px;
     background-size: 60px;
@@ -19432,7 +19432,7 @@ form.webform-submission-header-search-form-form .js-form-type-webform-autocomple
     margin-top: 5px;
 }
 #mobile-v .site-header .header-box .menu-box #superfish-mobile-main-menu-toggle {
-    background: url(/assets/img/menu.svg) no-repeat;
+    background: url(/assets/images/menu.svg) no-repeat;
     text-indent: -99999999px;
     display: block;
 }
@@ -19636,14 +19636,14 @@ form.webform-submission-header-search-form-form .js-form-type-webform-autocomple
     margin-left: 30px;
 }
 .path-contact-us .container .feedback-con {
-    background: url(/assets/img/feedback.png) no-repeat;
+    background: url(/assets/images/feedback.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-left: 14px;
     background-size: 40px;
 }
 .path-contact-us .container .address {
-    background: url(/assets/img/address.png) no-repeat;
+    background: url(/assets/images/address.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-bottom: 75px;
@@ -19651,14 +19651,14 @@ form.webform-submission-header-search-form-form .js-form-type-webform-autocomple
     background-size: 40px;
 }
 .path-contact-us .container .call-us {
-    background: url(/assets/img/phone.png) no-repeat;
+    background: url(/assets/images/phone.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-left: 14px;
     background-size: 40px;
 }
 .path-contact-us .container .email-add {
-    background: url(/assets/img/email.png) no-repeat;
+    background: url(/assets/images/email.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-top: 36px;
@@ -19784,7 +19784,7 @@ form.webform-submission-header-search-form-form .js-form-type-webform-autocomple
     text-align: left;
 }
 .path-webform .dialog-off-canvas-main-canvas .region .block-views-blockinner-banner-block-6 .view-display-id-block_6 .view-content .views-row .drive-img {
-    background: url(/assets/img/wuhan-coronavirus.png) no-repeat;
+    background: url(/assets/images/wuhan-coronavirus.png) no-repeat;
     padding-left: 84px;
     margin-bottom: 25px;
     width: 100px;
@@ -19895,7 +19895,7 @@ form.webform-submission-schedule-covid-drive-thru-test-form .form-item.js-form-t
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url(/assets/img/drop-down-drive.png);
+    background-image: url(/assets/images/drop-down-drive.png);
     background-repeat: no-repeat;
     background-position: 93% 58%;
     margin: 16px 0px 0px 0;
@@ -20023,7 +20023,7 @@ form.webform-submission-schedule-covid-drive-thru-test-form .form-item.js-form-t
     height: auto;
 }
 .page-term-downloads_form .view-content .views-row .views-field-title {
-    background: url(/assets/img/form.png) no-repeat;
+    background: url(/assets/images/form.png) no-repeat;
     background-position: 9px 11%;
     width: 100%;
     display: block;
@@ -20070,7 +20070,7 @@ form.webform-submission-schedule-covid-drive-thru-test-form .form-item.js-form-t
 }
 .page-term-research_and_development_categor #mobile-v .view-content .views-row .views-field-field-attachment .field-content, .page-term-downloads_form #mobile-v .view-content .views-row .views-field-field-attachment .field-content {
     margin: -16px 0px 0px -2px;
-    background: url(/assets/img/view.png) no-repeat;
+    background: url(/assets/images/view.png) no-repeat;
     background-position: 0 50%;
     padding-left: 0;
     display: flex;
@@ -20080,7 +20080,7 @@ form.webform-submission-schedule-covid-drive-thru-test-form .form-item.js-form-t
     width: 100%;
 }
 .page-term-scientific_literature_category #mobile-v .view-content .views-row .views-field-field-attachment .field-content {
-    background: url(/assets/img/view.png) no-repeat;
+    background: url(/assets/images/view.png) no-repeat;
     background-position: 26px 50%;
     padding-left: 0;
     justify-content: center;
@@ -20207,7 +20207,7 @@ form.webform-submission-schedule-covid-drive-thru-test-form .form-item.js-form-t
     font-size: 18px;
 }
 .path-node #mobile-v .fivestar-basic div.fivestar-widget .star, .path-node .fivestar-basic div.fivestar-widget .star a {
-    background-image: url(/assets/img/star-large-grey.png) !important;
+    background-image: url(/assets/images/star-large-grey.png) !important;
     width: 50px;
     background-size: 50px;
 }
@@ -20311,19 +20311,19 @@ p, li {
     margin: 0;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-col {
-    background: url(/assets/img/collection.png) left center no-repeat;
+    background: url(/assets/images/collection.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-sat {
-    background: url(/assets/img/pro.png) left center no-repeat;
+    background: url(/assets/images/pro.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-world {
-    background: url(/assets/img/lab.png) left center no-repeat;
+    background: url(/assets/images/lab.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-lab {
-    background: url(/assets/img/lab.png) left center no-repeat;
+    background: url(/assets/images/lab.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us.view-display-id-page_1 .views-row .views-field-body img {
@@ -20548,7 +20548,7 @@ p, li {
 .ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close {
     margin-left: 0;
     margin-top: 0px;
-    background-image: url(/assets/img/close.svg);
+    background-image: url(/assets/images/close.svg);
     right: 11px !important;
     top: 0px !important;
     height: 35px;
@@ -20645,7 +20645,7 @@ form.webform-submission-apply-for-job-add-form .js-hide.button.js-form-submit.fo
     float: left;
 }
 form.webform-submission-upload-prescription-form .js-form-item.js-form-type-webform-document-file .js-form-file, form.webform-submission-apply-for-job-add-form .js-form-item.js-form-type-webform-document-file .js-form-file {
-    background: url(/assets/img/upload.svg) no-repeat #f3f5f6 !important;
+    background: url(/assets/images/upload.svg) no-repeat #f3f5f6 !important;
     background-position: 95% 50% !important;
     width: 96%;
     padding: 10px 12px;
@@ -20778,7 +20778,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
     line-height: 1.33;
     letter-spacing: normal;
     color: #004368;
-    background: url(/assets/img/back-arrow.svg) no-repeat;
+    background: url(/assets/images/back-arrow.svg) no-repeat;
     padding: 0 0 0 21px;
     background-position: 0% 50%;
 }
@@ -20845,7 +20845,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
     line-height: 1.33;
     letter-spacing: normal;
     color: #004368;
-    background: url(/assets/img/back-arrow.svg) no-repeat;
+    background: url(/assets/images/back-arrow.svg) no-repeat;
     padding-left: 20px;
     background-position: 0% 50%;
 }
@@ -20958,7 +20958,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
     line-height: 1.33;
     letter-spacing: normal;
     color: #004368;
-    background: url(/assets/img/back-arrow.svg) no-repeat;
+    background: url(/assets/images/back-arrow.svg) no-repeat;
     padding-left: 20px;
     background-position: 0% 50%;
 }
@@ -21045,7 +21045,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
 .page-term-nrl_departments_category .block-page-title-block .page-title:before {
     content: '';
     display: block;
-    background: url(/assets/img/histopathology.svg)no-repeat;
+    background: url(/assets/images/histopathology.svg)no-repeat;
     position: absolute;
     top: -69px;
     left: -15px;
@@ -21212,7 +21212,7 @@ section.health-pack {
     position: absolute;
     right: 20px;
     top: 45%;
-    background: url(/assets/img/drop-down.png) no-repeat;
+    background: url(/assets/images/drop-down.png) no-repeat;
     width: 13px;
     height: 13px;
     background-size: 13px;
@@ -21592,7 +21592,7 @@ a#resend-otp {
     height: 230px;
 }
 #mobile-v .covid19-img {
-    background: url(/assets/img/covid-img.svg)no-repeat;
+    background: url(/assets/images/covid-img.svg)no-repeat;
     height: 60px;
     width: 60px;
     background-size: 60px;
@@ -21945,7 +21945,7 @@ a#resend-otp {
     margin-top: 5px;
 }
 #mobile-v .site-header .header-box .menu-box #superfish-mobile-main-menu-toggle {
-    background: url(/assets/img/menu.svg) no-repeat;
+    background: url(/assets/images/menu.svg) no-repeat;
     text-indent: -99999999px;
     display: block;
 }
@@ -22149,14 +22149,14 @@ a#resend-otp {
     margin-left: 30px;
 }
 .path-contact-us .container .feedback-con {
-    background: url(/assets/img/feedback.png) no-repeat;
+    background: url(/assets/images/feedback.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-left: 14px;
     background-size: 40px;
 }
 .path-contact-us .container .address {
-    background: url(/assets/img/address.png) no-repeat;
+    background: url(/assets/images/address.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-bottom: 75px;
@@ -22164,14 +22164,14 @@ a#resend-otp {
     background-size: 40px;
 }
 .path-contact-us .container .call-us {
-    background: url(/assets/img/phone.png) no-repeat;
+    background: url(/assets/images/phone.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-left: 14px;
     background-size: 40px;
 }
 .path-contact-us .container .email-add {
-    background: url(/assets/img/email.png) no-repeat;
+    background: url(/assets/images/email.png) no-repeat;
     padding-left: 60px;
     padding-top: 10px;
     margin-top: 36px;
@@ -22285,7 +22285,7 @@ a#resend-otp {
     text-align: left;
 }
 .path-webform .dialog-off-canvas-main-canvas .region .block-views-blockinner-banner-block-6 .view-display-id-block_6 .view-content .views-row .drive-img {
-    background: url(/assets/img/wuhan-coronavirus.png) no-repeat;
+    background: url(/assets/images/wuhan-coronavirus.png) no-repeat;
     padding-left: 84px;
     margin-bottom: 25px;
     width: 100px;
@@ -22383,7 +22383,7 @@ a#resend-otp {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url(/assets/img/drop-down-drive.png);
+    background-image: url(/assets/images/drop-down-drive.png);
     background-repeat: no-repeat;
     background-position: 93% 58%;
     margin: 16px 0px 0px 0;
@@ -22503,7 +22503,7 @@ a#resend-otp {
 }
 .page-term-research_and_development_categor #mobile-v .view-content .views-row .views-field-field-attachment .field-content, .page-term-downloads_form #mobile-v .view-content .views-row .views-field-field-attachment .field-content, .page-term-scientific_literature_category #mobile-v .view-content .views-row .views-field-field-attachment .field-content {
     margin: -16px 0px 0px -2px;
-    background: url(/assets/img/view.png) no-repeat;
+    background: url(/assets/images/view.png) no-repeat;
     background-position: 0 50%;
     padding-left: 0;
     display: flex;
@@ -22616,7 +22616,7 @@ a#resend-otp {
     font-size: 18px;
 }
 .path-node #mobile-v .fivestar-basic div.fivestar-widget .star, .path-node .fivestar-basic div.fivestar-widget .star a {
-    background-image: url(/assets/img/star-large-grey.png) !important;
+    background-image: url(/assets/images/star-large-grey.png) !important;
     width: 50px;
     background-size: 50px;
 }
@@ -22720,19 +22720,19 @@ p, li {
     margin: 0;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-col {
-    background: url(/assets/img/collection.png) left center no-repeat;
+    background: url(/assets/images/collection.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-sat {
-    background: url(/assets/img/pro.png) left center no-repeat;
+    background: url(/assets/images/pro.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-world {
-    background: url(/assets/img/lab.png) left center no-repeat;
+    background: url(/assets/images/lab.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us .views-row .views-field-body ul li.about-lab {
-    background: url(/assets/img/lab.png) left center no-repeat;
+    background: url(/assets/images/lab.png) left center no-repeat;
     background-size: 12%;
 }
 .path-about-us .view-id-about_us.view-display-id-page_1 .views-row .views-field-body img {
@@ -22960,7 +22960,7 @@ p, li {
 .ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close {
     margin-left: 0;
     margin-top: 0px;
-    background-image: url(/assets/img/close.svg);
+    background-image: url(/assets/images/close.svg);
     right: 11px !important;
     top: 0px !important;
     height: 35px;
@@ -23057,7 +23057,7 @@ form.webform-submission-apply-for-job-add-form .js-hide.button.js-form-submit.fo
     float: left;
 }
 form.webform-submission-upload-prescription-form .js-form-item.js-form-type-webform-document-file .js-form-file, form.webform-submission-apply-for-job-add-form .js-form-item.js-form-type-webform-document-file .js-form-file {
-    background: url(/assets/img/upload.svg) no-repeat #f3f5f6 !important;
+    background: url(/assets/images/upload.svg) no-repeat #f3f5f6 !important;
     background-position: 95% 50% !important;
     width: 96%;
     padding: 10px 12px;
@@ -23182,7 +23182,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
     line-height: 1.33;
     letter-spacing: normal;
     color: #004368;
-    background: url(/assets/img/back-arrow.svg) no-repeat;
+    background: url(/assets/images/back-arrow.svg) no-repeat;
     padding: 0 0 0 21px;
     background-position: 0% 50%;
 }
@@ -23249,7 +23249,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
     line-height: 1.33;
     letter-spacing: normal;
     color: #004368;
-    background: url(/assets/img/back-arrow.svg) no-repeat;
+    background: url(/assets/images/back-arrow.svg) no-repeat;
     padding-left: 20px;
     background-position: 0% 50%;
 }
@@ -23362,7 +23362,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
     line-height: 1.33;
     letter-spacing: normal;
     color: #004368;
-    background: url(/assets/img/back-arrow.svg) no-repeat;
+    background: url(/assets/images/back-arrow.svg) no-repeat;
     padding-left: 20px;
     background-position: 0% 50%;
 }
@@ -23446,7 +23446,7 @@ form.webform-submission-apply-for-job-add-form .node-summary .see-details a {
 .page-term-nrl_departments_category .block-page-title-block .page-title:before {
     content: '';
     display: block;
-    background: url(/assets/img/histopathology.svg)no-repeat;
+    background: url(/assets/images/histopathology.svg)no-repeat;
     position: absolute;
     top: -69px;
     left: -15px;
@@ -23612,7 +23612,7 @@ section.health-pack {
     position: absolute;
     right: 20px;
     top: 45%;
-    background: url(/assets/img/drop-down.png) no-repeat;
+    background: url(/assets/images/drop-down.png) no-repeat;
     width: 13px;
     height: 13px;
     background-size: 13px;
@@ -23898,7 +23898,7 @@ a#resend-otp {
 }
 .test_search_input_field.search__labtestpackage, .js input.form-autocomplete, .city-search-section .webform-autocomplete, .city-search .webform-autocomplete {
     padding: 0 10px 0 35px !important;
-    background: url(/assets/img/search.png) no-repeat #ffffff;
+    background: url(/assets/images/search.png) no-repeat #ffffff;
     background-position: 3% 50%;
 }
 .js-form-item.form-item.js-form-type-webform-autocomplete.form-type-webform-autocomplete.js-form-item-pkg.form-item-pkg.form-no-label {
@@ -23992,7 +23992,7 @@ body .mkosBTNContainer .mr-btn-wrapper._small {
 }
 .city-search-section .search-center .region.region-search #block-testingblockforsearching input, .city-search-section .search-center .region.region-search #block-searchingblock input {
     padding: 0 10px 0 25px !important;
-    background: url(/assets/img/search.png) no-repeat #e2ebed;
+    background: url(/assets/images/search.png) no-repeat #e2ebed;
     background-position: 3% 50%;
     font-size: 12px !important;
 }
@@ -24026,7 +24026,7 @@ form.webform-submission-header-search-form-form .search-city-wrapper.js-form-ite
 }
 .city-search-section .search-center .region.region-search #block-testingblockforsearching input, .city-search-section .search-center .region.region-search #block-searchingblock input {
     padding: 0 10px 0 25px !important;
-    background: url(/assets/img/search.png) no-repeat #e2ebed;
+    background: url(/assets/images/search.png) no-repeat #e2ebed;
     background-position: 3% 50%;
     font-size: 12px !important;
 }

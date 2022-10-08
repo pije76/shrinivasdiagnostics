@@ -270,8 +270,8 @@ if DEBUG:
         (
             'django_payments_razorpay.RazorPayProvider', 
             {
-                'public_key': 'RAZORPAY_PUBLIC_KEY',
-                'secret_key': 'RAZORPAY_SECRET_KEY'
+                'public_key': 'rzp_test_tA7AbSk6m2cdv2',
+                'secret_key': 'vPGDTwajuC4X6KDxln8ZvQRv'
             }
         )
     }
