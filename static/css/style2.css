@@ -1,0 +1,77 @@
+.required:after {
+    content: '*';
+    color: rgb(248, 8, 8);
+}
+.form-error {
+    color: rgb(248, 8, 8);
+}
+.lab-locator-search .select2-container--default .select2-selection--single{
+    border: 0px!important;
+    border-radius: 20px 0px 0px 20px!important;
+    background-color: rgba(0, 67, 104, 0.07)!important;
+    padding: 9px 10px;
+    width: 100%;
+    margin-right: 20px;
+    min-height: 40px;
+        outline: none;
+  }
+  .lab-locator-search .select2-selection__clear,.lab-locator-search .select2-selection__arrow{
+    display: none;
+  }
+
+  .login_img{
+    max-width: 75%;
+    height: auto;
+  }
+
+  .edit-profile #profile-close {
+    position: absolute;
+    right: 435px;
+    top: 6px;
+    box-shadow: 0 0 5px #0000005e;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.edit-address #address-close,
+.add-address #addaddress-close {
+    position: absolute;
+    right: 435px;
+    top: 6px;
+    box-shadow: 0 0 5px #0000005e;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.edit-patients #patient-close {
+    position: absolute;
+    right: 435px;
+    top: 6px;
+    box-shadow: 0 0 5px #0000005e;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.side-profile #profile-close-2 {
+    position: absolute;
+    right: 435px;
+    top: 6px;
+    box-shadow: 0 0 5px #0000005e;
+    width: 30px;
+    border-radius: 5px;
+}
+.city-drpdwn .select2-container{width:100%!important;}
+.city-drpdwn .select2-container .select2-selection{
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.4;
+    letter-spacing: 0.5px;
+    text-align: right;
+    color: #004368;
+    opacity: 1;
+}

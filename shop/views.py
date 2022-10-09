@@ -50,6 +50,6 @@ class FacetedSearchView(BaseFacetedSearchView):
 
     form_class = FacetedProductSearchForm
     facet_fields = ['category', 'brand']
-    template_name = 'search_result.html'
+    template_name = 'shop/search.html'
     paginate_by = 3
     context_object_name = 'object_list'

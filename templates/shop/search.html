@@ -1,94 +1,24 @@
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNQG5GG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<section class="main-top-header">
-<style>
-.test-search-bar .easy-autocomplete {
-width: 100%!important;
-}
-</style>
-<header class="site-header">
-<div class="container-fluid">
-<div class="row">
-<div class="col-lg-3 col-md-3 col-sm-12 flex">
-<div class="logo"><a href="https://www.pathkindlabs.com/"><img class="img-fluid" src="/assets/images/logo.png"></a></div>
-</div>
+{% extends 'base_search.html' %}
 
-<div class="col-lg-5 col-md-5 col-sm-12 offset-md-2">
-<div class="header-filter">
-<div class="filter-bar-top">
-<form action="/book-blood-test-online-in-india/" id="test_location_search_header_form_header" method="GET" accept-charset="utf-8">
-<input type="text" id="search-bar-header" class="city-search-header box" placeholder="Change City" value="Gurugram" name="q" />
-<input type="hidden" name="test_location_id" id="city-holder-header" />
-</form>
-<div class="test-search-bar">
-<form action="/book-blood-test-online-in-india/" id="test_search_header_form_header" method="GET" accept-charset="utf-8">
-<input type="text" id="search-bar-2-header" class="test_search_input_field_header box" placeholder="Search for a test or health package" name="q" />
-<input type="hidden" name="test_package_name" id="test-package-search-holder-header" />
-</form>						</div>
-<div class="search-error form-error"></div>
+{% load static %}
+{% load i18n %}
 
-</div>
-</div>
-</div>
-<div class="col-lg-2 col-md-2 col-sm-12 text-right md-0">
-<div class="right-infos">
-<ul>
+{% block headtitle %}
+    {{ page_title }} | {{ titles.title }}
+{% endblock %}
 
-<li class="cart">
-	<a href="/shopping-cart" title="cart">
-		<div class="img">
-			<img src="/assets/images/cart.png" class="img-fluid">
-			<span class="cart-badge" style="display:none"><span>
-		</div>
-	</a>
-</li>
+{% block extra_style %}
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/style2.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
 
-<li class="user">
-	<a href="#" id="login-open" title="Hi Sign in" >
-		<div class="img">
-			<img src="/assets/images/profile.png" class="img-fluid">
-		</div>
-	</a>
-</li>
+{% block extra_javascript %}
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+{% endblock %}
 
 
-
-</ul>
-</div>
-</div>
-<div class="side-login">
-<a href="#" class="close-login" id="login-close"><img src="/assets/images/close.png" class="img-fluid"></a>
-<div class="side-login-inner">
-<div class="header">
-<img src="/assets/images/white-logo.png">
-</div>  
-<div class="login-card">
-<p><img src="/assets/images/mobile.png" class="img-fluid"></p>
-<h3 class="heading-small">Login</h3>
-<p>Enter your mobile no. An OTP will be sent to this no.</p>
-<form action="/user/login" class="schedule-home-form" id="user-login-form" method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />                                                                                                                        
-
-
-<input type="hidden" name="origin" value="/book-blood-test-online-in-india/" />
-<div class="form-group pb-0 mb-0">
-<input class="custom-form-control number_only" name="mobile" id="mobile" maxlength="10" type="text" placeholder="Mobile No.">
-<span class="form-error"></span>
-</div>
-<button class="custom-form-btn" id="custom-form-btn" type="submit">Get OTP</button>
-
-</form>            <small>By continuing, you agree to Pathkind’s <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</small>
-</div>       
-</div>
-</div>                                    </div>
-</div>
-</header></section>
-
-<!-- main header section start -->
-<!-- main header section end -->
+{% block content %}
 
 <!-- Test list page start -->
 <div class="test-list">
@@ -97,7 +27,7 @@ width: 100%!important;
 <div class="col-lg-3 col-md-3 col-sm-12">
 <div class="breadcrumb-inner">
 <ul>
-<li><a href="https://www.pathkindlabs.com/">Home</a></li>
+<li><a href="/">Home</a></li>
 <li class="current">Test & Packages</li>
 </ul>
 </div>
@@ -174,43 +104,50 @@ Organ
 <div class="card-body">
 <div class="form-group checkbox-group">
 <div class="inner-group">
-<label class="container-check">Adrenal gland                                        <input type="checkbox"  name="organs" value="2" 											>
+<label class="container-check">Adrenal gland
+<input type="checkbox"  name="organs" value="2">
 
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group">
-<label class="container-check">Bone                                        <input type="checkbox"  name="organs" value="1" 											>
+<label class="container-check">Bone
+<input type="checkbox"  name="organs" value="1">
 
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group">
-<label class="container-check">Heart                                        <input type="checkbox"  name="organs" value="7" 											>
+<label class="container-check">Heart
+<input type="checkbox"  name="organs" value="7">
 
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group">
-<label class="container-check">Kidney                                        <input type="checkbox"  name="organs" value="5" 											>
+<label class="container-check">Kidney
+<input type="checkbox"  name="organs" value="5">
 
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group">
-<label class="container-check">Liver                                        <input type="checkbox"  name="organs" value="3" 											>
+<label class="container-check">Liver
+<input type="checkbox"  name="organs" value="3">
 
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group">
-<label class="container-check">Pancreas                                        <input type="checkbox"  name="organs" value="4" 											>
+<label class="container-check">Pancreas
+<input type="checkbox"  name="organs" value="4">
 
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group">
-<label class="container-check">Thyroid                                        <input type="checkbox"  name="organs" value="6" 											>
+<label class="container-check">Thyroid
+<input type="checkbox"  name="organs" value="6">
 
 <span class="checkmark"></span>
 </label>
@@ -235,28 +172,32 @@ Condition
 <div class="form-group checkbox-group">
 
 <div class="inner-group health_conditions" style=display:block>
-<label class="container-check">Diabetes                                        <input type="checkbox" name="health_conditions" value="3"
+<label class="container-check">Diabetes
+<input type="checkbox" name="health_conditions" value="3"
 
 >
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group health_conditions" style=display:block>
-<label class="container-check">Industrial diseases                                        <input type="checkbox" name="health_conditions" value="4"
+<label class="container-check">Industrial diseases
+<input type="checkbox" name="health_conditions" value="4"
 
 >
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group health_conditions" style=display:block>
-<label class="container-check">Myasthenia gravis                                        <input type="checkbox" name="health_conditions" value="1"
+<label class="container-check">Myasthenia gravis
+<input type="checkbox" name="health_conditions" value="1"
 
 >
 <span class="checkmark"></span>
 </label>
 </div>
 <div class="inner-group health_conditions" style=display:block>
-<label class="container-check">Nutritional disorders                                        <input type="checkbox" name="health_conditions" value="2"
+<label class="container-check">Nutritional disorders
+<input type="checkbox" name="health_conditions" value="2"
 
 >
 <span class="checkmark"></span>
@@ -558,7 +499,8 @@ color: #48585f;margin:0px 0 8px 10px">Specimen: <a class = "tool_tip" data-toggl
 </form>				<!-- data-target="#added-to-cart"-->
 
 <form action="/shopping-cart/cart_public/add_item/" class="form-inline add-to-cart-form  " method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />                                                                
+<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />
+
 
 <input type="hidden" name="item_id" value="58" />
 
@@ -827,7 +769,8 @@ color: #48585f;margin:0px 0 8px 10px">Specimen: <a class = "tool_tip" data-toggl
 <div class="flex-inline p-custom">
 <div class="action">
 <form action="/shopping-cart/cart_public/add_item/" class="form-inline add-to-cart-form  " method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />                                                               
+<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />
+
 
 <input type="hidden" name="item_id" value="60" />
 
@@ -979,7 +922,9 @@ color: #48585f;margin:0px 0 8px 10px">Specimen: <a  ><strong>FLUID/SERUM</strong
 <div class="flex-inline p-custom">
 <div class="action">
 <form action="/shopping-cart/cart_public/add_item/" class="form-inline add-to-cart-form  " method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />                                                                                                                           
+<input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />
+
+
 
 <input type="hidden" name="item_id" value="25" />
 
@@ -1075,4 +1020,6 @@ color: #48585f;margin:0px 0 8px 10px">Specimen: <a  ><strong>FLUID/SERUM</strong
 <script src="/assets/desktop/js/jquery.flexslider.js"></script>
 <script src="/assets/plugins/jquery.easy-autocomplete.min.js"></script>
 <script src="/assets/adminlte/plugins/sweet-alert2/sweetalert2.min.js"></script>
-</body>
+
+
+{% endblock %}
