@@ -2644,7 +2644,7 @@ html.js .js-webform-message--close-storage {
     display: block;
     top: 50%;
     height: 32px;
-    background-image: url(/modules/custom/unee_webinar/img/controls.png);
+    background-image: url(/assets/images/controls.png);
     cursor: pointer;
     position: absolute;
     z-index: 99;
