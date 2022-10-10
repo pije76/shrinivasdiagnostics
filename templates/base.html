@@ -4,11 +4,17 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v = "urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="{{LANGUAGE_CODE}}">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+    <head>
+        <meta charset="utf-8" />
+        <noscript><meta http-equiv="Refresh" content="0; URL=/big_pipe/no-js?destination=/node" />
+        </noscript><link rel="canonical" href="https://www.shrinivasdiagnostics.com/" />
+        <link rel="shortlink" href="https://www.shrinivasdiagnostics.com/" />
+        <meta name="description" content="Shrinivas Diagnostics Labs offers pathology services and blood tests at affordable prices. Get yourself tested for a wide set of diseases right away." />
+        <meta name="Generator" content="Django coded by digidzine.com" />
+        <meta name="MobileOptimized" content="width" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <title>
         {% block head_title %}
@@ -21,9 +27,9 @@
 
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/png" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" />
+    <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'css/based.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css" />
 
     {% fontawesome_5_static %}
 
