@@ -45,20 +45,23 @@
     {% endblock %}
 
 </head>
-<body class="path-frontpage en puser">
-    {% include "header.html" %}
+<body class="path-frontpage en pulogout">
+    <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+        <div id="desktop-v">
+            {% include "header.html" %}
+    
+            {% block content %}
+            {% include "home.html" %}
+            {% endblock %}
 
-    {% block content %}
-    {% include "home.html" %}
-    {% endblock %}
-
-    {% include "footer.html" %}
-
-    {% block jscript %}
-    <script type="text/javascript">
-    </script>
-    {% endblock %}
-
+            {% include "footer.html" %}
+    
+            {% block jscript %}
+            <script type="text/javascript">
+            </script>
+            {% endblock %}
+        </div>
+    </div>
 </body>
 
 </html>

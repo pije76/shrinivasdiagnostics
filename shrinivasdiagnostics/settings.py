@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.flatpages',
 
     'rest_framework',
     'core',
@@ -53,6 +54,11 @@ INSTALLED_APPS = [
     'fontawesome_5',
     'phonenumber_field',
     'django_summernote',
+	'crispy_forms',
+	'crispy_bootstrap5',
+	'bootstrap4',
+	'easy_select2',
+	'breadcrumbs',
 ]
 
 MIDDLEWARE = [
@@ -180,6 +186,19 @@ HAYSTACK_CONNECTIONS = {
         # 'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
         'INDEX_NAME': 'shop_products',
     },
+}
+
+# SELECT2_CACHE_BACKEND = "select2"
+SELECT2_USE_BUNDLED_JQUERY = False
+SELECT2_BOOTSTRAP = True
+SELECT2_JS = 'easy_select2/vendor/select2/js/select2.min.js'
+SELECT2_CSS = 'css/select2.css'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+BOOTSTRAP4 = {
+	'include_jquery': True,
 }
 
 ####################################################################################################

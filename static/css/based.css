@@ -922,13 +922,13 @@ table.sticky-header {
     background-size:20px;
 }
 .system-status-counter__status-icon--error:before {
-    background-image:url(/assets/images/icons/e32700/error.svg);
+    background-image:url(/assets/images/error.svg);
 }
 .system-status-counter__status-icon--warning:before {
-    background-image:url(/assets/images/icons/e29700/warning.svg);
+    background-image:url(/assets/images/warning.svg);
 }
 .system-status-counter__status-icon--checked:before {
-    background-image:url(/assets/images/icons/73b355/check.svg);
+    background-image:url(/assets/images/check.svg);
 }
 .system-status-report-counters__item {
     width:100%;
@@ -995,10 +995,10 @@ a.tabledrag-handle .handle {
     height:14px;
     margin:-0.4em 0.5em 0;
     padding:0.42em 0.5em;
-    background:url(/assets/images/icons/787878/move.svg) no-repeat 6px 7px;
+    background:url(/assets/images/move.svg) no-repeat 6px 7px;
 }
 a.tabledrag-handle:hover .handle,a.tabledrag-handle:focus .handle {
-    background-image:url(/assets/images/icons/000000/move.svg);
+    background-image:url(/assets/images/move.svg);
 }
 .touchevents .draggable td {
     padding:0 10px;
@@ -1046,10 +1046,10 @@ a.tabledrag-handle:hover .handle,a.tabledrag-handle:focus .handle {
     background-size:100%;
 }
 .tablesort--asc {
-    background-image:url(/assets/images/icons/787878/twistie-down.svg);
+    background-image:url(/assets/images/twistie-down.svg);
 }
 .tablesort--desc {
-    background-image:url(/assets/images/icons/787878/twistie-up.svg);
+    background-image:url(/assets/images/twistie-up.svg);
 }
 div.tree-child {
     background:url(/assets/images/tree.png) no-repeat 11px center;
@@ -1593,7 +1593,7 @@ html.js .js-webform-visually-hidden,html.js .js-webform-visually-hidden[style*="
     color:#31708f;
     border-color:#0074bd #0074bd #0074bd transparent;
     background-color:#d9edf7;
-    background-image:url(/modules/contrib/webform/images/icons/info.svg);
+    background-image:url(/assets/images/icons/info.svg);
     background-repeat:no-repeat;
     background-position:10px 17px;
     box-shadow:-8px 0 0 #0074bd;
@@ -1754,25 +1754,25 @@ html.js .js-webform-message--close-storage {
     height:16px;
 }
 .ui-icon,.ui-widget-content .ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_444444_256x240.png);
+    background-image:url(/assets/images/ui-icons_444444_256x240.png);
 }
 .ui-widget-header .ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_444444_256x240.png);
+    background-image:url(/assets/images/ui-icons_444444_256x240.png);
 }
 .ui-state-hover .ui-icon,.ui-state-focus .ui-icon,.ui-button:hover .ui-icon,.ui-button:focus .ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_555555_256x240.png);
+    background-image:url(/assets/images/ui-icons_555555_256x240.png);
 }
 .ui-state-active .ui-icon,.ui-button:active .ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_ffffff_256x240.png);
+    background-image:url(/assets/images/ui-icons_ffffff_256x240.png);
 }
 .ui-state-highlight .ui-icon,.ui-button .ui-state-highlight.ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_777620_256x240.png);
+    background-image:url(/assets/images/ui-icons_777620_256x240.png);
 }
 .ui-state-error .ui-icon,.ui-state-error-text .ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_cc0000_256x240.png);
+    background-image:url(/assets/images/ui-icons_cc0000_256x240.png);
 }
 .ui-button .ui-icon {
-    background-image:url(/core/assets/vendor/jquery.ui/themes/base/images/ui-icons_777777_256x240.png);
+    background-image:url(/assets/images/ui-icons_777777_256x240.png);
 }
 .ui-icon-blank.ui-icon-blank.ui-icon-blank {
     background-image:none;
@@ -2604,7 +2604,7 @@ html.js .js-webform-message--close-storage {
     display:block;
     top:50%;
     height:32px;
-    background-image:url(/modules/custom/unee_webinar/img/controls.png);
+    background-image:url(/assets/images/controls.png);
     cursor:pointer;
     position:absolute;
     z-index:99;
