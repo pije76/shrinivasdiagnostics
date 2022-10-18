@@ -1,0 +1,343 @@
+{% extends "shop/base_shop.html" %}
+{% load static %}
+
+{% block extra_style %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<!-- Inner checkout items start -->
+<div class="inner-checkout">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="flex-inline">
+          <div class="heading-small-v-2">Order Overview</div>
+          <a href="/book-blood-test-online-in-india/" class="btn-1 btn">+ Add Tests</a>
+        </div>
+        <div class="test-cards">
+          <div class="d-block text-left">
+            <h6 class="test-name d-block pt-2">Your cart is empty.</h6>
+          </div>
+          
+          <div class="cart">
+            {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+            Your Cart:&nbsp 
+            <a href="{% url 'cart:cart_detail' %}">
+              {{total_items}} Item{{total_items|pluralize}}&nbsp
+              Rs {{ cart.get_total_price }}
+            </a>
+            {% else %}
+            Your Cart is empty
+            {% endif %}
+            {% endwith %}
+          </div>
+          
+          <h1>Your shopping cart</h1>
+          {% if cart|length <= 0 %}
+          <div style="margin-top:5%; margin-left:40%;color:red;font-size:20;">
+            <b><h1>Your cart is empty</h1></b>
+            <a href="\" style="margin-left:10%;">
+              <button style="background-color:rgb(166, 166, 233);padding:1%;" >HomePage</button>
+            </a>
+          </div>
+          {% else %}
+          <table class="cart">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Remove</th>
+                <th>Unit price</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart %}
+              {% with product=item.product %}
+              <tr>
+                <td>
+                  <a href="{{ product.get_absolute_url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                  </a>
+                </td>
+                <td>{{ product.name }}</td>
+                <td>
+                  <form action="{% url "cart:cart_add" product.id %}" method="post">
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.update }}
+                    <input type="submit" value="Update">
+                    {% csrf_token %}
+                  </form>
+                </td>
+                <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
+                <td class="num">Rs {{ item.price }}</td>
+                <td class="num">Rs {{ item.total_price }}</td>
+              </tr>
+              {% endwith %}
+              {% endfor %}
+              <tr class="total">
+                <td>Total</td>
+                <td colspan="4"></td>
+                <td class="num">Rs {{ cart.get_total_price }}</td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+          <p class="text-right">
+            <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
+            <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 summary">
+        <div class="checkout-summary">
+          <div class="heading-small-v-2">Summary</div>
+          <div class="flex-inline m-t-40">
+            <p>Subtotal</p>
+            <p class="subtotal">&#8377;</p>
+          </div>
+          <!--
+            <div class="flex-inline">
+              <p>Home Collection charge</p>
+              <p class="home-collection-charges">&#8377; 431</p>
+            </div>
+          -->
+          <div class="flex-inline border strong-summary-text">
+            <p>Total</p>
+            <p class="total-charges">&#8377;</p>
+          </div>
+          <a href="/shopping-cart?side=1" class="btn-2 text-xs-center">Proceed to Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- checkout flow similar tests -->
+<div class="similar-tests">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading-small-v-2">People also booked these tests</div>
+        <div class="flexslider" id="similar-tests">
+          <ul class="slides">
+            <li class="similar-test-card">
+              <div class="flex-inline head">
+                <div class="name">
+                  <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                  <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="Complete Blood Count (CBC)" href="/test-description/438">
+                    <h4 id="test-name">Complete Blood Count (CBC)</h4>
+                  </a>
+                </div>
+                <!--
+                  <div class="test-info">
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-custom" title="" data-original-title="Sample Cut off : 6:00 PM (Daily), Report : 2HRS Same Day">
+                      <span>TAT</span>
+                    </a>
+                  </div>
+                -->
+              </div>
+              <p class="tat"><span>TAT</span> <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : 6:00 PM (Daily), Report : 2HRS Same Day"><strong>Sample Cut off : 6:00 PM (Daily), Report : 2HRS Sa...</strong></a></p>
+              <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: <a ><strong>WB EDTA</strong></a></p>
+              <!-- <p class="specimen">Specimen: <strong>WB EDTA</strong></p> -->
+              <p class="price">&#8377; 350 </p>
+              <div class="footer-card">
+                <div class="flex-inline p-custom">
+                  <div class="action">
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="438" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <input type="hidden" name="is_buy_now" value="1" />
+                      <button type="submit" class="btn-3">Buy Now</button>
+                    </form>
+                    <!-- data-target="#added-to-cart"-->
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="438" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <button type="submit" class="btn-4 add-to-cart-btn"><img src="/assets/images/bag.svg">Add to Cart</button>
+                    </form>
+                  </div>
+                  <!-- <a href="/"><img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report</a>  -->
+                </div>
+              </div>
+            </li>
+            <li class="similar-test-card">
+              <div class="flex-inline head">
+                <div class="name">
+                  <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                  <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="Haemogram (CBC+ESR)" href="/test-description/670">
+                    <h4 id="test-name">Haemogram (CBC+ESR)</h4>
+                  </a>
+                </div>
+                <!-- <div class="test-info">
+                  <a href="#" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-custom" title="" data-original-title="Sample Cut off : 6:00 PM (Daily), Report : 2HRS Same Day">
+                    <span>TAT</span>
+                  </a>
+                </div> -->
+              </div>
+              <p class="tat"><span>TAT</span> <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : 6:00 PM (Daily), Report : 2HRS Same Day"><strong>Sample Cut off : 6:00 PM (Daily), Report : 2HRS Sa...</strong></a></p>
+              <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: <a ><strong>WB EDTA</strong></a></p>
+              <!-- <p class="specimen">Specimen: <strong>WB EDTA</strong></p> -->
+              <p class="price">&#8377; 420 </p>
+              <div class="footer-card">
+                <div class="flex-inline p-custom">
+                  <div class="action">
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="670" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <input type="hidden" name="is_buy_now" value="1" />
+                      <button type="submit" class="btn-3">Buy Now</button>
+                    </form>
+                    <!-- data-target="#added-to-cart"-->
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="670" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <button type="submit" class="btn-4 add-to-cart-btn"><img src="/assets/images/bag.svg">Add to Cart</button>
+                    </form>
+                  </div>
+                  <!-- <a href="/"><img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report</a>  -->
+                </div>
+              </div>
+            </li>
+            <li class="similar-test-card">
+              <div class="flex-inline head">
+                <div class="name">
+                  <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                  <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="HbA1C (Glycosylated Hemoglobin)" href="/test-description/678">
+                    <h4 id="test-name">HbA1C (Glycosylated Hemoglobin)</h4>
+                  </a>
+                </div>
+                <!-- <div class="test-info">
+                  <a href="#" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-custom" title="" data-original-title="Sample Cut off : 6:00 PM (Daily), Report : 2HRS Same Day">
+                    <span>TAT</span>
+                  </a>
+                </div> -->
+              </div>
+              <p class="tat"><span>TAT</span> <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : 6:00 PM (Daily), Report : 2HRS Same Day"><strong>Sample Cut off : 6:00 PM (Daily), Report : 2HRS Sa...</strong></a></p>
+              <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: <a ><strong>WB EDTA</strong></a></p>
+              <!-- <p class="specimen">Specimen: <strong>WB EDTA</strong></p> -->
+              <p class="price">&#8377; 440 </p>
+              <div class="footer-card">
+                <div class="flex-inline p-custom">
+                  <div class="action">
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="678" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <input type="hidden" name="is_buy_now" value="1" />
+                      <button type="submit" class="btn-3">Buy Now</button>
+                    </form>
+                    <!-- data-target="#added-to-cart"-->
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="678" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <button type="submit" class="btn-4 add-to-cart-btn"><img src="/assets/images/bag.svg">Add to Cart</button>
+                    </form>
+                  </div>
+                  <!-- <a href="/"><img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report</a>  -->
+                </div>
+              </div>
+            </li>
+            <li class="similar-test-card">
+              <div class="flex-inline head">
+                <div class="name">
+                  <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                  <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="TSH 3rd Generation " href="/test-description/1226">
+                    <h4 id="test-name">TSH 3rd Generation </h4>
+                  </a>
+                </div>
+                <!-- <div class="test-info">
+                  <a href="#" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-custom" title="" data-original-title="Sample Cut off : 5:00 PM (Daily), Report : Same Day">
+                    <span>TAT</span>
+                  </a>
+                </div> -->
+              </div>
+              <p class="tat"><span>TAT</span> <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : 5:00 PM (Daily), Report : Same Day"><strong>Sample Cut off : 5:00 PM (Daily), Report : Same Da...</strong></a></p>
+              <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: <a ><strong>SERUM</strong></a></p>
+              <!-- <p class="specimen">Specimen: <strong>SERUM</strong></p> -->
+              <p class="price">&#8377; 200 </p>
+              <div class="footer-card">
+                <div class="flex-inline p-custom">
+                  <div class="action">
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="1226" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <input type="hidden" name="is_buy_now" value="1" />
+                      <button type="submit" class="btn-3">Buy Now</button>
+                    </form>
+                    <!-- data-target="#added-to-cart"-->
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="1226" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <button type="submit" class="btn-4 add-to-cart-btn"><img src="/assets/images/bag.svg">Add to Cart</button>
+                    </form>
+                  </div>
+                  <!-- <a href="/"><img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report</a>  -->
+                </div>
+              </div>
+            </li>
+            <li class="similar-test-card">
+              <div class="flex-inline head">
+                <div class="name">
+                  <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                  <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="Vitamin D 25 - Hydroxy / 25-Hydroxy Vitamin D" href="/test-description/1258">
+                    <h4 id="test-name">Vitamin D 25 - Hydroxy / 25-Hydroxy Vitamin D</h4>
+                  </a>
+                </div>
+                <!-- <div class="test-info">
+                  <a href="#" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-custom" title="" data-original-title="Sample Cut off : 5:00 PM (Daily), Report : Same Day">
+                    <span>TAT</span>
+                  </a>
+                </div> -->
+              </div>
+              <p class="tat"><span>TAT</span> <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : 5:00 PM (Daily), Report : Same Day"><strong>Sample Cut off : 5:00 PM (Daily), Report : Same Da...</strong></a></p>
+              <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: <a ><strong>SERUM</strong></a></p>
+              <!-- <p class="specimen">Specimen: <strong>SERUM</strong></p> -->
+              <p class="price">&#8377; 1550 </p>
+              <div class="footer-card">
+                <div class="flex-inline p-custom">
+                  <div class="action">
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="1258" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <input type="hidden" name="is_buy_now" value="1" />
+                      <button type="submit" class="btn-3">Buy Now</button>
+                    </form>
+                    <!-- data-target="#added-to-cart"-->
+                    <form action="/cart/cart_public/add_similaritem" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                      <input type="hidden" name="csrf_test_name" value="65ea9a58d50b60ddadaac92429941323" />
+                      <input type="hidden" name="item_id" value="1258" />
+                      <input type="hidden" name="item_type" value="1" />
+                      <button type="submit" class="btn-4 add-to-cart-btn"><img src="/assets/images/bag.svg">Add to Cart</button>
+                    </form>
+                  </div>
+                  <!-- <a href="/"><img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report</a>  -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
