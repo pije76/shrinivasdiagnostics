@@ -17,13 +17,31 @@
 <link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
+
+<style>
+    input#search-bar-header:focus::-webkit-input-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+  
+    input#search-bar-header:focus::-moz-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+  
+    input#search-bar-header:focus:-ms-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+  
+    div,
+    .profile-item {
+      word-wrap: break-word;
+    }
+  </style>
 {% endblock %}
 
 {% block extra_jscript %}
-<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery-ui.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/modernizr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/modernizr-additional-tests.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
@@ -33,7 +51,6 @@
 <script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
 {% endblock %}
-
 
 {% block content %}
 
