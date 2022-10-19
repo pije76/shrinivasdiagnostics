@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.views.decorators.http import require_POST
+from django.utils.translation import gettext_lazy as _
+
 from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
@@ -22,7 +24,14 @@ def cart_remove(request, product_id):
 
 
 def cart_detail(request):
+    titles = _('Cart | Shrinivas Diagnostics')
     cart = Cart(request)
     for item in cart:
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
-    return render(request, 'shop/cart/cart_detail.html', {'cart': cart})
+
+    context = {
+        'titles': titles,
+        'cart': cart,
+    }
+
+    return render(request, 'shop/cart/cart_detail.html', context)

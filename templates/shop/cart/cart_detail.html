@@ -1,5 +1,11 @@
 {% extends "base_shop.html" %}
+
 {% load static %}
+{% load i18n %}
+
+{% block head_title %}
+{{ titles }}
+{% endblock %}
 
 {% block extra_style %}
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">

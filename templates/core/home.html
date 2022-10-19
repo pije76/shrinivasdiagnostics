@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}
+{{ titles }}
+{% endblock %}
+
+{% block extra_style %}
+<link href="{% static 'css/based.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/jquery-ui-smoothness.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block extra_jscript %}
+<script src="{% static 'js/modernizr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/modernizr-additional-tests.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+
 {% block content %}
 
 <!-- main header section end -->

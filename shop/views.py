@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView
 from django.http import JsonResponse
+from django.utils.translation import gettext_lazy as _
 
 from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
 from haystack.query import SearchQuerySet
@@ -10,6 +11,7 @@ from .models import *
 from .forms import *
 
 def product_list(request, category_slug=None):
+    titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
@@ -18,6 +20,7 @@ def product_list(request, category_slug=None):
         products = products.filter(category=category)
     
     context = {
+        'titles': titles,
         'category': category,
         'categories': categories,
         'products': products,
