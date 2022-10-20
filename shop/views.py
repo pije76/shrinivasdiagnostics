@@ -15,6 +15,7 @@ def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
+    print(products)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -27,12 +28,20 @@ def product_list(request, category_slug=None):
     }
 
     # return render(request,'shop/product/list.html',{'category': category,'categories': categories,'products': products})
-    return render(request, 'shop/product/search.html', context)
+    return render(request, 'shop/product/product_search.html', context)
 
 def product_detail(request, id, slug):
+    titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
     product = get_object_or_404(Product,id=id,slug=slug,available=True)
     cart_product_form=CartAddProductForm()
-    return render(request, 'shop/product/detail.html', {'product': product, 'cart_product_form': cart_product_form})
+
+    context = {
+        'titles': titles,
+        'product': product,
+        'cart_product_form': cart_product_form,
+    } 
+
+    return render(request, 'shop/product/product_detail.html', context)
 
 
 class ProductView(DetailView):
@@ -58,6 +67,6 @@ class FacetedSearchView(BaseFacetedSearchView):
 
     form_class = FacetedProductSearchForm
     facet_fields = ['category', 'brand']
-    template_name = 'shop/search.html'
+    template_name = 'shop/product_search.html'
     paginate_by = 3
     context_object_name = 'object_list'
