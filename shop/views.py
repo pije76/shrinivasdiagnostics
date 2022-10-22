@@ -15,7 +15,6 @@ def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
-    print(products)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
@@ -31,12 +30,13 @@ def product_list(request, category_slug=None):
     return render(request, 'shop/product/product_search.html', context)
 
 def product_detail(request, id, slug):
-    titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
     product = get_object_or_404(Product,id=id,slug=slug,available=True)
+    # titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
+    # titles = product
     cart_product_form=CartAddProductForm()
 
     context = {
-        'titles': titles,
+        # 'titles': titles,
         'product': product,
         'cart_product_form': cart_product_form,
     } 

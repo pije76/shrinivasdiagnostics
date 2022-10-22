@@ -243,9 +243,9 @@
                             <div class="custom-head123">
                                 <div class="flex-inline head">
                                     <div class="name">
-                                        <!-- <div class="img">
-                                            <img src="{{ product.image.url }}" class="img-fluid">
-                                        </div> -->
+                                        <div class="img">
+                                            <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                                        </div>
                                         <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ product.name }}" href="{{ product.get_absolute_url }}">
                                             <h4 id="test-name">{{ product.name }}</h4>
                                         </a>
@@ -253,13 +253,13 @@
                                 </div>
                                 <p class="tat">
                                     <span>TAT</span>
-                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : 12:00 PM (Daily), Report : Same Day">
-                                        <strong>{{ product.description }}</strong>
+                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : {{ product.samplecutoff }}, Report : {{ product.report }}">
+                                        <strong>Sample Cut off : {{ product.samplecutoff }}, Report : {{ product.report }}</strong>
                                     </a>
                                 </p>
                                 <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: 
-                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="2ML WB EDTA, 2 SST Tube , 2 ML Fasting Flouride Plasma">
-                                        <strong>2ML WB EDTA, 2 SST Tube , 2 ML Fasting F...</strong>
+                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ product.speciment }}">
+                                        <strong>{{ product.speciment }}</strong>
                                     </a>
                                 </p>
                                 <!-- <p class="specimen">&nbsp&nbsp</p> -->

@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block head_title %}
-{{ titles }}
+{{ product.name }}
 {% endblock %}
 
 {% block extra_style %}
@@ -52,20 +52,209 @@
 {% endblock %}
 
 {% block content %}
-    <div class='product-detail'>
-        <img src="{% if product.image %}{{product.image.url}}{% else %}{% static 'images/no_image.png' %}{% endif %}">
-        <h1>{{product.name}}</h1>
-        <h2>
-            <a href="{{ product.category.get_absolute_url }}">
-             {{product.category}}   
+
+<section class="test-detail-inner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="breadcrumb-inner">
+          <ul>
+            <a href="/">
+              <li>Home</li>
             </a>
-        </h2>
-        <p class="price">Rs {{ product.price }}</p>
-            <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                {% csrf_token %}
-                {{ cart_product_form }}
-                <input type="submit" value="Add to cart">
-            </form>
-            {{ product.description|linebreaks }}
+            <a href="/book-blood-test-online-in-india">
+              <li>Test & Packages</li>
+            </a>
+            <li class="current">Test Details</li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-5 col-sm-12">
+        <div class="download-report">
+          <div class="flex-inline head">
+            <h6>Sample Report</h6>
+          </div>
+          <div class="report-data">
+            <img src="/assets/images/pdf-img.png" class="img-fluid">
+          </div>
+          <!-- <a href="javascript:void(0)" id="share_report" class="action">Send report to email</a> -->
+        </div>
+      </div>
+      <div class="col-md-7 col-sm-12">
+        <div class="inner-test-details">
+          <div class="flex-inline head">
+            <div class="name">
+              <div class="img">
+                <img src="/assets/images/scope-bg.svg" class="img-fluid">
+              </div>
+              <h4>{{ product.name }}</h4>
+            </div>
+            <p class="price">&#8377; {{ product.price }}/-</p>
+          </div>
+          <p class="tags">{{ product.tags }}</p>
+          <div class="inner-tabs">
+            <div class="flex-inline">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link " id="doctor-tab" data-toggle="tab" href="#doctor" role="tab" aria-controls="home" aria-selected="true">Doctors</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="patient-tab" data-toggle="tab" href="#pateint" role="tab" aria-controls="profile" aria-selected="false">Patients</a>
+                </li>
+              </ul>
+              <a href="#" class="share-test-details dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="/assets/images/upload.svg"> Share Test Details</a>
+              <div class="dropdown-menu share-details" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item share-email" href="javascript:void(0)"> <img src="/assets/images/email.png"> Email</a>
+                <a class="dropdown-item share-sms" href="javascript:void(0)"> <img src="/assets/images/sms.png"> SMS </a>
+              </div>
+            </div>
+            <!-- share report sidebar -->
+            <div class="sidebar-share-details">
+              <a href="#" class="close-sidebar" id="description-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+              <div class="sidebar-inner">
+                <div class="header">
+                  <img src="/assets/images/white-logo.png">
+                </div>
+                <div class="sidebar">
+                  <h3 class="heading-small-v-2">Share Details</h3>
+                  <form action="/tests/test_public/send_sample_report" class="schedule-home-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
+                    <input type="hidden" id="email_type" name="email_type" value="" />
+                    <input type="hidden" id="report_link" name="report_link" value="" />
+                    <input type="hidden" id="test_id" name="test_id" value="10056" />
+                    <input type="hidden" id="item_type" name="item_type" value="2" />
+                    <small>Your Email address</small>
+                    <input class="m-b-20 custom-form-control" required name="email" type="email" placeholder="Email">
+                    <button type="submit" class="btn-2">Send</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- share sms sidebar -->
+            <div class="sidebar-sharesms-details">
+              <a href="#" class="close-sidebar" id="sms-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+              <div class="sidebar-inner">
+                <div class="header">
+                  <img src="/assets/images/white-logo.png">
+                </div>
+                <div class="sidebar">
+                  <h3 class="heading-small-v-2">Share Details</h3>
+                  <form action="/tests/test_public/send_sms" class="schedule-home-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
+                    <input type="hidden" id="test_id" name="test_id" value="10056" />
+                    <input type="hidden" id="item_type" name="item_type" value="2" />
+                    <small>Your Mobile Number</small>
+                    <input class="m-b-20 custom-form-control" required name="mobile" type="number" maxlength="10" minlength="10" placeholder="Mobile No">
+                    <button type="submit" class="btn-2">Send</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-content" id="doctor-patient-info">
+              <div class="tab-pane fade " id="doctor" role="tabpanel" aria-labelledby="doctor-tab">
+                <div class="flex-inline m-b-15 align-top">
+                  <div class="info">
+                    <p><strong>Component</strong></p>
+                    <p>{{ product.component }}</p>
+                  </div>
+                  <div class="info">
+                    <p><strong>Specimen</strong></p>
+                    <p>{{ product.speciment }}</p>
+                  </div>
+                </div>
+                <div class="flex-inline m-b-15 align-top">
+                  <div class="info">
+                    <p><strong>Method</strong></p>
+                    <p>{{ product.method }}</p>
+                  </div>
+                  <div class="info">
+                    <p><strong>Cut Off Time</strong></p>
+                    <p>{{ product.cutofftime }}</p>
+                  </div>
+                </div>
+                <div class="flex-inline m-b-15 align-top">
+                  <div class="info">
+                    <p><strong>Quantity and Temperature</strong></p>
+                    <p>{{ product.quantitytemperature }}</p>
+                  </div>
+                </div>
+                <div class="devider"></div>
+                <div class="flex-inline action">
+                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
+                    <input type="hidden" name="item_id" value="10056" />
+                    <input type="hidden" name="item_type" value="2" />
+                    <input type="hidden" name="is_buy_now" value="1" />
+                    <button type="submit" class="button_add_to_cart ">Buy Now</button>
+                  </form>
+                  <!--
+                    <a href="#" class="btn-6"><img src="/assets/images/bag.svg"> Add to Cart</a>
+                  -->
+                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
+                    <input type="hidden" name="item_id" value="10056" />
+                    <input type="hidden" name="item_type" value="2" />
+                    <button type="submit" class="button_add_to_cart add-to-cart-btn">Add to Cart</button>
+                  </form>
+                </div>
+              </div>
+              <div class="tab-pane fade show active" id="pateint" role="tabpanel" aria-labelledby="patient-tab">
+                <div class="flex-inline m-b-15 align-top">
+                  <div class="info">
+                    <p><strong>Pre-Requisites</strong></p>
+                    <p>{{ product.prerequisites }}</p>
+                  </div>
+                  <div class="info" style="margin-left:4px">
+                    <p><strong>TAT</strong></p>
+                    <p>Sample Cut off : {{ product.samplecutoff }}, <br>Report : {{ product.report }}<br>(NOTE:{{ product.note }})</p>
+                    <!--TAT will start after sample reaches the lab-->
+                  </div>
+                </div>
+                <div class="devider"></div>
+                <div class="flex-inline action">
+                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
+                    <input type="hidden" name="item_id" value="10056" />
+                    <input type="hidden" name="item_type" value="1" />
+                    <input type="hidden" name="is_buy_now" value="1" />
+                    <button type="submit" class="button_add_to_cart ">Buy Now</button>
+                  </form>
+                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
+                    <input type="hidden" name="item_id" value="10056" />
+                    <input type="hidden" name="item_type" value="1" />
+                    <button type="submit" class="button_add_to_cart add-to-cart-btn">Add to Cart</button>
+                  </form>
+                  <!--
+                    <a href="#" class="btn-6"><img src="/assets/images/bag.svg"> Add to Cart</a>
+                  -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class='product-detail'>
+  <img src="{% if product.image %}{{product.image.url}}{% else %}{% static 'images/no_image.png' %}{% endif %}">
+  <h1>{{product.name}}</h1>
+  <h2>
+    <a href="{{ product.category.get_absolute_url }}">
+      {{product.category}}
+    </a>
+  </h2>
+  <p class="price">Rs {{ product.price }}</p>
+  <form action="{% url 'cart:cart_add' product.id %}" method="post">
+    {% csrf_token %}
+    {{ cart_product_form }}
+    <input type="submit" value="Add to cart">
+  </form>
+  {{ product.description|linebreaks }}
+</div>
 {% endblock %}

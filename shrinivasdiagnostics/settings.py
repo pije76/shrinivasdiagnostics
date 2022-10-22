@@ -59,6 +59,8 @@ INSTALLED_APPS = [
 	'bootstrap4',
 	'easy_select2',
 	'breadcrumbs',
+    'taggit',
+    'taggit_templatetags2',
 ]
 
 MIDDLEWARE = [
@@ -200,6 +202,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 BOOTSTRAP4 = {
 	'include_jquery': True,
 }
+
+#Django Taggit
+TAGGIT_CASE_INSENSITIVE = False
 
 ####################################################################################################
 
