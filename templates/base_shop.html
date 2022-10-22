@@ -36,10 +36,6 @@
     {% block extra_style %}
     {% endblock %}
 
-    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
-
-    {% block extra_jscript %}
-    {% endblock %}
     </head>
 
 	<body class="path-frontpage en pulogout">
@@ -162,5 +158,11 @@
 				{% endblock %}
 			</div>
 		</div>
+
+		<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+
+		{% block extra_jscript %}
+		{% endblock %}
+
 	</body>
 </html>

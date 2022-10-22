@@ -14,12 +14,6 @@
 <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
-{% block extra_jscript %}
-<script src="{% static 'js/modernizr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/modernizr-additional-tests.js' %}" type="text/javascript"></script>
-{% endblock %}
-
-
 {% block content %}
 
 <!-- main header section end -->
@@ -42,5 +36,10 @@
 {% include "core/health-packages.html" %}
 
 {% include "core/tests-section.html" %}
+
+{% block extra_jscript %}
+<script src="{% static 'js/modernizr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/modernizr-additional-tests.js' %}" type="text/javascript"></script>
+{% endblock %}
 
 {% endblock %}
