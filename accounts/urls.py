@@ -15,6 +15,6 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('', profile_detail, name='profile_detail'),
-    path('/login-form/', login_view_modal, name='login_view_modal'),
+    path('login-form/', login_view_modal, name='login_view_modal'),
 ]
 

@@ -30,7 +30,7 @@ urlpatterns = [
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('shopping-cart/', include('cart.urls')),
     path('orders/', include('orders.urls')),
-    # path('payment/', include('payment.urls')),
+    path('payment/', include('payment.urls')),
     
     path('summernote/', include('django_summernote.urls')),
     path('api/', include(api_routers)),

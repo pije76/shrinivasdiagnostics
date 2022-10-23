@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 
 import os
 
@@ -59,6 +58,7 @@ INSTALLED_APPS = [
 	'bootstrap4',
 	'easy_select2',
 	'breadcrumbs',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -175,8 +175,6 @@ PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'IN'
 PHONENUMBER_DEFAULT_FORMAT = 'E164'
 
-CART_SESSION_ID = 'cart'
-
 HAYSTACK_CONNECTIONS = {
     'default': 
     {
@@ -200,6 +198,37 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 BOOTSTRAP4 = {
 	'include_jquery': True,
 }
+
+CART_SESSION_ID = 'cart'
+
+# PAYMENT_VARIANTS = {
+#     'razorpay': 
+#     (
+#         'django_payments_razorpay.RazorPayProvider', 
+#         {
+#             'public_key': 'rzp_test_tA7AbSk6m2cdv2',
+#             'secret_key': 'vPGDTwajuC4X6KDxln8ZvQRv'
+#         }
+#     )
+# }
+
+# # Razorpay settings
+############ test ##################### 
+RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'
+RAZORPAY_SECRET_KEY = 'vPGDTwajuC4X6KDxln8ZvQRv'
+
+# ########## live #####################
+# RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'
+# RAZORPAY_SECRET_KEY = 'vPGDTwajuC4X6KDxln8ZvQRv'
+
+# # Braintree settings
+# BRAINTREE_MERCHANT_ID = 'BRAINTREE_MERCHANT_ID' # Merchant ID 
+# BRAINTREE_PUBLIC_KEY = 'BRAINTREE_PUBLIC_KEY' # Public Key 
+# BRAINTREE_PRIVATE_KEY = 'BRAINTREE_PRIVATE_KEY' # Private key 
+
+# # Paypal settings
+# PAYPAL_RECEIVER_EMAIL = 'PAYPAL_RECEIVER_EMAIL'
+PAYPAL_TEST = True
 
 ####################################################################################################
 
@@ -283,23 +312,3 @@ if DEBUG:
 	# 		},
 	# 	},
 	# ]
-
-    PAYMENT_VARIANTS = {
-        'razorpay': 
-        (
-            'django_payments_razorpay.RazorPayProvider', 
-            {
-                'public_key': 'rzp_test_tA7AbSk6m2cdv2',
-                'secret_key': 'vPGDTwajuC4X6KDxln8ZvQRv'
-            }
-        )
-    }
-
-
-    ############ test ##################### 
-    # RAZORPAY_PUBLIC_KEY=config('rzp_test_tA7AbSk6m2cdv2')
-    # RAZORPAY_SECRET_KEY= config('vPGDTwajuC4X6KDxln8ZvQRv')
-
-    # ########## live #####################
-    # RAZORPAY_PUBLIC_KEY=config('rzp_test_tA7AbSk6m2cdv2')
-    # RAZORPAY_SECRET_KEY=config('vPGDTwajuC4X6KDxln8ZvQRv')
