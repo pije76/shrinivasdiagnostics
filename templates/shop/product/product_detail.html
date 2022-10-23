@@ -185,20 +185,15 @@
                 </div>
                 <div class="devider"></div>
                 <div class="flex-inline action">
-                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
-                    <input type="hidden" name="item_id" value="10056" />
-                    <input type="hidden" name="item_type" value="2" />
-                    <input type="hidden" name="is_buy_now" value="1" />
+                  <form action="{% url 'cart:cart_add' product.id %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
                     <button type="submit" class="button_add_to_cart ">Buy Now</button>
                   </form>
                   <!--
                     <a href="#" class="btn-6"><img src="/assets/images/bag.svg"> Add to Cart</a>
                   -->
-                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
-                    <input type="hidden" name="item_id" value="10056" />
-                    <input type="hidden" name="item_type" value="2" />
+                  <form action="{% url 'cart:cart_add' product.id %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
                     <button type="submit" class="button_add_to_cart add-to-cart-btn">Add to Cart</button>
                   </form>
                 </div>
@@ -217,11 +212,8 @@
                 </div>
                 <div class="devider"></div>
                 <div class="flex-inline action">
-                  <form action="/cart/cart_public/add_item" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="csrf_test_name" value="b21ee350821c7411f99faabeecd9c93d" />
-                    <input type="hidden" name="item_id" value="10056" />
-                    <input type="hidden" name="item_type" value="1" />
-                    <input type="hidden" name="is_buy_now" value="1" />
+                  <form action="{% url 'cart:cart_add' product.id %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
                     <button type="submit" class="button_add_to_cart ">Buy Now</button>
                   </form>
                   <form action="{% url 'cart:cart_add' product.id %}" method="post" class="form-inline add-to-cart-form" accept-charset="utf-8">

@@ -18,11 +18,7 @@ from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
-#from core import urls as core_urls
-from api import routers as api_routers
-
 urlpatterns = [
-    # path('', include(core_urls)),
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
     path('pages/', include('django.contrib.flatpages.urls')),
@@ -33,7 +29,6 @@ urlpatterns = [
     path('payment/', include('payment.urls')),
     
     path('summernote/', include('django_summernote.urls')),
-    path('api/', include(api_routers)),
 ]
 
 if settings.DEBUG:

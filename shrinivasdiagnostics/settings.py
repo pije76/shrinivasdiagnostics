@@ -42,9 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 
-    'rest_framework',
-    'core',
     'accounts',
+    'core',
     'shop',
     'cart',
     'orders',
@@ -57,7 +56,6 @@ INSTALLED_APPS = [
 	'crispy_bootstrap5',
 	'bootstrap4',
 	'easy_select2',
-	'breadcrumbs',
     'paypal.standard.ipn',
 ]
 
@@ -201,17 +199,6 @@ BOOTSTRAP4 = {
 
 CART_SESSION_ID = 'cart'
 
-# PAYMENT_VARIANTS = {
-#     'razorpay': 
-#     (
-#         'django_payments_razorpay.RazorPayProvider', 
-#         {
-#             'public_key': 'rzp_test_tA7AbSk6m2cdv2',
-#             'secret_key': 'vPGDTwajuC4X6KDxln8ZvQRv'
-#         }
-#     )
-# }
-
 # # Razorpay settings
 ############ test ##################### 
 RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'
@@ -229,48 +216,6 @@ RAZORPAY_SECRET_KEY = 'vPGDTwajuC4X6KDxln8ZvQRv'
 # # Paypal settings
 # PAYPAL_RECEIVER_EMAIL = 'PAYPAL_RECEIVER_EMAIL'
 PAYPAL_TEST = True
-
-####################################################################################################
-
-# Django Rest Framework (DRF)
-# ------------------------------------------------------------------------------
-# https://www.django-rest-framework.org/
-
-REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/minute',
-        'user': '100/minute'
-    },
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-        'rest_framework.parsers.FormParser',
-    ],
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    ],
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication'
-    ],
-    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
-    'PAGE_SIZE': 25
-}
-
 
 ####################################################################################################
 
