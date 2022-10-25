@@ -1,10 +1,9 @@
-{% load static %}
-
 <!-- main header section start -->
 <section class="main-top-header">
 	<header class="site-header">
 		<div class="container-fluid">
 			<div class="row">
+
 				<div class="col-lg-3 col-md-4 col-sm-12 flex logo-custom-1">
 					<div class="logo">
 						<div class="region region-logo">
@@ -31,6 +30,7 @@
 						<i class="fa fa-search"></i>
 					</div>
 				</div>
+
 				<div class="col-lg-5 col-md-8 col-sm-12 search-custom-1">
 					<div class="city-search-section">
 						<div class="search-center">
@@ -48,37 +48,38 @@
 									</form>
 								</div>
 								<div id="block-searchingblock" class="block block-block-content block-block-content579f86f9-55fa-4722-affb-bbc56893aeb6">
-									<div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="path-search-center">
-										<form accept-charset="utf-8" action="/book-blood-test-online-in-india/" class="search-container" id="test_search_header_form" method="GET">
-											<input autocomplete="new-password" name="hidden" style="display:none;" type="text" /> 
-											<input id="city-holder-2" name="test_location_id" type="hidden" value="310" /> 
-											<input aria-autocomplete="both" aria-haspopup="false" autocapitalize="off" autocomplete="off" autocorrect="off" autofocus="" class="test_search_input_field search__labtestpackage" id="search-bar-2" name="q" placeholder="Search for a test, health package or Labs" role="combobox" spellcheck="false" type="text" /> 
-											<input id="test-package-search-holder" name="test_package_name" type="hidden" /> 
-										</form>
+									<div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
+										<div class="path-search-center">									
+											<form accept-charset="utf-8" action="/book-blood-test-online-in-india/" class="search-container" id="test_search_header_form" method="GET">
+											{% csrf_token %}
+												{{ form }}
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-4 col-md-12 col-sm-12 text-right md-0 icon-custom-1">
-				<div class="right-infos">
-					<ul>
-						<li class="call">
-							<div class="region region-call-us">
-								<div class="views-element-container block block-views block-views-blockpathkind-system-block-2" id="block-views-block-pathkind-system-block-2">
-									<div>
-										<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_2 js-view-dom-id-c68b6cfdd8ae3c08016716fa9e7bd300d451bb7c9cf36e3cd0d7c4a35f4fc598">
-											<div class="view-content">
-												<div class="views-row">
-													<div class="views-field views-field-field-image">
-														<div class="field-content">
-															<a href="tel:7500075111" title="call us">
-																<div class="img">
-																	<img src="/assets/images/call-us.png" class="img-fluid" alt="call us">
-																</div>Call Us 75000 75111
-															</a>
+
+				<div class="col-lg-4 col-md-12 col-sm-12 text-right md-0 icon-custom-1">
+					<div class="right-infos">
+						<ul>
+							<li class="call">
+								<div class="region region-call-us">
+									<div class="views-element-container block block-views block-views-blockpathkind-system-block-2" id="block-views-block-pathkind-system-block-2">
+										<div>
+											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_2 js-view-dom-id-c68b6cfdd8ae3c08016716fa9e7bd300d451bb7c9cf36e3cd0d7c4a35f4fc598">
+												<div class="view-content">
+													<div class="views-row">
+														<div class="views-field views-field-field-image">
+															<div class="field-content">
+																<a href="tel:7500075111" title="call us">
+																	<div class="img">
+																		<img src="/assets/images/call-us.png" class="img-fluid" alt="call us">
+																	</div>Call Us 75000 75111
+																</a>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -86,20 +87,20 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li class="cart">
-							<div class="region region-cart">
-								<div class="views-element-container block block-views block-views-blockpathkind-system-block-3" id="block-views-block-pathkind-system-block-3">
-									<div>
-										<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_3 js-view-dom-id-3f2575c4738f498487813c4627bb9058cda40955ace97ca34296da0153905495">
-											<div class="view-content">
-												<div class="views-row">
-													<div class="views-field views-field-field-image">
-														<div class="field-content">
-															<a href="/shopping-cart/" title="Cart">
-																<img class="img-fluid" src="/assets/images/cart.png" alt="cart" /> 
-															</a>
+							</li>
+							<li class="cart">
+								<div class="region region-cart">
+									<div class="views-element-container block block-views block-views-blockpathkind-system-block-3" id="block-views-block-pathkind-system-block-3">
+										<div>
+											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_3 js-view-dom-id-3f2575c4738f498487813c4627bb9058cda40955ace97ca34296da0153905495">
+												<div class="view-content">
+													<div class="views-row">
+														<div class="views-field views-field-field-image">
+															<div class="field-content">
+																<a href="/shopping-cart/" title="Cart">
+																	<img class="img-fluid" src="/assets/images/cart.png" alt="cart" /> 
+																</a>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -107,22 +108,22 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<span class="cart-badge" style="display: block;"><span>0</span></span>
-						</li>
-						<li class="user">
-							<div class="region region-profile">
-								<div class="views-element-container block block-views block-views-blockpathkind-system-block-4" id="block-views-block-pathkind-system-block-4-2">
-									<div>
-										<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_4 js-view-dom-id-234ba31d7b7e807de5c562cedcb571e432865346f939f3383869a669cf8bb964">
-											<div class="view-content">
-												<div class="views-row">
-													<div class="views-field views-field-field-image">
-														<div class="field-content">
-															<a href="/profile/login-form/" class="use-ajax sf-depth-1 prf-login" data-dialog-options="{&quot;width&quot;:400}" data-dialog-renderer="off_canvas" data-dialog-type="dialog" data-overlay="true" data-toggle="tooltip" title="Hi Sign in" data-once="ajax" style="pointer-events: all;">
-																<img class="img-fluid" src="/assets/images/profile.png" alt="profile">
-															</a>
+								
+								<span class="cart-badge" style="display: block;"><span>0</span></span>
+							</li>
+							<li class="user">
+								<div class="region region-profile">
+									<div class="views-element-container block block-views block-views-blockpathkind-system-block-4" id="block-views-block-pathkind-system-block-4-2">
+										<div>
+											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_4 js-view-dom-id-234ba31d7b7e807de5c562cedcb571e432865346f939f3383869a669cf8bb964">
+												<div class="view-content">
+													<div class="views-row">
+														<div class="views-field views-field-field-image">
+															<div class="field-content">
+																<a href="/profile/login-form/" class="use-ajax sf-depth-1 prf-login" data-dialog-options="{&quot;width&quot;:400}" data-dialog-renderer="off_canvas" data-dialog-type="dialog" data-overlay="true" data-toggle="tooltip" title="Hi Sign in" data-once="ajax" style="pointer-events: all;">
+																	<img class="img-fluid" src="/assets/images/profile.png" alt="profile">
+																</a>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -130,14 +131,14 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-					</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</header>
-
-	{% include "navbar.html" %}	
-
+		
+	{% include "navbar.html" %}
 </section>

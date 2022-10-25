@@ -49,13 +49,12 @@ INSTALLED_APPS = [
     'orders',
     'payment',
 
-    'fontawesome_5',
+    'cities_light',
     'phonenumber_field',
     'django_summernote',
 	'crispy_forms',
 	'crispy_bootstrap5',
-	'bootstrap4',
-	'easy_select2',
+	'selectable',
     'paypal.standard.ipn',
 ]
 
@@ -173,22 +172,18 @@ PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'IN'
 PHONENUMBER_DEFAULT_FORMAT = 'E164'
 
-HAYSTACK_CONNECTIONS = {
-    'default': 
-    {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'URL': 'http://127.0.0.1:9200/',
-        # 'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
-        'INDEX_NAME': 'shop_products',
-    },
-}
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['IN']
+CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT',]
 
+# SELECT2_JS = 'easy_select2/vendor/select2-4.0.13/js/select2.min.js'
+# SELECT2_JS = 'easy_select2/js/easy_select2.js'
+# SELECT2_CSS = 'css/select2.css'
+# SELECT2_CSS = 'easy_select2/css/easy_select2.css'
+# SELECT2_USE_BUNDLED_JQUERY = True
+# SELECT2_USE_BUNDLED_SELECT2 = True
+# SELECT2_BOOTSTRAP = True
 # SELECT2_CACHE_BACKEND = "select2"
-SELECT2_USE_BUNDLED_JQUERY = False
-SELECT2_BOOTSTRAP = True
-SELECT2_JS = 'easy_select2/vendor/select2/js/select2.min.js'
-SELECT2_CSS = 'css/select2.css'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -216,6 +211,17 @@ RAZORPAY_SECRET_KEY = 'vPGDTwajuC4X6KDxln8ZvQRv'
 # # Paypal settings
 # PAYPAL_RECEIVER_EMAIL = 'PAYPAL_RECEIVER_EMAIL'
 PAYPAL_TEST = True
+
+HAYSTACK_CONNECTIONS = {
+    'default': 
+    {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        # 'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+        'INDEX_NAME': 'shop_products',
+    },
+}
 
 ####################################################################################################
 

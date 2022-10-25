@@ -29,6 +29,7 @@ urlpatterns = [
     path('payment/', include('payment.urls')),
     
     path('summernote/', include('django_summernote.urls')),
+    path('selectable/', include('selectable.urls')),
 ]
 
 if settings.DEBUG:

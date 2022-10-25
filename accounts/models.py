@@ -4,8 +4,11 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 
-from phonenumber_field.modelfields import PhoneNumberField
 from .managers import UserManager
+
+from phonenumber_field.modelfields import PhoneNumberField
+from cities_light.models import City, Country
+
 
 
 GENDER_CHOICES = (
@@ -112,7 +115,8 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 class Address(models.Model):
 	address = models.CharField(max_length=255, null=True, blank=True)
 	state = models.CharField(max_length=255, null=True, blank=True)
-	city = models.CharField(max_length=255, null=True, blank=True)
+	city = models.ForeignKey(City, on_delete=models.CASCADE)
+	country = models.ForeignKey(Country, on_delete=models.CASCADE)
 	location = models.CharField(max_length=255, null=True, blank=True)
 	pin_code = models.CharField(max_length=255, null=True, blank=True)
 
@@ -139,3 +143,4 @@ class Patient(models.Model):
 
 	def __str__(self):
 		return self.name
+	

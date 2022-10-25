@@ -4,8 +4,8 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 
-from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
-from haystack.query import SearchQuerySet
+# from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
+# from haystack.query import SearchQuerySet
 
 from .models import *
 from .forms import *
@@ -63,10 +63,10 @@ def autocomplete(request):
     return JsonResponse(output)
 
 
-class FacetedSearchView(BaseFacetedSearchView):
+# class FacetedSearchView(BaseFacetedSearchView):
 
-    form_class = FacetedProductSearchForm
-    facet_fields = ['category', 'brand']
-    template_name = 'shop/product_search.html'
-    paginate_by = 3
-    context_object_name = 'object_list'
+#     form_class = FacetedProductSearchForm
+#     facet_fields = ['category', 'brand']
+#     template_name = 'shop/product_search.html'
+#     paginate_by = 3
+#     context_object_name = 'object_list'

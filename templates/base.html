@@ -1,6 +1,9 @@
 {% load static %}
 {% load i18n %}
-{% load fontawesome_5 %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load selectable_tags %}
+{% include_jquery_libs %}
 
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -24,9 +27,8 @@
     </title>
 
     {% block extrahead %}
+    {{ form.media }}
     {% endblock %}
-
-    {% fontawesome_5_static %}
 
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/png" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" />
@@ -43,6 +45,90 @@
 
     {% block jscript %}
     <script type="text/javascript">
+    $(document).ready(function()
+    {
+        var data_from_url = "{{ user.username }}";
+        var urls = "/chart/";
+    
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    
+        function csrfSafeMethod(method)
+        {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+    
+        $.ajaxSetup(
+        {
+            beforeSend: function(xhr, settings)
+            {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain)
+                {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            },
+        });
+    
+        // var get_sector_id = $("#id_sector").val();
+        // var get_sector_id = $("#id_sector").val();
+        var get_sector_id = $('#id_sector').val();
+        var get_board_id = $('#id_board').val();
+    
+        $('#div_id_sector').change(function(e)
+        {
+            e.preventDefault();
+            var get_sector_id = $('#id_sector').val();
+            console.log(get_sector_id);
+            // alert(get_sector_id);
+    
+            $.ajax(
+            {
+                method: 'GET',
+                url: urls,
+                data: {
+                    'get_sector_id': get_sector_id,
+                    // 'get_qs': get_qs,
+                },
+                success: function(data)
+                {
+                    if(!data["valid"])
+                    {
+                        console.log("data1: ", data.get_qs);
+                        // console.log("get_sector_id0: ", get_sector_id);
+                        // console.log("get_sector_id0: ", get_sector_id);
+                        // console.log("typeof get_sector_id: ", typeof(get_sector_id));
+                        $("#id_ticker_code").html(data.get_qs)
+                    }
+                },
+            });
+            return false;
+        });
+    
+        $('#div_id_board').change(function(e)
+        {
+            e.preventDefault();
+            var get_board_id = $('#id_board').val();
+            console.log(get_board_id);
+            // alert(get_sector_id);
+    
+            $.ajax(
+            {
+                method: 'GET',
+                url: urls,
+                data: {
+                    'get_board_id': get_board_id,
+                },
+                success: function(data)
+                {
+                    if(!data["valid"])
+                    {
+                        console.log("get_board_id0: ", get_board_id);
+                        console.log("typeof get_board_id: ", typeof(get_board_id));
+                    }
+                },
+            });
+            return false;
+        });
+    });
     </script>
     {% endblock %}
 
