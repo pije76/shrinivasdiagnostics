@@ -39,4 +39,4 @@ class MyLoginForm(AuthenticationForm):
         fields = ['phone_number']
         # fields = '__all__'
         
-    phone_number = forms.CharField(required=False, label=_('Ticker Name:'), widget=forms.TextInput(attrs={'class': "form-control"}))
+    phone_number = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))

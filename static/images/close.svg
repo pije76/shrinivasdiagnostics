@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <filter id="q4tm01ixxa" width="125%" height="125%" x="-12.5%" y="-10%" filterUnits="objectBoundingBox">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.305752841 0"/>
+        </filter>
+        <rect id="hp1mdtu4ab" width="40" height="40" x="0" y="0" rx="6"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-904 -8) translate(904 8)">
+                    <use fill="#000" filter="url(#q4tm01ixxa)" xlink:href="#hp1mdtu4ab"/>
+                    <use fill="#FFF" xlink:href="#hp1mdtu4ab"/>
+                </g>
+                <g>
+                    <path d="M0 0L30 0 30 30 0 30z" transform="translate(-904 -8) translate(904 8) translate(5 5)"/>
+                    <path fill="#004368" fill-rule="nonzero" d="M22.5 16.25h-6.25v6.25c0 .688-.563 1.25-1.25 1.25-.688 0-1.25-.563-1.25-1.25v-6.25H7.5c-.688 0-1.25-.563-1.25-1.25 0-.688.563-1.25 1.25-1.25h6.25V7.5c0-.688.563-1.25 1.25-1.25.688 0 1.25.563 1.25 1.25v6.25h6.25c.688 0 1.25.563 1.25 1.25 0 .688-.563 1.25-1.25 1.25z" transform="translate(-904 -8) translate(904 8) translate(5 5) rotate(45 15 15)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
