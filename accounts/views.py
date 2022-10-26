@@ -5,19 +5,19 @@ from django.urls import reverse_lazy
 from .models import *
 from .forms import *
 
-# Create your views here.
+from bootstrap_modal_forms.generic import BSModalLoginView
 
+# Create your views here.
 # @receiver(user_logged_in)
-class MyLoginView(LoginView):
-# class MyLoginView(BSModalLoginView):
-#class MyLoginView(BSModalUpdateView):
-    template_name = 'accounts/login.html'
-    # template_name = 'registration/login_modal.html'
-    authentication_form = MyLoginForm
-    form_class = MyLoginForm
-    success_message = 'Success: You were successfully logged in.'
-    success_url = reverse_lazy('core:home')
-    extra_context = dict(success_url=reverse_lazy('core:home'))
+# class MyLoginView(BSModalUpdateView):
+# class MyLoginView(LoginView):
+class MyLoginView(BSModalLoginView):
+	template_name = 'accounts/login_modal.html'
+	authentication_form = MyLoginForm
+	form_class = MyLoginForm
+	success_message = 'Success: You were successfully logged in.'
+	success_url = reverse_lazy('core:homepage')
+	extra_context = dict(success_url=reverse_lazy('core:homepage'))
     # next = request.POST.get('next', '/')
     # return HttpResponseRedirect(next)
 

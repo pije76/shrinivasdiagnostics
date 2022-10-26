@@ -3,7 +3,6 @@
 	<header class="site-header">
 		<div class="container-fluid">
 			<div class="row">
-
 				<div class="col-lg-3 col-md-4 col-sm-12 flex logo-custom-1">
 					<div class="logo">
 						<div class="region region-logo">
@@ -26,42 +25,22 @@
 							</div>
 						</div>
 					</div>
-					<div class="search-toggle" id="search-toggle">
-						<i class="fa fa-search"></i>
-					</div>
+					<div class="search-toggle" id="search-toggle"></div>
 				</div>
-
 				<div class="col-lg-5 col-md-8 col-sm-12 search-custom-1">
 					<div class="city-search-section">
 						<div class="search-center">
 							<div class="region region-search">
-								<div id="block-webform-6" class="block block-webform block-webform-block">
-									<form class="webform-submission-form webform-submission-add-form webform-submission-header-search-form-form webform-submission-header-search-form-add-form js-webform-details-toggle webform-details-toggle" data-drupal-selector="webform-submission-header-search-form-add-form" action="/" method="post" id="webform-submission-header-search-form-add-form" accept-charset="UTF-8">
-										<div class="search-city-wrapper js-form-item form-item js-form-type-webform-autocomplete form-type-webform-autocomplete js-form-item-city-name form-item-city-name form-no-label">
-											<input class="search-city-auto form-autocomplete form-text webform-autocomplete" data-drupal-selector="edit-city-name" data-autocomplete-path="/webform/header_search_form/autocomplete/city_name" type="text" id="edit-city-name" name="city_name" value="" size="60" maxlength="255" placeholder="Search City" />
-										</div>
-										<div id="edit-markup" class="js-form-item form-item js-form-type-webform-markup form-type-webform-markup js-form-item-markup form-item-markup form-no-label">
-											<a href="#" id="header-search-submit" class="btn">Submit</a>
-										</div>
-										<input autocomplete="off" data-drupal-selector="form-mlwle7asrtqaqwq3ra7xkjr4jxxwe8b3dz5btvy3zcs" type="hidden" name="form_build_id" value="form-mLwle7aSRtQAqwQ3rA7xKjR4jxxwE8B3dZ5btVy3ZCs" />
-										<input data-drupal-selector="edit-webform-submission-header-search-form-add-form" type="hidden" name="form_id" value="webform_submission_header_search_form_add_form" />
-									</form>
-								</div>
+								<div id="block-webform-6" class="block block-webform block-webform-block"></div>
 								<div id="block-searchingblock" class="block block-block-content block-block-content579f86f9-55fa-4722-affb-bbc56893aeb6">
 									<div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
-										<div class="path-search-center">									
-											<form accept-charset="utf-8" action="/book-blood-test-online-in-india/" class="search-container" id="test_search_header_form" method="GET">
-											{% csrf_token %}
-												{{ form }}
-											</form>
-										</div>
+										<div class="path-search-center"></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 				<div class="col-lg-4 col-md-12 col-sm-12 text-right md-0 icon-custom-1">
 					<div class="right-infos">
 						<ul>
@@ -72,15 +51,7 @@
 											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_2 js-view-dom-id-c68b6cfdd8ae3c08016716fa9e7bd300d451bb7c9cf36e3cd0d7c4a35f4fc598">
 												<div class="view-content">
 													<div class="views-row">
-														<div class="views-field views-field-field-image">
-															<div class="field-content">
-																<a href="tel:7500075111" title="call us">
-																	<div class="img">
-																		<img src="/assets/images/call-us.png" class="img-fluid" alt="call us">
-																	</div>Call Us 75000 75111
-																</a>
-															</div>
-														</div>
+														<div class="views-field views-field-field-image"></div>
 													</div>
 												</div>
 											</div>
@@ -98,7 +69,7 @@
 														<div class="views-field views-field-field-image">
 															<div class="field-content">
 																<a href="/shopping-cart/" title="Cart">
-																	<img class="img-fluid" src="/assets/images/cart.png" alt="cart" /> 
+																	<img class="img-fluid" src="/assets/images/cart.png" alt="cart" />
 																</a>
 															</div>
 														</div>
@@ -108,8 +79,6 @@
 										</div>
 									</div>
 								</div>
-								
-								<span class="cart-badge" style="display: block;"><span>0</span></span>
 							</li>
 							<li class="user">
 								<div class="region region-profile">
@@ -120,7 +89,7 @@
 													<div class="views-row">
 														<div class="views-field views-field-field-image">
 															<div class="field-content">
-																<a href="javascript: void(0);" id="login-btn" class="use-ajax sf-depth-1 prf-login" title="Hi Sign in" style="pointer-events: all;">
+																<a href="/profile/login-form/" class="use-ajax sf-depth-1 prf-login" data-dialog-options="{&quot;width&quot;:400}" data-dialog-renderer="off_canvas" data-dialog-type="dialog" data-overlay="true" data-toggle="tooltip" title="Hi Sign in" data-once="ajax" style="pointer-events: all;">
 																	<img class="img-fluid" src="/assets/images/profile.png" alt="profile">
 																</a>
 															</div>
@@ -135,10 +104,7 @@
 						</ul>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</header>
-		
-	{% include "navbar.html" %}
 </section>

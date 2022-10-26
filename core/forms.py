@@ -18,9 +18,9 @@ import datetime
 
 class ProductForm(forms.Form):
     autocomplete = forms.CharField(
-        label='',
-        widget=AutoCompleteWidget(ProductLookup),
-        required=False,
+        label = '',
+        widget = AutoCompleteWidget(ProductLookup),
+        required = False,
     )
 
 # class ProductForm(forms.ModelForm):

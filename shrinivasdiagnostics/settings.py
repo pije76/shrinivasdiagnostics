@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.flatpages',
 
     'accounts',
     'core',
@@ -54,6 +53,8 @@ INSTALLED_APPS = [
     'django_summernote',
 	'crispy_forms',
 	'crispy_bootstrap5',
+    'widget_tweaks',
+    'bootstrap_modal_forms',
 	'selectable',
     'paypal.standard.ipn',
 ]
@@ -165,6 +166,8 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 ####################################################################################################
+
+LOGIN_REDIRECT_URL = 'core:homepage'
 
 SUMMERNOTE_THEME = 'bs4'
 

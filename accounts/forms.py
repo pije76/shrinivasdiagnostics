@@ -34,7 +34,9 @@ def get_today():
 class MyLoginForm(AuthenticationForm):
 # class MyLoginForm(PopRequestMixin, CreateUpdateAjaxMixin, UserCreationForm):
     class Meta:
-        # model = MemberProfile
-        model = User
-        fields = ['username', 'password']
+        model = Profile
+        # model = User
+        fields = ['phone_number']
         # fields = '__all__'
+        
+    phone_number = forms.CharField(required=False, label=_('Ticker Name:'), widget=forms.TextInput(attrs={'class': "form-control"}))

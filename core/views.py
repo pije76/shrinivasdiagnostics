@@ -15,9 +15,7 @@ def homepage(request):
 	titles = _('Check the Best Blood Test &amp; Pathology Lab in India with Shrinivas Diagnostics Labs')
 	member = Profile.objects.get(email=request.user)
 	get_status = Profile.objects.filter(email=request.user).values_list('is_active', flat=True).first()
-
-	print("get_status", get_status)
-	
+ 
 	initial_dict = {
 		# 'ticker_code': get_ticker_id,
 	}
