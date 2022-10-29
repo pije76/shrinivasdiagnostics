@@ -13,8 +13,8 @@ from .forms import *
 def homepage(request):
 	is_ajax = request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 	titles = _('Check the Best Blood Test &amp; Pathology Lab in India with Shrinivas Diagnostics Labs')
-	member = Profile.objects.get(email=request.user)
-	get_status = Profile.objects.filter(email=request.user).values_list('is_active', flat=True).first()
+	# member = Profile.objects.get(email=request.user)
+	# get_status = Profile.objects.filter(email=request.user).values_list('is_active', flat=True).first()
  
 	initial_dict = {
 		# 'ticker_code': get_ticker_id,

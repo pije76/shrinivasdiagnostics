@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category,Product
+from .models import *
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
@@ -26,6 +26,24 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable=['price','available']
     prepopulated_fields={'slug':('name',)}
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = [
+        'user',
+        'product',
+        'ordered',
+        'quantity',
+    ]
+
+class CartAdmin(admin.ModelAdmin):
+    list_display = [
+        'user',
+        # 'items',
+        'ordered',
+        # 'start_date',
+        'ordered_date',
+    ]
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
-
+admin.site.register(Order, OrderAdmin)
+admin.site.register(Cart, CartAdmin)

@@ -6,10 +6,15 @@ app_name='shop'
 
 urlpatterns = [
      path('', product_list, name='product_list'),
+     path('add-to-cart/<pk>/', add_to_cart, name='add_to_cart'),
+     path('remove-from-cart/<pk>/', remove_from_cart, name='remove_from_cart'),
+     path('reduce-quantity-item/<pk>/', reduce_quantity_item, name='reduce_quantity_item'),
+     # path('order-summary/', order_summary, name='order_summary'),
+     # path('checkout/', checkout, name='checkout'),
+     # path('payment/<payment_option>/', payment, name='payment'),
+
      # path('', FacetedSearchView.as_view(), name='haystack_search'),
-     # re_path(r'^find/', FacetedSearchView.as_view(), name='haystack_search'),
-     path('<slug:category_slug>/', product_list, name='product_list_by_category'),
-     path('package-description/<int:id>/<slug:slug>/', product_detail, name='product_detail'),
-     # re_path(r'^product/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),
-     # re_path(r'^search/autocomplete/$', autocomplete),
+     # path('find/', FacetedSearchView.as_view(), name='haystack_search'),
+     # path('product/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),
+     # path('search/autocomplete/$', autocomplete),
 ]

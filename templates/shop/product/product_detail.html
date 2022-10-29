@@ -156,6 +156,7 @@
             </div>
             
             <div class="tab-content" id="doctor-patient-info">
+
               <div class="tab-pane fade " id="doctor" role="tabpanel" aria-labelledby="doctor-tab">
                 <div class="flex-inline m-b-15 align-top">
                   <div class="info">
@@ -183,6 +184,7 @@
                     <p>{{ product.quantitytemperature }}</p>
                   </div>
                 </div>
+
                 <div class="devider"></div>
                 <div class="flex-inline action">
                   <form action="{% url 'cart:cart_add' product.id %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
@@ -197,7 +199,9 @@
                     <button type="submit" class="button_add_to_cart add-to-cart-btn">Add to Cart</button>
                   </form>
                 </div>
+
               </div>
+
               <div class="tab-pane fade show active" id="pateint" role="tabpanel" aria-labelledby="patient-tab">
                 <div class="flex-inline m-b-15 align-top">
                   <div class="info">
@@ -210,6 +214,7 @@
                     <!--TAT will start after sample reaches the lab-->
                   </div>
                 </div>
+
                 <div class="devider"></div>
                 <div class="flex-inline action">
                   <form action="{% url 'cart:cart_add' product.id %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
@@ -225,8 +230,10 @@
                     <a href="#" class="btn-6"><img src="/assets/images/bag.svg"> Add to Cart</a>
                   -->
                 </div>
+
               </div>
             </div>
+
           </div>
         </div>
       </div>

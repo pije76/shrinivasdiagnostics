@@ -18,15 +18,17 @@ from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from shop.views import *
+
 urlpatterns = [
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
     path('profile/', include('accounts.urls')),
     path('book-blood-test-online-in-india/', include('shop.urls')),
-    path('shopping-cart/', include('cart.urls')),
-    path('orders/', include('orders.urls')),
-    path('payment/', include('payment.urls')),
-    
+    path('package-description/<pk>/', product_detail, name='product_detail'),
+    path('checkout/', checkout, name='checkout'),
+    path('shopping-cart/', shopping_cart, name='shopping_cart'),
+
     path('summernote/', include('django_summernote.urls')),
     path('selectable/', include('selectable.urls')),
 ]
