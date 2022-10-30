@@ -67,11 +67,11 @@ def add_to_cart(request, pk):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "Added quantity Item")
-            return redirect("shopping_cart", pk=pk)
+            return redirect("shopping_cart")
         else:
             order.items.add(order_item)
             messages.info(request, "Item added to your cart")
-            return redirect("shopping_cart", pk=pk)
+            return redirect("shopping_cart")
     else:
         ordered_date = timezone.now()
         order = Cart.objects.create(user=request.user, ordered_date=ordered_date)
@@ -82,30 +82,30 @@ def add_to_cart(request, pk):
 # @login_required
 def remove_from_cart(request, pk):
     item = get_object_or_404(Product, pk=pk)
-    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    order_qs = Cart.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
         if order.items.filter(product__pk=item.pk).exists():
-            order_item = OrderItem.objects.filter(item=item, user=request.user, ordered=False)[0]
+            order_item = Order.objects.filter(product=item, user=request.user, ordered=False)[0]
             order_item.delete()
-            messages.info(request, "Item \""+order_item.item.item_name+"\" remove from your cart")
+            # messages.info(request, "Item \""+order_item.product.product_name+"\" remove from your cart")
             return redirect("shopping_cart")
         else:
-            messages.info(request, "This Item not in your cart")
-            return redirect("shopping_cart", pk=pk)
+            # messages.info(request, "This Item not in your cart")
+            return redirect("shopping_cart")
     else:
         #add message doesnt have order
         messages.info(request, "You do not have an Order")
-        return redirect("shopping_cart", pk=pk)
+        return redirect("shopping_cart")
 
 # @login_required
 def reduce_quantity_item(request, pk):
     item = get_object_or_404(Product, pk=pk)
-    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    order_qs = Cart.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
         if order.items.filter(product__pk=item.pk).exists():
-            order_item = OrderItem.objects.filter(item=item, user=request.user, ordered=False)[0]
+            order_item = Order.objects.filter(product=item, user=request.user, ordered=False)[0]
             if order_item.quantity > 1:
                 order_item.quantity -= 1
                 order_item.save()
@@ -139,10 +139,28 @@ def get_add_to_cart_url(request, pk):
 
 def shopping_cart(request):
     try:
-        order = Order.objects.get(user=request.user, ordered=False)
-        print('order', order)
+        order = Cart.objects.get(user=request.user, ordered=False)
+        # product = Product.objects.get(user=request.user, order=False)
+        products = Product.objects.filter(available=True)
+        # print('order', order)
+        # get_total_item_price = product.quantity * product.price
+
+# def get_discount_item_price(self):
+# return self.quantity * self.product.discount_price
+
+# def get_amount_saved(self):
+# get_total_item_price_float = float(get_total_item_price)
+# get_discount_item_price_float = float(get_discount_item_price)
+# return self.get_total_item_price_float() - self.get_discount_item_price_float()
+
+# def get_final_price(self):
+# if self.product.discount_price:
+# return self.get_discount_item_price()
+# return self.get_total_item_price()
+
         context = {
-            'object' : order,
+            'object': order,
+            'products': products,
         }
         return render(request, 'shop/shopping_cart.html', context)
     except ObjectDoesNotExist:
@@ -188,14 +206,14 @@ checkout = CheckoutView.as_view()
 
 class PaymentView(View):
     def get(self, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
+        order = Cart.objects.get(user=self.request.user, ordered=False)
         context = {
             'order': order
         }
-        return render(self.request, "payment.html", context)
+        return render(self.request, "shop/payment.html", context)
 
     def post(self, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
+        order = Cart.objects.get(user=self.request.user, ordered=False)
         token = self.request.POST.get('stripeToken')
         amount = int(order.get_total_price() * 100)  #cents
 

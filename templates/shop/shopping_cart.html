@@ -18,30 +18,30 @@
 <link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
 <style>
-  input#search-bar-header:focus::-webkit-input-placeholder {
-    transition: opacity 0.45s ease;
-    opacity: 0;
-  }
-
-  input#search-bar-header:focus::-moz-placeholder {
-    transition: opacity 0.45s ease;
-    opacity: 0;
-  }
-
-  input#search-bar-header:focus:-ms-placeholder {
-    transition: opacity 0.45s ease;
-    opacity: 0;
-  }
-
-  div,
-  .profile-item {
-    word-wrap: break-word;
+    input#search-bar-header:focus::-webkit-input-placeholder {
+        transition: opacity 0.45s ease;
+        opacity: 0;
+      }
+    
+      input#search-bar-header:focus::-moz-placeholder {
+        transition: opacity 0.45s ease;
+        opacity: 0;
+      }
+    
+      input#search-bar-header:focus:-ms-placeholder {
+        transition: opacity 0.45s ease;
+        opacity: 0;
+      }
+    
+      div,
+      .profile-item {
+        word-wrap: break-word;
+      }
   }
 </style>
 {% endblock %}
 
 {% block extra_jscript %}
-<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
@@ -55,87 +55,154 @@
 
 {% block content %}
 
-<main>
-    <div class= "container">
-        <div class="table-responsive text-nowrap">
-    <h3>
-        <strong>Your Cart</strong>
-    </h3>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Item Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total Item Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for order_item in object.items.all %}
-        <tr>
-            <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ order_item.item.item_name }}</td>
-            <td>
-            {% if order_item.item.discount_price %}
-                <del>${{ order_item.item.price}}</del> 
-                ${{ order_item.item.discount_price }}
-            {% else %}
-                ${{ order_item.item.price}}
+<!-- Inner checkout items start -->
+<div class="inner-checkout">
+    <div class="container">
+      <div class="row">
+        {% if empty %}
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="flex-inline">
+                <div class="heading-small-v-2">Order Overview</div>
+                <a href="/book-blood-test-online-in-india/" class="btn-1 btn">+ Add Tests</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="flex-inline">
+                <div class="heading-small-v-2">Order Overview</div>
+                <a href="/book-blood-test-online-in-india/" class="btn-1 btn">+ Add Tests</a>
+            </div>
+            
+            {% for order_item in object.items.all %}
+            <div class="test-cards" id="{{ order_item.product.pk}}" data-price="{{ order_item.product.price}}" data-qty="{{ order_item.product.quantity}}">
+                <div class="flex-inline">
+                    <h6 class="test-name">{{ order_item.product.name }}</h6>
+                    {% comment %} {% if order_item.product.discount_price %}
+                    <<p class="price">>${{ order_item.product.price}}</p>
+                    <p class="price">${{ order_item.product.discount_price }}</p>
+                    {% else %} {% endcomment %}
+                    <p class="price">${{ order_item.product.price}}</p>
+                    {% comment %} {% endif %} {% endcomment %}
+                </div>
+                <div class="flex-inline">
+                    <a href="{% url 'shop:reduce_quantity_item' order_item.product.pk %}" class="remove-btn" item-id="438" item-type="1">Remove</a>
+                    <div class="count-control">
+                        <a href="{% url 'shop:reduce_quantity_item' order_item.product.pk %}">
+                            <button class="sub-count" item-id="438" item-type="1"><i class="fa fa-minus"></i></button>
+                        </a>
+                        <span class="quantity" id="span_438">{{ order_item.quantity }}</span>
+                        <a href="{% url 'shop:add_to_cart' order_item.product.pk %}">
+                            <button class="add-count" item-id="438" item-type="1"><i class="fa fa-plus"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 summary">
+            <div class="checkout-summary">
+                <div class="heading-small-v-2">Summary</div>
+                {% if object.get_total_price %}
+                <div class="flex-inline m-t-40">                    
+                    <p>Subtotal</p>
+                    <p class="subtotal">₹ {{ object.get_total_price }}</p>
+                </div>
+                <!-- <div class="flex-inline">
+                    <p>Home Collection charge</p>
+                    <p class="home-collection-charges">&#8377; 431</p>
+                </div> -->
+                <div class="flex-inline border strong-summary-text">
+                    <p>Total</p>
+                    <p class="total-charges">₹ {{ object.get_total_price }}</p>
+                </div>
+                <a href="{% url 'checkout' %}" class="btn-2 text-xs-center">Proceed to Checkout</a>
+            </div>
             {% endif %}
-
-            </td>
-            <td>
-                <a href="{% url 'core:reduce-quantity-item' order_item.item.pk %}"><i class="fas fa-minus mr-2"></i></a>
-                {{ order_item.quantity }}
-                <a href="{% url 'core:add-to-cart' order_item.item.pk %}"><i class="fas fa-plus ml-2"></i></a>
-            </td>
-            <td>
-            {% if order_item.item.discount_price %}
-                ${{ order_item.get_discount_item_price }} 
-                <span class="badge badge-success" >Saved ${{ order_item.get_amount_saved }}</span>
-            {% else %}
-                ${{ order_item.get_total_item_price}}
-            {% endif %}
-             <a href="{% url 'core:remove-from-cart' order_item.item.pk %}">
-                <i class="fas fa-trash float-right text-danger"></i>
-             </a>
-
-            </td>
-        </tr>
-
-        {% empty %}
-        <tr>
-            <td colspan="5">Your Cart Empity</td>
-        </tr>
-
-         <tr>
-            <td colspan="5">
-                <a href="/" class="btn btn-primary float-right">Continue Shopping</a>
-            </td>
-        </tr>
-
-        {% endfor %}
-
-        {% if object.get_total_price %}
-        <tr>
-            <td colspan="4"><b>Total Order Price</b></td>
-            <td>${{ object.get_total_price }}</td>
-        </tr>
-         <tr>
-            <td colspan="5">
-                <a href="{% url 'core:checkout' %}" class="btn btn-warning float-right ml-2">Checkout</a>
-                <a href="/" class="btn btn-primary float-right">Continue Shopping</a>
-            </td>
-        </tr>
-        
+        </div>
         {% endif %}
-        
-        </tbody>
-    </table>
+    </div>
 
+    <!-- checkout flow similar tests -->
+    <div class="similar-tests">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-small-v-2">People also booked these tests</div>
+                    <div class="flexslider" id="similar-tests">
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                            <ul class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                {% for item in products %}
+                                <li class="similar-test-card" style="width: 400px; margin-right: 20px; float: left; display: block;">
+                                    <div class="flex-inline head">
+                                        <div class="name">
+                                            <img src="/assets/images/scope-bg.svg" class="img-fluid" draggable="false">
+                                            <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="" href="{{ item.get_absolute_url }}" data-original-title="{{ item.name }}">
+                                                <h4 id="test-name">{{ item.name }}</h4>
+                                            </a>
+                                        </div>
+                                        <!--
+                                            <div class="test-info">
+                                                <a href="#" data-toggle="tooltip" data-placement="bottom" data-custom-class="tooltip-custom" title="" data-original-title="Sample Cut off : 6:00 PM (Daily), Report : 2HRS Same Day">
+                                                    <span>TAT</span>
+                                                </a>
+                                            </div>
+                                        -->
+                                    </div>
+                                    <p class="tat">
+                                        <span>{{ item.tags }}</span>
+                                        <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Sample Cut Off : 6:00 PM (Daily), Report : 2HRS Same Day">
+                                            <strong>Sample Cut off : {{ item.samplecutoff }}, Report : {{ item.report }}</strong>
+                                        </a>
+                                    </p>
+                                    <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: 
+                                        <a>
+                                            <strong>{{ item.speciment }}</strong>
+                                        </a>
+                                    </p>
+                                    <!-- 
+                                        <p class="specimen">Specimen: 
+                                            <strong>WB EDTA</strong>
+                                        </p>
+                                    -->
+                                    <p class="price">₹ {{ item.price }} </p>
+                                    <div class="footer-card">
+                                        <div class="flex-inline p-custom">
+                                            <div class="action">
+                                                <form action="#" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8" autocomplete="off">
+                                                    <button type="submit" class="btn-3">Buy Now</button>
+                                                </form>
+                                                <!-- data-target="#added-to-cart"-->
+                                                <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8" autocomplete="off">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn-4 add-to-cart-btn">
+                                                        <img src="/assets/images/bag.svg" draggable="false">Add to Cart
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <!--
+                                                <a href="https://www.pathkindlabs.com/pathkind_app/">
+                                                    <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/download-blue.svg" class="img-fluid"> Sample Report
+                                                </a>
+                                            -->
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <ul class="flex-direction-nav">
+                            <li class="flex-nav-prev">
+                                <a class="flex-prev" href="#">Previous</a>
+                            </li>
+                            <li class="flex-nav-next">
+                                <a class="flex-next" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</main>
+</div>
 
 {% endblock content %}

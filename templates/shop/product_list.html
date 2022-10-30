@@ -239,7 +239,7 @@
                     </div>
                 </div>
                 <div class="row package-lists">
-                    {% for product in products %}
+                    {% for item in products %}
                     <div class="col-md-6 col-sm-12 test_and_packages">
                         <div class="package" id="210056">
                             <div class="custom-head123">
@@ -248,29 +248,29 @@
                                         <div class="img">
                                             <img src="/assets/images/scope-bg.svg" class="img-fluid">
                                         </div>
-                                        <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ product.name }}" href="{{ product.get_absolute_url }}">
-                                            <h4 id="test-name">{{ product.name }}</h4>
+                                        <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ item.name }}" href="{{ item.get_absolute_url }}">
+                                            <h4 id="test-name">{{ item.name }}</h4>
                                         </a>
                                     </div>
                                 </div>
                                 <p class="tat">
-                                    <span>TAT</span>
-                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : {{ product.samplecutoff }}, Report : {{ product.report }}">
-                                        <strong>Sample Cut off : {{ product.samplecutoff }}, Report : {{ product.report }}</strong>
+                                    <span>{{ item.tags }}</span>
+                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : {{ item.samplecutoff }}, Report : {{ item.report }}">
+                                        <strong>Sample Cut off : {{ item.samplecutoff }}, Report : {{ item.report }}</strong>
                                     </a>
                                 </p>
                                 <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen: 
-                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ product.speciment }}">
-                                        <strong>{{ product.speciment }}</strong>
+                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ item.speciment }}">
+                                        <strong>{{ item.speciment }}</strong>
                                     </a>
                                 </p>
                                 <!-- <p class="specimen">&nbsp&nbsp</p> -->
-                                <p class="price">&#8377; {{ product.price }}</p>
+                                <p class="price">&#8377; {{ item.price }}</p>
                             </div>
                             <div class="footer-card">
                                 <div class="flex-inline p-custom">
                                     <div class="action">
-                                        <form action="/shopping-cart/add_item/" class="form-inline add-to-cart-form  " method="post" accept-charset="utf-8">
+                                        <form action="#" class="form-inline add-to-cart-form  " method="post" accept-charset="utf-8">
                                             <input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />
                                             <input type="hidden" name="item_id" value="10056" />
                                             <input type="hidden" name="item_type" value="2" />
@@ -283,9 +283,8 @@
                                             <button type="submit"  class="btn-3">Buy Now</button>
                                         </form>
                                         <!-- data-target="#added-to-cart"-->
-                                        <form action="{% url 'shop:add_to_cart' product.id %}" method="post" class="form-inline add-to-cart-form" accept-charset="utf-8">
-                                            {% csrf_token %}
-                                            {{ cart_product_form }}
+                                        <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                                        {% csrf_token %}
                                             <button type="submit" class="btn-4 add-to-cart-btn  ">
                                                 <img src="/assets/images/bag.svg">Add to Cart
                                             </button>
@@ -316,8 +315,10 @@
                 <div class="modal-body"></div>
                 <div class="modal-footer">
                     <div class="action">
-                        <a href="/shopping-cart/" class="btn-4"><img src="/assets/images/bag.svg">Go To Cart</a>
-                        <a href="/checkout/checkout_public" class="btn-3">Buy Now</a>
+                        <a href="/shopping-cart/" class="btn-4">
+                            <img src="/assets/images/bag.svg">Go To Cart
+                        </a>
+                        <a href="#" class="btn-3">Buy Now</a>
                     </div>
                 </div>
             </div>

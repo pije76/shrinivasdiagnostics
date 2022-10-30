@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'tags',
         'price',
+        'discount_price',
         'component',
         'speciment',
         'prerequisites',
@@ -23,7 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
         'updated',
     ]
     # list_filter=['available','created','updated']
-    list_editable=['price','available']
+    list_editable=['price', 'discount_price', 'available']
     prepopulated_fields={'slug':('name',)}
 
 class OrderAdmin(admin.ModelAdmin):

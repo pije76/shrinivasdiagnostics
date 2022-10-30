@@ -1,0 +1,2410 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="canonical" href="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public" />
+	<link rel="shortcut icon" href="https://www.pathkindlabs.com/pathkind_app/assets/img/favicon.ico" type="image/png" />
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/desktop/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/desktop/css/style.css">
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/desktop/css/responsive.css">
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/desktop/css/flexslider.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/adminlte/plugins/toastr/toastr.min.css">
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/plugins/easy-autocomplete.min.css" />
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/css/style.css" />
+	<link rel="stylesheet" href="https://www.pathkindlabs.com/pathkind_app/assets/adminlte/plugins/sweet-alert2/sweetalert2.min.css">
+	<title>Checkout | Pathkind</title>
+	<style>
+  input#search-bar-header:focus::-webkit-input-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+
+  input#search-bar-header:focus::-moz-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+
+  input#search-bar-header:focus:-ms-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+
+  div,
+  .profile-item {
+    word-wrap: break-word;
+  }
+</style>
+
+<!-- Global site tag (gtag.js) - Google Ads: 836541229 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-836541229"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'AW-836541229');
+</script>
+<!-- Google Tag Manager -->
+<script>
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-PNQG5GG');
+</script>
+<!-- End Google Tag Manager --></head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNQG5GG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<section class="main-top-header">
+    <style>
+.test-search-bar .easy-autocomplete {
+    width: 100%!important;
+}
+</style>
+<header class="site-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 flex">
+                <div class="logo"><a href="https://www.pathkindlabs.com/"><img class="img-fluid" src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/logo.png"></a></div>
+            </div>
+			
+			<div class="col-lg-5 col-md-5 col-sm-12 offset-md-2">
+			<div class="header-filter">
+				<div class="filter-bar-top">
+						<form action="https://www.pathkindlabs.com/pathkind_app/book-blood-test-online-in-india" id="test_location_search_header_form_header" method="GET" accept-charset="utf-8">
+                            														<input type="text" id="search-bar-header" class="city-search-header box" placeholder="Change City" value="Gurugram" name="q" />
+							<input type="hidden" name="test_location_id" id="city-holder-header" />
+												    </form>
+						<div class="test-search-bar">
+							<form action="https://www.pathkindlabs.com/pathkind_app/book-blood-test-online-in-india" id="test_search_header_form_header" method="GET" accept-charset="utf-8">
+								<input type="text" id="search-bar-2-header" class="test_search_input_field_header box" placeholder="Search for a test or health package" name="q" />
+								<input type="hidden" name="test_package_name" id="test-package-search-holder-header" />
+							</form>						</div>
+						<div class="search-error form-error"></div>
+				 
+                </div>
+				</div>
+			</div>
+            <div class="col-lg-2 col-md-2 col-sm-12 text-right md-0">
+                <div class="right-infos">
+                    <ul>
+                        
+                        <li class="cart"><a href="https://www.pathkindlabs.com/pathkind_app/shopping-cart" title="cart"><div class="img"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/cart.png" class="img-fluid"><span class="cart-badge" style="display:none"><span></div></a></li>
+                        
+                        <li class="user">
+                            
+                                                                                
+                                <a href="#" id="profile-open" title="Hi Tes">
+                                    <div class="img">
+										T										
+										                                       
+                                    </div>
+                                </a>
+                                <div class="side-login side-profile" style="display:none;">
+    <a href="#" class="close-login" id="profile-close-2"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
+    <div class="side-login-inner">
+        <div class="header">
+            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
+        </div>
+
+        <div class="login-card loggedin">
+                                                            <h2>Hi, Tes</h2>
+                                        
+            <p><a href="https://www.pathkindlabs.com/pathkind_app/my-orders">Orders</a></p>
+            <p><a href="https://www.pathkindlabs.com/pathkind_app/profile">Profile</a></p>
+            <!-- <p><a href="#">Privilege Card</a></p>
+            <p><a href="#">Test History</a></p> -->
+            <p><a href="https://www.pathkindlabs.com/pathkind_app/users/users_public/logout">Logout</a></p>
+        </div>       
+    </div>
+</div>                            
+                            
+                        </li>
+                        
+
+                        
+                    </ul>
+                </div>
+            </div>
+                    </div>
+    </div>
+</header></section>
+
+		<!-- Inner checkout items start -->
+    <div class="inner-checkout">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-8 col-md-8 col-sm-12">
+                   <div class="flex-inline">
+                     <div class="heading-small-v-2">Order Overview</div>
+                     <a href="https://www.pathkindlabs.com/pathkind_app/book-blood-test-online-in-india" class="btn-1 btn">+ Add Tests</a>
+                   </div>
+
+                   <div class="accordian checkout-collapse">
+                    <!-- item-1 -->
+                     <div  id="checkout-collapse-item-1">
+                        <div class="card">
+                          <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-item-1" aria-expanded="true" aria-controls="collapse-item-1">
+                                1. Assign Tests to Patient(s)
+                              </button>
+                            </h2>
+                          </div>
+
+                          <div id="collapse-item-1" class="collapse checkout-collapse-body" aria-labelledby="headingOne" data-parent="#checkout-collapse-item-1">
+                            <div class="card-body">
+                              <small>Please seclect a patient for each test</small>
+							  
+							  							                                <div class="flex-inline inner-checkout-strip">
+                                <p class="item-name" item-price="200">TSH 3rd Generation </p>
+                                
+                                
+								
+                								 <div class="dropdown checkout-add-more-patient">
+								 
+								<button patient-id="" class="btn dropdown-toggle selected-patient" type="button" id="dropdownMenuButton select"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								   Select                                </button>
+                                <div class="dropdown-menu patient-list" aria-labelledby="dropdownMenuButton">
+								  <a class="add-patient add-new-patient" item-id="1226" item-type="1">+ Add new patient</a> 	
+								                                    <div class="patient-count flex-inline">
+                                    <p class="name patient-name"  data-patient-name="Tes" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">Tes</p>
+                                    <a class="info-patient" patient-id="45000">info</a>
+                                  </div>
+								 
+								                                    <div class="patient-count flex-inline">
+                                    <p class="name patient-name"  data-patient-name="qqqq" data-patient-id="45215" data-item-index="1" data-item-id="1226" data-item-type="1">Qqqq</p>
+                                    <a class="info-patient" patient-id="45215">info</a>
+                                  </div>
+								 
+								                                    
+                                </div>
+                              </div>
+																 <!-- <a class="add-patient" item-id="1226" item-type="1">+ Add Patient</a> -->
+								                                               
+                              </div>
+							   							   							   							  
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+					  <div class="sidebar-patient-add">
+    <a class="close-sidebar" id="add-patient-close"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
+	<div class="sidebar-inner">
+		<div class="header">
+            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
+            </div>
+	   <div class="sidebar">
+			<h3 class="heading-small-v-2">Add Patient</h3>
+			<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                                                       
+				
+				
+										
+								
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control alpha_space_only" name="name" id="name" type="text" placeholder="Name" maxlength="60">
+					<span class="form-error"></span>
+				</div>
+				<!--<div class="form-group pb-0 mb-0 city">
+					<select name="location_id" id="location_id">
+					<option value="">Select</option>
+											<option value="100" selected>Gurugram</option> 
+										</select>
+					
+					<span class="form-error"></span>
+				</div>-->
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control" name="birthdate" id="birthdate" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
+					<span class="form-error"></span>
+				</div>
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control number_only" name="mobile" id="mobile" type="text" placeholder="mobile" maxlength="10" value="">
+					<span class="form-error"></span>
+				</div>
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control email_only" name="email" id="email" type="email" placeholder="Email" maxlength="255" value="">
+					<span class="form-error"></span>
+				</div>
+				<div class="row flex-custom-gender">
+					<div class="form-group">
+		                <select name="gender" class="custom-form-control" id="gender">
+<option value="" selected="selected">Select Gender</option>
+<option value="1">Male</option>
+<option value="2">Female</option>
+<option value="3">Other</option>
+</select>
+		                <span class="form-error"></span>
+		            </div>
+		            <div class="form-group">
+		                <select name="relation" class="custom-form-control" id="relation">
+<option value="" selected="selected">Select Relation</option>
+<option value="1">Father</option>
+<option value="2">Mother</option>
+<option value="3">Spouse</option>
+<option value="4">Son</option>
+<option value="5">Daughter</option>
+<option value="6">Family</option>
+</select>
+		                <span class="form-error"></span>
+		            </div>
+				</div>
+				
+				
+				
+				
+			<button type="submit" class="btn-2 add-patient-for-test-btn">Done</button>	
+			</form>			
+		</div>       
+	</div>
+</div>
+            <div class="sidebar-profile-add" style="display:none;">
+    <a class="close-sidebar" id="add-profile-close"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
+	<div class="sidebar-inner">
+		<div class="header">
+            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
+            </div>
+	   <div class="sidebar">
+			<h3 class="heading-small-v-2">Add Patient</h3>
+			<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                           
+				
+				
+										
+								<input type="hidden" name="user_id" value="43142">
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control alpha_space_only" name="name" value="Tes" id="name1" type="text" placeholder="Name" maxlength="60">
+					<span class="form-error"></span>
+				</div>
+				<!--<div class="form-group pb-0 mb-0 city">
+					<select name="location_id" id="location_id">
+					<option value="">Select</option>
+											<option value="100" selected>Gurugram</option> 
+										</select>
+					
+					<span class="form-error"></span>
+				</div>-->
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control" name="birthdate" id="birthdate1" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
+					<span class="form-error"></span>
+				</div>
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control number_only" name="mobile" id="mobile1" type="text" maxlength="60" placeholder="mobile" value="8968306095">
+					<span class="form-error"></span>
+				</div>
+				<div class="form-group pb-0 mb-0">
+					<input class="custom-form-control email_only" name="email" id="email1" type="email" maxlength="255" placeholder="Email" value="tes@test.com">
+					<span class="form-error"></span>
+				</div>
+				<div class="form-group pb-0 mb-0">
+	                <select name="gender" class="custom-form-control" id="gender1">
+<option value="" selected="selected">Select Gender</option>
+<option value="1">Male</option>
+<option value="2">Female</option>
+<option value="3">Other</option>
+</select>
+	                <span class="form-error"></span>
+	            </div>
+			
+				
+				
+				
+				
+			<button type="submit" class="btn-2 add-profile-for-test-btn">Done</button>	
+			</form>			
+		</div>       
+	</div>
+</div>
+					   <div class="sidebar-patient-info">
+    <a class="close-sidebar" id="info-patient-close"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
+	<div class="sidebar-inner">
+		<div class="header">
+            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
+            </div>
+	   <div class="sidebar">
+			<h3 class="heading-small-v-2">Patient Info</h3>
+				<div class="form-group pb-0 mb-0">
+					<label>Name</label>
+					<label class="name"></label>
+				</div>
+				
+				<div class="form-group pb-0 mb-0">
+					<label>Date Of Birth</label>
+					<label class="birthdate"></label>
+					
+				</div>
+				<div class="form-group pb-0 mb-0">
+					<label>Mobile</label>
+					<label class="mobile"></label>
+					
+				</div>
+				<div class="form-group pb-0 mb-0">
+					<label>Email</label>
+					<label class="email"></label>
+				</div>
+			
+				<div class="form-group pb-0 mb-0">
+					<label>Gender</label>
+					<label class="gender"></label>
+				</div>
+
+				<div class="form-group pb-0 mb-0">
+					<label>Relation</label>
+					<label class="relation"></label>
+				</div>
+			
+		</div>       
+	</div>
+</div>
+
+                      <!-- Sidebar patient add -->
+                      
+
+                       <!-- item-2 -->
+                      <div id="checkout-collapse-item-2">
+                        <div class="card">
+                          <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-2" id="billing_address" aria-expanded="false" aria-controls="collapse-item-2"  >
+                                2. Billing Address
+                              </button>
+                            </h2>
+                          </div>
+						<style>
+.form-group .easy-autocomplete {
+    width: 100%!important;
+}
+</style>
+<div id="collapse-item-2" class="collapse checkout-collapse-body" aria-labelledby="headingTwo" data-parent="#checkout-collapse-item-2" >
+	<div class="card-body">
+		<div class="row billing-address"> 
+		        		
+		<div class="col-md-6">
+		<div class="box"> 
+		<input type="radio" name="default_address" data-address-id="15644" checked=checked onclick="set_default_address('15644')" id="default_billing_address">
+		<div class="billing-address-list">
+			<p>Grajaj 78</p>
+						<p>Gurugram</p>
+			<p>Haryana</p>
+			<p>152354</p>
+			<a class="action action-editaddress" address-id="15644" user-address-id="15644" ><span>Edit</span></a>
+		</div>
+		</div> 
+		</div>
+		 		 	
+		
+		</div>
+		<small class="schedule-home-form" style="display:none" >Add Your Billing Details</small>
+	  	<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                                                                                              
+	  	   <input autocomplete="false" name="hidden" type="text" style="display:none;">
+		<div class="form-group">
+			<input type="hidden" name="id" id="address_id" >
+			<input type="hidden" name="address_id" id="user_address_id" >
+		  <input type="text" name="address_1" id="address_1" class="form-control checkout-flow-input" placeholder="Address Line 1"  >
+		  <span class="form-error"></span>
+		</div>
+		<div class="form-group">
+		  <input type="text" name="address_2" id="address_2" class="form-control checkout-flow-input" placeholder="Address Line 2 (Optional)" >
+		  <span class="form-error"></span>
+		</div>
+		<div class="form-row">
+		  <div class="form-group col-md-6 state">
+		  				
+		  <input type="text" name="billing-state" id="billing-state" class="form-control checkout-flow-input" placeholder="Change State" autocomplete="off" value="Haryana" readonly />
+          <input type="hidden" name="state_id" id="billing-state-holder" value="12"  />
+		  <span class="form-error"></span>
+		  </div>
+		  <div class="form-group col-md-6 city">
+			<input type="text" id="billing-city" class="form-control checkout-flow-input" placeholder="Change City" value="Gurugram" readonly />
+			<input type="hidden" name="city_id" id="billing-city-holder" value="100" />
+			<span class="form-error"></span>
+		  </div>
+		</div>
+		<div class="form-row">
+		  <div class="form-group col-md-6">
+			<input type="text" name="pincode" id="pincode"class="form-control checkout-flow-input number_only" placeholder="Pin Code" maxlength="6">
+			<span class="form-error"></span>
+		  </div>
+		</div>
+		<div class="form-group">
+		  <button type="submit" class="btn btn-1" id="add-billing-address-btn">Next</button>
+		</div>
+	  </form>	  <div class="col-md-12 text-right">
+		<div class=""> 
+			<a class="action action-address" onclick="add_billing_address();">
+			<img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/add.svg">
+			<span>Add Address</span>
+			</a>
+		</div> 
+		</div>
+
+	</div>
+</div>                          
+                        </div>
+                      </div>
+                                            <!-- item-3 -->
+  <div id="checkout-collapse-item-3">
+	<div class="card">
+	  <div class="card-header" id="headingThree">
+		<h2 class="mb-0">
+		  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-3" aria-expanded="false" aria-controls="collapse-item-3" id="home_collection_tab" >
+			3. Home Collection Details
+		  </button>
+		</h2>
+	  </div>
+
+	  <div id="collapse-item-3" class="collapse checkout-collapse-body" aria-labelledby="headingThree" data-parent="#checkout-collapse-item-3">
+		<div class="card-body">
+		<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_home_collection_address" id="home_collection_address_form" class="m-t-10" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                                             
+		  
+<input type="hidden" name="home_collection_id" value="" />
+		  <small>Do you want us to collect sample from your home?</small>
+		  <div class="form-group checkbox-group" id="home_collection_is_home_collection">
+			  <div class="inner-group">
+				  <label class="container-check">Yes
+					<input type="radio" name="is_home_collection" value="1" >
+					<span class="checkmark"></span>
+				  </label>
+			  </div>
+			  <div class="inner-group">
+				  <label class="container-check">No
+					<input type="radio" name="is_home_collection" value="0" >
+					<span class="checkmark"></span>
+				  </label>
+			  </div>
+			  <span class="form-error"></span>
+		  </div>
+
+
+		<div class="disply-home-collection" style="display:none;">
+
+		  <small>Add Your Address for Home Collection</small>
+		  <div class="form-group checkbox-group">
+			  <div class="inner-group">
+				  <label class="container-check">Same as Billing Address
+					<input type="checkbox" id="same_as_billing_address">
+					<span class="checkmark"></span>
+					<span class="form-error"></span>
+				  </label>
+			  </div>
+		  </div>
+		  
+		 
+			<div class="form-group">
+			  <input type="text" name="address_1" id="home_collection_address_1" class="form-control checkout-flow-input" placeholder="Address Line 1" value="">
+			  <span class="form-error"></span>
+			</div>
+			<div class="form-group">
+			  <input type="text" name="address_2" id="home_collection_address_2" class="form-control checkout-flow-input" placeholder="Address Line 2 (Optional)" value="">
+			  <span class="form-error"></span>
+			</div>
+			<div class="form-row">
+			  <div class="form-group col-md-6 state">
+								<input type="text" id="home-collection-state" class="form-control checkout-flow-input" placeholder="Change State" value="Haryana" readonly />
+				<input type="hidden" name="state_id" id="home_collection_state_id" value="12"/>
+				<span class="form-error"></span>
+			  </div>
+			  <div class="form-group col-md-6 city">
+				<input type="text" id="home-collection-city" class="form-control checkout-flow-input" placeholder="Change City" value="Gurugram" readonly />
+				<input type="hidden" name="city_id" id="home_collection_city_id" value="100"/>
+				 <span class="form-error"></span>
+			  </div>
+			</div>
+			<div class="form-row">
+			  <div class="form-group col-md-6">
+				<input type="text" name="pincode" id="home_collection_pincode" class="form-control checkout-flow-input number_only" maxlength="6" placeholder="Pin Code" value="">
+				<span class="form-error"></span>
+			  </div>
+			</div>
+	
+			
+		</div>
+		<div class="form-group">
+			  <button type="submit" id="home_collection_address_btn" class="btn btn-1">Next</button>
+		</div>
+		</form>		</div>
+	  </div>
+	</div>
+  </div>                      <!-- item-3 -->
+  <div class="home-collection-date-and-time" id="checkout-collapse-item-4" style="display:none;">
+	<div class="card">
+	  <div class="card-header" id="headingFour">
+		<h2 class="mb-0">
+		  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-4" aria-expanded="false" aria-controls="collapse-item-4" id="home_collection_datetime_tab">
+			4. Preferred Home Collection Date & Time
+		  </button>
+		</h2>
+	  </div>
+
+	  <div id="collapse-item-4" class="collapse checkout-collapse-body" aria-labelledby="headingFour" data-parent="#checkout-collapse-item-4">
+		<div class="card-body">
+		<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post" accept-charset="utf-8">
+                                       <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+		
+		
+<input type="hidden" name="is_home_collection" value="" />
+		
+		
+<input type="hidden" name="home_collection_other_detail_id" value="" />
+		<div class="home-collection-other-details">
+			<small class="m-b-10">Home Collection Date and Time</small>
+			<div class="form-row">
+			  <div class="form-group col-md-6">
+				<input type="date" name="collection_date" id="collection_date" class="form-control checkout-flow-input" placeholder="Date" value="">
+				<span class="form-error"></span>
+			  </div>
+			  <div class="form-group col-md-6">
+			   	<select name="collection_time" class="form-control checkout-flow-select" id="collection_time" placeholder="Select">
+<option value="" selected="selected">Select</option>
+<option value="9:00 am to 6:00 pm">9:00 am to 6:00 pm</option>
+</select>
+				 <!--<input type="time" name="collection_time" id="collection_time" class="form-control checkout-flow-input" placeholder="Time" value="">-->
+				 <span class="form-error"></span>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <button type="submit" id="add_home_collection_other_details_btn" class="btn btn-1">Next</button>
+			</div>
+			</form>		</div>
+
+		</div>
+	  </div>
+	</div>
+  </div> 
+                         
+					  <div id="checkout-collapse-item-5">
+<div class="card">
+  <div class="card-header" id="headingFive">
+	<h2 class="mb-0">
+	  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-5" aria-expanded="false" aria-controls="collapse-item-5" id="payment_details" >
+		4. Payment Details
+	  </button>
+	</h2>
+  </div>
+
+  <div id="collapse-item-5" class="collapse checkout-collapse-body" aria-labelledby="headingFive" data-parent="#checkout-collapse-item-5">
+	<div class="card-body">
+	<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_payment_details" id="add_payment_details_form" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                            
+							
+<input type="hidden" name="billing_id" value="15644" />
+			  <small class="m-b-10">Select payment mode</small>
+		<div class="form-group checkbox-group">
+		  <div class="inner-group">
+			  <label class="container-check">Online
+				<input type="radio" name="payment_mode" value="1">
+				<span class="checkmark"></span>
+			  </label>
+		  </div>
+		  <div class="inner-group">
+			  <label class="container-check">Cash at home
+				<input type="radio" name="payment_mode" value="2" checked="checked">
+				<span class="checkmark"></span>
+			  </label>
+		  </div>
+	  </div>
+	  <span class="form-error"></span>
+	  <button type="submit" class="btn btn-1 m-12 add_payment_details_btn" id="add_payment_details_btn">Proceed to Book test</a>
+	  </form>	</div>
+  </div>
+</div>
+</div>
+                          	
+                      <!-- Modal -->
+                      <!-- Test Booked successsfully popup -->
+                      <div class="modal fade test-booked-modal" id="testbooked" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title text-success">Thank you!</h5>
+                              <p>Your order was completed succesfully</p>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="checkout-summary">
+                                 <div class="flex-inline m-t-40">
+                                     <p>Subtotal</p>
+                                     <p class="subtotal">&#8377;</p>
+                                 </div>
+                                 <div class="flex-inline home-collection-charges" style="display:none">
+                                     <p>Home Collection charge</p>
+                                     <!-- <p><span>&#8377;</span><span id="collection-charges">0</span></p> -->
+                                     <p><span>&#8377;</span><span id="collection-charges">0</span></p>
+                                 </div>
+                                 <div class="flex-inline strong-summary-text p-30">
+                                     <p>Total Amount Paid</p>
+                                     <p class="total-charges">&#8377;</p>
+                                 </div>
+                             </div>
+                            </div>
+                            <div class="modal-footer">
+							<form method="get" action="https://www.pathkindlabs.com/pathkind_app/my-orders">
+                              <button type="submit" class="btn btn-1" data-dismiss="modal">Done</button>
+							 </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   </div>
+
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-12">
+                   <div class="checkout-summary">
+                       <div class="heading-small-v-2">Summary</div>
+					     																													    <div class="row m-t-40">
+									   <div class="summary-item-name col-md-9" id="12261">TSH 3rd Generation </div>
+									   <div class="summary-item-price col-md-3">&#8377;200.00</div>
+									   <div class="summary-patient-name col-md-12">Patient : </div>
+								    </div>
+																										
+					  
+                       <div class="flex-inline border" style="border-left: 0px!important;
+															border-right: 0px!important;
+															border-bottom: 0px!important;
+															padding: 10px 0;
+															margin-bottom: 15px;">
+                           <p>Subtotal</p>
+                           <p class="subtotal">&#8377;</p>
+                       </div>
+                       <div class="flex-inline home-collection-charges" style="display:none">
+                           <p class="text-right"><span style="display: inline-block; float:left;"> Home Collection charge </span> &#8377; 
+                           <!-- <span id="collection-charges" style="float:right;">0</span> -->
+                           <span id="collection-charges" style="float:right;">0</span>
+                          </p>
+                           
+                       </div>
+                       <div class="flex-inline border strong-summary-text">
+                           <p>Total</p>
+                           <p class="total-charges">&#8377; </p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div> 
+    </div>
+
+<input type="hidden" id="__home_collection_charges" value="0" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/js/site.js"></script>
+<script src="https://www.pathkindlabs.com/pathkind_app/assets/adminlte/plugins/toastr/toastr.min.js"></script>
+<script src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/js/jquery.flexslider.js"></script>
+<script src="https://www.pathkindlabs.com/pathkind_app/assets/plugins/jquery.easy-autocomplete.min.js"></script>
+<script src="https://www.pathkindlabs.com/pathkind_app/assets/adminlte/plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script>
+var dataTable;
+function getList(selector, url, column, data) {
+    dataTable = $(selector).DataTable({
+        responsive: true,
+        autoWidth: false,
+        processing: true,
+        serverSide: true,
+        scrollX: true,
+        pageLength: 10,
+        lengthMenu: [5,10,20,25,50,100,500],
+        order: [[column,"desc"]],
+        aoColumnDefs: [{
+            'bSortable': false,
+            'aTargets': ['nosort']
+        }],
+        language: {
+            processing: '<i class="fa fa-spinner"></i>'
+        },
+        ajax: {
+            url: url,
+            type: "GET",
+            data: data,
+            complete: function (response) {
+                response = JSON.parse(response);
+                $('input[name="csrf_test_name"]').val(response.csrfToken);
+            }
+        }
+    });
+}
+
+function resetForm(form) {
+    form.trigger("reset");
+    form.trigger("change");
+    $(".form-error").html('');
+}
+
+function postForm(form, redirect, callExternal = false) {
+    const submitBtn = $('button[type="submit"]');
+    submitBtn.prop("disabled", "disabled");
+    $.ajax({
+        url: form.attr("action"),
+        type: "POST",
+        dataType: "json",
+        data: form.serialize(),
+        success: function(response) {
+            response = JSON.parse(response);
+            $('input[name="csrf_test_name"]').val(response.csrfToken);
+            if (response.status === 201 || response.status === 200) {
+                toastr.success(response.message);
+                if (callExternal) {
+                    setTimeout(function(){
+                        window.location.href = `${callExternal}?token=${response.data.token}&url=${redirect}`;
+                    }, 1000);
+                }
+                else {
+                    setTimeout(function(){
+                        window.location.href = redirect;
+                    }, 1000);
+                    submitBtn.removeAttr("disabled");
+                }
+            }
+            else if (response.status === 202) {
+                $.each(response.errors, function(index, validation) {
+                    $(`#${validation.field}`).parents(".form-group").find(".form-error").html(validation.error);
+                });
+                submitBtn.removeAttr("disabled");
+            }
+            else {
+                toastr.error(response.message);
+                submitBtn.removeAttr("disabled");
+            }
+        }
+    });
+}
+
+function select2(selector, placeholder, url = '') {
+    var $options;
+
+    if (url.length > 0) {
+        $options = {
+            theme: 'bootstrap4',
+            placeholder: placeholder,
+            minimumInputLength: 1,
+            ajax: {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function(data) {
+                    data = JSON.parse(data);
+                    return {
+                        results: data.list
+                    };
+                },
+                cache: true
+            }
+        };
+    }
+    else {
+        $options = {
+            theme: 'bootstrap4',
+            placeholder: placeholder,
+        };
+    }
+
+    $(selector).select2($options);
+}
+
+
+function datePicker(selector, placeholder, maxDate = false, minDate = false) {
+    
+    var $options = {
+        timePicker: false,
+        singleDatePicker: true,
+        autoUpdateInput: false,
+        placeholder: placeholder,
+        locale: {
+            format: 'DD-MM-YYYY'
+        }
+    };
+
+    if (maxDate) {
+        $options.maxDate = moment().format('DD-MM-YYYY');
+    }
+
+    if (minDate) {
+        $options.minDate = moment().format('DD-MM-YYYY');
+    }
+
+    $(`${selector}`).daterangepicker($options);
+
+    $(`${selector}`).on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('DD-MM-YYYY'));
+    });
+}
+
+$('button[type="reset"]').on("click", function() {
+    location.reload();
+});
+
+$("body").on("click", ".sa-delete", function() {      
+    var id = $(this).data('id');
+    var url = $(this).data('url');
+    var csrf_token = "csrf_test_name";
+    var csrfHash = "26424dddac305e9f479f8c929363d4e2";
+    swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '<i class="fa fa-trash"></i> Delete',
+        cancelButtonText: '<i class="fa fa-times"></i> Cancel',
+        confirmButtonClass: 'btn btn-success btn-delete',
+        cancelButtonClass: 'btn btn-danger ml-2',
+        buttonsStyling: false
+    }).then(function () {
+        $.ajax({
+            url: url,
+            method:"GET",
+            data:{
+                id:id,
+                csrf_token: csrfHash
+            },
+            success: function(response) {
+                response = JSON.parse(response);
+                if (response.status == true) {              
+                    swal("Deleted!","Successfully Deleted","success");
+                }
+                else {
+                    swal("error", response.error, 'error');
+                } 
+                dataTable.ajax.reload();   
+            }
+        });
+    });
+});
+
+$("body").on("click", ".toggler", function(event) {
+    event.preventDefault();
+    var url = $(this).data('url');
+    var status = $(this).data('status');
+    $.ajax({
+        url: url,
+        method: "GET",
+        data: {
+            status: status
+        },
+        success: function(response) {
+            response = JSON.parse(response);
+            if (response.status === 200) {
+                toastr.success(response.message);
+            }
+            else {
+                toastr.error(response.message);   
+            }
+            dataTable.ajax.reload();   
+        }
+    });
+});
+
+$(".nav-sidebar > li.has-treeview").each(function(index) {
+    $submenusLength = $(this).find("ul").find("li").length;
+    if ($submenusLength == 0) {
+        $(this).hide();
+    }
+});
+
+$(".nav-treeview .nav-item a").each(function(index) {
+    var element = $(this);
+    var anchorClasses = $(this).attr("class");
+    anchorClasses = anchorClasses.split(' ');
+    if (anchorClasses) {
+        
+        var hasActiveClass = anchorClasses.find(function(currentValue, index, arr) {
+            return currentValue == 'active';
+        });
+        
+
+        if (hasActiveClass == 'active') {
+            var parentElement = element.parent("li").parent("ul").parent("li");
+            var parentElementClass = parentElement.attr("class");
+            parentElement.attr("class", `${parentElementClass} menu-open active`);
+            parentElement.find("a").attr("class", "nav-link active");
+        }
+    }
+});
+
+$('#captcha_refresh').click(function () {
+	$.ajax({
+		url: 'https://www.pathkindlabs.com/pathkind_app/auth/captcha_refresh',
+		type: 'GET',
+		async: false, 
+		cache: false,
+		success: function (response) {
+			if (response != '') {
+				$('#captcha_image').html(response);
+			}
+		},
+	});
+});	
+
+</script><script>
+
+    $('form').attr("autocomplete", "off");
+    $('input').attr("autocomplete", "off");
+    $('input').attr("aria-autocomplete", "both");
+    $('input').attr("aria-haspopup", "false");
+    $('input').attr("autocapitalize", "off");
+    $('input').attr("autocorrect", "off");
+    $('input').attr("autofocus", "");
+    $('input').attr("role", "combobox");
+    $('input').attr("spellcheck", "false");
+    $("#search-bar").attr("autofocus","autofocus");
+
+    /** 
+     * Validation Rules
+     */
+    $('.number_only').bind('keyup paste', function(event){
+        event.preventDefault();
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    
+    $('.alpha_space_only').bind('keyup paste', function(event){
+        event.preventDefault();
+        this.value = this.value.replace(/[^a-zA-Z ]/g, '');
+    });
+
+    $('.email_only').bind('keyup paste', function(event){
+        event.preventDefault();
+        this.value = this.value.replace(/[^a-zA-Z0-9!#$%&'*+-/=?^_`{|}~(),:;<>@[\]]/g, '');
+    });
+
+    		
+    $( document ).ready(function() {
+
+        var prev_city_id = $("#city-holder").val();
+		var prev_city_name = $("#search-bar").val();
+		var badge_count = '1';
+		var search_type = '';
+		var search_value = '';
+
+        $('input').keyup(function() {
+            removeValidationErrors($(this));
+        });
+
+        $('select').change(function() {
+            const elClass = $(this).attr("class");
+            removeValidationErrors($(this), elClass);
+        });
+
+		if(badge_count > 0){
+			$(".cart-badge").html(badge_count);
+			$(".cart-badge").css("display","block");
+		}else{
+			$(".cart-badge").css("display","none");
+		}
+        var i = 0;
+		$("#user-login-form").submit(function(event) {
+            event.preventDefault();
+            i++;
+            const form = $(this);
+            const submitBtn = $('#custom-form-btn');
+            //submitBtn.hide()
+            submitBtn.prop("disabled", "disabled");
+            submitBtn.html("Sending...");
+            if(i==1){
+                $.ajax({
+                    url: form.attr("action"),
+                    type: "POST",
+                    dataType: "json",
+                    data: form.serialize(),
+                    success: function(response) {
+                        response = JSON.parse(response);
+                        $('input[name="csrf_test_name"]').val(response.csrfToken);
+                        if (response.status === 201 || response.status === 200) {
+                            window.location.href = $('input[name="origin"]').val() + '?vid=' + response.data.mobile;
+                            //submitBtn.show();
+                            submitBtn.removeAttr("disabled");
+                        }
+                        else if (response.status === 202) {
+                            $.each(response.errors, function(index, validation) {
+                                $(`#${validation.field}`).parents(".form-group").find(".form-error").html(validation.error);
+                            });
+                            //submitBtn.show();
+                            submitBtn.removeAttr("disabled");
+                            submitBtn.html("Get OTP");
+                        }
+                        else {
+                            toastr.error(response.message);
+                            //submitBtn.show();
+                            submitBtn.removeAttr("disabled");
+                            submitBtn.html("Get OTP");
+                        }
+                    }
+                });
+            }
+        });
+        
+        $("#test_search_locator").click(function(event) {
+			$('#test_search_header_form').submit();
+        });
+        
+        $("#login-open").click(function(){
+			$(".side-login").toggle();
+        });
+
+        $("#login-close").click(function(){
+            $(".side-login").toggle();
+        });
+
+        $("#profile-open").click(function(){
+            $(".side-profile").toggle();
+        });
+
+        $("#profile-close-2").click(function(){
+            $(".side-profile").toggle();
+        });
+
+        $(".otp-block").on("keyup", function() {
+            var otpBlockKey = $(this).data("key");
+            var otpBlockValue = $(this).val();
+            if (otpBlockKey < 6) {
+                if (otpBlockValue.length > 0) {
+                    nextOtpBlock = otpBlockKey + 1;
+                    $(`.otp-block-${nextOtpBlock}`).focus();
+                }
+            }
+        });
+        
+        $("#test_location_id").select2({
+            minimumResultsForSearch: Infinity,
+            placeholder:"Change City"
+        });
+        //select2("#test_location_id", "Change City", "https://www.pathkindlabs.com/pathkind_app/packages/get_city_list");
+        //select2("#test_package_id", "Search for a test or health package", "https://www.pathkindlabs.com/pathkind_app/tests/test_public/get_suggestions");
+       
+        $(".search__labtestpackage").easyAutocomplete({
+            url: function (phrase) {
+				return `https://www.pathkindlabs.com/pathkind_app/tests/test_public/get_suggestions?phrase=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+				maxNumberOfElements: 500,
+                match: {
+                    enabled: true,
+                },
+                onSelectItemEvent: function() {
+                    search_value = $(".search__labtestpackage").getSelectedItemData().id;
+                    search_type = $(".search__labtestpackage").getSelectedItemData().type;
+					//$("#search_data_type").val(search_type);
+					$("#test-package-search-holder").val(search_value).trigger("change");
+                   
+					
+                },
+                onChooseEvent: function() {
+					if(search_type == 'lab'){
+						window.location.href = `https://www.pathkindlabs.com/pathkind_app/find-a-pathology-lab-near-you?lab_slug=` +search_value;
+					}else{
+						  setTimeout(function() {
+							$("#test_search_header_form").submit();
+						}, 1000);
+					}
+				
+                  
+                    
+                }
+            }
+        });
+
+        $(".search__test_package").easyAutocomplete({
+            url: function (phrase) {
+                return `https://www.pathkindlabs.com/pathkind_app/tests/test_public/get_test_package_suggestions?phrase=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+                maxNumberOfElements: 500,
+                match: {
+                    enabled: false,
+                },
+                onSelectItemEvent: function() {
+                    search_value = $(".search__test_package").getSelectedItemData().id;
+                    search_type = $(".search__test_package").getSelectedItemData().type;
+                    //$("#search_data_type").val(search_type);
+                    $("#test-package-search-holder").val(search_value).trigger("change");
+                    
+                },
+                onChooseEvent: function() {
+                    if(search_type == 'lab'){
+                        window.location.href = `https://www.pathkindlabs.com/pathkind_app/find-a-pathology-lab-near-you?lab_slug=` +search_value;
+                    }else{
+                          setTimeout(function() {
+                            $("#test_search_header_form").submit();
+                        }, 1000);
+                    }
+                
+                  
+                    
+                }
+            }
+        });
+		
+        var searchBarCityName;
+		$("#search-bar").on("click", function() {
+            searchBarCityName = $(this).val() || $(this).attr("placeholder");
+            $(this).attr("placeholder", searchBarCityName);
+            $(this).val('');
+        });
+        $("#search-bar-header").on("click", function() {
+            searchBarCityName = $(this).val() || $(this).attr("placeholder");
+            $("#search-bar-header").val('');
+            $(this).attr("placeholder", searchBarCityName);
+          
+        });
+        
+        
+		
+        $(".city-search").easyAutocomplete({
+
+            url: function (phrase) {
+                return `https://www.pathkindlabs.com/pathkind_app/packages/get_city_suggestion?search=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+                maxNumberOfElements: 50,
+                match: {
+                    enabled: true,
+                },
+                // onSelectItemEvent: function() {
+				// 		var value = $(".city-search").getSelectedItemData().id;
+				// 		var text = $(".city-search").getSelectedItemData().text;
+				// 		$("#city-holder").val(value).trigger("change");
+				// 		$("#city-holder-2").val(value).trigger("change");
+				// 		$("#lab-location-search").val(text);
+				// 		$("#lab-location-holder").val(value).trigger("change");
+				// 		$("#lab-locator-search-form").submit();
+		           
+                // },
+                onChooseEvent: function() {
+					var currCity = $("#search-bar").val();
+					
+					if(badge_count > 0){
+						
+						if(confirm('Your cart will empty if you change location,Please confirm?')){
+							//alert(text);
+							unset_data = unset_data();
+							setCurrentCity(currCity);
+							setTimeout(function() {
+								$("#test_location_search_header_form").submit();
+							}, 1000);
+						} else {
+							$("#city-holder").val(prev_city_id).trigger("change");
+							$("#search-bar").val(prev_city_name);
+							$("#city-holder-2").val(prev_city_id).trigger("change");
+							$("#lab-location-search").val(prev_city_name);
+							$("#lab-location-holder").val(prev_city_id).trigger("change");
+							$("#lab-locator-search-form").submit();
+							
+							
+						}
+					} else{
+						setCurrentCity(currCity);
+						setTimeout(function() {
+                            var value = $(".city-search").getSelectedItemData().id;
+                            var text = $(".city-search").getSelectedItemData().text;
+                            console.log(value, text);
+                            $("#city-holder").val(value).trigger("change");
+                            $("#city-holder-2").val(value).trigger("change");
+                            $("#lab-location-search").val(text);
+                            $("#lab-location-holder").val(value).trigger("change");
+                            $("#lab-locator-search-form").submit();
+							$("#test_location_search_header_form").submit();
+						}, 1000);
+					}
+					
+					
+                    
+                }
+            }
+        });
+		
+		$(".test_search_input_field_header").easyAutocomplete({
+            url: function (phrase) {
+                return `https://www.pathkindlabs.com/pathkind_app/tests/test_public/get_test_package_suggestions?phrase=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+                maxNumberOfElements: 500,
+                match: {
+                    enabled: false,
+                },
+                onSelectItemEvent: function() {
+					search_value = $(".test_search_input_field_header").getSelectedItemData().id;
+                    search_type = $(".test_search_input_field_header").getSelectedItemData().type;
+                    $("#test-package-search-holder-header").val(search_value).trigger("change");
+                },
+                onChooseEvent: function() {
+					if(search_type == 'lab'){
+						window.location.href = `https://www.pathkindlabs.com/pathkind_app/find-a-pathology-lab-near-you?lab_slug=` +search_value;
+					}else{
+						 setTimeout(function() {
+							$("#test_search_header_form_header").submit();
+                        
+						}, 1000);
+					}
+                    
+                    
+                }
+            }
+        });
+
+        $(".city-search-header").easyAutocomplete({
+            url: function (phrase) {
+                return `https://www.pathkindlabs.com/pathkind_app/packages/get_city_suggestion?search=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+                maxNumberOfElements: 50,
+                match: {
+                    enabled: true,
+                },
+                onSelectItemEvent: function() {
+                    var value = $(".city-search-header").getSelectedItemData().id;
+                    $("#city-holder-header").val(value).trigger("change");
+                },
+                onChooseEvent: function() {
+					var currCity = $("#search-bar-header").val();
+					if(badge_count > 0){
+						
+						if(confirm('Your cart will empty if you change location,Please confirm?')){
+							//alert(text);
+							unset_data = unset_data();
+							setCurrentCity(currCity);
+							setTimeout(function() {
+								$("#test_location_search_header_form").submit();
+							}, 1000);
+						} else {
+							$("#city-holder-header").val(prev_city_id).trigger("change");
+							$("#search-bar-header").val(prev_city_name);
+							
+						}
+					} else{
+						setCurrentCity(currCity);
+						setTimeout(function() {
+							$("#test_location_search_header_form").submit();
+						}, 1000);
+					}
+					
+					
+                    
+                }
+            }
+        });
+        
+        
+        
+        $("#verify-otp-form").submit(function(event) {
+            event.preventDefault();
+            const form = $(this);
+            postForm(form, "https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public", "https://www.pathkindlabs.com/login");
+        });
+
+        $(".btn-resend-otp").on("click", function(event) {
+            event.preventDefault();
+            var resendButton = $(this);
+            var url = resendButton.attr("href");
+            resendButton.html("Sending...");
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    response = JSON.parse(response);
+                    if (response.status === 200) {
+                        toastr.success(response.message);
+                        resendButton.html("Resend OTP");
+                        $("#stop-timer").prop("id", "timer");
+                        $("#timer").html("01:00");
+                        $(".resend-otp-text").show();
+                        $(".resend-otp-link").hide();
+                        startTimer();
+                    }
+                    else {
+                        resendButton.html("Resend OTP");
+                        toastr.error(response.message);   
+                    }   
+                }
+            });
+        });
+
+        
+        
+        
+        
+        
+        $('#similar-tests').flexslider({
+        animation: "slide",
+        animationLoop: true,
+        itemWidth: 400,
+        itemMargin: 20,
+        directionNav: true,
+        controlNav: false,  
+        });
+
+        
+    });
+</script>
+<script>
+function startTimer() {
+  var presentTime = $("#timer").text();
+  var timeArray = presentTime.split(/[:]+/);
+  var m =  timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  var timeout;
+  if(s==59){m=m-1}
+  if (m < 0) {
+    $("#timer").prop("id", "stop-timer");
+    $(".resend-otp-text").hide();
+    $(".resend-otp-link").show();
+  }
+  $("#timer").html(m + ":" + s);
+  timeout = setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec};
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+
+function select2(selector, placeholder, url = '') {
+    var $options;
+    if (url.length > 0) {
+        $options = {
+            placeholder: placeholder,
+            minimumInputLength: 1,
+            allowClear: true,
+            ajax: {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function(data) {
+                    data = JSON.parse(data);
+                    return {
+                        results: data.list
+                    };
+                },
+                cache: true
+            }
+        };
+    }
+    else {
+        $options = {
+            theme: 'bootstrap4',
+            placeholder: placeholder,
+        };
+    }
+
+    $(selector).select2($options);
+	
+}
+
+function setCurrentCity(cityName)
+{
+    $.ajax({
+        url: "https://www.pathkindlabs.com/pathkind_app/labs/labs_public/set_current_city",
+        method: "GET",
+        data: {
+            city_name: cityName,
+        },
+        success: function(res) {
+            console.log(res);
+        }
+    });
+    $.ajax({
+        url: "https://www.pathkindlabs.com/rest/set-loc-api",
+        method: "GET",
+        data: {
+            loc: cityName,
+        },
+        success: function(res) {
+            console.log(res);
+        }
+    });
+}
+
+function unset_data(){
+	
+	 $.ajax({
+        url: "https://www.pathkindlabs.com/pathkind_app/tests/test_public/unset_cart",
+        method: "GET",
+        data: {
+            
+        },
+        success: function(res) {
+            return true;
+        }
+    });
+	
+}
+
+function getLocation() {
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    var position = {
+        coords: {latitude: 28.4028969, longitude: 76.9694737}
+    };
+    showPosition(position);
+  }
+  // var position = {
+  //       coords: {latitude: 28.4028969, longitude: 76.9694737}
+  //   };
+  //   showPosition(position);
+}
+
+function showPosition(position) {
+  setBrowserLocation(position.coords.latitude, position.coords.longitude);
+  // x.innerHTML = "Latitude: " + position.coords.latitude +
+  // "<br>Longitude: " + position.coords.longitude;
+}
+
+function setBrowserLocation(latitude, longitude) {
+    $.ajax({
+        url: "https://www.pathkindlabs.com/pathkind_app/labs/labs_public/set_browser_location",
+        method: "GET",
+        data: {latitude:latitude, longitude:longitude},
+        success: function(res) {
+            res = JSON.parse(res);
+            $("#search-bar").val(res.current_city_name);
+            $("#city-holder").val(res.current_city_id);
+            location.reload();
+            console.log(res);
+        }   
+    });
+}
+getLocation();
+
+function removeValidationErrors(el, elClass) {
+    el.parents(".form-group").find(".form-error").text('');
+    el.attr('class', elClass);
+    el.removeAttr('aria-invalid');
+}
+
+</script><script src="https://api.nimbbl.tech/static/assets/js/checkout.js"></script>
+ <script type="text/javascript">
+	$( document ).ready(function() {
+		
+		//open accordian on the basis of url
+					$("#collapse-item-1").addClass('show');	
+			$("#billing_address").attr('disabled',true);	
+			$("#home_collection_tab").attr('disabled',true);	
+			$("#home_collection_datetime_tab").attr('disabled',true);	
+			$("#payment_details").attr('disabled',true);
+		
+						show_home_collection_addres();	
+		
+					
+		
+		function show_home_collection_addres(){
+
+			// when home collection address is saved 
+			var checked = $("input[name='is_home_collection']:checked").val();
+				
+			if(checked == 1){
+				$(".home-collection-charges").css("display","block");
+				$(".home-collection-date-and-time").show();
+				// $("#home_collection_datetime_tab").attr('disabled',true);
+				$(".disply-home-collection").show();
+				$("#headingFive button").html("5.Payment Details");
+				changeHomeCollectionCharges();
+			} else {
+				$(".home-collection-charges").css("display","none");
+				$(".disply-home-collection").hide();
+				$(".home-collection-date-and-time").hide();
+				//$("input[name=home_collection_id]").val('');
+				$("#headingFive button").html("4.Payment Details");
+			}
+		}
+		
+		//tabs_check();
+		init();
+
+		function init() {
+			$.ajax({
+				url: "https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/fetch_home_collection_charges",
+				method: "GET",
+				success: function(response) {
+					response = JSON.parse(response);
+					get_total_charges(response.charges);
+				}
+			});
+		}
+
+		
+		// to calculate total charges  	
+		function get_total_charges(home_collection_charges = 0.0){
+			
+			var sum_total = 0.0; 
+			
+			//var home_collection_charges = getHomeCollectionCharges();
+			var  home_collection_charges = 0.0 ;
+			$(".inner-checkout-strip .item-name").each(function(){
+				item_price = $(this).attr("item-price");
+				//console.log(parseFloat(item_price).toFixed(2));
+				sum_total  =  parseFloat(sum_total) +  parseFloat(item_price);
+				
+			});
+			
+			if(sum_total > 0){
+				
+				is_home_collection_charges = $(".home-collection-charges:visible").length;
+				if(is_home_collection_charges){
+
+					home_collection_charges = $(".home-collection-charges #collection-charges").html();
+				}
+				//alert(home_collection_charges);
+				$(".home-collection-charges #collection-charges").html(parseFloat(home_collection_charges).toFixed(2));
+				//alert(sum_total + " " + home_collection_charges );
+				//alert(parseFloat(sum_total) + " " +parseFloat(home_collection_charges) );
+				total_charges = parseFloat(sum_total) + parseFloat(home_collection_charges);
+				$(".subtotal").html("&#8377; "+parseFloat(sum_total).toFixed(2));
+				$(".total-charges").html("&#8377; "+parseFloat(total_charges).toFixed(2));
+			} else {
+				$(".summary").css("display","none");
+			}
+		}
+		$('#similar-tests').flexslider({
+			animation: "slide",
+			animationLoop: true,
+			itemWidth: 400,
+			itemMargin: 20,
+			directionNav: true,
+			controlNav: false,  
+		});
+
+	  // add patient script
+		$(".add-patient").click(function(){
+			$("<input>").attr({
+                name: "item_id",
+                type: "hidden",
+                value: $(this).attr('item-id')
+            }).appendTo("form.schedule-home-form");
+			
+			$("<input>").attr({
+                name: "item_type",
+                type: "hidden",
+                value: $(this).attr('item-type')
+            }).appendTo("form.schedule-home-form");
+		
+		
+			$(".sidebar-patient-add").toggle();
+		});
+		
+		$(".info-patient").click(function(){
+			//alert("sfdfdg");
+			var patient_id = $(this).attr("patient-id");
+			$.ajax({
+				url:"https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/get_patient_info",
+				method:"get",
+				data:{"patient_id":patient_id},
+				success:function(response){
+					response = JSON.parse(response);
+					if (response.status === 200) {
+                        $.each(response.data,function(key,value){
+							$(".sidebar-patient-info ."+key).html(": "+value);
+						});
+						 
+                    }
+				}
+			});
+			$(".sidebar-patient-info").toggle();
+		});
+		
+		$("#add-patient-for-test-form").submit(function(event) {
+			
+            event.preventDefault();
+            const form = $(this);
+            const submitBtn = $('#add-patient-for-test-btn');
+            submitBtn.html("Sending...");
+            submitBtn.prop("disabled", "disabled");
+            $.ajax({
+                url: form.attr("action"),
+                type: "POST",
+                dataType: "json",
+                data: form.serialize(),
+                success: function(response) {
+                    response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+                        window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public';
+                        submitBtn.removeAttr("disabled");
+						 
+                    }
+                    else if (response.status === 202) {
+						$(".form-error").html('');
+                        $.each(response.errors, function(index, validation) {
+							$(`#${validation.field}`).parents(".form-group").find(".form-error").html(validation.error);
+                        });
+                        submitBtn.removeAttr("disabled");
+                    }
+                    else {
+                       window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public'
+                    }
+                }
+            });
+        });
+		// For Profile completion
+        $("#add-profile-for-test-form").submit(function(event) {
+			
+            event.preventDefault();
+            const form = $(this);
+            const submitBtn = $('#add-profile-for-test-btn');
+            submitBtn.html("Sending...");
+            submitBtn.prop("disabled", "disabled");
+            $.ajax({
+                url: form.attr("action"),
+                type: "POST",
+                dataType: "json",
+                data: form.serialize(),
+                success: function(response) {
+                    response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+                        window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public';
+                        submitBtn.removeAttr("disabled");
+						 
+                    }
+                    else if (response.status === 202) {
+						$(".form-error").html('');
+                        $.each(response.errors, function(index, validation) {
+							$(`#${validation.field+1}`).parents(".form-group").find(".form-error").html(validation.error);
+                        });
+                        submitBtn.removeAttr("disabled");
+                    }
+                    else {
+                       window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public'
+                    }
+                }
+            });
+        });
+		
+		
+		$("#add_billing_address_form").submit(function(event) {
+	        event.preventDefault();
+            const form = $(this);
+            const submitBtn = $('#add-billing-address-btn');
+            submitBtn.html("Sending...");
+            submitBtn.prop("disabled", "disabled");
+            $.ajax({
+                url: form.attr("action"),
+                type: "POST",
+                dataType: "json",
+                data: form.serialize(),
+                success: function(response) {
+                    response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+						toastr.success('Billing Address Updated Successfully');
+													setTimeout(function(){ window.location = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public?tab=3'}, 500) ;
+						                        //window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public';
+                        submitBtn.removeAttr("disabled");
+						 
+                    }
+                    else if (response.status === 202) {
+						$(".form-error").html('');
+                        $.each(response.errors, function(index, validation) {
+							if( validation.field == 'state_id'){
+								$("#billing-state-holder").parents(".form-group").find(".form-error").html(validation.error);
+							}else if( validation.field == 'city_id'){
+								$("#billing-city-holder").parents(".form-group").find(".form-error").html(validation.error);
+							}else{
+								$(`#${validation.field}`).parents(".form-group").find(".form-error").html(validation.error);
+							}
+							
+                        });
+                        submitBtn.removeAttr("disabled");
+						submitBtn.html('Next');
+                    }
+                    else {
+                       window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public'
+                    }
+                }
+            });
+        });
+		
+		
+		
+		$("#home_collection_address_form").submit(function(event) {
+	        event.preventDefault();
+            const form = $(this);
+            const submitBtn = $('#home_collection_address_btn');
+            submitBtn.html("Sending...");
+            submitBtn.prop("disabled", "disabled");
+            $.ajax({
+                url: form.attr("action"),
+                type: "POST",
+                dataType: "json",
+                data: form.serialize(),
+                success: function(response) {
+                    response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+						toastr.success('Home Collection Address Updated Successfully');
+						var checked = $("input[name='is_home_collection']:checked").val();
+						//var checkbox = $('input[name="is_home_collection"]').val();
+						if (checked == 0) {
+							setTimeout(function(){ window.location = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public?tab=5'}, 500) 
+                        	submitBtn.removeAttr("disabled");
+						}
+						else {
+							setTimeout(function(){ window.location = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public?tab=4'}, 500) 
+                        	submitBtn.removeAttr("disabled");	
+						}
+						
+						 
+                    }
+                    else if (response.status === 202) {
+						$(".form-error").html('');
+                        $.each(response.errors, function(index, validation) {
+							if(validation.field == 'is_home_collection'){
+								$(`#home_collection_${validation.field}`).find(".form-error").html(validation.error);
+							}else{
+								$(`#home_collection_${validation.field}`).parents(".form-group").find(".form-error").html(validation.error);
+							}
+							
+                        });
+                        submitBtn.removeAttr("disabled");
+						submitBtn.html('Next');
+                    }
+                    else {
+                       window.location.href = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public'
+                    }
+                }
+            });
+        });
+		
+		//To save add home collection date and time details
+		$("#home_collection_other_details_form").submit(function(event) {
+			event.preventDefault();
+            const form = $(this);
+            const submitBtn = $('#add_home_collection_other_details_btn');
+            submitBtn.html("Sending...");
+            submitBtn.prop("disabled", "disabled");
+            $.ajax({
+                url: form.attr("action"),
+                type: "POST",
+                dataType: "json",
+                data: form.serialize(),
+                success: function(response) {
+                    response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+						toastr.success('Preferred Home Collection Date and Time Updated Successfully');
+						window.location = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public?tab=5'; 
+                        submitBtn.removeAttr("disabled");
+						submitBtn.html("Update");
+			        }
+                    else if (response.status === 202) {
+						$(".form-error").html('');
+                        $.each(response.errors, function(index, validation) {
+							
+							$(`#${validation.field}`).parents(".form-group").find(".form-error").html(validation.error);
+				        });
+                        submitBtn.removeAttr("disabled");
+						submitBtn.html("Update");
+			        }
+                   
+                }
+            });
+        });
+		
+		$("#add_payment_details_form").submit(function(event) {
+	        event.preventDefault();
+            const form = $(this);
+            const submitBtn = $('#add_payment_details_btn');
+            submitBtn.html("Sending...");
+            submitBtn.prop("disabled", "disabled");
+			
+            $.ajax({
+                url: form.attr("action"),
+                type: "POST",
+                dataType: "json",
+                data: form.serialize(),
+                success: function(response) {
+                	//console.log(response);
+                    response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+						//console.log(response);
+						if (response.data.payment_mode == 1) 
+						{
+
+							var order_id = response.data.order_id;
+							var payment_id = response.data.payment_id;
+							var options = {
+								"access_key": "access_key_pWvNVVnkMZRLev6w", // Enter the Key ID generated from the Dashboard
+								"order_id": response.data.payment_order_id, // Enter the order_id from the create-order api
+								"callback_handler": function (response) {
+									$.ajax({
+										url: "https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/make_order_payment",
+										method: "POST",
+										dataType: "json",
+										data: {
+											nimbbl_transaction_id: response.nimbbl_transaction_id,
+											nimbbl_order_id: response.nimbbl_order_id,
+											nimbbl_signature: response.nimbbl_signature,
+											status: response.status,
+											order_id: order_id,
+											payment_id: payment_id
+										},
+										success: function(response) {
+											response = JSON.parse(response);
+											$('input[name="csrf_test_name"]').val(response.csrfToken);
+											if (response.status === 201 || response.status === 200) {
+												$("#testbooked").modal('show');
+												setTimeout(function(){ window.location = 'https://www.pathkindlabs.com/pathkind_app/my-orders'}, 500); 
+												submitBtn.html("Proceed to Book test");
+
+												submitBtn.removeAttr("disabled"); 
+											}
+											else 
+											{
+												toastr.error("Your payment has been failed. Please try again."); 
+												submitBtn.html("Proceed to Book test");
+
+												submitBtn.removeAttr("disabled");
+											}
+										}
+									});
+								},
+								"custom": {
+									"key_1": "val_1",
+									"key_2": "val_2"
+								},
+							};
+
+							window.checkout = new NimbblCheckout(options);
+							window.checkout.open(response.data.payment_order_id);
+						}
+						else 
+						{
+							$("#testbooked").modal('show');
+							setTimeout(function(){ window.location = 'https://www.pathkindlabs.com/pathkind_app/my-orders'}, 3000); 
+							//window.location.href = 'https://www.pathkindlabs.com/pathkind_app/my-orders'; 
+							submitBtn.html("Proceed to Book test");
+
+							submitBtn.removeAttr("disabled");
+						}
+						
+			        }
+                    else if (response.status === 202) {
+						$(".form-error").html('');
+						//console.log(response);
+                        $.each(response.errors, function(index, validation) {
+                        	//console.log(index);
+                        	if(index == 'item_patients'){
+								toastr.error("Please add patient for your test to book");
+								$("#collapse-item-1").addClass('show');
+								return false;
+							}
+
+							if(index == 'cart_items'){
+								toastr.error("Please add patient for your test to book");
+								$("#collapse-item-1").addClass('show');
+								return false;
+							}
+							if(index == 'inavlid_city'){
+								toastr.error("Invalid City Found. Home collection city, billing address city and current city must be same");
+								$("#collapse-item-2").addClass('show');
+								return false;
+							}
+							if(validation.field == 'billing_id'){
+								toastr.error("Please add your billing address first to book");
+								$("#collapse-item-2").addClass('show');	
+								return false;
+							}	
+							if(validation.field == 'home_collection_id'){
+								toastr.error("Please add your home collection address first to book");
+								$("#collapse-item-3").addClass('show');	
+								return false;
+							}
+							if(validation.field == 'home_collection_other_detail_id'){
+								toastr.error("Please add your preferred home collection date and time to book");
+								$("#collapse-item-4").addClass('show');	
+								return false;
+							}
+							//$(`#${validation.field}`).find(".form-error").html(validation.error);
+				        });
+						submitBtn.removeAttr("disabled");
+					  
+			        }
+                   
+                }
+            });
+        });
+       
+		$("#same_as_billing_address").click(function(){
+			var checked = $("input[id='same_as_billing_address']:checked").length;
+			var flag = 0;
+			if(checked){
+				var is_billing_address_filled = "1";
+				
+				if(is_billing_address_filled){
+					user_address_id  = $("input[name='default_address']:checked").data("address-id");
+					$.ajax({
+						url:'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/get_default_billing_address',
+						type: "GET",
+						data:{"user_address_id" : user_address_id},
+						success: function(response) {
+							res = JSON.parse(response);
+							if (res.status === 200) {
+								 console.log(res.data);
+
+								
+								 $.each(res.data,function(key,value){
+								 	// if(''){
+								 	// 	toastr.error('Selected test location is not same as current location');
+								 	// 	$( "#same_as_billing_address" ).prop( "checked", false );
+										// return false;
+								 	// }
+								 	if(key == 'state_id' && value != '12'){
+								 		flag = 1;
+										
+									} 
+									if(key == 'city_id' && value != '100'){
+										flag = 1;	
+									} 
+								 });
+								 if(flag == 1)
+								 {
+								 	toastr.error('Selected test is not available at this address');
+										//$("input[id='same_as_billing_address']").attr('checked',false);
+										$( "#same_as_billing_address" ).prop( "checked", false );
+										return false;
+								 }
+								 else{
+								 $.each(res.data,function(key,value){
+									
+									//alert('kk');
+									$("#home_collection_"+key).val(value);
+									
+									if(key == 'state'){
+										$("#home-collection-"+key).val(value);
+									}
+									if(key == 'city'){
+										$("#home-collection-"+key).val(value);
+									}
+									
+								});
+								 }
+								
+							}
+							
+						}
+					});
+					
+				}else{
+					toastr.error("There is no billing address added,Please add billing address first");
+					return false;
+				}
+			} else {
+				$("#home_collection_address_form").trigger("reset");
+				 $("input[name='is_home_collection'][value=1]").prop("checked",true);
+			}
+			
+		});
+		
+		$("input[name='is_home_collection']").click(function(){
+			show_home_collection_addres();
+			if ($(this).val() == 1) {
+				init();
+			}
+			else {
+				get_total_charges();
+			}
+			
+		});
+		
+		$(".add-patient-me").click(function(){
+			$(".sidebar-profile-add").toggle();
+		});
+		// close profile side bar
+		$("#add-profile-close").click(function(){
+			$(".sidebar-profile-add").toggle();
+		});
+		//close info patient side bar
+		$("#add-patient-close").click(function(){
+			$(".sidebar-patient-add").toggle();
+		});
+		
+		//close info patient side bar
+		$("#info-patient-close").click(function(){
+			$(".sidebar-patient-info").toggle();
+		});
+		
+		
+		select2("#location_id",
+				"Select",
+				"https://www.pathkindlabs.com/pathkind_app/packages/get_city_list"
+		);
+		
+		$(".patient-name").click(function() {
+		
+		    var patient_id = $(this).data("patient-id");
+			var item_id = $(this).data("item-id");
+			var item_type = $(this).data("item-type");
+			var patient_name = $(this).data("patient-name");
+			var item_index = $(this).data("item-index");
+			var patientName = $(this);
+			var is_prev_selected_patient = (patientName.parent().parent().siblings("button").html().trim() === 'Select');
+			var prev_patient_id = patientName.parent().parent().siblings("button").attr('patient-id');
+			console.log(patientName.parent().parent().siblings("button").html().trim());
+			$.ajax({
+				url:"https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/assign_patient",
+				method:"post",
+				data:{"patient_id":patient_id,"item_id":item_id,'item_type':item_type,'is_prev_selected_patient':is_prev_selected_patient,'prev_patient_id':prev_patient_id},
+				success:function(response){
+					//alert(response);
+					if( response === '0'){
+						toastr.error("Please select different patient for same test");
+						return false;
+					}
+					{
+						patientName.parent().parent().siblings("button").attr('patient-id',patient_id)
+						patientName.parent().parent().siblings("button").html(patient_name);
+						//on change of patient name populate on summary div
+						$(".summary-item-name#"+item_id+item_index).siblings(".summary-patient-name").html('Patient :'+patient_name);
+
+						$.ajax({
+							url : "https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/is_patient_assignment_complete",
+							method : "GET",
+							success:function(res){
+								res = JSON.parse(res);
+								if (res.status === true) {
+									// $("#collapse-item-1").removeClass('show');	
+									// $("#collapse-item-2").addClass('show');
+									// $("#billing_address").attr('disabled',false);
+									setTimeout(function(){ window.location = 'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public?tab=2'}, 500);	
+									
+								}
+								else {
+									$("#collapse-item-1").addClass('show');	
+									$("#collapse-item-2").removeClass('show');	
+
+								}
+							}
+
+						})
+						
+						is_home_collection_charges = $(".home-collection-charges:visible").length;
+						if(is_home_collection_charges){
+							home_collection_charges = '0';
+							home_collection_charges = home_collection_charges * response;
+							$(".home-collection-charges #collection-charges").html(parseFloat(home_collection_charges).toFixed(2));
+
+							get_total_charges(); 
+						}else{
+							home_collection_charges = 0;
+							get_total_charges(); 
+						}
+						
+					}
+					
+					
+				}
+			});
+		
+		});
+
+
+		$("#billing-state").easyAutocomplete({
+            url: function (phrase) {
+                return `https://www.pathkindlabs.com/pathkind_app/packages/get_state_list?search=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+				match: {
+					enabled: true
+				},
+                onSelectItemEvent: function() {
+                    var value = $("#billing-state").getSelectedItemData().id;
+                    $("#billing-state-holder").val(value).trigger("change");
+                }
+            }
+        });
+		
+		$("#billing-city").easyAutocomplete({
+		    url: function (phrase) {
+				 var state_id = $("#billing-state-holder").val();
+                return `https://www.pathkindlabs.com/pathkind_app/packages/get_city_list?search=${phrase}&state_id=${state_id}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+				match: {
+					enabled: true
+				},
+                onSelectItemEvent: function() {
+                    var value = $("#billing-city").getSelectedItemData().id;
+                    var text = $("#billing-city").getSelectedItemData().text;
+					//setCurrentCity(text);
+                    $("#billing-city-holder").val(value).trigger("change");
+                }
+            }
+        });
+		
+		/*$("#home-collection-state").easyAutocomplete({
+            url: function (phrase) {
+                return `https://www.pathkindlabs.com/pathkind_app/packages/get_state_list?search=${phrase}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+				match: {
+					enabled: true
+				},
+                onSelectItemEvent: function() {
+                    var value = $("#home-collection-state").getSelectedItemData().id;
+                    $("#home_collection_state_id").val(value).trigger("change");
+                }
+            }
+        });
+		
+		$("#home-collection-city").easyAutocomplete({
+		    url: function (phrase) {
+				 var state_id = $("#home_collection_state_id").val();
+                return `https://www.pathkindlabs.com/pathkind_app/packages/get_city_list?search=${phrase}&state_id=${state_id}&format=json`;
+            },
+            getValue: "text",
+            highlightPhrase: true,
+            list: {
+				match: {
+					enabled: true
+				},
+                onSelectItemEvent: function() {
+                    var value = $("#home-collection-city").getSelectedItemData().id;
+                    $("#home_collection_city_id").val(value).trigger("change");
+                }
+            }
+        });*/
+		
+	});
+	
+	
+	function select2_cities(selector, placeholder, url = '') {
+		var $options;
+		if (url.length > 0) {
+			$options = {
+				theme: 'bootstrap4',
+				placeholder: placeholder,
+				minimumInputLength: 1,
+				ajax: {
+					url: url,
+					type: "GET",
+					dataType: "json",
+					delay: 250,
+					data: function(params) {
+						return {
+							state_id: $("#state_id option:selected").val(),
+							q: params.term
+						};
+					},
+					processResults: function(data) {
+						data = JSON.parse(data);
+						return {
+							results: data.list
+						};
+					},
+					cache: true
+				}
+			};
+		}
+		else {
+			$options = {
+				theme: 'bootstrap4',
+				placeholder: placeholder,
+			};
+		}
+
+		$(selector).select2($options);
+	}
+
+	var dtToday = new Date();
+	var dtTomorrow = new Date();
+	dtTomorrow.setDate(dtToday.getDate()+1);
+    //today
+	var maxDate = getFormattedDate(dtToday);
+	var tomorrowDate = getFormattedDate(dtTomorrow);
+	
+	$('#collection_date').attr('min', tomorrowDate);
+	$('#birthdate').attr('max',maxDate);
+	
+	//To show new billing address form
+	function add_billing_address(){
+		$('#add_billing_address_form').trigger("reset");
+		$('#address_id').val('');
+		$('#user_address_id').val('');
+	 	$(".schedule-home-form").show();
+	}
+
+	
+	
+	function getFormattedDate(dtToday)
+	{
+		var month = dtToday.getMonth() + 1;
+		var day = dtToday.getDate();
+		var year = dtToday.getFullYear();
+		
+		
+		if(month < 10)
+			month = '0' + month.toString();
+		if(day < 10)
+			  day = '0' + day.toString();
+		  
+		return year + '-' + month + '-' + day; 
+	}
+	
+	 //To make one address default address
+	function set_default_address(address_id){
+		//if radio button is checked  then update selected address as default address
+		var checked = $("input[name='default_address']:checked").val();
+		if(checked){
+			
+			$.ajax({
+				url:'https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/set_default_address',
+				type: "POST",
+				dataType: "json",
+				data:{"user_address_id" : address_id,'csrf_test_name': "26424dddac305e9f479f8c929363d4e2"},
+				success: function(response) {
+					response = JSON.parse(response);
+                    $('input[name="csrf_test_name"]').val(response.csrfToken);
+                    if (response.status === 201 || response.status === 200) {
+                    	console.log(response);
+						$("input[name=default_address][value=" + address_id + "]").prop('checked', true);
+						$('input[name="billing_id"]').val(address_id);
+						$("#home_collection_address_1").val('');
+						$("#home_collection_address_1").attr('placeholder','Address Line 1');
+						$("#home_collection_pincode").val('');
+						$( "#same_as_billing_address" ).prop( "checked", false );
+					}
+					
+				}
+			});
+		}
+		
+	}
+	
+	function saveHomeCollectionCharges() {
+		
+	}
+
+	function getHomeCollectionCharges() {
+		return $("#__home_collection_charges").val();
+	}
+
+	function changeHomeCollectionCharges() {
+		$.ajax({
+			url: "https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/fetch_home_collection_charges",
+			method: "GET",
+			success: function(response) {
+				response = JSON.parse(response);
+				$("#collection-charges").html(response.charges);
+			}
+		});
+	}
+
+	$(".action-editaddress").click(function(){
+	    var address_id = $(this).attr("address-id");
+	    var user_address_id = $(this).attr("user-address-id");
+	    $.ajax({
+	        url:"https://www.pathkindlabs.com/pathkind_app/users/users_public/get_address",
+	        method:"get",
+	        data:{"address_id":address_id},
+	        success:function(response){
+
+	            response = JSON.parse(response);
+	            if (response.status === 200) {
+	               //console.log(response.data['id']);
+	               $("#address_id").val(address_id);
+	               $("#user_address_id").val(user_address_id); 
+	               $('#address_1').val(response.data['address_1']);
+	               $('#address_2').val(response.data['address_2']);
+	               $('#billing-state').val(response.data['state_name']);
+	               $('#billing-state-holder').val(response.data['state_id']);
+	               $('#billing-city').val(response.data['city_name']);
+	               $('#billing-city-holder').val(response.data['city_id']);
+	               $('#pincode').val(response.data['pincode']);
+	                 
+	            }
+	        }
+	    });
+	    $(".schedule-home-form").show();
+	});
+
+	function tabs_check()
+	{
+		$.ajax({
+			url : "https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/checkout_tabs_check",
+			method : "GET",
+			success:function(res){
+				alert(res);
+				if (res == 1) {
+					$("#collapse-item-1").removeClass('show');	
+					$("#collapse-item-2").addClass('show');
+					$("#home_collection_tab").attr('disabled',false);
+					$('#billing_address').attr('disabled', false);
+					$('#payment_details').attr('disabled', true);	
+				}else if (res == 2)
+				{
+					$('#billing_address').attr('disabled', false);
+					$("#collapse-item-1").removeClass('show');	
+					$("#collapse-item-2").addClass('show');
+					$('#payment_details').attr('disabled', true);
+					//$("#collapse-item-3").addClass('show');
+				}
+				else if(res == 0){
+					$("#collapse-item-1").addClass('show');
+					$("#collapse-item-2").removeClass('show');
+				}
+				else {
+					$("#collapse-item-1").removeClass('show');	
+					$("#collapse-item-2").removeClass('show');
+					$('#billing_address').attr('disabled', true);	
+
+				}
+			}
+
+		})
+	}
+
+	
+ </script></body>
+
+</html>

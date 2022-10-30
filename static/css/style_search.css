@@ -494,8 +494,8 @@ input#search-bar:focus:-ms-placeholder {transition: opacity 0.45s ease;opacity: 
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #48585f;
-  text-decoration: underline;
+  color: #48585f !important;
+  text-decoration: underline !important;
 }
 .test-cards .count-control{
 
