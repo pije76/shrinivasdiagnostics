@@ -26,8 +26,9 @@ urlpatterns = [
     path('profile/', include('accounts.urls')),
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
-    path('checkout/', checkout, name='checkout'),
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
+    path('checkout/', checkout, name='checkout'),
+     path('payment/', paymenthandler, name='paymenthandler'),
 
     path('summernote/', include('django_summernote.urls')),
     path('selectable/', include('selectable.urls')),

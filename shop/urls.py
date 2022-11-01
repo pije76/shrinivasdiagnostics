@@ -12,7 +12,7 @@ urlpatterns = [
      # path('order-summary/', order_summary, name='order_summary'),
      # path('checkout/', checkout, name='checkout'),
      # path('payment/<payment_option>/', payment, name='payment'),
-
+     # path('payment/', paymenthandler, name='paymenthandler'),
      # path('', FacetedSearchView.as_view(), name='haystack_search'),
      # path('find/', FacetedSearchView.as_view(), name='haystack_search'),
      # path('product/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),

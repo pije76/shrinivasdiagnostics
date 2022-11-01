@@ -7,5 +7,5 @@ urlpatterns = [
     path('process/',views.create_order,name="process"),
     path('response/',views.payment_process,name="response"),
     path('canceled/',views.payment_canceled,name="canceled"),
-    re_path(r'^paypal/', include('paypal.standard.ipn.urls'),name="paypal-ipn"),
+    path('paypal/', include('paypal.standard.ipn.urls'),name="paypal-ipn"),
 ]

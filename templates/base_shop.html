@@ -43,6 +43,7 @@
     <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+    <script src="{% static 'js/selectable_select2/js/checkout.js' %}" type="text/javascript"></script>
 
     {% block extra_jscript %}
     {% endblock %}
@@ -80,6 +81,35 @@
             formURL: "{% url 'accounts:login_view_modal' %}"
         });
     });
+
+    var options =
+    {
+        // Enter the Key ID generated from the Dashboard
+        key: "{{ razorpay_merchant_key }}",
+
+        // Amount is in currency subunits.
+        // Default currency is INR. Hence,
+        // 50000 refers to 50000 paise
+        amount: "{{ razorpay_amount }}",
+        currency: "{{ currency }}",
+
+        // Your/store name.
+        name: "Dj Razorpay",
+
+        // Pass the `id` obtained in the response of Step 1
+        order_id: "{{ razorpay_order_id }}",
+        callback_url: "{{ callback_url }}",
+    };
+
+    // initialise razorpay with the options.
+    var rzp1 = new Razorpay(options);
+
+    // add event listener to the payment button.
+    document.getElementById("pay-btn").onclick = function (e)
+    {
+        rzp1.open();
+        e.preventDefault();
+    };
 
     </script>
     {% endblock %}

@@ -58,7 +58,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'bootstrap_modal_forms',
 	'selectable',
+    'selectable_select2',
+    'jquery',
+    'staticfiles_select2',
     'paypal.standard.ipn',
+
 ]
 
 MIDDLEWARE = [
@@ -197,12 +201,16 @@ BOOTSTRAP4 = {
 	'include_jquery': True,
 }
 
+SELECTABLE_ESCAPED_KEYS = ('label', 'value')
+
+FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'
+
 CART_SESSION_ID = 'cart'
 
 # # Razorpay settings
 ############ test ##################### 
-RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'
-RAZORPAY_SECRET_KEY = 'vPGDTwajuC4X6KDxln8ZvQRv'
+RAZOR_KEY_ID = 'rzp_test_M3FiS15dd7cPbJ'
+RAZORPAY_SECRET_KEY = 'D9lt3eTUvmutnUYBJRb1wwMC'
 
 # ########## live #####################
 # RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'

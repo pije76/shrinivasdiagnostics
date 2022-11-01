@@ -1,13 +1,19 @@
-from django.shortcuts import render
+from django.conf import settings
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
-from django.views.generic import TemplateView
+from django.http import HttpResponseBadRequest
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
 
 from accounts.models import *
 from shop.models import *
 from .models import *
 from .forms import *
+
+import razorpay
+razorpay_client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZORPAY_SECRET_KEY))
 
 # Create your views here.
 def homepage(request):
@@ -15,7 +21,14 @@ def homepage(request):
 	titles = _('Check the Best Blood Test &amp; Pathology Lab in India with Shrinivas Diagnostics Labs')
 	# member = Profile.objects.get(email=request.user)
 	# get_status = Profile.objects.filter(email=request.user).values_list('is_active', flat=True).first()
- 
+	currency = 'INR'
+	amount = 20000
+	razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, payment_capture='0'))
+
+	# order id of newly created order.
+	razorpay_order_id = razorpay_order['id']
+	callback_url = 'paymenthandler/'
+
 	initial_dict = {
 		# 'ticker_code': get_ticker_id,
 	}
@@ -60,6 +73,11 @@ def homepage(request):
 	# 		form = ProductForm(initial=initial_dict, instance=request.user)
 
 	context = {
+		'razorpay_order_id': razorpay_order_id,
+		'razorpay_merchant_key': settings.RAZOR_KEY_ID,
+		'razorpay_amount': amount,
+		'currency': currency,
+		'callback_url': callback_url,
 		'titles': titles,
 		'form': form,
 		# 'get_ticker_name': get_ticker_name,
