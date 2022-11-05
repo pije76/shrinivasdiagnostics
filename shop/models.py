@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import *
 
@@ -10,6 +11,13 @@ LABEL = (
     ('doctor', 'Doctor'),
     ('patient', 'Patient')
 )
+
+PAYMENT_STATUS = (
+    ('success', 'Success'),
+    ('failure', 'Failure'),
+    ('pending', 'Pending')
+)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
@@ -75,9 +83,14 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
+    # status = models.CharField(_("Payment Status"), choices=PAYMENT_STATUS, default='pending', max_length=20, blank=False, null=False,)
+    # order_id = models.CharField(_("Order ID"), max_length=40, null=False, blank=False)
+    # payment_id = models.CharField(_("Payment ID"), max_length=36, null=False, blank=False)
+    # signature_id = models.CharField(_("Signature ID"), max_length=128, null=False, blank=False)
     
     def __str__(self):
         return f"{self.quantity} of {self.product.name}"
+        # return f"{self.id}-{self.name}-{self.status}"
     
     def get_total_item_price(self):
         return self.quantity * self.product.price

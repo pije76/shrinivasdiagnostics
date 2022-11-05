@@ -5,14 +5,14 @@ from .views import *
 app_name='shop'
 
 urlpatterns = [
-     path('', product_list, name='product_list'),
-     path('add-to-cart/<pk>/', add_to_cart, name='add_to_cart'),
-     path('remove-from-cart/<pk>/', remove_from_cart, name='remove_from_cart'),
-     path('reduce-quantity-item/<pk>/', reduce_quantity_item, name='reduce_quantity_item'),
+    path('', product_list, name='product_list'),
+    path('add-to-cart/<pk>/', add_to_cart, name='add_to_cart'),
+    path('remove-from-cart/<pk>/', remove_from_cart, name='remove_from_cart'),
+	path('reduce-quantity-item/<pk>/', reduce_quantity_item, name='reduce_quantity_item'),
      # path('order-summary/', order_summary, name='order_summary'),
      # path('checkout/', checkout, name='checkout'),
      # path('payment/<payment_option>/', payment, name='payment'),
-     # path('payment/', paymenthandler, name='paymenthandler'),
+	# path('paymenthandler/', paymenthandler, name='paymenthandler'),
      # path('', FacetedSearchView.as_view(), name='haystack_search'),
      # path('find/', FacetedSearchView.as_view(), name='haystack_search'),
      # path('product/(?P<slug>[\w-]+)/$', ProductView.as_view(), name='product'),

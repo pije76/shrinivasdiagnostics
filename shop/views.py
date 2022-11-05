@@ -22,7 +22,8 @@ import stripe
 import razorpay
 
 stripe.api_key = settings.STRIPE_KEY
-razorpay_client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZORPAY_SECRET_KEY))
+razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+
 
 def product_list(request, category_slug=None):
     titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
@@ -35,7 +36,7 @@ def product_list(request, category_slug=None):
     
     currency = 'INR'
     amount = 20000
-    
+
     # Create a Razorpay Order
     razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, payment_capture='0'))
     # order id of newly created order.
@@ -49,7 +50,7 @@ def product_list(request, category_slug=None):
         'categories': categories,
         'products': products,
         'razorpay_order_id': razorpay_order_id,
-        'razorpay_merchant_key': settings.RAZOR_KEY_ID,
+        'razorpay_merchant_key': settings.RAZORPAY_KEY_ID,
         'razorpay_amount': amount,
         'currency': currency,
         'callback_url': callback_url,
@@ -69,7 +70,7 @@ def product_detail(request, pk):
         # 'titles': titles,
         'product': product,
         'cart_product_form': cart_product_form,
-    } 
+    }
 
     # return render(request, 'shop/product/product_detail.html', context)
     return render(request, 'shop/product_detail.html', context)
@@ -82,7 +83,7 @@ def add_to_cart(request, pk):
 
     if order_qs.exists():
         order = order_qs[0]
-        
+
         if order.items.filter(product__pk=item.pk).exists():
             order_item.quantity += 1
             order_item.save()
@@ -197,7 +198,7 @@ class CheckoutView(View):
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
-        
+
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             if form.is_valid():
@@ -221,7 +222,73 @@ class CheckoutView(View):
             messages.error(self.request, "You do not have an order")
             return redirect("shopping_cart")
 
-checkout = CheckoutView.as_view()
+checkout_view = CheckoutView.as_view()
+
+def checkout(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        razorpay_order = client.order.create(
+            {"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"}
+        )
+        order = Order.objects.create(
+            name=name, amount=amount, provider_order_id=payment_order["id"]
+        )
+        order.save()
+
+        context = {
+            "callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
+            "razorpay_key": RAZORPAY_KEY_ID,
+            "order": order,
+        }
+
+        return render(request, "shop/payment.html", context)
+    return render(request, "shop/payment.html")
+
+@csrf_exempt
+def callback(request):
+    def verify_signature(response_data):
+        client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+        return client.utility.verify_payment_signature(response_data)
+
+    if "razorpay_signature" in request.POST:
+        payment_id = request.POST.get("razorpay_payment_id", "")
+        provider_order_id = request.POST.get("razorpay_order_id", "")
+        signature_id = request.POST.get("razorpay_signature", "")
+        order = Order.objects.get(provider_order_id=provider_order_id)
+        order.payment_id = payment_id
+        order.signature_id = signature_id
+        order.save()
+
+        context = {
+            "status": order.status,
+        }
+
+        if not verify_signature(request.POST):
+            order.status = PaymentStatus.SUCCESS
+            order.save()
+            return render(request, "shop/callback.html", context)
+        else:
+            order.status = PaymentStatus.FAILURE
+            order.save()
+            return render(request, "shop/callback.html", context)
+    else:
+        payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
+        provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
+            "order_id"
+        )
+        order = Order.objects.get(provider_order_id=provider_order_id)
+        order.payment_id = payment_id
+        order.status = PaymentStatus.FAILURE
+        order.save()
+
+        context = {
+            "status": order.status,
+        }
+
+        return render(request, "shop/callback.html", context)
+
 
 
 class PaymentView(View):
@@ -280,20 +347,19 @@ class PaymentView(View):
         except stripe.error.StripeError as e:
             messages.error(self.request, "Something went wrong")
             return redirect('/')
-        
+
         except Exception as e:
             messages.error(self.request, "Not identified error")
             return redirect('/')
 
-payment = PaymentView.as_view()
+#payment = PaymentView.as_view()
 
-@csrf_exempt
+#@csrf_exempt
 def paymenthandler(request):
- 
+
     # only accept POST request.
     if request.method == "POST":
         try:
-           
             # get the required parameters from post request.
             payment_id = request.POST.get('razorpay_payment_id', '')
             razorpay_order_id = request.POST.get('razorpay_order_id', '')
@@ -308,22 +374,22 @@ def paymenthandler(request):
             result = razorpay_client.utility.verify_payment_signature(
                 params_dict)
             if result is not None:
-                amount = 20000  # Rs. 200
+                amount = 20000
                 try:
  
                     # capture the payemt
                     razorpay_client.payment.capture(payment_id, amount)
  
                     # render success page on successful caputre of payment
-                    return render(request, 'paymentsuccess.html')
+                    return render(request, 'shop/paymentsuccess.html')
                 except:
  
                     # if there is an error while capturing payment.
-                    return render(request, 'paymentfail.html')
+                    return render(request, 'shop/paymentfail.html')
             else:
  
                 # if signature verification fails.
-                return render(request, 'paymentfail.html')
+                return render(request, 'shop/paymentfail.html')
         except:
  
             # if we don't find the required parameters in POST data

@@ -209,8 +209,9 @@ CART_SESSION_ID = 'cart'
 
 # # Razorpay settings
 ############ test ##################### 
-RAZOR_KEY_ID = 'rzp_test_M3FiS15dd7cPbJ'
-RAZORPAY_SECRET_KEY = 'D9lt3eTUvmutnUYBJRb1wwMC'
+
+RAZORPAY_KEY_ID = 'rzp_test_M3FiS15dd7cPbJ'
+RAZORPAY_KEY_SECRET = 'D9lt3eTUvmutnUYBJRb1wwMC'
 
 # ########## live #####################
 # RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'
