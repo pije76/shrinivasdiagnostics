@@ -55,13 +55,9 @@
 
     {% block jscript %}
 
-    <!-- Razorpay's Javascript code. -->
     <script type="text/javascript">
     $(document).ready(function()
     {
-        var data_from_url = "{{ user.username }}";
-        var urls = "/chart/";
-    
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
     
         function csrfSafeMethod(method)
@@ -81,42 +77,35 @@
         });    
     });
 
-    $(function ()
-    {
-        $("#login-btn").modalForm(
-        {
-            formURL: "{% url 'accounts:login_view_modal' %}"
-        });
-    });
-
     var options =
     {
-        // Enter the Key ID generated from the Dashboard
-        key: "{{ razorpay_merchant_key }}",
-
-        // Amount is in currency subunits.
-        // Default currency is INR. Hence,
-        // 50000 refers to 50000 paise
-        amount: "{{ razorpay_amount }}",
-        currency: "{{ currency }}",
-
-        // Your/store name.
-        name: "Dj Razorpay",
-
-        // Pass the `id` obtained in the response of Step 1
-        order_id: "{{ razorpay_order_id }}",
-        callback_url: "{{ callback_url }}",
+        key: "{{razorpay_key}}",
+        amount: "{{order.amount}}",
+        currency: "INR",
+        name: "{{order.name}}",
+        description: "Test Transaction",
+        image: "https://example.com/your_logo",
+        order_id: "{{order.provider_order_id}}",
+        callback_url: "{{callback_url}}",
+        redirect: true,
+        prefill:
+        {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
+        notes:
+        {
+            "address": "Razorpay Corporate Office"
+        },
+        theme:
+        {
+            "color": "#3399cc"
+        }
     };
 
-    // initialise razorpay with the options.
     var rzp1 = new Razorpay(options);
-
-    // add event listener to the payment button.
-    document.getElementById("pay-btn").onclick = function (e)
-    {
-        rzp1.open();
-        e.preventDefault();
-    };
+    rzp1.open();
 
     </script>
     {% endblock %}

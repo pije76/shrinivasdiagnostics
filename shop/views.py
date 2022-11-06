@@ -20,6 +20,7 @@ from .forms import *
 
 import stripe
 import razorpay
+import json
 
 stripe.api_key = settings.STRIPE_KEY
 razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
@@ -243,8 +244,8 @@ def checkout(request):
             "order": order,
         }
 
-        return render(request, "shop/payment.html", context)
-    return render(request, "shop/payment.html")
+        return render(request, "shop/checkout.html", context)
+    return render(request, "shop/checkout.html")
 
 @csrf_exempt
 def callback(request):

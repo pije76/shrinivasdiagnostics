@@ -18,30 +18,30 @@
 <link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
 <style>
-    input#search-bar-header:focus::-webkit-input-placeholder {
-        transition: opacity 0.45s ease;
-        opacity: 0;
-      }
+input#search-bar-header:focus::-webkit-input-placeholder {
+transition: opacity 0.45s ease;
+opacity: 0;
+}
 
-      input#search-bar-header:focus::-moz-placeholder {
-        transition: opacity 0.45s ease;
-        opacity: 0;
-      }
+input#search-bar-header:focus::-moz-placeholder {
+transition: opacity 0.45s ease;
+opacity: 0;
+}
 
-      input#search-bar-header:focus:-ms-placeholder {
-        transition: opacity 0.45s ease;
-        opacity: 0;
-      }
+input#search-bar-header:focus:-ms-placeholder {
+transition: opacity 0.45s ease;
+opacity: 0;
+}
 
-      div,
-      .profile-item {
-        word-wrap: break-word;
-      }
-  }
+div,
+.profile-item {
+word-wrap: break-word;
+}
 </style>
 {% endblock %}
 
 {% block extra_jscript %}
+<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
@@ -55,595 +55,502 @@
 
 {% block content %}
 
-<header class="site-header">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-12 flex">
-                <div class="logo">
-                    <a href="https://www.pathkindlabs.com/">
-                        <img class="img-fluid" src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/logo.png"></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-5 col-sm-12 offset-md-2">
-                    <div class="header-filter">
-                        <div class="filter-bar-top">
-                            <form action="https://www.pathkindlabs.com/pathkind_app/book-blood-test-online-in-india" id="test_location_search_header_form_header" method="GET" accept-charset="utf-8">
-                                <input type="text" id="search-bar-header" class="city-search-header box" placeholder="Change City" value="Gurugram" name="q" />
-                                <input type="hidden" name="test_location_id" id="city-holder-header" />
-                            </form>
-                            <div class="test-search-bar">
-                                <form action="https://www.pathkindlabs.com/pathkind_app/book-blood-test-online-in-india" id="test_search_header_form_header" method="GET" accept-charset="utf-8">
-                                    <input type="text" id="search-bar-2-header" class="test_search_input_field_header box" placeholder="Search for a test or health package" name="q" />
-                                    <input type="hidden" name="test_package_name" id="test-package-search-holder-header" />
-                                </form>
-                            </div>
-                            <div class="search-error form-error"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 text-right md-0">
-                    <div class="right-infos">
-                        <ul>
-                            <li class="cart">
-                                <a href="https://www.pathkindlabs.com/pathkind_app/shopping-cart" title="cart">
-                                    <div class="img">
-                                        <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/cart.png" class="img-fluid">
-                                        <span class="cart-badge" style="display:none"><span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="user">
-                                <a href="#" id="profile-open" title="Hi Tes">
-                                    <div class="img">T</div>
-                                </a>
-                                <div class="side-login side-profile" style="display:none;">
-                                    <a href="#" class="close-login" id="profile-close-2">
-                                        <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid">
-                                    </a>
-                                    <div class="side-login-inner">
-                                        <div class="header">
-                                            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
-                                        </div>
-                                        <div class="login-card loggedin">
-                                            <h2>Hi, Tes</h2>
-                                            <p><a href="https://www.pathkindlabs.com/pathkind_app/my-orders">Orders</a></p>
-                                            <p><a href="https://www.pathkindlabs.com/pathkind_app/profile">Profile</a></p>
-                                            <!-- <p><a href="#">Privilege Card</a></p>
-                                                <p><a href="#">Test History</a></p> -->
-                                                <p><a href="https://www.pathkindlabs.com/pathkind_app/users/users_public/logout">Logout</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-</section>
-
 <!-- Inner checkout items start -->
 <div class="inner-checkout">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="flex-inline">
-                    <div class="heading-small-v-2">Order Overview</div>
-                    <a href="https://www.pathkindlabs.com/pathkind_app/book-blood-test-online-in-india" class="btn-1 btn">+ Add Tests</a>
-                </div>
-                <div class="accordian checkout-collapse">
-                    <!-- item-1 -->
-                    <div  id="checkout-collapse-item-1">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-item-1" aria-expanded="true" aria-controls="collapse-item-1">1. Assign Tests to Patient(s)</button>
-                                </h2>
-                            </div>
-                            <div id="collapse-item-1" class="collapse checkout-collapse-body" aria-labelledby="headingOne" data-parent="#checkout-collapse-item-1">
-                                <div class="card-body">
-                                    <small>Please seclect a patient for each test</small>
-                                    <div class="flex-inline inner-checkout-strip">
-                                        <p class="item-name" item-price="200">TSH 3rd Generation </p>
-                                        <div class="dropdown checkout-add-more-patient">
-                                            <button patient-id="" class="btn dropdown-toggle selected-patient" type="button" id="dropdownMenuButton select"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select</button>
-                                            <div class="dropdown-menu patient-list" aria-labelledby="dropdownMenuButton">
-                                                <a class="add-patient add-new-patient" item-id="1226" item-type="1">+ Add new patient</a>
-                                                <div class="patient-count flex-inline">
-                                                    <p class="name patient-name"  data-patient-name="Tes" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">Tes</p>
-                                                    <a class="info-patient" patient-id="45000">info</a>
-                                                </div>
-                                                <div class="patient-count flex-inline">
-                                                    <p class="name patient-name"  data-patient-name="qqqq" data-patient-id="45215" data-item-index="1" data-item-id="1226" data-item-type="1">Qqqq</p>
-                                                    <a class="info-patient" patient-id="45215">info</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- <a class="add-patient" item-id="1226" item-type="1">+ Add Patient</a> -->
-                                    </div>
-                                </div>
-                            </div>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-8 col-md-8 col-sm-12">
+
+        <div class="flex-inline">
+          <div class="heading-small-v-2">Order Overview</div>
+          <a href="/book-blood-test-online-in-india/" class="btn-1 btn">+ Add Tests</a>
+        </div>
+
+        <div class="accordian checkout-collapse">
+
+          <!-- item-1 -->
+          <div  id="checkout-collapse-item-1">
+
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-item-1" aria-expanded="true" aria-controls="collapse-item-1">1. Assign Tests to Patient(s)</button>
+                </h2>
+              </div>
+
+              <div id="collapse-item-1" class="collapse checkout-collapse-body" aria-labelledby="headingOne" data-parent="#checkout-collapse-item-1">
+                <div class="card-body">
+                  <small>Please seclect a patient for each test</small>
+                  <div class="flex-inline inner-checkout-strip">
+                    <p class="item-name" item-price="200">TSH 3rd Generation </p>
+                    <div class="dropdown checkout-add-more-patient">
+                      <button patient-id="" class="btn dropdown-toggle selected-patient" type="button" id="dropdownMenuButton select"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select</button>
+                      <div class="dropdown-menu patient-list" aria-labelledby="dropdownMenuButton">
+                        <a class="add-patient add-new-patient" item-id="1226" item-type="1">+ Add new patient</a>
+                        <div class="patient-count flex-inline">
+                          <p class="name patient-name"  data-patient-name="Tes" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">Tes</p>
+                          <a class="info-patient" patient-id="45000">info</a>
                         </div>
+                        <div class="patient-count flex-inline">
+                          <p class="name patient-name"  data-patient-name="qqqq" data-patient-id="45215" data-item-index="1" data-item-id="1226" data-item-type="1">Qqqq</p>
+                          <a class="info-patient" patient-id="45215">info</a>
+                        </div>
+                      </div>
                     </div>
-                    <div class="sidebar-patient-add">
-                        <a class="close-sidebar" id="add-patient-close"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
-                        <div class="sidebar-inner">
-                            <div class="header">
-                                <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
-                            </div>
-                            <div class="sidebar">
-                                <h3 class="heading-small-v-2">Add Patient</h3>
-                                <form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post" accept-charset="utf-8">
-                                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
-                                    <div class="form-group pb-0 mb-0">
-                                        <input class="custom-form-control alpha_space_only" name="name" id="name" type="text" placeholder="Name" maxlength="60">
-                                        <span class="form-error"></span>
-                                    </div>
-                                    <!--<div class="form-group pb-0 mb-0 city">
-                                        <select name="location_id" id="location_id">
-                                            <option value="">Select</option>
-                                            <option value="100" selected>Gurugram</option>
-                                        </select>
-                                        <span class="form-error"></span>
-                                    </div>-->
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control" name="birthdate" id="birthdate" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
-                                    <span class="form-error"></span>
-                                </div>
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control number_only" name="mobile" id="mobile" type="text" placeholder="mobile" maxlength="10" value="">
-                                    <span class="form-error"></span>
-                                </div>
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control email_only" name="email" id="email" type="email" placeholder="Email" maxlength="255" value="">
-                                    <span class="form-error"></span>
-                                </div>
-                                <div class="row flex-custom-gender">
-                                    <div class="form-group">
-                                        <select name="gender" class="custom-form-control" id="gender">
-                                            <option value="" selected="selected">Select Gender</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                            <option value="3">Other</option>
-                                        </select>
-                                        <span class="form-error"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <select name="relation" class="custom-form-control" id="relation">
-                                            <option value="" selected="selected">Select Relation</option>
-                                            <option value="1">Father</option>
-                                            <option value="2">Mother</option>
-                                            <option value="3">Spouse</option>
-                                            <option value="4">Son</option>
-                                            <option value="5">Daughter</option>
-                                            <option value="6">Family</option>
-                                        </select>
-                                        <span class="form-error"></span>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn-2 add-patient-for-test-btn">Done</button>
-                            </form>
-                        </div>
-                    </div>
+                    <!-- <a class="add-patient" item-id="1226" item-type="1">+ Add Patient</a> -->
+                  </div>
                 </div>
-                <div class="sidebar-profile-add" style="display:none;">
-                    <a class="close-sidebar" id="add-profile-close"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
-                    <div class="sidebar-inner">
-                        <div class="header">
-                            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
-                        </div>
-                        <div class="sidebar">
-                            <h3 class="heading-small-v-2">Add Patient</h3>
-                            <form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post" accept-charset="utf-8">
-                                <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
-                                <input type="hidden" name="user_id" value="43142">
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control alpha_space_only" name="name" value="Tes" id="name1" type="text" placeholder="Name" maxlength="60">
-                                    <span class="form-error"></span>
-                                </div>
-                                <!--<div class="form-group pb-0 mb-0 city">
-                                <select name="location_id" id="location_id">
-                                <option value="">Select</option>
-                                <option value="100" selected>Gurugram</option>
-                                </select>
-                                <span class="form-error"></span>
-                                </div>-->
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control" name="birthdate" id="birthdate1" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
-                                    <span class="form-error"></span>
-                                </div>
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control number_only" name="mobile" id="mobile1" type="text" maxlength="60" placeholder="mobile" value="8968306095">
-                                    <span class="form-error"></span>
-                                </div>
-                                <div class="form-group pb-0 mb-0">
-                                    <input class="custom-form-control email_only" name="email" id="email1" type="email" maxlength="255" placeholder="Email" value="tes@test.com">
-                                    <span class="form-error"></span>
-                                </div>
-                                <div class="form-group pb-0 mb-0">
-                                    <select name="gender" class="custom-form-control" id="gender1">
-                                        <option value="" selected="selected">Select Gender</option>
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
-                                        <option value="3">Other</option>
-                                    </select>
-                                    <span class="form-error"></span>
-                                </div>
-                                <button type="submit" class="btn-2 add-profile-for-test-btn">Done</button>
-                            </form>
-                        </div>
-                    </div>
+              </div>
+            </div>
+
+            <div class="sidebar-patient-add">
+              <a class="close-sidebar" id="add-patient-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+              <div class="sidebar-inner">
+                <div class="header">
+                  <img src="/assets/images/white-logo.png">
                 </div>
-                <div class="sidebar-patient-info">
-                    <a class="close-sidebar" id="info-patient-close"><img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/close.png" class="img-fluid"></a>
-                    <div class="sidebar-inner">
-                        <div class="header">
-                            <img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/white-logo.png">
-                        </div>
-                        <div class="sidebar">
-                            <h3 class="heading-small-v-2">Patient Info</h3>
-                            <div class="form-group pb-0 mb-0">
-                                <label>Name</label>
-                                <label class="name"></label>
-                            </div>
-                            <div class="form-group pb-0 mb-0">
-                                <label>Date Of Birth</label>
-                                <label class="birthdate"></label>
-                            </div>
-                            <div class="form-group pb-0 mb-0">
-                                <label>Mobile</label>
-                                <label class="mobile"></label>
-                            </div>
-                            <div class="form-group pb-0 mb-0">
-                                <label>Email</label>
-                                <label class="email"></label>
-                            </div>
-                            <div class="form-group pb-0 mb-0">
-                                <label>Gender</label>
-                                <label class="gender"></label>
-                            </div>
-                            <div class="form-group pb-0 mb-0">
-                                <label>Relation</label>
-                                <label class="relation"></label>
-                            </div>
-                        </div>
+                <div class="sidebar">
+                  <h3 class="heading-small-v-2">Add Patient</h3>
+
+                  <form action="/checkout/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control alpha_space_only" name="name" id="name" type="text" placeholder="Name" maxlength="60">
+                      <span class="form-error"></span>
                     </div>
+
+                    <!--
+                    <div class="form-group pb-0 mb-0 city">
+                      <select name="location_id" id="location_id">
+                        <option value="">Select</option>
+                        <option value="100" selected>Gurugram</option>
+                      </select>
+                      <span class="form-error"></span>
+                    </div>
+                    -->
+
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control" name="birthdate" id="birthdate" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
+                      <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control number_only" name="mobile" id="mobile" type="text" placeholder="mobile" maxlength="10" value="">
+                      <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control email_only" name="email" id="email" type="email" placeholder="Email" maxlength="255" value="">
+                      <span class="form-error"></span>
+                    </div>
+
+                    <div class="row flex-custom-gender">
+                      <div class="form-group">
+                        <select name="gender" class="custom-form-control" id="gender">
+                          <option value="" selected="selected">Select Gender</option>
+                          <option value="1">Male</option>
+                          <option value="2">Female</option>
+                          <option value="3">Other</option>
+                        </select>
+                        <span class="form-error"></span>
+                      </div>
+                      <div class="form-group">
+                        <select name="relation" class="custom-form-control" id="relation">
+                          <option value="" selected="selected">Select Relation</option>
+                          <option value="1">Father</option>
+                          <option value="2">Mother</option>
+                          <option value="3">Spouse</option>
+                          <option value="4">Son</option>
+                          <option value="5">Daughter</option>
+                          <option value="6">Family</option>
+                        </select>
+                        <span class="form-error"></span>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn-2 add-patient-for-test-btn">Done</button>
+                  </form>
+
                 </div>
-                <!-- Sidebar patient add -->
-                <!-- item-2 -->
-                <div id="checkout-collapse-item-2">
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-2" id="billing_address" aria-expanded="false" aria-controls="collapse-item-2"  >2. Billing Address</button>
-                            </h2>
+              </div>
+            </div>
+
+            <div class="sidebar-profile-add" style="display:none;">
+              <a class="close-sidebar" id="add-profile-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+              <div class="sidebar-inner">
+                <div class="header">
+                  <img src="/assets/images/white-logo.png">
+                </div>
+
+                <div class="sidebar">
+                  <h3 class="heading-small-v-2">Add Patient</h3>
+                  <form action="/checkout/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+                    <input type="hidden" name="user_id" value="43142">
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control alpha_space_only" name="name" value="Tes" id="name1" type="text" placeholder="Name" maxlength="60">
+                      <span class="form-error"></span>
+                    </div>
+
+                    <!--
+                    <div class="form-group pb-0 mb-0 city">
+                    <select name="location_id" id="location_id">
+                    <option value="">Select</option>
+                    <option value="100" selected>Gurugram</option>
+                    </select>
+                    <span class="form-error"></span>
+                    </div>
+                    -->
+
+                    <div class="form-group pb-0 mb-0"><input class="custom-form-control" name="birthdate" id="birthdate1" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
+                      <span class="form-error"></span>
+                    </div>
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control number_only" name="mobile" id="mobile1" type="text" maxlength="60" placeholder="mobile" value="8968306095">
+                      <span class="form-error"></span>
+                    </div>
+                    <div class="form-group pb-0 mb-0">
+                      <input class="custom-form-control email_only" name="email" id="email1" type="email" maxlength="255" placeholder="Email" value="tes@test.com">
+                      <span class="form-error"></span>
+                    </div>
+                    <div class="form-group pb-0 mb-0">
+                      <select name="gender" class="custom-form-control" id="gender1">
+                        <option value="" selected="selected">Select Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        <option value="3">Other</option>
+                      </select>
+                      <span class="form-error"></span>
+                    </div>
+                    <button type="submit" class="btn-2 add-profile-for-test-btn">Done</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-patient-info">
+              <a class="close-sidebar" id="info-patient-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+              <div class="sidebar-inner">
+                <div class="header">
+                  <img src="/assets/images/white-logo.png">
+                </div>
+                <div class="sidebar">
+                  <h3 class="heading-small-v-2">Patient Info</h3>
+                  <div class="form-group pb-0 mb-0">
+                    <label>Name</label>
+                    <label class="name"></label>
+                  </div>
+                  <div class="form-group pb-0 mb-0">
+                    <label>Date Of Birth</label>
+                    <label class="birthdate"></label>
+                  </div>
+                  <div class="form-group pb-0 mb-0">
+                    <label>Mobile</label>
+                    <label class="mobile"></label>
+                  </div>
+                  <div class="form-group pb-0 mb-0">
+                    <label>Email</label>
+                    <label class="email"></label>
+                  </div>
+                  <div class="form-group pb-0 mb-0">
+                    <label>Gender</label>
+                    <label class="gender"></label>
+                  </div>
+                  <div class="form-group pb-0 mb-0">
+                    <label>Relation</label>
+                    <label class="relation"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar patient add -->
+          <!-- item-2 -->
+          <div id="checkout-collapse-item-2">
+
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-2" id="billing_address" aria-expanded="false" aria-controls="collapse-item-2">2. Billing Address</button>
+                </h2>
+              </div>
+
+              <style>
+              .form-group .easy-autocomplete
+              {
+                width: 100%!important;
+              }
+              </style>
+
+              <div id="collapse-item-2" class="collapse checkout-collapse-body" aria-labelledby="headingTwo" data-parent="#checkout-collapse-item-2">
+                <div class="card-body">
+                  <div class="row billing-address">
+                    <div class="col-md-6">
+                      <div class="box">
+                        <input type="radio" name="default_address" data-address-id="15644" checked=checked onclick="set_default_address('15644')" id="default_billing_address">
+                        <div class="billing-address-list">
+                          <p>Grajaj 78</p>
+                          <p>Gurugram</p>
+                          <p>Haryana</p>
+                          <p>152354</p>
+                          <a class="action action-editaddress" address-id="15644" user-address-id="15644" ><span>Edit</span></a>
                         </div>
-                        <style>
-                        .form-group .easy-autocomplete {
-                            width: 100%!important;
-                        }
-                        </style>
-                        <div id="collapse-item-2" class="collapse checkout-collapse-body" aria-labelledby="headingTwo" data-parent="#checkout-collapse-item-2">
-                            <div class="card-body">
-                                <div class="row billing-address">
-                                    <div class="col-md-6">
-                                        <div class="box">
-                                            <input type="radio" name="default_address" data-address-id="15644" checked=checked onclick="set_default_address('15644')" id="default_billing_address">
-                                            <div class="billing-address-list">
-                                                <p>Grajaj 78</p>
-                                                <p>Gurugram</p>
-                                                <p>Haryana</p>
-                                                <p>152354</p>
-                                                <a class="action action-editaddress" address-id="15644" user-address-id="15644"><span>Edit</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <small class="schedule-home-form" style="display:none">Add Your Billing Details</small>
-                                <form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post" accept-charset="utf-8">
-                                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
-                                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                                    <div class="form-group">
-                                        <input type="hidden" name="id" id="address_id">
-                                        <input type="hidden" name="address_id" id="user_address_id">
-                                        <input type="text" name="address_1" id="address_1" class="form-control checkout-flow-input" placeholder="Address Line 1">
-                                        <span class="form-error"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="address_2" id="address_2" class="form-control checkout-flow-input" placeholder="Address Line 2 (Optional)">
-                                        <span class="form-error"></span>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6 state">
-                                            <input type="text" name="billing-state" id="billing-state" class="form-control checkout-flow-input" placeholder="Change State" autocomplete="off" value="Haryana" readonly />
-                                            <input type="hidden" name="state_id" id="billing-state-holder" value="12"  />
-                                            <span class="form-error"></span>
-                                        </div>
-                                        <div class="form-group col-md-6 city">
-                                            <input type="text" id="billing-city" class="form-control checkout-flow-input" placeholder="Change City" value="Gurugram" readonly />
-                                            <input type="hidden" name="city_id" id="billing-city-holder" value="100" />
-                                            <span class="form-error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="pincode" id="pincode"class="form-control checkout-flow-input number_only" placeholder="Pin Code" maxlength="6">
-                                            <span class="form-error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-1" id="add-billing-address-btn">Next</button>
-                                    </div>
-                                </form>
-                                <div class="col-md-12 text-right">
-                                    <div class="">
-<a class="action action-address" onclick="add_billing_address();">
-<img src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/img/add.svg">
-<span>Add Address</span>
-</a>
-</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <small class="schedule-home-form" style="display:none" >Add Your Billing Details</small>
+
+                  <form action="/checkout/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                    <div class="form-group">
+                      <input type="hidden" name="id" id="address_id">
+                      <input type="hidden" name="address_id" id="user_address_id">
+                      <input type="text" name="address_1" id="address_1" class="form-control checkout-flow-input" placeholder="Address Line 1">
+                      <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="address_2" id="address_2" class="form-control checkout-flow-input" placeholder="Address Line 2 (Optional)">
+                      <span class="form-error"></span>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6 state">
+                        <input type="text" name="billing-state" id="billing-state" class="form-control checkout-flow-input" placeholder="Change State" autocomplete="off" value="Haryana" readonly />
+                        <input type="hidden" name="state_id" id="billing-state-holder" value="12" />
+                        <span class="form-error"></span>
+                      </div>
+                      <div class="form-group col-md-6 city">
+                        <input type="text" id="billing-city" class="form-control checkout-flow-input" placeholder="Change City" value="Gurugram" readonly />
+                        <input type="hidden" name="city_id" id="billing-city-holder" value="100" />
+                        <span class="form-error"></span>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <input type="text" name="pincode" id="pincode"class="form-control checkout-flow-input number_only" placeholder="Pin Code" maxlength="6">
+                        <span class="form-error"></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-1" id="add-billing-address-btn">Next</button>
+                    </div>
+                  </form>
+
+                  <div class="col-md-12 text-right">
+                    <div class="">
+                      <a class="action action-address" onclick="add_billing_address();">
+                        <img src="/assets/images/add.svg">
+                        <span>Add Address</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- item-3 -->
+          <div id="checkout-collapse-item-3">
+
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-3" aria-expanded="false" aria-controls="collapse-item-3" id="home_collection_tab" >3. Home Collection Details</button>
+                </h2>
+              </div>
+
+              <div id="collapse-item-3" class="collapse checkout-collapse-body" aria-labelledby="headingThree" data-parent="#checkout-collapse-item-3">
+                <div class="card-body">
+                  <form action="/checkout/add_home_collection_address" id="home_collection_address_form" class="m-t-10" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+                    <input type="hidden" name="home_collection_id" value="" />
+                    <small>Do you want us to collect sample from your home?</small>
+                    <div class="form-group checkbox-group" id="home_collection_is_home_collection">
+                      <div class="inner-group">
+                        <label class="container-check">Yes
+                          <input type="radio" name="is_home_collection" value="1" >
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="inner-group">
+                        <label class="container-check">No
+                          <input type="radio" name="is_home_collection" value="0" >
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <span class="form-error"></span>
+                    </div>
+                    <div class="disply-home-collection" style="display:none;">
+                      <small>Add Your Address for Home Collection</small>
+                      <div class="form-group checkbox-group">
+                        <div class="inner-group">
+                          <label class="container-check">Same as Billing Address
+                            <input type="checkbox" id="same_as_billing_address">
+                            <span class="checkmark"></span>
+                            <span class="form-error"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="address_1" id="home_collection_address_1" class="form-control checkout-flow-input" placeholder="Address Line 1" value="">
+                        <span class="form-error"></span>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="address_2" id="home_collection_address_2" class="form-control checkout-flow-input" placeholder="Address Line 2 (Optional)" value="">
+                        <span class="form-error"></span>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6 state">
+                          <input type="text" id="home-collection-state" class="form-control checkout-flow-input" placeholder="Change State" value="Haryana" readonly />
+                          <input type="hidden" name="state_id" id="home_collection_state_id" value="12"/>
+                          <span class="form-error"></span>
+                        </div>
+                        <div class="form-group col-md-6 city">
+                          <input type="text" id="home-collection-city" class="form-control checkout-flow-input" placeholder="Change City" value="Gurugram" readonly />
+                          <input type="hidden" name="city_id" id="home_collection_city_id" value="100"/>
+                          <span class="form-error"></span>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <input type="text" name="pincode" id="home_collection_pincode" class="form-control checkout-flow-input number_only" maxlength="6" placeholder="Pin Code" value="">
+                          <span class="form-error"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" id="home_collection_address_btn" class="btn btn-1">Next</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- item-4 -->
+          <div id="checkout-collapse-item-4" class="home-collection-date-and-time" style="display:none;">
+
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-4" aria-expanded="false" aria-controls="collapse-item-4" id="home_collection_datetime_tab">4. Preferred Home Collection Date & Time</button>
+                </h2>
+              </div>
+
+              <div id="collapse-item-4" class="collapse checkout-collapse-body" aria-labelledby="headingFour" data-parent="#checkout-collapse-item-4">
+                <div class="card-body">
+                  <form action="/checkout/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+                    <input type="hidden" name="is_home_collection" value="" />
+                    <input type="hidden" name="home_collection_other_detail_id" value="" />
+                    <div class="home-collection-other-details">
+                      <small class="m-b-10">Home Collection Date and Time</small>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <input type="date" name="collection_date" id="collection_date" class="form-control checkout-flow-input" placeholder="Date" value="">
+                          <span class="form-error"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <select name="collection_time" class="form-control checkout-flow-select" id="collection_time" placeholder="Select">
+                            <option value="" selected="selected">Select</option>
+                            <option value="9:00 am to 6:00 pm">9:00 am to 6:00 pm</option>
+                          </select>
+                          <!--<input type="time" name="collection_time" id="collection_time" class="form-control checkout-flow-input" placeholder="Time" value="">-->
+                          <span class="form-error"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" id="add_home_collection_other_details_btn" class="btn btn-1">Next</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- item-5 -->
+          <div id="checkout-collapse-item-5">
+
+            <div class="card">
+              <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-5" aria-expanded="false" aria-controls="collapse-item-5" id="payment_details" >4. Payment Details</button>
+                </h2>
+              </div>
+
+              <div id="collapse-item-5" class="collapse checkout-collapse-body" aria-labelledby="headingFive" data-parent="#checkout-collapse-item-5">
+                <div class="card-body">
+                  <form action="/checkout/add_payment_details" id="add_payment_details_form" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
+                    <input type="hidden" name="billing_id" value="15644" />
+                    <small class="m-b-10">Select payment mode</small>
+                    <div class="form-group checkbox-group">
+                      <div class="inner-group">
+                        <label class="container-check">Online
+                          <input type="radio" name="payment_mode" value="1">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div class="inner-group">
+                        <label class="container-check">Cash at home
+                          <input type="radio" name="payment_mode" value="2" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <span class="form-error"></span>
+                    <button type="submit" class="btn btn-1 m-12 add_payment_details_btn" id="add_payment_details_btn">Proceed to Book test</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <!-- Sidebar Summary -->
+    <div class="col-lg-4 col-md-4 col-sm-12">
+
+      <div class="checkout-summary">
+        <div class="heading-small-v-2">Summary</div>
+        <div class="row m-t-40">
+          <div class="summary-item-name col-md-9" id="12261">TSH 3rd Generation </div>
+          <div class="summary-item-price col-md-3">&#8377;200.00</div>
+          <div class="summary-patient-name col-md-12">Patient : </div>
+        </div>
+
+        <div class="flex-inline border" style="border-left: 0px!important; border-right: 0px!important; border-bottom: 0px!important; padding: 10px 0; margin-bottom: 15px;">
+          <p>Subtotal</p>
+          <p class="subtotal">&#8377;</p>
+        </div>
+        <div class="flex-inline home-collection-charges" style="display:none">
+          <p class="text-right"><span style="display: inline-block; float:left;"> Home Collection charge </span> &#8377;
+            <!-- <span id="collection-charges" style="float:right;">0</span> -->
+            <span id="collection-charges" style="float:right;">0</span>
+          </p>
+        </div>
+        <div class="flex-inline border strong-summary-text">
+          <p>Total</p>
+          <p class="total-charges">&#8377; </p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
 </div>
 
-</div>
-</div>                          
-</div>
-</div>
-<!-- item-3 -->
-<div id="checkout-collapse-item-3">
-<div class="card">
-<div class="card-header" id="headingThree">
-<h2 class="mb-0">
-<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-3" aria-expanded="false" aria-controls="collapse-item-3" id="home_collection_tab">
-3. Home Collection Details
-</button>
-</h2>
-</div>
-
-<div id="collapse-item-3" class="collapse checkout-collapse-body" aria-labelledby="headingThree" data-parent="#checkout-collapse-item-3">
-<div class="card-body">
-<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_home_collection_address" id="home_collection_address_form" class="m-t-10" method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                                             
-
-<input type="hidden" name="home_collection_id" value="" />
-<small>Do you want us to collect sample from your home?</small>
-<div class="form-group checkbox-group" id="home_collection_is_home_collection">
-<div class="inner-group">
-<label class="container-check">Yes
-<input type="radio" name="is_home_collection" value="1">
-<span class="checkmark"></span>
-</label>
-</div>
-<div class="inner-group">
-<label class="container-check">No
-<input type="radio" name="is_home_collection" value="0">
-<span class="checkmark"></span>
-</label>
-</div>
-<span class="form-error"></span>
-</div>
-
-
-<div class="disply-home-collection" style="display:none;">
-
-<small>Add Your Address for Home Collection</small>
-<div class="form-group checkbox-group">
-<div class="inner-group">
-<label class="container-check">Same as Billing Address
-<input type="checkbox" id="same_as_billing_address">
-<span class="checkmark"></span>
-<span class="form-error"></span>
-</label>
-</div>
-</div>
-
-
-<div class="form-group">
-<input type="text" name="address_1" id="home_collection_address_1" class="form-control checkout-flow-input" placeholder="Address Line 1" value="">
-<span class="form-error"></span>
-</div>
-<div class="form-group">
-<input type="text" name="address_2" id="home_collection_address_2" class="form-control checkout-flow-input" placeholder="Address Line 2 (Optional)" value="">
-<span class="form-error"></span>
-</div>
-<div class="form-row">
-<div class="form-group col-md-6 state">
-<input type="text" id="home-collection-state" class="form-control checkout-flow-input" placeholder="Change State" value="Haryana" readonly />
-<input type="hidden" name="state_id" id="home_collection_state_id" value="12"/>
-<span class="form-error"></span>
-</div>
-<div class="form-group col-md-6 city">
-<input type="text" id="home-collection-city" class="form-control checkout-flow-input" placeholder="Change City" value="Gurugram" readonly />
-<input type="hidden" name="city_id" id="home_collection_city_id" value="100"/>
-<span class="form-error"></span>
-</div>
-</div>
-<div class="form-row">
-<div class="form-group col-md-6">
-<input type="text" name="pincode" id="home_collection_pincode" class="form-control checkout-flow-input number_only" maxlength="6" placeholder="Pin Code" value="">
-<span class="form-error"></span>
-</div>
-</div>
-
-
-</div>
-<div class="form-group">
-<button type="submit" id="home_collection_address_btn" class="btn btn-1">Next</button>
-</div>
-</form>		</div>
-</div>
-</div>
-</div>                      <!-- item-3 -->
-
-<div class="home-collection-date-and-time" id="checkout-collapse-item-4" style="display:none;">
-<div class="card">
-<div class="card-header" id="headingFour">
-<h2 class="mb-0">
-<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-4" aria-expanded="false" aria-controls="collapse-item-4" id="home_collection_datetime_tab">
-4. Preferred Home Collection Date & Time
-</button>
-</h2>
-</div>
-
-<div id="collapse-item-4" class="collapse checkout-collapse-body" aria-labelledby="headingFour" data-parent="#checkout-collapse-item-4">
-<div class="card-body">
-<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
-
-
-<input type="hidden" name="is_home_collection" value="" />
-
-
-<input type="hidden" name="home_collection_other_detail_id" value="" />
-<div class="home-collection-other-details">
-<small class="m-b-10">Home Collection Date and Time</small>
-<div class="form-row">
-<div class="form-group col-md-6">
-<input type="date" name="collection_date" id="collection_date" class="form-control checkout-flow-input" placeholder="Date" value="">
-<span class="form-error"></span>
-</div>
-<div class="form-group col-md-6">
-<select name="collection_time" class="form-control checkout-flow-select" id="collection_time" placeholder="Select">
-<option value="" selected="selected">Select</option>
-<option value="9:00 am to 6:00 pm">9:00 am to 6:00 pm</option>
-</select>
-<!--<input type="time" name="collection_time" id="collection_time" class="form-control checkout-flow-input" placeholder="Time" value="">-->
-<span class="form-error"></span>
-</div>
-</div>
-<div class="form-group">
-<button type="submit" id="add_home_collection_other_details_btn" class="btn btn-1">Next</button>
-</div>
-</form>		</div>
-
-</div>
-</div>
-</div>
-</div>
-
-<div id="checkout-collapse-item-5">
-<div class="card">
-<div class="card-header" id="headingFive">
-<h2 class="mb-0">
-<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-5" aria-expanded="false" aria-controls="collapse-item-5" id="payment_details">
-4. Payment Details
-</button>
-</h2>
-</div>
-
-<div id="collapse-item-5" class="collapse checkout-collapse-body" aria-labelledby="headingFive" data-parent="#checkout-collapse-item-5">
-<div class="card-body">
-<form action="https://www.pathkindlabs.com/pathkind_app/checkout/checkout_public/add_payment_details" id="add_payment_details_form" method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />                            
-
-<input type="hidden" name="billing_id" value="15644" />
-<small class="m-b-10">Select payment mode</small>
-<div class="form-group checkbox-group">
-<div class="inner-group">
-<label class="container-check">Online
-<input type="radio" name="payment_mode" value="1">
-<span class="checkmark"></span>
-</label>
-</div>
-<div class="inner-group">
-<label class="container-check">Cash at home
-<input type="radio" name="payment_mode" value="2" checked="checked">
-<span class="checkmark"></span>
-</label>
-</div>
-</div>
-<span class="form-error"></span>
-<button type="submit" class="btn btn-1 m-12 add_payment_details_btn" id="add_payment_details_btn">Proceed to Book test</a>
-</form>	</div>
-</div>
-</div>
-</div>
-
-<!-- Modal -->
-<!-- Test Booked successsfully popup -->
-<div class="modal fade test-booked-modal" id="testbooked" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title text-success">Thank you!</h5>
-<p>Your order was completed succesfully</p>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<div class="checkout-summary">
-<div class="flex-inline m-t-40">
-<p>Subtotal</p>
-<p class="subtotal">&#8377;</p>
-</div>
-<div class="flex-inline home-collection-charges" style="display:none">
-<p>Home Collection charge</p>
-<!-- <p><span>&#8377;</span><span id="collection-charges">0</span></p> -->
-<p><span>&#8377;</span><span id="collection-charges">0</span></p>
-</div>
-<div class="flex-inline strong-summary-text p-30">
-<p>Total Amount Paid</p>
-<p class="total-charges">&#8377;</p>
-</div>
-</div>
-</div>
-<div class="modal-footer">
-<form method="get" action="https://www.pathkindlabs.com/pathkind_app/my-orders">
-<button type="submit" class="btn btn-1" data-dismiss="modal">Done</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="col-lg-4 col-md-4 col-sm-12">
-<div class="checkout-summary">
-<div class="heading-small-v-2">Summary</div>
-<div class="row m-t-40">
-<div class="summary-item-name col-md-9" id="12261">TSH 3rd Generation </div>
-<div class="summary-item-price col-md-3">&#8377;200.00</div>
-<div class="summary-patient-name col-md-12">Patient : </div>
-</div>
-
-
-<div class="flex-inline border" style="border-left: 0px!important;
-border-right: 0px!important;
-border-bottom: 0px!important;
-padding: 10px 0;
-margin-bottom: 15px;">
-<p>Subtotal</p>
-<p class="subtotal">&#8377;</p>
-</div>
-<div class="flex-inline home-collection-charges" style="display:none">
-<p class="text-right"><span style="display: inline-block; float:left;"> Home Collection charge </span> &#8377;
-<!-- <span id="collection-charges" style="float:right;">0</span> -->
-<span id="collection-charges" style="float:right;">0</span>
-</p>
-
-</div>
-<div class="flex-inline border strong-summary-text">
-<p>Total</p>
-<p class="total-charges">&#8377; </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<input type="hidden" id="__home_collection_charges" value="0" />
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/js/site.js"></script>
-<script src="https://www.pathkindlabs.com/pathkind_app/assets/adminlte/plugins/toastr/toastr.min.js"></script>
-<script src="https://www.pathkindlabs.com/pathkind_app/assets/desktop/js/jquery.flexslider.js"></script>
-<script src="https://www.pathkindlabs.com/pathkind_app/assets/plugins/jquery.easy-autocomplete.min.js"></script>
-<script src="https://www.pathkindlabs.com/pathkind_app/assets/adminlte/plugins/sweet-alert2/sweetalert2.min.js"></script>
 
 {% endblock %}
+
