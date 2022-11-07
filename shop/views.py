@@ -164,7 +164,8 @@ def shopping_cart(request):
         order = Cart.objects.get(user=request.user, ordered=False)
         # product = Product.objects.get(user=request.user, order=False)
         products = Product.objects.filter(available=True)
-        # print('order', order)
+        product = products.count()
+        print('product', product)
         # get_total_item_price = product.quantity * product.price
 
 # def get_discount_item_price(self):
