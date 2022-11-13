@@ -27,7 +27,7 @@ razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZOR
 
 
 def product_list(request, category_slug=None):
-    titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
+    page_title = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
@@ -46,7 +46,7 @@ def product_list(request, category_slug=None):
 
     # we need to pass these details to frontend.
     context = {
-        'titles': titles,
+        'page_title': page_title,
         'category': category,
         'categories': categories,
         'products': products,
@@ -62,15 +62,19 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, id=pk, available=True)
-    # titles = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
+    page_title = _('Cart | ShrinivasDiagnostic')
+    user_id = request.user.is_authenticated
+    user_order = Order.objects.filter(user=user_id).count()
+    # page_title = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
     # titles = product
     cart_product_form=CartAddProductForm()
     # print(cart_product_form)
 
     context = {
-        # 'titles': titles,
+        # 'page_title': page_title,
         'product': product,
         'cart_product_form': cart_product_form,
+        'user_order': user_order,
     }
 
     # return render(request, 'shop/product/product_detail.html', context)
@@ -160,12 +164,16 @@ def get_add_to_cart_url(request, pk):
 # shopping_cart = OrderSummaryView.as_view()
 
 def shopping_cart(request):
+    page_title = _('Cart | ShrinivasDiagnostic')
+    user_id = request.user.is_authenticated
+    user_order = Order.objects.filter(user=user_id).count()
+
     try:
         order = Cart.objects.get(user=request.user, ordered=False)
         # product = Product.objects.get(user=request.user, order=False)
         products = Product.objects.filter(available=True)
         product = products.count()
-        print('product', product)
+        # print('product', product)
         # get_total_item_price = product.quantity * product.price
 
 # def get_discount_item_price(self):
@@ -184,6 +192,8 @@ def shopping_cart(request):
         context = {
             'object': order,
             'products': products,
+            'user_order': user_order,
+            'page_title': page_title,
         }
         return render(request, 'shop/shopping_cart.html', context)
     except ObjectDoesNotExist:
@@ -227,6 +237,10 @@ class CheckoutView(View):
 checkout_view = CheckoutView.as_view()
 
 def checkout(request):
+    page_title = _('Checkout | ShrinivasDiagnostic')
+    user_id = request.user.is_authenticated
+    user_order = Order.objects.filter(user=user_id).count()
+
     if request.method == "POST":
         name = request.POST.get("name")
         amount = request.POST.get("amount")
@@ -243,10 +257,17 @@ def checkout(request):
             "callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
             "razorpay_key": RAZORPAY_KEY_ID,
             "order": order,
+            "page_title": page_title,
+            "user_order": user_order,
         }
 
         return render(request, "shop/checkout.html", context)
-    return render(request, "shop/checkout.html")
+
+    context = {
+        "page_title": page_title,
+        "user_order": user_order,
+    }
+    return render(request, "shop/checkout.html", context)
 
 @csrf_exempt
 def callback(request):

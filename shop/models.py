@@ -18,6 +18,9 @@ PAYMENT_STATUS = (
     ('pending', 'Pending')
 )
 
+def pdf_upload_path(instance, filename):
+    return f'test_package/{instance.created_date.strftime("%Y-%m-%d")}_test_{filename}'
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
@@ -51,7 +54,7 @@ class Product(models.Model):
     prerequisites = models.CharField(max_length=255, null=True, blank=True)
     # TAT #
     samplecutoff = models.CharField(max_length=255, null=True, blank=True)
-    report = models.TextField(blank=True)
+    report = models.FileField(upload_to=pdf_upload_path, blank=True)
     note = models.TextField(blank=True)
     ## Doctor ##
     component = models.CharField(max_length=255, null=True, blank=True)

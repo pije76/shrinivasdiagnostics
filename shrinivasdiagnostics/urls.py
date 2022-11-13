@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from shop.views import *
+from order.views import *
+
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -30,6 +32,8 @@ urlpatterns = [
     path('checkout/', checkout, name='checkout'),
     path("callback/", callback, name="callback"),
 	# path('paymenthandler/', paymenthandler, name='paymenthandler'),
+    path("payment/", order_payment, name="order_payment"),
+    path('my-orders/', my_orders, name='my_orders'),
 
     path('summernote/', include('django_summernote.urls')),
     path('selectable/', include('selectable.urls')),

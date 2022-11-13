@@ -1,0 +1,143 @@
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load selectable_tags %}
+{% include_ui_theme %}
+{% include_jquery_libs %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+    <head>
+        <meta charset="utf-8" />
+        <noscript>
+            <meta http-equiv="Refresh" content="0; URL=/big_pipe/no-js?destination=/node" />
+        </noscript>
+        <link rel="canonical" href="https://www.shrinivasdiagnostics.com/" />
+        <link rel="shortlink" href="https://www.shrinivasdiagnostics.com/" />
+        <meta name="description" content="Shrinivas Diagnostics Labs offers pathology services and blood tests at affordable prices. Get yourself tested for a wide set of diseases right away." />
+        <meta name="Generator" content="Django coded by digidzine.com" />
+        <meta name="MobileOptimized" content="width" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>
+        {% block head_title %}
+        {% endblock %}
+    </title>
+
+    {% block extrahead %}
+    {{ form.media }}
+    {% endblock %}
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" />
+
+    <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'staticfiles_select2/select2/select2.css' %}" rel="stylesheet" type="text/css" />
+
+    {% block extra_style %}
+    {% endblock %}
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}" type="text/javascript"></script>
+
+    <script src="{% static 'staticfiles_select2/select2/select2.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'selectable_select2/js/jquery.dj.selectable.select2.js' %}" type="text/javascript"></script>
+
+    <script src="{% static 'js/checkout.js' %}" type="text/javascript"></script>
+
+    {% block extra_jscript %}
+    {% endblock %}
+
+    {% block jscript %}
+
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    
+        function csrfSafeMethod(method)
+        {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+    
+        $.ajaxSetup(
+        {
+            beforeSend: function(xhr, settings)
+            {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain)
+                {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            },
+        });
+
+        $(function()
+        {
+            // Log in button
+            $("#login-btn").modalForm(
+            {
+                formURL: "{% url 'accounts:login_view_modal' %}"
+            });
+        });
+
+        var options =
+        {
+            key: "{{razorpay_key}}",
+            amount: "{{order.amount}}",
+            currency: "INR",
+            name: "{{order.name}}",
+            description: "Test Transaction",
+            image: "https://example.com/your_logo",
+            order_id: "{{order.provider_order_id}}",
+            callback_url: "{{callback_url}}",
+            redirect: true,
+            prefill:
+            {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            notes:
+            {
+                "address": "Razorpay Corporate Office"
+            },
+            theme:
+            {
+                "color": "#3399cc"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+
+    });
+    </script>
+    {% endblock %}
+
+    </head>
+
+    <body class="path-frontpage en pulogout">
+        <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+            <div id="desktop-v">
+                {% include "header.html" %}
+                {% include 'messages.html' %}
+                <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content"></div>
+                    </div>
+                </div>                    
+                {% block content %}
+                {% include "home.html" %}
+                {% endblock %}
+
+                {% include "footer.html" %}    
+            </div>
+        </div>
+
+    </body>
+</html>

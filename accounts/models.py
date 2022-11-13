@@ -31,7 +31,9 @@ RELATION_CHOICES = (
 class Profile(AbstractBaseUser, PermissionsMixin):
 	name = models.CharField(max_length=255, null=True, blank=True)
 	email = models.EmailField(verbose_name='Email Address', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
-	phone_number = PhoneNumberField(blank=True)
+	phone_number = PhoneNumberField(null=True, blank=False)
+	otp = models.CharField(max_length=12, null=True, blank=True)
+	phone_verified = models.BooleanField(default=False)
 	birth_date = models.DateField(null=True, blank=False)
 	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None, blank=True, null=True)
 
@@ -61,8 +63,8 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 		verbose_name = _('Profile')
 		verbose_name_plural = _("Profile")
 
-	# def __str__(self):
-	#   return self.username
+	def __str__(self):
+		return self.email
 		# return str(self.username)
 		# return "User profile: %s" % self.username
 		# return self.email

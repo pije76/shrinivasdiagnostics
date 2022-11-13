@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.http import HttpResponseBadRequest
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -18,7 +18,9 @@ import razorpay
 # Create your views here.
 def homepage(request):
 	is_ajax = request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
-	titles = _('Check the Best Blood Test &amp; Pathology Lab in India with Shrinivas Diagnostics Labs')
+	page_title = _('Check the Best Blood Test &amp; Pathology Lab in India with Shrinivas Diagnostics Labs')
+	user_id = request.user.is_authenticated
+	user_order = Order.objects.filter(user=user_id).count()
 	# member = Profile.objects.get(email=request.user)
 	# get_status = Profile.objects.filter(email=request.user).values_list('is_active', flat=True).first()
 	# currency = 'INR'
@@ -43,7 +45,7 @@ def homepage(request):
 	# 	get_ticker_id = cache.get('get_ticker_id')
 
 	# 	context = {
-	# 		'titles': titles,
+	# 		'page_title': page_title,
 	# 		'get_qs': get_qs,
 	# 		'get_ticker_id': get_ticker_id,
 	# 		'get_sector_id': get_sector_id,
@@ -58,7 +60,7 @@ def homepage(request):
 	# 	get_ticker_id = cache.get('get_ticker_id')
 
 	# 	context = {
-	# 		'titles': titles,
+	# 		'page_title': page_title,
 	# 		# 'form': form,
 	# 		# 'chart': dump,
 	# 		# 'get_ticker_name': get_ticker_name,
@@ -78,9 +80,19 @@ def homepage(request):
 		# 'razorpay_amount': amount,
 		# 'currency': currency,
 		# 'callback_url': callback_url,
-		'titles': titles,
+		'page_title': page_title,
 		'form': form,
+		'user_order': user_order,
 		# 'get_ticker_name': get_ticker_name,
 	}
 	return render(request, 'core/home.html', context)
 
+
+def show(request):
+	product = get_object_or_404(Product, id=pk, available=True)
+
+	context = {
+		'product': product,
+	}
+
+	return render(request,'header.html')

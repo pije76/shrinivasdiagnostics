@@ -51,8 +51,6 @@
 									<div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
 										<div class="path-search-center">									
 											<form accept-charset="utf-8" action="/book-blood-test-online-in-india/" class="search-container" id="test_search_header_form" method="GET" placeholder="Search for a test, health package or Labs" />
-											{% csrf_token %}
-												{{ form }}
 											</form>
 										</div>
 									</div>
@@ -109,7 +107,7 @@
 									</div>
 								</div>
 								
-								<span class="cart-badge" style="display: block;"><span><p>{{ user_order }}</p></span></span>
+								<span class="cart-badge" style="display: block;"><span>0</span></span>
 							</li>
 							<li class="user">
 								<div class="region region-profile">
@@ -140,5 +138,4 @@
 		</div>
 	</header>
 		
-	{% include "navbar.html" %}
 </section>

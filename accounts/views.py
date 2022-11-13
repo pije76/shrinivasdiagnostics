@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from .models import *
 from .forms import *
@@ -30,13 +31,13 @@ class MyLoginView(BSModalLoginView):
 login_view_modal = MyLoginView.as_view()
 
 
-def profile_detail(request, username):
-	titles = _('Member Profile')
+def profile_detail(request, pk):
+	page_title = _('Member Profile')
 	# memberlist = Profile.objects.filter(member=request.user.id).values_list("id", flat=True).first()
-	get_fullname = Profile.objects.filter(username=request.user).values_list("full_name", flat=True).first()
+	get_fullname = Profile.objects.filter(email=request.user).values_list("name", flat=True).first()
 	# get_email = Profile.objects.filter(member=request.user).values_list("email", flat=True).first()
-	get_birthdate = Profile.objects.filter(username=request.user).values_list("birth_date", flat=True).first()
-	get_birthcity = Profile.objects.filter(username=request.user).values_list("birth_city", flat=True).first()
+	get_birthdate = Profile.objects.filter(email=request.user).values_list("birth_date", flat=True).first()
+	# get_birthcity = Profile.objects.filter(email=request.user).values_list("birth_city", flat=True).first()
 
 	initial_dict = {
 		'full_name': get_fullname,
@@ -71,13 +72,13 @@ def profile_detail(request, username):
 		form = ProfileForm(initial=initial_dict, instance=request.user)
 
 	context = {
-		'titles': titles,
+		'page_title': page_title,
 		'form': form,
 		'get_fullname': get_fullname,
 		# 'get_lastname': get_lastname,
 		# 'get_email': get_email,
 		'get_birthdate': get_birthdate,
-		'get_birthcity': get_birthcity,
+		# 'get_birthcity': get_birthcity,
 	}
 
 	return render(request, 'accounts/profile.html', context)
