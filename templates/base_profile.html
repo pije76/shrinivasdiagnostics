@@ -40,7 +40,7 @@
     {% block extra_style %}
     {% endblock %}
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}" type="text/javascript"></script>
@@ -51,72 +51,6 @@
     <script src="{% static 'js/checkout.js' %}" type="text/javascript"></script>
 
     {% block extra_jscript %}
-    {% endblock %}
-
-    {% block jscript %}
-
-    <script type="text/javascript">
-    $(document).ready(function()
-    {
-        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-    
-        function csrfSafeMethod(method)
-        {
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
-    
-        $.ajaxSetup(
-        {
-            beforeSend: function(xhr, settings)
-            {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain)
-                {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
-            },
-        });
-
-        $(function()
-        {
-            // Log in button
-            $("#login-btn").modalForm(
-            {
-                formURL: "{% url 'accounts:login_view_modal' %}"
-            });
-        });
-
-        var options =
-        {
-            key: "{{razorpay_key}}",
-            amount: "{{order.amount}}",
-            currency: "INR",
-            name: "{{order.name}}",
-            description: "Test Transaction",
-            image: "https://example.com/your_logo",
-            order_id: "{{order.provider_order_id}}",
-            callback_url: "{{callback_url}}",
-            redirect: true,
-            prefill:
-            {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
-                "contact": "9999999999"
-            },
-            notes:
-            {
-                "address": "Razorpay Corporate Office"
-            },
-            theme:
-            {
-                "color": "#3399cc"
-            }
-        };
-
-        var rzp1 = new Razorpay(options);
-        rzp1.open();
-
-    });
-    </script>
     {% endblock %}
 
     </head>
@@ -138,6 +72,72 @@
                 {% include "footer.html" %}    
             </div>
         </div>
+
+        {% block jscript %}
+
+        <script type="text/javascript">
+        $(document).ready(function()
+        {
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+            function csrfSafeMethod(method)
+            {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            $.ajaxSetup(
+            {
+                beforeSend: function(xhr, settings)
+                {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain)
+                    {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                },
+            });
+
+            $(function()
+            {
+                // Log in button
+                $("#login-btn").modalForm(
+                {
+                    formURL: "{% url 'accounts:login_view_modal' %}"
+                });
+            });
+
+            var options =
+            {
+                key: "{{razorpay_key}}",
+                amount: "{{order.amount}}",
+                currency: "INR",
+                name: "{{order.name}}",
+                description: "Test Transaction",
+                image: "https://example.com/your_logo",
+                order_id: "{{order.razorpay_order_id}}",
+                callback_url: "{{callback_url}}",
+                redirect: true,
+                prefill:
+                {
+                    "name": "Gaurav Kumar",
+                    "email": "gaurav.kumar@example.com",
+                    "contact": "9999999999"
+                },
+                notes:
+                {
+                    "address": "Razorpay Corporate Office"
+                },
+                theme:
+                {
+                    "color": "#3399cc"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+
+        });
+        </script>
+        {% endblock %}
 
     </body>
 </html>

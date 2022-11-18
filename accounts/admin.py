@@ -18,14 +18,13 @@ class ProfileAdmin(admin.ModelAdmin):
 # class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
     list_display = [
         'id',
-        'email',
         'name',
+        'email',
         'phone_number',
+        'phone_verified',
         'birth_date',
-        # 'membership_type',
-        # 'date_joined',
+        'gender',
         'is_active',
-        # 'email_verified',
     ]
     # autocomplete_fields = ['phone_number', ]
     # change_list_template = 'admin/change_list_filter_sidebar.html'
@@ -55,7 +54,31 @@ class ProfileAdmin(admin.ModelAdmin):
         # obj.sun_sign = self.full_name
         # super().save_model(request, obj, form, change)
 
+class AddressAdmin(admin.ModelAdmin):
+# class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
+    list_display = [
+        'user',
+        'address',
+        'state',
+        'city',
+        'country',
+        'location',
+        'pin_code',
+        'zip',
+    ]
+
+class PatientAdmin(admin.ModelAdmin):
+# class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
+    list_display = [
+        'user_patient',
+        'name',
+        'email',
+        'phone_number',
+        'birth_date',
+        'gender',
+        'relation',
+    ]
 
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Address)
-admin.site.register(Patient)
+admin.site.register(Address, AddressAdmin)
+admin.site.register(Patient, PatientAdmin)

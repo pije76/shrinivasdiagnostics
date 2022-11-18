@@ -6,4 +6,5 @@ app_name = 'core'
 
 urlpatterns = [
     path('', homepage, name='homepage'),
+    # path('schedule/', schedule, name='schedule'),
 ]

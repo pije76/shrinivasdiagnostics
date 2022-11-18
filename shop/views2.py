@@ -2,15 +2,15 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponseBadRequest
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, TemplateView, View
-
  
 # from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
 # from haystack.query import SearchQuerySet
@@ -168,40 +168,18 @@ def checkout(request):
 	cart_order = Checkout.objects.get(user=request.user, ordered=False)
 	total_payment = Order.objects.filter(user=request.user)
 	payment_mode = request.GET.get('payment_mode')
-	amount = request.GET.get('amount')
-	print("amount1", amount)
-	print("amount", amount)
+	total_price = request.GET.get('total_price')
+	amount = total_price
 	currency = 'INR'
-	razorpay_key = settings.RAZORPAY_KEY_ID
-	data = dict()
 
-	form = PatientForm()
-	# form = CheckoutForm(request.POST or None)
+	# form = PatientForm()
 
-	if request.method == "GET":
+	# if request.method == 'POST':
 
-		# else:
-		context = {
-			"page_title": page_title,
-			"user_order": user_order,
-			"products": products,
-			"cart_order": cart_order,
-			"total_payment": total_payment,
-			# "total_price": total_price,
-			"patients": patients,
-			"amount": amount,
-			"currency": currency,
-			"razorpay_key": razorpay_key,
-		}
-		# print("amount2", amount)
-		return render(request, 'shop/checkout.html', context=context)
+	if payment_mode == "Online":
 
-	if request.method == 'POST':
-	# if payment_mode == "Online":
-	# if request.method == "POST" and payment_mode == "Online" and request.headers.get('x-requested-with') == 'XMLHttpRequest':
-
-		# razorpay_order = razorpay_client.order.create({"amount": int(amount) * 100, "currency": "INR", "receipt": "1"})
-		razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, receipt='0'))
+		# razorpay_order = razorpay_client.order.create({"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"})
+		razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, payment_capture='0'))
 		# print("razorpay_order:", razorpay_order)
 		razorpay_order_id = razorpay_order['id']
 		callback_url = 'paymenthandler/'
@@ -209,33 +187,79 @@ def checkout(request):
 		# print("order:", order)
 		# order.save()
 
-		# print("amount1", amount)
-		# razorpay_key = settings.RAZORPAY_KEY_ID
+		print("amount1", amount)
 
-		data['razorpay_order_id'] = razorpay_order_id
-		data['razorpay_key'] = razorpay_key
-		data['callback_url'] = callback_url
-		data['amount'] = amount
-		# data['currency'] = currency
+		context = {
+			"razorpay_order_id": razorpay_order_id,
+			"razorpay_merchant_key": settings.RAZORPAY_KEY_ID,
+			"callback_url": callback_url,
+			"amount": amount,
+			"currency": currency,
+			"page_title": page_title,
+			"user_order": user_order,
+			"products": products,
+			"total_payment": total_payment,
+			"patients": patients,
+		}
+		return render(request, 'shop/checkout.html', context=context)
 
-		return JsonResponse(data)
 	else:
-		return JsonResponse({"response error": form.errors}, status=400)
+		context = {
+			"page_title": page_title,
+			"user_order": user_order,
+			"products": products,
+			"cart_order": cart_order,
+			"total_payment": total_payment,
+			"patients": patients,
+			"amount": amount,
+			"currency": currency,
+		}
+		print("amount2", amount)
+		return render(request, 'shop/checkout.html', context=context)
+
+			# order = Payment.objects.create(user=user_id, amount=amount)
+			# order.save()
+
+	# 	form = PatientForm(request.POST or None)
+
+	# 	if form.is_valid():
+	# 		patient = form.save(commit=False)
+	# 		patient.name = form.cleaned_data['name']
+	# 		patient.email = form.cleaned_data['email']
+	# 		patient.phone_number = form.cleaned_data['phone_number']
+	# 		patient.save()
+
+	# 		messages.success(request, _('Your patient profile has been change successfully.'))
+	# 		return HttpResponseRedirect('/profile/')
+	# 	else:
+	# 		messages.warning(request, form.errors)
+
+	# else:
+	# 	form = PatientForm()
 
 		# context = {
-		# # 	"razorpay_order_id": razorpay_order_id,
-		# # 	"razorpay_key": razorpay_key,
-		# # 	"callback_url": callback_url,
-		# # 	"amount": amount,
-		# # 	"currency": currency,
+		# 	"callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
+		# 	"razorpay_key": settings.RAZORPAY_KEY_ID,
+		# 	# "order": order,
+		# 	"cart_order": cart_order,
 		# 	"page_title": page_title,
 		# 	"user_order": user_order,
 		# 	"products": products,
 		# 	"total_payment": total_payment,
-		# 	"total_price": total_price,
 		# 	"patients": patients,
 		# }
-		# return render(request, 'shop/checkout.html', context=context)
+
+		# return render(request, "shop/checkout.html", context)
+
+	# context = {
+	# 	"page_title": page_title,
+	# 	"user_order": user_order,
+	# 	"cart_order": cart_order,
+	# 	"products": products,
+	# 	"total_payment": total_payment,
+	# 	"patients": patients,
+	# }
+	# return render(request, "shop/checkout.html", context)
 
 
 @csrf_exempt
@@ -281,35 +305,55 @@ def callback(request):
 		return render(request, "shop/callback.html", context)
 
 
-def order_payment(request):
-	# if request.method == "POST":
-	if request.method == "POST" and request.headers.get('x-requested-with') == 'XMLHttpRequest':
-		name = Profile.objects.get(email=request.user)
-		# total_price = request.GET.get('total_price')
-		# total_price = request.GET.get('total_price')
-		total_price = request.POST.get('total_price')
-		print("total_price5b:", total_price)
-		amount = total_price
-		print("amount3", amount)
-		print("total_price5a:", total_price)
-		currency = "INR"
+#@csrf_exempt
+def paymenthandler(request):
+	if request.method == "POST":
+		try:
+			payment_id = request.POST.get('razorpay_payment_id', '')
+			razorpay_order_id = request.POST.get('razorpay_order_id', '')
+			signature = request.POST.get('razorpay_signature', '')
+			params_dict = {
+				'razorpay_order_id': razorpay_order_id,
+				'razorpay_payment_id': payment_id,
+				'razorpay_signature': signature
+			}
 
-		callback_url = 'callback/'
-		# razorpay_order = razorpay_client.order.create({"amount": int(amount), "currency": "INR", "receipt": "1"})
-		razorpay_order = razorpay_client.order.create({"amount": amount, "currency": currency, "receipt": "1"})
+			result = razorpay_client.utility.verify_payment_signature(params_dict)
+			if result is not None:
+				total_price = request.GET.get('total_price')
+				amount = total_price
+				try:
+					razorpay_client.payment.capture(payment_id, amount)
+					return render(request, 'shop/paymentsuccess.html')
+				except:
+					return render(request, 'shop/paymentfail.html')
+			else:
+				return render(request, 'shop/paymentfail.html')
+		except:
+			return HttpResponseBadRequest()
+	else:
+		return HttpResponseBadRequest()
+
+
+def order_payment(request):
+	name = Profile.objects.get(email=request.user)
+	total_price = request.GET.get('total_price')
+	amount = total_price
+
+	if request.method == "POST":
+		# razorpay_order = razorpay_client.order.create({"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"})
+		razorpay_order = razorpay_client.order.create({"amount": amount, "currency": "INR", "payment_capture": "1"})
 		order = Payment.objects.create(user=name, amount=amount, razorpay_order_id=razorpay_order["id"])
 		order.save()
 
 		context = {
-			# "callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
-			"callback_url": "http://" + "127.0.0.1:8000" + "/callback/",
-			# "callback_url": callback/,
+			"callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
 			"razorpay_key": settings.RAZORPAY_KEY_ID,
 			"order": order,
 		}
-		return render(request, "shop/checkout.html", context)
-
-	return render(request, "shop/checkout.html")
+		return render(request, "order/checkout.html", context)
+	else:
+		return render(request, "order/checkout.html")
 
 
 def my_orders(request):

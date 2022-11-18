@@ -19,24 +19,35 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from shop.views import *
-from order.views import *
 
+from djoser import views as djoser_views
+# from rest_framework_jwt import views as jwt_views
 
 urlpatterns = [
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
-    path('profile/', include('accounts.urls')),
+
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
     path('checkout/', checkout, name='checkout'),
     path("callback/", callback, name="callback"),
-	# path('paymenthandler/', paymenthandler, name='paymenthandler'),
+	# path('payment/', paymenthandler, name='paymenthandler'),
     path("payment/", order_payment, name="order_payment"),
     path('my-orders/', my_orders, name='my_orders'),
 
     path('summernote/', include('django_summernote.urls')),
     path('selectable/', include('selectable.urls')),
+
+    path('profile/', include('accounts.urls')),
+    path('api/', include('djoser.urls')),
+    path('api/', include('djoser.urls.jwt')),
+
+    # re_path(r'^user/view/$', djoser_views.UserView.as_view(), name='user-view'),
+    # re_path(r'^user/delete/$', djoser_views.UserDeleteView.as_view(), name='user-delete'),
+    # re_path(r'^user/create/$', djoser_views.UserCreateView.as_view(), name='user-create'),
+    # re_path(r'^user/login/$', jwt_views.ObtainJSONWebToken.as_view(), name='user-login'),
+    # re_path(r'^user/login/refresh/$', jwt_views.RefreshJSONWebToken.as_view(), name='user-login-refresh'),
 ]
 
 if settings.DEBUG:

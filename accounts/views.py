@@ -83,3 +83,17 @@ def profile_detail(request, pk):
 
 	return render(request, 'accounts/profile.html', context)
 
+
+def get_user_totp_device(self, user, confirmed=None):
+    devices = devices_for_user(user, confirmed=confirmed)
+    for device in devices:
+        if isinstance(device, TOTPDevice):
+            return device
+
+    def get(self, request, format=None):
+        user = request.user
+        device = get_device(self, user)
+        if not device:
+            device = user.totpdevice_set.create(confirmed=False)
+        url = device.config_url
+        return Response(url, status=status.HTTP_201_CREATED)

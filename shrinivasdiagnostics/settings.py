@@ -15,6 +15,7 @@ from django.contrib.messages import constants as message_constants
 from django.contrib.messages import constants as messages
 
 import os
+import datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'accounts',
     'core',
     'shop',
-    'order',
 
     'cities_light',
     'phonenumber_field',
@@ -60,10 +60,13 @@ INSTALLED_APPS = [
     'jquery',
     'staticfiles_select2',
     'paypal.standard.ipn',
+
+    'rest_framework',
+    'djoser',
     'django_otp',
-    # 'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_totp',
     # 'django_otp.plugins.otp_hotp',
-    # 'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_static',
 
 ]
 
@@ -174,6 +177,16 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+
+MESSAGE_LEVEL = message_constants.DEBUG
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
 ####################################################################################################
 
 LOGIN_REDIRECT_URL = 'core:homepage'
@@ -242,14 +255,21 @@ HAYSTACK_CONNECTIONS = {
 
 STRIPE_KEY = ""
 
-MESSAGE_LEVEL = message_constants.DEBUG
-MESSAGE_TAGS = {
-    messages.DEBUG: 'alert-info',
-    messages.INFO: 'alert-info',
-    messages.SUCCESS: 'alert-success',
-    messages.WARNING: 'alert-warning',
-    messages.ERROR: 'alert-danger',
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+}
+
+
 ####################################################################################################
 
 # Override settings here

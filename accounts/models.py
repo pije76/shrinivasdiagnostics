@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
@@ -19,8 +19,8 @@ GENDER_CHOICES = (
 )
 
 RELATION_CHOICES = (
-	("father", _('Male')),
-	("mother", _('Female')),
+	("father", _('Father')),
+	("mother", _('Mother')),
 	("spouse", _('Spouse')),
 	("son", _('Son')),
 	("daughter", _('Daughter')),
@@ -30,34 +30,22 @@ RELATION_CHOICES = (
 # Create your models here.
 class Profile(AbstractBaseUser, PermissionsMixin):
 	name = models.CharField(max_length=255, null=True, blank=True)
-	email = models.EmailField(verbose_name='Email Address', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
+	email = models.EmailField(verbose_name='Email', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(null=True, blank=False)
 	otp = models.CharField(max_length=12, null=True, blank=True)
 	phone_verified = models.BooleanField(default=False)
-	birth_date = models.DateField(null=True, blank=False)
+	birth_date = models.DateField(null=True, blank=True)
 	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None, blank=True, null=True)
 
-	is_active = models.BooleanField(default=False, blank=True, null=True)
+	is_active = models.BooleanField(default=True, blank=True, null=True)
 	is_staff = models.BooleanField(default=False)
 	is_admin = models.BooleanField(default=False)
 	is_superuser = models.BooleanField(default=False)
-	# date_joined = models.DateTimeField(default=timezone.now)
-
-	# email_verified = models.BooleanField(default=False, null=True, blank=True)
-	# membership_type = models.CharField(max_length=255, choices=MEMBERSHIP_CHOICES, default='trial', null=True, blank=True)
-
-	# email_secret = models.CharField(max_length=20, default="", blank=True)
-	# is_email_validated = models.BooleanField(default=False)
-
-	# form_submitted = models.BooleanField(default=False, null=True, blank=True)
-	# completion_level = models.PositiveSmallIntegerField(default=0, verbose_name=_('Profile completion percentage'), null=True, blank=True)
-	# personal_info_is_completed = models.BooleanField(default=False, verbose_name=_('Personal info completed'), null=True, blank=True)
 
 	objects = UserManager()
 	# EMAIL_FIELD = "email"
 	USERNAME_FIELD = "email"
 	REQUIRED_FIELDS = ["phone_number"]
-	# REQUIRED_FIELDS = []
 
 	class Meta:
 		verbose_name = _('Profile')
@@ -65,27 +53,14 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 
 	def __str__(self):
 		return self.email
-		# return str(self.username)
-		# return "User profile: %s" % self.username
-		# return self.email
 
-	# def clean(self):
-	#   super().clean()
-	#   self.sun_sign = self.name
-	#   self.email = self.__class__.objects.normalize_email(self.email)
+	def clean(self):
+	  super().clean()
+	  self.email = self.__class__.objects.normalize_email(self.email)
 
 	def clean_title(self):
 		return self.cleaned_data['name'].capitalize()
 
-
-
-	# def get_completion_level(self):
-	#   completion_level = 0
-	#   if self.email_verified:
-	#       completion_level += 50
-	#   if self.personal_info_is_completed:
-	#       completion_level += 50
-	#   return completion_level
 
 	# def get_display_name(self):
 	#   if self.name != '':
@@ -102,8 +77,8 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 	#   return self.first_name
 		# return self.email
 
-	def email_user(self, subject, message, from_email=None, **kwargs):
-		send_mail(subject, message, from_email, [self.email], **kwargs)
+	# def email_user(self, subject, message, from_email=None, **kwargs):
+	# 	send_mail(subject, message, from_email, [self.email], **kwargs)
 
 	# def verify_email(self):
 	#   if self.email_verified is False:
@@ -116,12 +91,14 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 
 
 class Address(models.Model):
+	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_address')
 	address = models.CharField(max_length=255, null=True, blank=True)
 	state = models.CharField(max_length=255, null=True, blank=True)
 	city = models.ForeignKey(City, on_delete=models.CASCADE)
 	country = models.ForeignKey(Country, on_delete=models.CASCADE)
 	location = models.CharField(max_length=255, null=True, blank=True)
 	pin_code = models.CharField(max_length=255, null=True, blank=True)
+	zip = models.CharField(max_length=100, null=True, blank=True)
 
 	class Meta:
 		verbose_name = _('Address')
@@ -130,11 +107,17 @@ class Address(models.Model):
 	def __str__(self):
 		return self.address
 
+	def get_total_price(self):
+		total = 0
+		for order_item in self.items.all():
+			total += order_item.get_final_price()
+		return total
+
 
 class Patient(models.Model):
-	# profile = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='patient_profile', null=True, blank=True)
+	user_patient = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_patient')
 	name = models.CharField(max_length=255, null=True, blank=True)
-	email = models.EmailField(verbose_name='Email Address', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
+	email = models.EmailField(verbose_name='Email', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(blank=True)
 	birth_date = models.DateField(null=True, blank=False)
 	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None, blank=True, null=True)

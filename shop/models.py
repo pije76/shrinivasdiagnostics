@@ -2,153 +2,155 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from .constants import *
+
 from accounts.models import *
 
 from cities_light.models import City, Country
 
 # Create your models here.
 LABEL = (
-    ('doctor', 'Doctor'),
-    ('patient', 'Patient')
+	('doctor', 'Doctor'),
+	('patient', 'Patient')
 )
 
 PAYMENT_STATUS = (
-    ('success', 'Success'),
-    ('failure', 'Failure'),
-    ('pending', 'Pending')
+	('success', 'Success'),
+	('failure', 'Failure'),
+	('pending', 'Pending')
 )
 
 def pdf_upload_path(instance, filename):
-    return f'test_package/{instance.created_date.strftime("%Y-%m-%d")}_test_{filename}'
+	return f'test_package/{instance.created_date.strftime("%Y-%m-%d")}_test_{filename}'
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
-    slug = models.SlugField(max_length=200, unique=True, null=True, blank=True) 
-    
-    class Meta:
-        ordering=('name',)
-        verbose_name ='category'
-        verbose_name_plural='categories'
-    
-    def __str__(self):
-        return self.name
+	name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
+	slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
 
-    def get_absolute_url(self):
-        return reverse('shop:product_list_by_category', args=[self.slug])
+	class Meta:
+		ordering=('name',)
+		verbose_name ='category'
+		verbose_name_plural='categories'
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse('shop:product_list_by_category', args=[self.slug])
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
-    slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category_product')
-    tags = models.CharField(max_length=255, null=True, blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=True)
-    discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    # image = models.ImageField(upload_to='prodcuts/%Y/%m/%d',blank=True)
-    available = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    label = models.CharField(choices=LABEL, max_length=7)
-    ## Patient ##
-    prerequisites = models.CharField(max_length=255, null=True, blank=True)
-    # TAT #
-    samplecutoff = models.CharField(max_length=255, null=True, blank=True)
-    report = models.FileField(upload_to=pdf_upload_path, blank=True)
-    note = models.TextField(blank=True)
-    ## Doctor ##
-    component = models.CharField(max_length=255, null=True, blank=True)
-    speciment = models.CharField(max_length=255, null=True, blank=True)
-    method = models.CharField(max_length=255, null=True, blank=True)
-    cutofftime = models.CharField(max_length=255, null=True, blank=True)
-    quantitytemperature = models.CharField(max_length=255, null=True, blank=True)
+	name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
+	slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
+	category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='product_category')
+	tags = models.CharField(max_length=255, null=True, blank=True)
+	price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=True)
+	discount_price = models.DecimalField(_("Discount Price"), max_digits=10, decimal_places=2, blank=True, null=True)
+	available = models.BooleanField(default=True)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	# label = models.CharField(choices=LABEL, max_length=7)
+	## Patient ##
+	prerequisites = models.CharField(_("Pre-Requisites"), max_length=255, null=True, blank=True)
+	# TAT #
+	samplecutoff = models.CharField(_("Sample Cut Off"), max_length=255, null=True, blank=True)
+	report = models.FileField(upload_to=pdf_upload_path, blank=True)
+	## Doctor ##
+	component = models.CharField(max_length=255, null=True, blank=True)
+	speciment = models.CharField(max_length=255, null=True, blank=True)
+	method = models.CharField(max_length=255, null=True, blank=True)
+	cutofftime = models.CharField(_("Cut Off Time"), max_length=255, null=True, blank=True)
+	quantitytemperature = models.CharField(_("Quantity and Temperature"), max_length=255, null=True, blank=True)
 
-    class Meta:
-        ordering = ('name',)
-        index_together = (('id','slug'),)
+	class Meta:
+		ordering = ('name',)
+		index_together = (('id','slug'),)
 
-    def __str__(self):
-        return self.name
+	def __str__(self):
+		return self.name
 
-    def get_absolute_url(self):
-        # return reverse('shop:product_detail', args=[self.id, self.slug])
-        return reverse("product_detail", kwargs={"pk" : self.pk})
+	def get_absolute_url(self):
+		# return reverse('shop:product_detail', args=[self.id, self.slug])
+		return reverse("product_detail", kwargs={"pk" : self.pk})
 
-    def get_add_to_cart_url(self) :
-        return reverse("shop:add_to_cart", kwargs={"pk" : self.pk})
+	def get_add_to_cart_url(self) :
+		return reverse("shop:add_to_cart", kwargs={"pk" : self.pk})
 
-    def get_remove_from_cart_url(self) :
-        return reverse("shop:remove_from_cart", kwargs={"pk" : self.pk})
+	def get_remove_from_cart_url(self) :
+		return reverse("shop:remove_from_cart", kwargs={"pk" : self.pk})
 
 
 class Order(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    ordered = models.BooleanField(default=False)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    # status = models.CharField(_("Payment Status"), choices=PAYMENT_STATUS, default='pending', max_length=20, blank=False, null=False,)
-    # order_id = models.CharField(_("Order ID"), max_length=40, null=False, blank=False)
-    # payment_id = models.CharField(_("Payment ID"), max_length=36, null=False, blank=False)
-    # signature_id = models.CharField(_("Signature ID"), max_length=128, null=False, blank=False)
-    
-    def __str__(self):
-        return f"{self.quantity} of {self.product.name}"
-        # return f"{self.id}-{self.name}-{self.status}"
-    
-    def get_total_item_price(self):
-        return self.quantity * self.product.price
-    
-    def get_discount_item_price(self):
-        return self.quantity * self.product.discount_price
-    
-    def get_amount_saved(self):
-    #     get_total_item_price_float = float(get_total_item_price)
-    #     get_discount_item_price_float = float(get_discount_item_price)
-        return self.get_total_item_price() - self.get_discount_item_price()
-        # return self.get_total_item_price_float() - self.get_discount_item_price_float()
-    
-    def get_final_price(self):
-        if self.product.discount_price:
-            return self.get_discount_item_price()
-        return self.get_total_item_price()
+	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='order_user')
+	ordered = models.BooleanField(default=False)
+	product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=False, related_name='order_product')
+	quantity = models.IntegerField(default=1)
+
+	def __str__(self):
+		return f"{self.quantity} of {self.product.name}"
+		# return f"{self.id}-{self.name}-{self.status}"
+
+	def get_total_item_price(self):
+		return self.quantity * self.product.price
+
+	def get_total_discount_item_price(self):
+		return self.quantity * self.product.discount_price
+
+	def get_amount_saved(self):
+	#     get_total_item_price_float = float(get_total_item_price)
+	#     get_total_discount_item_price_float = float(get_total_discount_item_price)
+		return self.get_total_item_price() - self.get_total_discount_item_price()
+		# return self.get_total_item_price_float() - self.get_total_discount_item_price_float()
+
+	@property
+	def get_final_price(self):
+		if self.product.discount_price:
+			discount_price = self.get_total_discount_item_price
+			return discount_price
+		item_price = self.get_total_item_price
+		return item_price
 
 
-class Cart(models.Model) :
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    items = models.ManyToManyField(Order)
-    start_date = models.DateTimeField(auto_now_add=True)
-    ordered_date = models.DateTimeField()
-    ordered = models.BooleanField(default=False)
-    checkout_address = models.ForeignKey('CheckoutAddress', on_delete=models.SET_NULL, blank=True, null=True)
-    # payment = models.ForeignKey('Payment', on_delete=models.SET_NULL, blank=True, null=True)
+class Checkout(models.Model) :
+	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='checkout_user')
+	start_date = models.DateTimeField(auto_now_add=True)
+	ordered_date = models.DateTimeField()
+	ordered = models.BooleanField(default=False)
+	billing_address = models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True)
+	# payment = models.ForeignKey('Payment', on_delete=models.SET_NULL, blank=True, null=True)
+	items = models.ManyToManyField(Order)
 
-    def __str__(self):
-        return self.user.email
-    
-    def get_total_price(self):
-        total = 0
-        for order_item in self.items.all():
-            total += order_item.get_final_price()
-        return total
+	def __str__(self):
+		return self.user.email
 
-
-class CheckoutAddress(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    street_address = models.CharField(max_length=100)
-    apartment_address = models.CharField(max_length=100)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    zip = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.user.email
+	@property
+	def get_total_price(self):
+		total_sum = 0
+		for order_item in self.items.all():
+			total_sum += order_item.get_final_price()
+		return total_sum
 
 
 class Payment(models.Model):
-    stripe_id = models.CharField(max_length=50)
-    user = models.ForeignKey(Profile, on_delete=models.SET_NULL, blank=True, null=True)
-    amount = models.FloatField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+	# name = CharField(_("Customer Name"), max_length=254, blank=False, null=False)
+	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='payment_user')
+	amount = models.FloatField(_("Amount"), null=False, blank=False)
+	status = models.CharField(_("Payment Status"), default=PaymentStatus.PENDING, max_length=254, blank=False, null=False)
+	razorpay_order_id = models.CharField(_("Order ID"), max_length=40, null=False, blank=False)
+	payment_id = models.CharField(_("Payment ID"), max_length=36, null=False, blank=False)
+	signature_id = models.CharField(_("Signature ID"), max_length=128, null=False, blank=False)
 
-    def __str__(self):
-        return self.user.email
+	def __str__(self):
+		return f"{self.id}-{self.user}-{self.amount}-{self.status}"
 
+	@property
+	def get_total_price(self):
+		total_sum = 0
+		for order_item in self.items.all():
+			total_sum += order_item.get_final_price()
+		return total_sum
+
+	@property
+	def total_price(self):
+		return sum([item.total_price for item in self.items.all()])

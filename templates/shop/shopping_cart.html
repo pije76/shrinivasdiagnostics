@@ -18,6 +18,10 @@
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
+
+{% block extrahead %}
+{% endblock %}
+
 <style>
     input#search-bar-header:focus::-webkit-input-placeholder {
         transition: opacity 0.45s ease;
@@ -45,7 +49,7 @@
 {% block extra_jscript %}
 <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/site.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
@@ -74,7 +78,7 @@
                 <a href="/book-blood-test-online-in-india/" class="btn-1 btn">+ Add Tests</a>
             </div>
             
-            {% for order_item in object.items.all %}
+            {% for order_item in cart_order.items.all %}
             <div class="test-cards" id="{{ order_item.product.pk}}" data-price="{{ order_item.product.price}}" data-qty="{{ order_item.product.quantity}}">
                 <div class="flex-inline">
                     <h6 class="test-name">{{ order_item.product.name }}</h6>
@@ -82,7 +86,7 @@
                     <<p class="price">>${{ order_item.product.price}}</p>
                     <p class="price">${{ order_item.product.discount_price }}</p>
                     {% else %} {% endcomment %}
-                    <p class="price">${{ order_item.product.price}}</p>
+                    <p class="price">&#8377; {{ order_item.product.price}}</p>
                     {% comment %} {% endif %} {% endcomment %}
                 </div>
                 <div class="flex-inline">
@@ -103,10 +107,10 @@
         <div class="col-lg-4 col-md-4 col-sm-12 summary">
             <div class="checkout-summary">
                 <div class="heading-small-v-2">Summary</div>
-                {% if object.get_total_price %}
+                {% if cart_order.get_total_price %}
                 <div class="flex-inline m-t-40">                    
                     <p>Subtotal</p>
-                    <p class="subtotal">₹ {{ object.get_total_price }}</p>
+                    <p class="subtotal">&#8377; {{ cart_order.get_total_price }}</p>
                 </div>
                 <!-- <div class="flex-inline">
                     <p>Home Collection charge</p>
@@ -114,7 +118,7 @@
                 </div> -->
                 <div class="flex-inline border strong-summary-text">
                     <p>Total</p>
-                    <p class="total-charges">₹ {{ object.get_total_price }}</p>
+                    <p class="total-charges">&#8377; {{ cart_order.get_total_price }}</p>
                 </div>
                 <a href="{% url 'checkout' %}" class="btn-2 text-xs-center">Proceed to Checkout</a>
             </div>
@@ -165,11 +169,12 @@
                                             <strong>WB EDTA</strong>
                                         </p>
                                     -->
-                                    <p class="price">₹ {{ item.price }} </p>
+                                    <p class="price">&#8377; {{ item.price }} </p>
                                     <div class="footer-card">
                                         <div class="flex-inline p-custom">
                                             <div class="action">
-                                                <form action="#" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8" autocomplete="off">
+                                                <form action="{% url 'checkout' %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8" autocomplete="off">
+                                                    {% csrf_token %}
                                                     <button type="submit" class="btn-3">Buy Now</button>
                                                 </form>
                                                 <!-- data-target="#added-to-cart"-->
@@ -180,7 +185,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                            <a href="https://www.pathkindlabs.com/pathkind_app/">
+                                            <a href="#">
                                                 <img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report
                                             </a>
                                         </div>
@@ -204,4 +209,33 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block jscript %}
+<script type='text/javascript'>
+$(document).ready(function()
+{
+
+    var total_price = document.querySelector('.total-charges').innerHTML;
+    // var total_price = parseFloat(total_price.replace(/₹/g, ""));
+    total_price = Number(total_price.replace(/[^0-9\.-]+/g,""));
+
+    $.ajax(
+    {
+        url:'{% url "shopping_cart" %}',
+        data:
+        {
+            'total_price': total_price,
+        },
+
+        success: function(data)
+        {
+            // console.log("total_price: ", total_price);
+            // console.log("total_price: ", total_price);
+        },
+    });
+
+
+});
+</script>
 {% endblock %}

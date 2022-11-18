@@ -2228,8 +2228,9 @@ a.share-test-details img{
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
 .cart-badge{
-	 background-color: #ffcb03;
+	background-color: #ffcb03;
     width: 17px;
     height: 17px;
     display: inline-block;

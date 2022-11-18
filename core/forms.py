@@ -13,7 +13,8 @@ from crispy_forms.helper import *
 from crispy_forms.layout import *
 from selectable.forms import *
 from selectable_select2.widgets import *
-
+from phonenumber_field.formfields import *
+from phonenumber_field.widgets import *
 
 import datetime
 
@@ -54,3 +55,13 @@ class ProductForm(forms.Form):
     # sector = forms.ModelChoiceField(required=True, label="Sector", queryset=MarketSector.objects.all().order_by('title'), widget=Select2(attrs={'class': "form-control"}))
     # board = forms.ModelChoiceField(required=True, label="Board", queryset=MarketBoard.objects.all().order_by('title'), widget=Select2(attrs={'class': "form-control"}))
     # ipo_date = forms.DateField(required=True, label=_("IPO Date:"), widget=DatePickerInput(format="%d-%m-%Y", attrs={'class': "form-control"}))
+
+class ScheduleForm(forms.Form):
+    name = forms.CharField(required=False, label=_('Name:'), widget=forms.TextInput(attrs={'class': "form-control"}))
+    # phone_number = forms.CharField(required=False, label=_('Phone Number:'), widget=forms.TextInput(attrs={'class': "form-control"}))
+    phone_number = PhoneNumberField(region="CA")
+    # phone_number = PhoneNumberField(region="FR", widget=PhoneNumberPrefixWidget(initial="FR", country_choices=[("CA", "Canada"),("FR", "France"),],),)
+    # phone_number = PhoneNumberField(region="FR", widget=PhoneNumberPrefixWidget(initial="FR", country_choices=[("CA", "Canada"),("FR", "France"),],),)
+    # phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial='GE'))
+    city = forms.CharField(required=False, label=_('City:'), widget=forms.TextInput(attrs={'class': "form-control"}))
+

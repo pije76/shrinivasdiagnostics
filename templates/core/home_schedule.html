@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block head_title %}
-{{ titles }}
+{{ page_title }}
 {% endblock %}
 
 {% block extra_style %}
@@ -38,8 +38,8 @@
 
 {% include "core/hero_schedule.html" %}
 
-{% include "core/health-packages.html" %}
+{% include "core/health_packages.html" %}
 
-{% include "core/tests-section.html" %}
+{% include "core/tests_section.html" %}
 
 {% endblock %}

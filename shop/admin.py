@@ -35,7 +35,7 @@ class OrderAdmin(admin.ModelAdmin):
         'quantity',
     ]
 
-class CartAdmin(admin.ModelAdmin):
+class CheckoutAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         # 'items',
@@ -44,7 +44,20 @@ class CartAdmin(admin.ModelAdmin):
         'ordered_date',
     ]
 
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = [
+        'user',
+        'amount',
+        'status',
+        'razorpay_order_id',
+        'payment_id',
+        'signature_id',
+    ]
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(Cart, CartAdmin)
+admin.site.register(Checkout, CheckoutAdmin)
+admin.site.register(Payment, PaymentAdmin)
+

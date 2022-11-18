@@ -35,44 +35,24 @@ def homepage(request):
 		# 'ticker_code': get_ticker_id,
 	}
 	
-	form = ProductForm(initial=initial_dict)
-	
-	# if is_ajax:
-	# 	get_board_id = request.GET.get('get_board_id')
-	# 	get_ticker_code = MarketDetail.objects.filter(id=get_ticker_id).values_list('ticker_code', flat=True).first()
-	# 	cache.set('get_board_id', get_board_id, 30)
+	form = ScheduleForm(initial=initial_dict)
 
-	# 	get_ticker_id = cache.get('get_ticker_id')
+	if request.method == "POST":
+		form = ScheduleForm(request.POST or None)
 
-	# 	context = {
-	# 		'page_title': page_title,
-	# 		'get_qs': get_qs,
-	# 		'get_ticker_id': get_ticker_id,
-	# 		'get_sector_id': get_sector_id,
-	# 		'get_board_id': get_board_id,
-	# 	}
-	# 	return JsonResponse(context)
+		if form.is_valid():
+			schedule = Schedule()
+			schedule.name = form.cleaned_data['name']
+			schedule.phone_number = form.cleaned_data['phone_number']
+			schedule.city = form.cleaned_data['city']
+			schedule.save()
 
-	# if request.method == "POST":
-	# 	form = ProductForm(request.POST or None)
-	# 	get_ticker_id = request.POST.get('get_ticker_id')
-	# 	cache.set('get_ticker_id', get_ticker_id, 30)
-	# 	get_ticker_id = cache.get('get_ticker_id')
-
-	# 	context = {
-	# 		'page_title': page_title,
-	# 		# 'form': form,
-	# 		# 'chart': dump,
-	# 		# 'get_ticker_name': get_ticker_name,
-	# 		'get_ticker_name': json.dumps(get_ticker_name),
-	# 	}
-	# 	return render(request, 'chart/index.html', context)
-	# else:
-	# 	if get_status == "expired":
-	# 		messages.warning(request, "You're Package is expired. Please choose the package to continue.")
-	# 		return redirect('subscription:subscription')
-	# 	else:
-	# 		form = ProductForm(initial=initial_dict, instance=request.user)
+			messages.success(request, _(page_title + ' form was created.'))
+			return redirect('core:homepage')
+		else:
+			messages.warning(request, form.errors)
+	else:
+		form = ScheduleForm(initial=initial_dict)
 
 	context = {
 		# 'razorpay_order_id': razorpay_order_id,
@@ -80,19 +60,55 @@ def homepage(request):
 		# 'razorpay_amount': amount,
 		# 'currency': currency,
 		# 'callback_url': callback_url,
-		'page_title': page_title,
 		'form': form,
+		'page_title': page_title,
+		# 'form': form,
 		'user_order': user_order,
-		# 'get_ticker_name': get_ticker_name,
 	}
 	return render(request, 'core/home.html', context)
 
 
-def show(request):
-	product = get_object_or_404(Product, id=pk, available=True)
+# def schedule(request):
+# 	product = get_object_or_404(Product, id=pk, available=True)
 
-	context = {
-		'product': product,
-	}
+# 	initial_dict = {
+# 		# 'ticker_code': get_ticker_id,
+# 	}
 
-	return render(request,'header.html')
+# 	if request.method == 'POST':
+#         form = ScheduleForm(request.POST or None)
+
+#         if form.is_valid():
+#             schedule = Schedule()
+#             schedule.name = name
+#             schedule.phone_number = phone_number
+#             schedule.city = city
+#             schedule.save()
+
+#             messages.success(request, _(page_title + ' form was created.'))
+#             return redirect('core:homepage)
+#         else:
+#             messages.warning(request, form.errors)
+
+#     else:
+#         form = ScheduleForm(initial=initial)
+
+#     context = {
+#         'logos': logos,
+#         'titles': titles,
+#         'page_title': page_title,
+#         'patients': patients,
+#         'profiles': profiles,
+#         'icnumbers': icnumbers,
+#         'form': form,
+#         "themes": themes,
+#     }
+
+#     return render(request, 'core/home.html', context)
+
+
+# 	context = {
+# 		'product': product,
+# 	}
+
+# 	return render(request,'header.html')
