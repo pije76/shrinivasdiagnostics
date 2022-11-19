@@ -120,7 +120,7 @@
                     <p>Total</p>
                     <p class="total-charges">&#8377; {{ cart_order.get_total_price }}</p>
                 </div>
-                <a href="{% url 'checkout' %}" class="btn-2 text-xs-center">Proceed to Checkout</a>
+                <a href="{% url 'checkout:checkout' %}" class="btn-2 text-xs-center">Proceed to Checkout</a>
             </div>
             {% endif %}
         </div>
@@ -173,7 +173,7 @@
                                     <div class="footer-card">
                                         <div class="flex-inline p-custom">
                                             <div class="action">
-                                                <form action="{% url 'checkout' %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8" autocomplete="off">
+                                                <form action="{% url 'checkout:checkout' %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8" autocomplete="off">
                                                     {% csrf_token %}
                                                     <button type="submit" class="btn-3">Buy Now</button>
                                                 </form>

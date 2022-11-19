@@ -96,7 +96,7 @@
 												<a class="add-patient add-new-patient" item-id="1226" item-type="1">+ Add new patient</a>
 												{% for patient_item in patients %}
 												<div class="patient-count flex-inline">
-													<p class="name patient-name"  data-patient-name="Tes" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">{{ patient_item.name }}</p>
+													<p class="name patient-name"  data-patient-name="{{ patient_item.name }}" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">{{ patient_item.name }}</p>
 													<a class="info-patient" patient-id="45000">info</a>
 												</div>
 												{% endfor %}
@@ -291,14 +291,16 @@
 									<div class="row billing-address">
 										<div class="col-md-6">
 											<div class="box">
+												{% for item in user_address %}
 												<input type="radio" name="default_address" data-address-id="15644" checked=checked onclick="set_default_address('15644')" id="default_billing_address">
 												<div class="billing-address-list">
-													<p>Grajaj 78</p>
-													<p>Gurugram</p>
-													<p>Haryana</p>
-													<p>152354</p>
+													<p>{{ item.address }}</p>
+													<p>{{ item.city.name }}</p>
+													<p>{{ item.state }}</p>
+													<p>{{ item.zip }}</p>
 													<a class="action action-editaddress" address-id="15644" user-address-id="15644"><span>Edit</span></a>
 												</div>
+												{% endfor %}
 											</div>
 										</div>
 									</div>
@@ -406,7 +408,7 @@
 
 							<div id="collapse-item-5" class="collapse checkout-collapse-body" aria-labelledby="headingFive" data-parent="#checkout-collapse-item-5">
 								<div class="card-body">
-									<form action="{% url 'order_payment' %}" id="add_payment_details_form" method="POST" accept-charset="utf-8">
+									<form action="" id="add_payment_details_form" method="POST" accept-charset="utf-8">
 										{% csrf_token %}
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="billing_id" value="15644" />
@@ -478,12 +480,6 @@
 <script type='text/javascript'>
 $(document).ready(function()
 {
-	// var total_price = document.querySelector('.total-charges').innerHTML;
-    // total_price = Number(total_price.replace(/[^0-9\.-]+/g,""));
-	var amount = $(".total-charges").text();
-	amount = Number(amount.replace(/[^0-9\.-]+/g,""));
-	// console.log(total_price);
-	console.log(amount);
 
 	function getCookie(name)
     {
@@ -506,13 +502,14 @@ $(document).ready(function()
 
     var csrftoken = getCookie('csrftoken');
 
+
 	$('.patient-name').click(function()
 	{
 		var get_patient = $(this).text();
 
 		$.ajax(
         {
-            url:'{% url "checkout" %}',
+            url:'{% url "checkout:checkout" %}',
             data:
             {
                 'get_patient': get_patient,
@@ -520,79 +517,56 @@ $(document).ready(function()
 
             success: function(data)
             {
-            	console.log("get_patient: ", get_patient);
+            	// console.log("get_patient: ", get_patient);
             	$(".checkout-add-more-patient").html('<div class="dropdown checkout-add-more-patient"><button patient-id="" class="btn dropdown-toggle selected-patient" type="button" id="dropdownMenuButton select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + get_patient + '</button></div>');
             },
         });
 	});
 
-	$('input:radio[name="payment_mode"]').change(function()
-	{
-		var payment_mode = $(this).val();
-
-		if($(this).val() === 'Online')
-		{
-			console.log("Online");
-			console.log(amount);
-		}
-		else
-		{
-			console.log("Cash!");
-		}
-
-        $.ajax(
-        {
-        	type: 'GET',
-        	// type: 'POST',
-        	dataType: 'json',
-            url:'{% url "order_payment" %}',
-            data:
-            {
-            	'csrfmiddlewaretoken': csrftoken,
-                'payment_mode': payment_mode,
-                'amount': amount,
-                // 'razorpay_key': razorpay_key,
-                // 'currency': "INR",
-            },
-
-            success: function(data)
-            {
-                if(!data["valid"])
-                {
-	                console.log("payment_mode4: ", data.payment_mode4);
-	                console.log("amount4: ", data.amount);
-	                console.log("amount: ", data.amount);
-	                console.log("currency: ", data.currency);
-	                console.log("razorpay_key: ", data.razorpay_key);
-
-                    // $(".input_warm_water_before").html(data.warm_water_before);
-                    // $(".input_warm_water_after").html(data.warm_water_after);
-                    // $(".input_total_feeding").html(data.total_feeding);
-                    // $(".input_total_fluids").html(data.total_fluids);
-                }
-            },
-        });
-	});
+	var amount = $(".total-charges").text();
+	amount = Number(amount.replace(/[^0-9\.-]+/g,""));
+	let obj = amount
 
 	var options =
 	{
 		key: "{{ razorpay_key }}",
 		amount: "{{ amount }}",
-		amount: "amount",
-		amount: amount,
 		currency: "{{ currency }}",
-		name: "{{ name }}",
+		name: "{{ store_name }}",
+		description: "Test Transaction",
+		image: "http://127.0.0.1:8000/assets/images/shrinivasdiagnostics_logo.png",
 		order_id: "{{ razorpay_order_id }}",
 		callback_url: "{{ callback_url }}",
+		redirect: true,
+		prefill: {
+            "name": "{{ name }}",
+            "email": "{{ email }}",
+            "contact": "{{ phone_number }}"
+        },
+        notes: {
+            "address": "ShrinivasDiagnostic Lab Office"
+        },
+        theme: {
+            "color": "#3399cc"
+        }
 	};
 
 	var rzp1 = new Razorpay(options);
 
-	document.getElementById("add_payment_details_btn").onclick = function (e)
+	$('#add_payment_details_btn').click(function(e)
 	{
-		rzp1.open();
-		e.preventDefault();
-	};
+		var payment_mode = $('input[name="payment_mode"]:checked').val();
+
+		if(payment_mode === 'Online')
+		{
+			rzp1.open();
+			e.preventDefault();
+		}
+		if(payment_mode === 'Cash')
+		{
+			// console.log("payment_mode", payment_mode);
+		}
+	});
 
 });
 </script>

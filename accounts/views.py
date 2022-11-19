@@ -97,3 +97,14 @@ def get_user_totp_device(self, user, confirmed=None):
             device = user.totpdevice_set.create(confirmed=False)
         url = device.config_url
         return Response(url, status=status.HTTP_201_CREATED)
+
+
+
+def my_orders(request):
+	context = {
+		# 'page_title': page_title,
+		# 'form': form,
+	}
+
+	return render(request, 'shop/order.html', context)
+

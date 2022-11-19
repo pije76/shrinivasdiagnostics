@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from shop.views import *
+from checkout.views import *
+from accounts.views import *
 
 from djoser import views as djoser_views
 # from rest_framework_jwt import views as jwt_views
@@ -30,10 +32,11 @@ urlpatterns = [
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
-    path('checkout/', checkout, name='checkout'),
-    path("callback/", callback, name="callback"),
+    # path('checkout/', checkout, name='checkout'),
+    path('checkout/', include('checkout.urls')),
+    # path("callback/", callback, name="callback"),
 	# path('payment/', paymenthandler, name='paymenthandler'),
-    path("payment/", order_payment, name="order_payment"),
+    # path("payment/", order_payment, name="order_payment"),
     path('my-orders/', my_orders, name='my_orders'),
 
     path('summernote/', include('django_summernote.urls')),

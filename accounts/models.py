@@ -107,11 +107,8 @@ class Address(models.Model):
 	def __str__(self):
 		return self.address
 
-	def get_total_price(self):
-		total = 0
-		for order_item in self.items.all():
-			total += order_item.get_final_price()
-		return total
+	def get_address(self):
+		return self.address
 
 
 class Patient(models.Model):

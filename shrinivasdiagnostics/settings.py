@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'core',
     'shop',
+    'checkout',
 
     'cities_light',
     'phonenumber_field',

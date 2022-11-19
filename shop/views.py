@@ -15,15 +15,16 @@ from django.views.generic import ListView, DetailView, TemplateView, View
 # from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
 # from haystack.query import SearchQuerySet
 
-from .models import Category
+from .models import *
 from .forms import *
 
+from accounts.models import *
 from accounts.forms import *
 
-import razorpay
+from checkout.models import *
+
 import json
 
-razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 def product_list(request, category_slug=None):
 	page_title = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
@@ -48,7 +49,7 @@ def product_list(request, category_slug=None):
 def product_detail(request, pk):
 	product = get_object_or_404(Product, id=pk, available=True)
 	page_title = product
-	user_id = Profile.objects.get(email = request.user)
+	user_id = Profile.objects.get(email=request.user)
 	user_order = Order.objects.filter(user=user_id).count()
 	cart_product_form=CartAddProductForm()
 
@@ -132,20 +133,16 @@ def get_add_to_cart_url(request, pk):
 
 def shopping_cart(request):
 	page_title = _('Cart | ShrinivasDiagnostic')
-	user_id = Profile.objects.get(email = request.user)
+	user_id = Profile.objects.get(email=request.user)
 	user_order = Order.objects.filter(user=user_id).count()
 	total_price = request.GET.get('total_price')
-	print("total_price:", total_price)
-	print('user_order', user_order)
 
 	try:
 		cart_order = Checkout.objects.get(user=request.user, ordered=False)
 		# product = Product.objects.get(user=request.user, order=False)
 		products = Product.objects.filter(available=True)
 		product = products.count()
-		print('product', product)
 		# get_total_item_price = products.price
-		# print('get_total_item_price', get_total_item_price)
 
 		context = {
 			'cart_order': cart_order,
@@ -157,265 +154,6 @@ def shopping_cart(request):
 	except ObjectDoesNotExist:
 		messages.error(request, "You do not have an order")
 		return redirect("/")
-
-
-def checkout(request):
-	page_title = _('Checkout | ShrinivasDiagnostic')
-	user_id = Profile.objects.get(email = request.user)
-	patients = Patient.objects.filter(user_patient=user_id)
-	user_order = Order.objects.filter(user=user_id).count()
-	products = Order.objects.filter(user=user_id)
-	cart_order = Checkout.objects.get(user=request.user, ordered=False)
-	total_payment = Order.objects.filter(user=request.user)
-	payment_mode = request.GET.get('payment_mode')
-	amount = request.GET.get('amount')
-	print("amount1", amount)
-	print("amount", amount)
-	currency = 'INR'
-	razorpay_key = settings.RAZORPAY_KEY_ID
-	data = dict()
-
-	form = PatientForm()
-	# form = CheckoutForm(request.POST or None)
-
-	if request.method == "GET":
-
-		# else:
-		context = {
-			"page_title": page_title,
-			"user_order": user_order,
-			"products": products,
-			"cart_order": cart_order,
-			"total_payment": total_payment,
-			# "total_price": total_price,
-			"patients": patients,
-			"amount": amount,
-			"currency": currency,
-			"razorpay_key": razorpay_key,
-		}
-		# print("amount2", amount)
-		return render(request, 'shop/checkout.html', context=context)
-
-	if request.method == 'POST':
-	# if payment_mode == "Online":
-	# if request.method == "POST" and payment_mode == "Online" and request.headers.get('x-requested-with') == 'XMLHttpRequest':
-
-		# razorpay_order = razorpay_client.order.create({"amount": int(amount) * 100, "currency": "INR", "receipt": "1"})
-		razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, receipt='0'))
-		# print("razorpay_order:", razorpay_order)
-		razorpay_order_id = razorpay_order['id']
-		callback_url = 'paymenthandler/'
-		# order = Payment.objects.create(user=user_id, amount=amount, razorpay_order_id=razorpay_order["id"])
-		# print("order:", order)
-		# order.save()
-
-		# print("amount1", amount)
-		# razorpay_key = settings.RAZORPAY_KEY_ID
-
-		data['razorpay_order_id'] = razorpay_order_id
-		data['razorpay_key'] = razorpay_key
-		data['callback_url'] = callback_url
-		data['amount'] = amount
-		# data['currency'] = currency
-
-		return JsonResponse(data)
-	else:
-		return JsonResponse({"response error": form.errors}, status=400)
-
-		# context = {
-		# # 	"razorpay_order_id": razorpay_order_id,
-		# # 	"razorpay_key": razorpay_key,
-		# # 	"callback_url": callback_url,
-		# # 	"amount": amount,
-		# # 	"currency": currency,
-		# 	"page_title": page_title,
-		# 	"user_order": user_order,
-		# 	"products": products,
-		# 	"total_payment": total_payment,
-		# 	"total_price": total_price,
-		# 	"patients": patients,
-		# }
-		# return render(request, 'shop/checkout.html', context=context)
-
-
-@csrf_exempt
-def callback(request):
-	def verify_signature(response_data):
-		return razorpay_client.utility.verify_payment_signature(response_data)
-
-	if "razorpay_signature" in request.POST:
-		payment_id = request.POST.get("razorpay_payment_id", "")
-		razorpay_order_id = request.POST.get("razorpay_order_id", "")
-		signature_id = request.POST.get("razorpay_signature", "")
-		order = Order.objects.get(razorpay_order_id=razorpay_order_id)
-		order.payment_id = payment_id
-		order.signature_id = signature_id
-		order.save()
-
-		context = {
-			"status": order.status,
-		}
-
-		if not verify_signature(request.POST):
-			order.status = PaymentStatus.SUCCESS
-			order.save()
-			return render(request, "shop/callback.html", context)
-		else:
-			order.status = PaymentStatus.FAILURE
-			order.save()
-			return render(request, "shop/callback.html", context)
-	else:
-		payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
-		razorpay_order_id = json.loads(request.POST.get("error[metadata]")).get(
-			"order_id"
-		)
-		order = Order.objects.get(razorpay_order_id=razorpay_order_id)
-		order.payment_id = payment_id
-		order.status = PaymentStatus.FAILURE
-		order.save()
-
-		context = {
-			"status": order.status,
-		}
-
-		return render(request, "shop/callback.html", context)
-
-
-def order_payment(request):
-	# if request.method == "POST":
-	if request.method == "POST" and request.headers.get('x-requested-with') == 'XMLHttpRequest':
-		name = Profile.objects.get(email=request.user)
-		# total_price = request.GET.get('total_price')
-		# total_price = request.GET.get('total_price')
-		total_price = request.POST.get('total_price')
-		print("total_price5b:", total_price)
-		amount = total_price
-		print("amount3", amount)
-		print("total_price5a:", total_price)
-		currency = "INR"
-
-		callback_url = 'callback/'
-		# razorpay_order = razorpay_client.order.create({"amount": int(amount), "currency": "INR", "receipt": "1"})
-		razorpay_order = razorpay_client.order.create({"amount": amount, "currency": currency, "receipt": "1"})
-		order = Payment.objects.create(user=name, amount=amount, razorpay_order_id=razorpay_order["id"])
-		order.save()
-
-		context = {
-			# "callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
-			"callback_url": "http://" + "127.0.0.1:8000" + "/callback/",
-			# "callback_url": callback/,
-			"razorpay_key": settings.RAZORPAY_KEY_ID,
-			"order": order,
-		}
-		return render(request, "shop/checkout.html", context)
-
-	return render(request, "shop/checkout.html")
-
-
-def my_orders(request):
-	context = {
-		# 'page_title': page_title,
-		# 'form': form,
-	}
-
-	return render(request, 'shop/order.html', context)
-
-
-def create_billingaddress(request):
-	form = Add_BillingForm(request.POST or None)
-
-	if request.method == "POST":
-		if form.is_valid():
-			form.save()
-			return redirect ('home')
-	context = {
-		"form":form
-	}
-	return render(request, 'app/createform.html', context)
-
-
-def update_billingaddress(request, id):
-	post = get_object_or_404(Post, id=id)
-	form = Update_BillingForm(instance=post)
-
-	if request.method == "POST":
-		form = Update_BillingForm(request.POST or None, instance=post)
-
-		if form.is_valid():
-			post = Post.objects.get(id=1)
-			post.title = "update title"
-			form.save()
-
-			messages.success(request, _(page_title + ' form was updated.'))
-			return render(request, "shop/payment.html", context)
-		else:
-			messages.warning(request, formset.errors)
-	else:
-		context = {
-			'logos': logos,
-			'titles': titles,
-			'page_title': page_title,
-			'patients': patients,
-			'profiles': profiles,
-			'icnumbers': icnumbers,
-			'formset': formset,
-			"themes": themes,
-		}
-
-	return render(request, "shop/payment.html", context)
-
-
-# class CheckoutView(View):
-#     def get(self, *args, **kwargs):
-#         form = CheckoutForm()
-#         context = {
-#             'form': form
-#         }
-#         return render(self.request, 'shop/checkout.html', context)
-
-#     def post(self, *args, **kwargs):
-#         form = CheckoutForm(self.request.POST or None)
-
-#         try:
-#             order = Order.objects.get(user=self.request.user, ordered=False)
-#             if form.is_valid():
-#                 street_address = form.cleaned_data.get('street_address')
-#                 apartment_address = form.cleaned_data.get('apartment_address')
-#                 country = form.cleaned_data.get('country')
-#                 zip = form.cleaned_data.get('zip')
-#                 same_billing_address = form.cleaned_data.get('same_billing_address')
-#                 save_info = form.cleaned_data.get('save_info')
-#                 payment_option = form.cleaned_data.get('payment_option')
-
-#                 billing_address = Address(user=self.request.user, street_address=street_address, apartment_address=apartment_address, country=country, zip=zip)
-#                 billing_address.save()
-#                 order.billing_address = billing_address
-#                 order.save()
-#                 return redirect('shop:checkout')
-#             messages.warning(self.request, "Failed Chekout")
-#             return redirect('shop:checkout')
-
-#         except ObjectDoesNotExist:
-#             messages.error(self.request, "You do not have an order")
-#             return redirect("shopping_cart")
-
-# checkout_view = CheckoutView.as_view()
-
-
-
-# class OrderSummaryView(LoginRequiredMixin, View):
-#     def get(self, *args, **kwargs):
-#         try:
-#             order = Order.objects.get(user=self.request.user, ordered=False)
-#             context = {
-#                 'object' : order,
-#             }
-#             return render(self.request, 'shop/shopping_cart.html', context)
-#         except ObjectDoesNotExist:
-#             messages.error(self.request, "You do not have an order")
-#             return redirect("/")
-
-# shopping_cart = OrderSummaryView.as_view()
 
 
 # def autocomplete(request):
