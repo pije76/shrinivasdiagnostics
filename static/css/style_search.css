@@ -2239,7 +2239,7 @@ a.share-test-details img{
     border-radius: 50px;
     position: absolute;
     top: -3px;
-    right: -4px;
+    right: 64px !important;
     font-size: 12px;
     font-weight: 600;
     text-align: center;

@@ -5,4 +5,12 @@ from django.contrib.auth.models import User
 from .models import *
 
 # Register your models here.
-admin.site.register(Schedule)
+class ScheduleAdmin(admin.ModelAdmin):
+    list_display = [
+        # 'user',
+        'full_name',
+        'phone_number',
+        'city',
+    ]
+
+admin.site.register(Schedule, ScheduleAdmin)

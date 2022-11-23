@@ -25,6 +25,6 @@ class VerifyOTPSerializer(serializers.ModelSerializer):
             path = os.path.join(BASE_DIR, 'static')
             dir_list = os.listdir(path)
             random_logo = random.choice(dir_list)
-            instance = self.Meta.model.objects.update_or_create(**validated_data, defaults = dict(username = res,name = instance.mobile ,logo = random_logo, profile_id = res))[0]
+            instance = self.Meta.model.objects.update_or_create(**validated_data, defaults = dict(username = res, full_name = instance.mobile ,logo = random_logo, profile_id = res))[0]
             instance.save()
         return instance

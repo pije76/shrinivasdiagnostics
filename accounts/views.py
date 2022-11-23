@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse, JsonResponse
 
 from .models import *
 from .forms import *
@@ -9,6 +11,45 @@ from .forms import *
 from bootstrap_modal_forms.generic import BSModalLoginView
 
 # Create your views here.
+def user_login(request):
+	username = password = ''
+	response_data = {}
+	is_ajax = request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+	if request.POST and request.is_ajax:
+		phone = request.POST['phone']
+		password = request.POST['password']
+
+		try:
+			get_user_by_phone = UserAccount.objects.get(phone=phone)
+			user_phone = get_user_by_phone.phone
+			username = get_user_by_phone.user.get_username()
+			get_user = User.objects.get(username=username)
+
+			if get_user.check_password(password):
+				user = authenticate(username=username, password=password)
+				if user is not None:
+					if user.is_active:
+						login(request, user)
+						response_data = {'login' : "Success"}
+					else:
+						url = "http://2factor.in/API/V1/"+API_KEY+"/SMS/" + user_phone + "/AUTOGEN/OTPSEND"
+						payload = ""
+						response = requests.request("GET", url, data=payload)
+						otp_data = response.json()
+						response_data['user'] = "not active"
+						response_data['user_phone'] = user_phone
+				else:
+					response_data = {'user':"password wrong"}
+		except UserAccount.DoesNotExist:
+			# except ObjectDoesNotExist:
+			response_data = {'user':"nouser"}
+	else:
+		username = password = ''
+		response_data = {'login': "Failed"}
+	return HttpResponse(JsonResponse(response_data))
+
+
 # @receiver(user_logged_in)
 # class MyLoginView(BSModalUpdateView):
 # class MyLoginView(LoginView):
@@ -32,15 +73,15 @@ login_view_modal = MyLoginView.as_view()
 
 
 def profile_detail(request, pk):
-	page_title = _('Member Profile')
-	# memberlist = Profile.objects.filter(member=request.user.id).values_list("id", flat=True).first()
-	get_fullname = Profile.objects.filter(email=request.user).values_list("name", flat=True).first()
-	# get_email = Profile.objects.filter(member=request.user).values_list("email", flat=True).first()
-	get_birthdate = Profile.objects.filter(email=request.user).values_list("birth_date", flat=True).first()
-	# get_birthcity = Profile.objects.filter(email=request.user).values_list("birth_city", flat=True).first()
+	page_title = _('Account Profile')
+	user_id = Profile.objects.get(email=request.user)
+	full_name = user_id.full_name
+	phone_number = user_id.phone_number
+	email = user_id.email
+	user_address = Address.objects.filter(user=user_id)
 
 	initial_dict = {
-		'full_name': get_fullname,
+		# 'full_name': get_fullname,
 		# 'birth_date': get_nataldate,
 		# 'birth_city': get_birth_city,
 		# 'longitude': get_city_longitude,
@@ -65,6 +106,7 @@ def profile_detail(request, pk):
 			# profile.birth_date = form.cleaned_data['birth_date']
 			profile.birth_date = form.cleaned_data.get('birth_date')
 			profile.save()
+			messages.warning(request, form.errors)
 
 		else:
 			messages.warning(request, form.errors)
@@ -74,11 +116,11 @@ def profile_detail(request, pk):
 	context = {
 		'page_title': page_title,
 		'form': form,
-		'get_fullname': get_fullname,
-		# 'get_lastname': get_lastname,
-		# 'get_email': get_email,
-		'get_birthdate': get_birthdate,
-		# 'get_birthcity': get_birthcity,
+		'full_name': full_name,
+		'phone_number': phone_number,
+		'email': email,
+		'user_address': user_address,
+		'user_id': user_id,
 	}
 
 	return render(request, 'accounts/profile.html', context)
@@ -91,20 +133,9 @@ def get_user_totp_device(self, user, confirmed=None):
             return device
 
     def get(self, request, format=None):
-        user = request.user
+        user=request.user
         device = get_device(self, user)
         if not device:
             device = user.totpdevice_set.create(confirmed=False)
         url = device.config_url
         return Response(url, status=status.HTTP_201_CREATED)
-
-
-
-def my_orders(request):
-	context = {
-		# 'page_title': page_title,
-		# 'form': form,
-	}
-
-	return render(request, 'shop/order.html', context)
-

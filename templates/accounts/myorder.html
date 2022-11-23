@@ -1,0 +1,305 @@
+{% extends 'base_profile.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock %}
+
+{% block extra_style %}
+<link href="{% static 'css/style_accounts.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style_profile1.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/desktop.css' %}" rel="stylesheet" type="text/css">
+<style>
+input#search-bar-header:focus::-webkit-input-placeholder {
+	transition: opacity 0.45s ease;
+	opacity: 0;
+  }
+
+  input#search-bar-header:focus::-moz-placeholder {
+	transition: opacity 0.45s ease;
+	opacity: 0;
+  }
+
+  input#search-bar-header:focus:-ms-placeholder {
+	transition: opacity 0.45s ease;
+	opacity: 0;
+  }
+
+  div,
+  .profile-item {
+	word-wrap: break-word;
+  }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="inner-content inner-page-account">
+	<div class="container">
+		<div class="row m-b-20">
+			<div class="col-md-8 col-sm-12">
+				<h1 class="heading-small">My Orders | ShrinivasDiagnostic</h1>
+			</div>
+			<div class="col-md-4 col-sm-12 text-right">
+				<a href="/users/users_public/logout" class="btn action-btn">Logout</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-12">
+				<div class="side-menu">
+					<ul>
+						<li><a href="/my-orders" class="active">Orders</a></li>
+						<li><a href="{% url 'accounts:profile_detail' user_id.pk %}">Profile</a></li>
+						<!--
+							<li><a href="#">Privilege Card</a></li>
+							<li><a href="#">Test History</a></li>
+						-->
+						<li><a href="#">Download Report</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-9 col-md-9 col-sm-12">
+				<div class="profile-right">
+					{% for item in user_checkout %}
+					<div class="order-box">
+						<div class="flex-inline m-b-20">
+							<div class="item-left">
+								<p class="order-id">{{ item.order_id }}</p>
+								<img src="/assets/images/tag.png">
+							</div>
+							<div class="item-right">
+								<span class="order-date">Placed on {{ item.ordered_date }}</span>
+							</div>
+						</div>
+						<div class="flex-inline">
+							<div class="item-left">
+								<img src="https://www.pathkindlabs.com/assets/desktop/img/test-icon.svg" class="img-fluid">
+								<p class="order-details">{{ total_order }} Tests, Amount Rs {{ item.amount }}</p>
+							</div>
+							<div class="item-right">
+								<!--a href="#" class="action-report">Download Report</a-->
+								<a href="javascript:void(0);" class="action-order" data-id="4253">Details</a>
+							</div>
+						</div>
+						<div id="order-detail-4253" style="display:none;"></div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="edit-profile" style="display:none;">
+				<a href="#" class="close-sidebar share-close" id="profile-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+				<div class="sidebar-inner">
+					<div class="header">
+						<img src="/assets/images/white-logo.png">
+					</div>
+					<div class="sidebar">
+						<h3 class="heading-small-v-2">Edit Profile</h3>
+						<form action="/users/Users_public/edit_user_profile" id="userProfileForm" method="post">
+							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
+							<input type="hidden" name="user_id" value="43142" />
+							<div class="form-group">
+								<!-- <label for="name" class="required">Name</label> -->
+								<input type="text" name="name" id="name" class="m-b-20 custom-form-control alpha_space_only" placeholder="Name" value="Tes" maxlength="60"/>
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="email" class="required">Email</label> -->
+								<input type="email" name="email" id="email" class="m-b-20 custom-form-control email_only" placeholder="Email" value="tes@test.com" maxlength="255"/>
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="mobile" class="required">Mobile No.</label> -->
+								<input type="text" readonly name="mobile" id="mobile" class="m-b-20 custom-form-control number_only" placeholder="Mobile No." value="8968306095" maxlength="10"/>
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="mobile" class="required">Birthday</label> -->
+								<input class="m-b-20 custom-form-control" name="birthdate" id="birthdate" type="text" placeholder="Date of Birth" onfocus="(this.type='date')" value="1985-12-01">
+								<span class="form-error"></span>
+							</div>
+							<div class="form-group">
+								<select name="gender" class="custom-form-control" id="gender">
+									<option value="">Select Gender</option>
+									<option value="1" selected="selected">Male</option>
+									<option value="2">Female</option>
+									<option value="3">Other</option>
+								</select>
+								<span class="form-error"></span>
+							</div>
+							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="add-address" style="display:none;">
+				<a href="#" class="close-sidebar share-close" id="addaddress-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+				<div class="sidebar-inner">
+					<div class="header">
+						<img src="/assets/images/white-logo.png">
+					</div>
+					<div class="sidebar">
+						<h3 class="heading-small-v-2">Add Address</h3>
+						<form action="/users/Users_public/add_user_address" id="userAddressForm" method="post">
+							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
+							<input type="hidden" name="user_id" value="43142" />
+							<div class="form-group">
+								<!-- <label for="address" class="required">Address</label> -->
+								<input type="text" name="address" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Address" id="address" value=""/>
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="state_id" class="required">State</label> -->
+								<input type="text" id="state_id" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Change State" />
+								<input type="hidden" name="state_id" id="addprofile-state-holder" />
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="city_id" class="required">City</label> -->
+								<input type="text" id="city_id" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Change City" />
+								<input type="hidden" name="city_id" id="addprofile-city-holder" />
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="location_id" class="required">Location</label> -->
+								<input type="text" id="location_id" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Change Location" />
+								<input type="hidden" name="location_id" id="addprofile-location-holder" />
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="pincode" class="required">Pincode</label> -->
+								<input type="text" name="pincode" id="pincode" class="m-b-20 custom-form-control number_only" maxlength="6" autocomplete="off" placeholder="Pincode" value=""/>
+								<div class="form-error"></div>
+							</div>
+							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<style>
+			.form-group .easy-autocomplete
+			{
+				width: 100%!important;
+			}
+			</style>
+			<div class="edit-address" style="display:none;">
+				<a href="#" class="close-sidebar share-close" id="address-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+				<div class="sidebar-inner">
+					<div class="header">
+						<img src="/assets/images/white-logo.png">
+					</div>
+					<div class="sidebar">
+						<h3 class="heading-small-v-2">Edit Address</h3>
+						<form action="/users/Users_public/edit_user_address" id="userEditAddressForm" method="post">
+							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
+							<input type="hidden" name="address_id" value="" id="editaddress_id">
+							<div class="form-group">
+								<!-- <label for="address" class="required">Address</label> -->
+								<input type="text" name="address" class="m-b-20 custom-form-control address_1" placeholder="Address" id="address2" value=""/>
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="state_id" class="required">State</label> -->
+								<input type="text" id="state_id2" class="m-b-20 custom-form-control" placeholder="Change State" />
+								<input type="hidden" name="state_id" id="profile-state-holder" />
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="city_id" class="required">City</label> -->
+								<input type="text" id="city_id2" class="m-b-20 custom-form-control" placeholder="Change City" />
+								<input type="hidden" name="city_id" id="profile-city-holder" />
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="location_id" class="required">Location</label> -->
+								<input type="text" id="location_id2" class="m-b-20 custom-form-control" placeholder="Change Location" />
+								<input type="hidden" name="location_id" id="profile-location-holder" />
+								<div class="form-error"></div>
+							</div>
+							<div class="form-group">
+								<!-- <label for="pincode" class="required">Pincode</label> -->
+								<input type="text" name="pincode" id="pincode2" class="m-b-20 custom-form-control number_only" placeholder="Pincode" value="" maxlength="6"/>
+								<div class="form-error"></div>
+							</div>
+							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="edit-patients" style="display:none;">
+				<a href="#" class="close-sidebar share-close" id="patient-close"><img src="/assets/images/close.png" class="img-fluid"></a>
+				<div class="sidebar-inner">
+					<div class="header">
+						<img src="/assets/images/white-logo.png">
+					</div>
+					<div class="sidebar">
+						<h3 class="heading-small-v-2">Add Patient</h3>
+						<form action="/users/Users_public/add_patient" id="userPatientForm" method="post">
+							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
+							<input type="hidden" name="user_id" value="43142" />
+							<input type="hidden" name="patient_id" id="patient_id" >
+							<div class="form-group">
+								<input class="custom-form-control alpha_space_only" name="name" id="name1" type="text" placeholder="Name" maxlength="60">
+								<span class="form-error"></span>
+							</div>
+							<div class="form-group">
+								<input class="custom-form-control email_only" name="email" id="email1" type="email" placeholder="Email" maxlength="255">
+								<span class="form-error"></span>
+							</div>
+							<div class="form-group">
+								<input class="custom-form-control number_only" name="mobile" id="mobile1" type="text" placeholder="Mobile" maxlength="10">
+								<span class="form-error"></span>
+							</div>
+							<div class="form-group">
+								<input class="custom-form-control" name="birthdate" id="birthdate1" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
+								<span class="form-error"></span>
+							</div>
+							<div class="row flex-custom-gender">
+								<div class="form-group">
+									<select name="gender" class="custom-form-control" id="gender1">
+										<option value="" selected="selected">Select Gender</option>
+										<option value="1">Male</option>
+										<option value="2">Female</option>
+										<option value="3">Other</option>
+									</select>
+									<span class="form-error"></span>
+								</div>
+								<div class="form-group">
+									<select name="relation" class="custom-form-control" id="relation1">
+										<option value="" selected="selected">Select Relation</option>
+										<option value="1">Father</option>
+										<option value="2">Mother</option>
+										<option value="3">Spouse</option>
+										<option value="4">Son</option>
+										<option value="5">Daughter</option>
+										<option value="6">Family</option>
+									</select>
+									<span class="form-error"></span>
+								</div>
+							</div>
+							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
+
+{% block extra_jscript %}
+{% endblock %}

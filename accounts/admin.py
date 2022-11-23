@@ -18,7 +18,7 @@ class ProfileAdmin(admin.ModelAdmin):
 # class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
     list_display = [
         'id',
-        'name',
+        'full_name',
         'email',
         'phone_number',
         'phone_verified',
@@ -71,7 +71,7 @@ class PatientAdmin(admin.ModelAdmin):
 # class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
     list_display = [
         'user_patient',
-        'name',
+        'full_name',
         'email',
         'phone_number',
         'birth_date',

@@ -1,60 +1,52 @@
-{% load i18n %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% load crispy_forms_field %}
-{% load widget_tweaks %}
-
 {% block content %}
 
-<div tabindex="-1" role="dialog" style="position: fixed; height: 480px; width: 400px; top: 0px; left: 1113px;" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-off-canvas ui-dialog-position-side ui-resizable" aria-describedby="drupal-off-canvas" aria-labelledby="ui-id-4" data-offset-right="400">
-
-  <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix">
-    <span id="ui-id-4" class="ui-dialog-title">Login Form</span>
-    <button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" data-dismiss="modal" title="Close">
-      <span class="ui-button-icon ui-icon ui-icon-closethick"></span>
-      <span class="ui-button-icon-space"></span>Close
-    </button>
-  </div>
-
-  <div id="drupal-off-canvas" class="ui-front ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: 448px;">
-
-    <div style="">
-      <a id="webform-submission-login-form-form-ajax-content" tabindex="-1" aria-hidden="true"></a>
-
-      <div id="webform-submission-login-form-form-ajax" class="webform-ajax-form-wrapper" data-effect="fade" data-progress-type="throbber">
-        <form method="post" action="/profile/login-form/" class="webform-submission-form webform-submission-add-form webform-submission-login-form-form webform-submission-login-form-add-form js-webform-disable-autosubmit js-webform-details-toggle webform-details-toggle" data-drupal-selector="webform-submission-login-form-add-form-91uqjtwgnuk" id="webform-submission-login-form-add-form--91uQJtwGNuk" accept-charset="UTF-8" data-once="form-updated" data-drupal-form-fields="edit-enter-your-mobile-no-an-otp-will-be-sent-to-this-no---JsDHrf6_Qdk,edit-actions-wizard-next--Tl33TU7eCto">
-        {% csrf_token %}
-          <div class="apply-logo">
-            <span class="logo-popup">
-              <img src="/assets/images/logo_popup.png">
-            </span>
-            <span class="group-popup"></span>
-          </div>
-          <div class="upload-icon">
-            <img src="/assets/images/mobile.png"></div>
-            <h2>Login</h2>
-            <div data-webform-key="login" data-drupal-selector="edit-login" id="edit-login--wEGBNTuXG6E" class="js-form-wrapper form-wrapper">
-              <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-enter-your-mobile-no-an-otp-will-be-sent-to-this-no- form-item-enter-your-mobile-no-an-otp-will-be-sent-to-this-no-">
-                <label for="edit-enter-your-mobile-no-an-otp-will-be-sent-to-this-no---JsDHrf6_Qdk" class="js-form-required form-required">Enter your mobile no. An OTP will be sent to this no.</label>
-                <input autocomplete="off" data-webform-required-error="The Mobile field is required." data-drupal-selector="edit-enter-your-mobile-no-an-otp-will-be-sent-to-this-no-" type="text" id="edit-enter-your-mobile-no-an-otp-will-be-sent-to-this-no---JsDHrf6_Qdk" name="enter_your_mobile_no_an_otp_will_be_sent_to_this_no_" value="" size="60" maxlength="10" placeholder="Mobile *" class="form-text required" required="required" aria-required="true">
-              </div>
-            </div>
-            <div data-drupal-selector="edit-actions" class="form-actions webform-actions js-form-wrapper form-wrapper" id="edit-actions--tQxylnHvQ64">
-              <input class="webform-button--next button js-form-submit form-submit" data-drupal-selector="edit-actions-wizard-next-tl33tu7ecto" data-disable-refocus="true" type="submit" id="edit-actions-wizard-next--Tl33TU7eCto" name="op" value="Get OTP" data-once="drupal-ajax" style="display: block;">
-            </div>
-            <div id="edit-processed-text--PIn9IDRRFvM" class="js-form-item form-item js-form-type-processed-text form-type-processed-text js-form-item- form-item- form-no-label">
-              <p>By continuing, you agree to Pathkind’s&nbsp;
-                <a href="/terms-use/" target="_blank">Terms of Use</a>&nbsp;and&nbsp;
-                <a href="/privacy-policy/" target="_blank">Privacy Policy</a>.
-              </p>
-            </div>
-            <input autocomplete="off" data-drupal-selector="form-r1jahdedwmekpjyoos8go2yujb9rtkhhsriknhyrevy" type="hidden" name="form_build_id" value="form-R1jAHdedwMEkpJyoos8Go2Yujb9RTKhhSRiKNHyRevY">
-            <input data-drupal-selector="edit-webform-submission-login-form-add-form-ufbdyqsi9pg" type="hidden" name="form_id" value="webform_submission_login_form_add_form">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+<div tabindex="-1" role="dialog" style="position: fixed; height: 480px; width: 400px; top: 0px; left: 1113px;" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-off-canvas ui-dialog-position-side ui-resizable" aria-labelledby="ui-id-4" data-offset-right="400">
+	<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix">
+		<span id="ui-id-4" class="ui-dialog-title">Login Form</span>
+		<button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" data-dismiss="modal" title="Close">
+			<span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+			<span class="ui-button-icon-space"></span>Close
+		</button>
+	</div>
+	<div id="drupal-off-canvas" class="ui-front ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: 448px;">
+		<div style="">
+			<a id="webform-submission-login-form-form-ajax-content" tabindex="-1" aria-hidden="true"></a>
+			<div id="webform-submission-login-form-form-ajax" class="webform-ajax-form-wrapper" data-effect="fade" data-progress-type="throbber">
+				<form method="post" action="/profile/login-form/" class="webform-submission-form webform-submission-add-form webform-submission-login-form-form webform-submission-login-form-add-form js-webform-disable-autosubmit js-webform-details-toggle webform-details-toggle" id="webform-submission-login-form-add-form--91uQJtwGNuk" data-once="form-updated">
+				{% csrf_token %}
+				<div class="apply-logo">
+					<span class="logo-popup">
+						<img src="/assets/images/logo_popup.png">
+					</span>
+					<span class="group-popup"></span>
+				</div>
+				<div class="upload-icon">
+					<img src="/assets/images/mobile.png"></div>
+					<h2>Login</h2>
+					<div data-webform-key="login" id="edit-login--wEGBNTuXG6E" class="js-form-wrapper form-wrapper">
+						<div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-enter-your-mobile-no-an-otp-will-be-sent-to-this-no- form-item-enter-your-mobile-no-an-otp-will-be-sent-to-this-no-">
+							<label for="edit-enter-your-mobile-no-an-otp-will-be-sent-to-this-no---JsDHrf6_Qdk" class="js-form-required form-required">Enter your mobile no. An OTP will be sent to this no.</label>
+							<input autocomplete="off" data-webform-required-error="The Mobile field is required." type="text" id="edit-enter-your-mobile-no-an-otp-will-be-sent-to-this-no---JsDHrf6_Qdk" name="enter_your_mobile_no_an_otp_will_be_sent_to_this_no_" value="" size="60" maxlength="10" placeholder="Mobile *" class="form-text required" required="required" aria-required="true">
+						</div>
+					</div>
+					<div class="form-actions webform-actions js-form-wrapper form-wrapper" id="edit-actions--tQxylnHvQ64">
+						<input class="webform-button--next button js-form-submit form-submit" data-disable-refocus="true" type="submit" id="edit-actions-wizard-next--Tl33TU7eCto" name="op" value="Get OTP" style="display: block;">
+					</div>
+					<div id="edit-processed-text--PIn9IDRRFvM" class="js-form-item form-item js-form-type-processed-text form-type-processed-text js-form-item- form-item- form-no-label">
+						<p>By continuing, you agree to Pathkind’s&nbsp;
+							<a href="/terms-use/" target="_blank">Terms of Use</a>&nbsp;and&nbsp;
+							<a href="/privacy-policy/" target="_blank">Privacy Policy</a>.
+						</p>
+					</div>
+					<input autocomplete="off" type="hidden" name="form_build_id" value="form-R1jAHdedwMEkpJyoos8Go2Yujb9RTKhhSRiKNHyRevY">
+					<input type="hidden" name="form_id" value="webform_submission_login_form_add_form">
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
+
+<div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+</div>
+
 {% endblock %}

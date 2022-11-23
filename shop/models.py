@@ -2,8 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from .constants import *
-
 from accounts.models import *
 
 from cities_light.models import City, Country
@@ -14,34 +12,33 @@ LABEL = (
 	('patient', 'Patient')
 )
 
-PAYMENT_STATUS = (
-	('success', 'Success'),
-	('failure', 'Failure'),
-	('pending', 'Pending')
-)
 
 def pdf_upload_path(instance, filename):
-	return f'test_package/{instance.created_date.strftime("%Y-%m-%d")}_test_{filename}'
+	return f'upload/report/{instance.created_date.strftime("%Y-%m-%d")}_test_{filename}'
+
+def upload_path_category(instance, filename):
+	return os.path.join('upload/category/', format(instance.title), filename)
 
 
 class Category(models.Model):
-	name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
+	title = models.CharField(max_length=255, null=True, blank=False, db_index=True)
 	slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
+	image = models.ImageField(upload_to=upload_path_category, blank=True, null=True)
 
 	class Meta:
-		ordering=('name',)
+		ordering=('title',)
 		verbose_name ='category'
 		verbose_name_plural='categories'
 
 	def __str__(self):
-		return self.name
+		return self.title
 
 	def get_absolute_url(self):
 		return reverse('shop:product_list_by_category', args=[self.slug])
 
 
 class Product(models.Model):
-	name = models.CharField(max_length=255, null=True, blank=False, db_index=True)
+	title = models.CharField(max_length=255, null=True, blank=False, db_index=True)
 	slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='product_category')
 	tags = models.CharField(max_length=255, null=True, blank=True)
@@ -64,11 +61,11 @@ class Product(models.Model):
 	quantitytemperature = models.CharField(_("Quantity and Temperature"), max_length=255, null=True, blank=True)
 
 	class Meta:
-		ordering = ('name',)
+		ordering = ('title',)
 		index_together = (('id','slug'),)
 
 	def __str__(self):
-		return self.name
+		return self.title
 
 	def get_absolute_url(self):
 		# return reverse('shop:product_detail', args=[self.id, self.slug])
@@ -80,33 +77,3 @@ class Product(models.Model):
 	def get_remove_from_cart_url(self) :
 		return reverse("shop:remove_from_cart", kwargs={"pk" : self.pk})
 
-
-class Order(models.Model):
-	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='order_user')
-	ordered = models.BooleanField(default=False)
-	product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=False, related_name='order_product')
-	quantity = models.IntegerField(default=1)
-
-	def __str__(self):
-		return f"{self.quantity} of {self.product.name}"
-		# return f"{self.id}-{self.name}-{self.status}"
-
-	def get_total_item_price(self):
-		return self.quantity * self.product.price
-
-	def get_total_discount_item_price(self):
-		return self.quantity * self.product.discount_price
-
-	def get_amount_saved(self):
-	#     get_total_item_price_float = float(get_total_item_price)
-	#     get_total_discount_item_price_float = float(get_total_discount_item_price)
-		return self.get_total_item_price() - self.get_total_discount_item_price()
-		# return self.get_total_item_price_float() - self.get_total_discount_item_price_float()
-
-	@property
-	def get_final_price(self):
-		if self.product.discount_price:
-			discount_price = self.get_total_discount_item_price
-			return discount_price
-		item_price = self.get_total_item_price
-		return item_price

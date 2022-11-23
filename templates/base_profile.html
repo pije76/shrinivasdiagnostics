@@ -1,10 +1,8 @@
 {% load static %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% load crispy_forms_field %}
-{% load selectable_tags %}
-{% include_ui_theme %}
-{% include_jquery_libs %}
 
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -35,22 +33,16 @@
 
     <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'staticfiles_select2/select2/select2.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/jquery-ui-smoothness.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
 
     {% block extra_style %}
-    {% endblock %}
-
-    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}" type="text/javascript"></script>
-
-    <script src="{% static 'staticfiles_select2/select2/select2.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'selectable_select2/js/jquery.dj.selectable.select2.js' %}" type="text/javascript"></script>
-
-    <script src="{% static 'js/checkout.js' %}" type="text/javascript"></script>
-
-    {% block extra_jscript %}
     {% endblock %}
 
     </head>
@@ -58,7 +50,7 @@
     <body class="path-frontpage en pulogout">
         <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
             <div id="desktop-v">
-                {% include "header.html" %}
+                {% include "header_profile.html" %}
                 {% include 'messages.html' %}
                 <div class="modal fade" tabindex="-1" role="dialog" id="modal">
                     <div class="modal-dialog modal-lg" role="document">
@@ -73,7 +65,21 @@
             </div>
         </div>
 
-        {% block jscript %}
+        <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+        <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/checkout.js' %}" type="text/javascript"></script>
+
+        {% block extra_jscript %}
 
         <script type="text/javascript">
         $(document).ready(function()
@@ -104,36 +110,6 @@
                     formURL: "{% url 'accounts:login_view_modal' %}"
                 });
             });
-
-            var options =
-            {
-                key: "{{razorpay_key}}",
-                amount: "{{order.amount}}",
-                currency: "INR",
-                name: "{{order.name}}",
-                description: "Test Transaction",
-                image: "https://example.com/your_logo",
-                order_id: "{{order.razorpay_order_id}}",
-                callback_url: "{{callback_url}}",
-                redirect: true,
-                prefill:
-                {
-                    "name": "Gaurav Kumar",
-                    "email": "gaurav.kumar@example.com",
-                    "contact": "9999999999"
-                },
-                notes:
-                {
-                    "address": "Razorpay Corporate Office"
-                },
-                theme:
-                {
-                    "color": "#3399cc"
-                }
-            };
-
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
 
         });
         </script>

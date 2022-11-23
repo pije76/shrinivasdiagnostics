@@ -2,25 +2,18 @@
 
 {% load static %}
 {% load i18n %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
 
 {% block head_title %}
 {{ page_title }}
 {% endblock %}
 
-{% block extra_style %}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
-
 {% block extrahead %}
 {% endblock %}
 
+{% block extra_style %}
+<link href="{% static 'css/style_shoplist.css' %}" rel="stylesheet" type="text/css">
 <style>
     input#search-bar-header:focus::-webkit-input-placeholder {
         transition: opacity 0.45s ease;
@@ -45,16 +38,6 @@
 </style>
 {% endblock %}
 
-{% block extra_jscript %}
-<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
-{% endblock %}
-
 {% block content %}
 
 <!-- Test list page start -->
@@ -71,8 +54,8 @@
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="filter-bar-top">
-                    <form action="/book-blood-test-online-in-india/" id="test_location_search_header_form" method="GET" accept-charset="utf-8">
-                        <input type="text" id="search-bar" class="city-search box" placeholder="Change City" value="Gurugram" name="q"  />
+                    <form action="/book-blood-test-online-in-india/" id="test_location_search_header_form" method="GET">
+                        <input type="text" class="city-search box" placeholder="Search City" value="" name="q" readonly />
                         <input type="hidden" name="test_location_id" id="city-holder" value="100" />
                     </form>
                     <style>
@@ -82,11 +65,11 @@
                     }
                     </style>
                     <div class="test-search-bar">
-                        <form action="/book-blood-test-online-in-india/" id="test_search_header_form" method="GET" accept-charset="utf-8">
+                        <form action="/book-blood-test-online-in-india/autocomplete/" method="GET" class="autocomplete-me" id="test_search_header_form">
                             <input type="text" id="search-bar-2" class="test_search_input_field search__test_package box" placeholder="Search for a test or health package " name="q" />
-                            <input type="hidden" name="test_package_name" id="test-package-search-holder" />
+                            {# <input type="hidden" name="test_package_name" id="test-package-search-holder" /> #}
                             <!--<input type="hidden" name="search_data_type" id="search_data_type" />-->
-                            <input type="hidden" name="test_location_id" id="test_location_id_1" value="100"/>
+                            {# <input type="hidden" name="test_location_id" id="test_location_id_1" value="100"/> #}
                         </form>
                     </div>
                     <div class="search-error form-error"></div>
@@ -240,7 +223,68 @@
                     </div>
                 </div>
                 <div class="row package-lists">
-                    {% for item in products %}
+                    {% for item in results %}
+                                        <div class="col-md-6 col-sm-12 test_and_packages">
+                        <div class="package" id="210056">
+                            <div class="custom-head123">
+                                <div class="flex-inline head">
+                                    <div class="name">
+                                        <div class="img">
+                                            <img src="/assets/images/scope-bg.svg" class="img-fluid">
+                                        </div>
+                                        <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ item.title }}" href="{{ item.get_absolute_url }}">
+                                            <h4 id="test-name">{{ item.title }}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="tat">
+                                    <span>TAT</span>
+                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom"  title="Sample Cut Off : {{ item.samplecutoff }}, Report : {{ item.report }}">
+                                        <strong>Sample Cut off : {{ item.samplecutoff }}, Report : {{ item.report }}</strong>
+                                    </a>
+                                </p>
+                                <p class="specimen" style="font-size: 12px; color: #48585f;margin:0px 0 8px 10px">Specimen:
+                                    <a class = "tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ item.speciment }}">
+                                        <strong>{{ item.speciment }}</strong>
+                                    </a>
+                                </p>
+                                <!-- <p class="specimen">&nbsp&nbsp</p> -->
+                                <p class="price">&#8377; {{ item.price }}</p>
+                            </div>
+                            <div class="footer-card">
+                                <div class="flex-inline p-custom">
+                                    <div class="action">
+                                        <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form  " method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />
+                                            <input type="hidden" name="item_id" value="10056" />
+                                            <input type="hidden" name="item_type" value="2" />
+                                            <input type="hidden" name="location" value="" />
+                                            <input type="hidden" name="sort_by" value="" />
+                                            <input type="hidden" name="organs" value="" />
+                                            <input type="hidden" name="health_cond" value="" />
+                                            <input type="hidden" name="order_by" value="" />
+                                            <input type="hidden" name="is_buy_now" value="1" />
+                                            <button type="submit"  class="btn-3">Buy Now</button>
+                                        </form>
+                                        <!-- data-target="#added-to-cart"-->
+                                        <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post">
+                                        {% csrf_token %}
+                                            <button type="submit" class="btn-4 add-to-cart-btn  ">
+                                                <img src="/assets/images/bag.svg">Add to Cart
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <a class="report" href="#" download>
+                                        <img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% for item in object_list %}
                     <div class="col-md-6 col-sm-12 test_and_packages">
                         <div class="package" id="210056">
                             <div class="custom-head123">
@@ -249,8 +293,8 @@
                                         <div class="img">
                                             <img src="/assets/images/scope-bg.svg" class="img-fluid">
                                         </div>
-                                        <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ item.name }}" href="{{ item.get_absolute_url }}">
-                                            <h4 id="test-name">{{ item.name }}</h4>
+                                        <a class="tool_tip" data-toggle="tooltip" data-placement="bottom" title="{{ item.title }}" href="{{ item.get_absolute_url }}">
+                                            <h4 id="test-name">{{ item.title }}</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -271,7 +315,7 @@
                             <div class="footer-card">
                                 <div class="flex-inline p-custom">
                                     <div class="action">
-                                        <form action="{% url 'checkout' %}" class="form-inline add-to-cart-form  " method="post" accept-charset="utf-8">
+                                        <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form  " method="post">
                                             {% csrf_token %}
                                             <input type="hidden" name="csrf_test_name" value="8c2252c1bf018f773b86c877f8b10b41" />
                                             <input type="hidden" name="item_id" value="10056" />
@@ -285,13 +329,16 @@
                                             <button type="submit"  class="btn-3">Buy Now</button>
                                         </form>
                                         <!-- data-target="#added-to-cart"-->
-                                        <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post" accept-charset="utf-8">
+                                        <form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post">
                                         {% csrf_token %}
                                             <button type="submit" class="btn-4 add-to-cart-btn  ">
                                                 <img src="/assets/images/bag.svg">Add to Cart
                                             </button>
                                         </form>
                                     </div>
+                                    <a class="report" href="#" download>
+                                        <img src="/assets/images/download-blue.svg" class="img-fluid"> Sample Report
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -320,7 +367,7 @@
                         <a href="/shopping-cart/" class="btn-4">
                             <img src="/assets/images/bag.svg">Go To Cart
                         </a>
-                        <a href="{% url 'checkout' %}" class="btn-3">Buy Now</a>
+                        <a href="{{ products.get_absolute_url }}" class="btn-3">Buy Now</a>
                     </div>
                 </div>
             </div>
@@ -328,4 +375,55 @@
     </div>
 </div>
 
+{% endblock %}
+
+<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
+
+
+{% block extra_jscript %}
+<script type="text/javascript">
+$(document).ready(function()
+{
+    var data_from_url = "{{ user_order }}";
+    console.log("data_from_url: ", data_from_url);
+
+
+    $('#id_ticker_code').change(function(e)
+    {
+        e.preventDefault();
+        var get_ticker = $("#id_ticker_code").val();
+
+        $.ajax(
+        {
+            method: 'GET',
+            url: urls,
+            dataType: 'json',
+            data: {
+                'get_ticker': get_ticker,
+                // 'get_halfway_yearly': get_halfway_yearly,
+            },
+            success: function(data)
+            {
+                if(!data["valid"])
+                {
+                    // console.log("data2: ", data);
+                    // console.log("get_ticker2: ", get_ticker);
+                    $("button").removeClass("button_hide");
+                }
+            },
+            cache: false
+        });
+
+    });
+
+});
+</script>
 {% endblock %}

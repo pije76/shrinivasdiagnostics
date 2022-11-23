@@ -67,6 +67,6 @@ class ProfileForm(forms.ModelForm):
     # address = forms.CharField(required=False, label="", widget=forms.Textarea(attrs={'class': "form-control", 'rows': 4, 'cols': 15}))
 
 class PatientForm(forms.Form):
-    name = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))
+    full_name = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))
     email = forms.EmailField(required=False, label="", widget=forms.HiddenInput(attrs={'class': "form-control"}))
     phone_number = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))

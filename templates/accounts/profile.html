@@ -4,56 +4,39 @@
 {% load i18n %}
 
 {% block head_title %}
-{{ product.name }}
+{{ page_title }}
 {% endblock %}
 
 {% block extra_style %}
-
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style_profile.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
-
+<link href="{% static 'css/style_profile1.css' %}" rel="stylesheet" type="text/css">
 <style>
-input#search-bar-header:focus::-webkit-input-placeholder {
-    transition: opacity 0.45s ease;
-    opacity: 0;
-  }
+input#search-bar-header:focus::-webkit-input-placeholder
+{
+	transition: opacity 0.45s ease;
+	opacity: 0;
+}
 
-  input#search-bar-header:focus::-moz-placeholder {
-    transition: opacity 0.45s ease;
-    opacity: 0;
-  }
+input#search-bar-header:focus::-moz-placeholder
+{
+	transition: opacity 0.45s ease;
+	opacity: 0;
+}
 
-  input#search-bar-header:focus:-ms-placeholder {
-    transition: opacity 0.45s ease;
-    opacity: 0;
-  }
+input#search-bar-header:focus:-ms-placeholder
+{
+	transition: opacity 0.45s ease;
+	opacity: 0;
+}
 
-  div,
-  .profile-item {
-    word-wrap: break-word;
-  }
+div, .profile-item
+{
+	word-wrap: break-word;
+}
 </style>
 {% endblock %}
 
-{% block extra_jscript %}
-<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
-{% endblock %}
 
 {% block content %}
 
@@ -61,7 +44,7 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 	<div class="container">
 		<div class="row m-b-20">
 			<div class="col-md-8 col-sm-12">
-				<h1 class="heading-small">Account Profile | Pathkind</h1>
+				<h1 class="heading-small">Account Profile | ShrinivasDiagnostic</h1>
 			</div>
 			<div class="col-md-4 col-sm-12 text-right">
 				<a href="/users/users_public/logout" class="btn action-btn">Logout</a>
@@ -71,13 +54,13 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 			<div class="col-lg-3 col-md-3 col-sm-12">
 				<div class="side-menu">
 					<ul>
-						<li><a href="/my-orders">Orders</a></li>
-						<li><a href="/profile" class="active"">Profile</a></li>
+						<li><a href="{% url 'my_orders' %}">Orders</a></li>
+						<li><a href="{% url 'accounts:profile_detail' user_id.pk %}" class="active">Profile</a></li>
 						<!--
 							<li><a href="#">Privilege Card</a></li>
 							<li><a href="#">Test History</a></li>
 						-->
-						<li><a href="http://104.211.117.133/download/PatientLogin.aspx">Download Report</a></li>
+						<li><a href="#">Download Report</a></li>
 					</ul>
 				</div>
 			</div>
@@ -87,15 +70,15 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 					<div class="profile-box">
 						<div class="profile-item">
 							<h6>Name</h6>
-							<h1>Tes</h1>
+							<h1>{{ name }}</h1>
 						</div>
 						<div class="profile-item">
 							<h6>Email</h6>
-							<h1>tes@test.com</h1>
+							<h1>{{ email }}</h1>
 						</div>
 						<div class="profile-item">
 							<h6>Phone</h6>
-							<h1>8968306095</h1>
+							<h1>{{ phone_number }}</h1>
 						</div>
 						<a href="#" class="action-profile">Edit</a>
 					</div>
@@ -103,11 +86,13 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 					<div class="row">
 						<div class="col-md-6 m-b-30">
 							<div class="add-details">
-								<p>Grajaj 78
-									<br>Gurugram
-									<br>Haryana
-									<br>152354
+								{% for item in user_address %}
+								<p>{{ item.address }}
+									<br>{{ item.city }}
+									<br>{{ item.state }}
+									<br>{{ item.zip }}
 								</p>
+								{% endfor %}
 								<a class="action action-editaddress" address-id="15644">
 									<img src="/assets/images/edit-png.png">
 									<span>Edit Address</span>
@@ -162,7 +147,7 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 					</div>
 					<div class="sidebar">
 						<h3 class="heading-small-v-2">Edit Profile</h3>
-						<form action="/users/Users_public/edit_user_profile" id="userProfileForm" method="post" accept-charset="utf-8">
+						<form action="/users/Users_public/edit_user_profile" id="userProfileForm" method="post">
 							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
 							<input type="hidden" name="user_id" value="43142" />
 							<div class="form-group">
@@ -207,7 +192,7 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 					</div>
 					<div class="sidebar">
 						<h3 class="heading-small-v-2">Add Address</h3>
-						<form action="/users/Users_public/add_user_address" id="userAddressForm" method="post" accept-charset="utf-8">
+						<form action="/users/Users_public/add_user_address" id="userAddressForm" method="post">
 							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
 							<input type="hidden" name="user_id" value="43142" />
 							<div class="form-group">
@@ -257,7 +242,7 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 					</div>
 					<div class="sidebar">
 						<h3 class="heading-small-v-2">Edit Address</h3>
-						<form action="/users/Users_public/edit_user_address" id="userEditAddressForm" method="post" accept-charset="utf-8">
+						<form action="/users/Users_public/edit_user_address" id="userEditAddressForm" method="post">
 							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
 							<input type="hidden" name="address_id" value="" id="editaddress_id">
 							<div class="form-group">
@@ -301,7 +286,7 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 					</div>
 					<div class="sidebar">
 						<h3 class="heading-small-v-2">Add Patient</h3>
-						<form action="/users/Users_public/add_patient" id="userPatientForm" method="post" accept-charset="utf-8">
+						<form action="/users/Users_public/add_patient" id="userPatientForm" method="post">
 							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
 							<input type="hidden" name="user_id" value="43142" />
 							<input type="hidden" name="patient_id" id="patient_id" >
@@ -355,3 +340,16 @@ input#search-bar-header:focus::-webkit-input-placeholder {
 
 {% endblock %}
 
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
+
+{% block extra_jscript %}
+{% endblock %}

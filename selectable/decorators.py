@@ -39,6 +39,7 @@ def results_decorator(func):
 
 @results_decorator
 def ajax_required(request):
+    is_ajax = request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
     "Lookup decorator to require AJAX calls to the lookup view."
     if not request.is_ajax():
         return HttpResponseBadRequest()

@@ -9,14 +9,15 @@ from cities_light.models import City, Country
 # Create your models here.
 class Schedule(models.Model):
     # user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False)
-    name = models.CharField(max_length=255, null=True, blank=True)
-    phone_number = PhoneNumberField(null=True, blank=True)
-    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
+    full_name = models.CharField(max_length=255, null=True, blank=False)
+    phone_number = PhoneNumberField(null=True, blank=False)
+    # city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
+    city = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
-        ordering=('name',)
-        verbose_name ='Schedule'
-        verbose_name_plural='Schedules'
+        ordering=('full_name',)
+        verbose_name ='Schedule Home'
+        verbose_name_plural='Schedule Home'
 
     def __str__(self):
-        return self.name
+        return self.full_name

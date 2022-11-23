@@ -14,7 +14,9 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('<str:pk>/', profile_detail, name='profile_detail'),
+    path('profile/<str:pk>/', profile_detail, name='profile_detail'),
     path('login-form/', login_view_modal, name='login_view_modal'),
+    path('login/', user_login, name='user_login'),
+    # path('signup/', user_signup, name='user_signup'),
 ]
 

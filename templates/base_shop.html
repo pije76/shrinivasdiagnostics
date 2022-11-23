@@ -1,10 +1,8 @@
 {% load static %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% load crispy_forms_field %}
-{% load selectable_tags %}
-{% include_ui_theme %}
-{% include_jquery_libs %}
 
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -35,27 +33,21 @@
 
     <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'staticfiles_select2/select2/select2.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/jquery-ui-smoothness.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
 
     {% block extra_style %}
     {% endblock %}
 
-    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}></script>
-    <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
-
-    <script src="{% static 'staticfiles_select2/select2/select2.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'selectable_select2/js/jquery.dj.selectable.select2.js' %}" type="text/javascript"></script>
-
-    <script src="{% static 'js/checkout.js' %}" type="text/javascript"></script>
-
-    {% block extra_jscript %}
-    {% endblock %}
-
     </head>
 
-    <body class="path-frontpage en pulogout">
+    <body class="en pulogout">
         <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
             <div id="desktop-v">
                 {% include "header_shop.html" %}
@@ -70,7 +62,25 @@
             </div>
         </div>
 
-    {% block jscript %}
+        <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+        <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/checkout.js' %}" type="text/javascript"></script>
+
+        <script src="{% static 'js/site.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+
+
+    {% block extra_jscript %}
     <script type="text/javascript">
     $(document).ready(function()
     {
@@ -90,6 +100,15 @@
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
                 }
             },
+        });
+
+        $(function()
+        {
+            // Log in button
+            $("#login-btn").modalForm(
+            {
+                formURL: "{% url 'accounts:login_view_modal' %}"
+            });
         });
 
     });

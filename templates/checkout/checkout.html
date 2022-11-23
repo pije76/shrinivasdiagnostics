@@ -7,57 +7,14 @@
 {{ page_title }}
 {% endblock %}
 
-{% block extra_style %}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
-
 {% block extrahead %}
 {% endblock %}
 
-<style>
-	input#search-bar-header:focus::-webkit-input-placeholder {
-		transition: opacity 0.45s ease;
-		opacity: 0;
-	  }
-
-	  input#search-bar-header:focus::-moz-placeholder {
-		transition: opacity 0.45s ease;
-		opacity: 0;
-	  }
-
-	  input#search-bar-header:focus:-ms-placeholder {
-		transition: opacity 0.45s ease;
-		opacity: 0;
-	  }
-
-	  div,
-	  .profile-item {
-		word-wrap: break-word;
-	  }
-  }
-</style>
+{% block extra_style %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style_shopdetail.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
-{% block extra_jscript %}
-<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-{% endblock %}
 
 {% block content %}
 
@@ -87,16 +44,16 @@
 							<div id="collapse-item-1" class="collapse checkout-collapse-body" aria-labelledby="headingOne" data-parent="#checkout-collapse-item-1">
 								<div class="card-body">
 									<small>Please select a patient for each test</small>
-									{% for order_item in products %}
+									{% for item in products %}
 									<div class="flex-inline inner-checkout-strip">
-										<p class="item-name" item-price="200">{{ order_item.product.name }} </p>
+										<p class="item-name" item-price="200">{{ item.product.title }} </p>
 										<div class="dropdown checkout-add-more-patient">
 											<button patient-id="" class="btn dropdown-toggle selected-patient" type="button" id="dropdownMenuButton select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select</button>
 											<div class="dropdown-menu patient-list" aria-labelledby="dropdownMenuButton">
 												<a class="add-patient add-new-patient" item-id="1226" item-type="1">+ Add new patient</a>
-												{% for patient_item in patients %}
+												{% for patient in patients %}
 												<div class="patient-count flex-inline">
-													<p class="name patient-name"  data-patient-name="{{ patient_item.name }}" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">{{ patient_item.name }}</p>
+													<p class="name patient-name"  data-patient-name="{{ patient.full_name }}" data-patient-id="45000" data-item-index="1" data-item-id="1226" data-item-type="1">{{ patient.full_name }}</p>
 													<a class="info-patient" patient-id="45000">info</a>
 												</div>
 												{% endfor %}
@@ -117,7 +74,7 @@
 								</div>
 								<div class="sidebar">
 									<h3 class="heading-small-v-2">Add Patient</h3>
-									<form action="/checkout/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<div class="form-group pb-0 mb-0">
 											<input class="custom-form-control alpha_space_only" name="name" id="name" type="text" placeholder="Name" maxlength="60">
@@ -188,7 +145,7 @@
 
 								<div class="sidebar">
 									<h3 class="heading-small-v-2">Add Patient</h3>
-									<form action="/checkout/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="user_id" value="43142">
 										<div class="form-group pb-0 mb-0">
@@ -306,7 +263,7 @@
 									</div>
 
 									<small class="schedule-home-form" style="display:none">Add Your Billing Details</small>
-									<form action="/checkout/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input autocomplete="false" name="hidden" type="text" style="display:none;">
 										<div class="form-group">
@@ -366,7 +323,7 @@
 
 							<div id="collapse-item-4" class="collapse checkout-collapse-body" aria-labelledby="headingFour" data-parent="#checkout-collapse-item-4">
 								<div class="card-body">
-									<form action="/checkout/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="is_home_collection" value="" />
 										<input type="hidden" name="home_collection_other_detail_id" value="" />
@@ -408,14 +365,15 @@
 
 							<div id="collapse-item-5" class="collapse checkout-collapse-body" aria-labelledby="headingFive" data-parent="#checkout-collapse-item-5">
 								<div class="card-body">
-									<form action="" id="add_payment_details_form" method="POST" accept-charset="utf-8">
+									<form action="" id="add_payment_details_form" method="POST">
 										{% csrf_token %}
-										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
-										<input type="hidden" name="billing_id" value="15644" />
 										<small class="m-b-10">Select payment mode</small>
 										<div class="form-group checkbox-group">
 											<div class="inner-group">
 												<label class="container-check">Online
+													<input type="hidden" class="razorpay_key" name="{{ razorpay_key }}" value="{{ razorpay_key }}" />
+													<input type="hidden" class="razorpay_order_id" name="{{ razorpay_order_id }}" value="{{ razorpay_order_id }}" />
+													<input type="hidden" class="currency" name="{{ currency }}" value="{{ currency }}" />
 													<input type="radio" name="payment_mode" value="Online">
 													<span class="checkmark"></span>
 												</label>
@@ -443,9 +401,9 @@
 				<div class="checkout-summary">
 					<div class="heading-small-v-2">Summary</div>
 					<div class="row m-t-40">
-						{% for order_item in products %}
-						<div class="summary-item-name col-md-9" id="12261">{{ order_item.product.name }} </div>
-						<div class="summary-item-price col-md-3">&#8377; {{ order_item.product.price }}</div>
+						{% for item in products %}
+						<div class="summary-item-name col-md-9" id="12261">{{ item.product.title }} </div>
+						<div class="summary-item-price col-md-3">&#8377; {{ item.product.price }}</div>
 						<div class="summary-patient-name col-md-12">Patient : </div>
 						{% endfor %}
 					</div>
@@ -476,56 +434,11 @@
 
 {% endblock %}
 
-{% block jscript %}
+
+{% block extra_jscript %}
 <script type='text/javascript'>
 $(document).ready(function()
 {
-
-	function getCookie(name)
-    {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '')
-        {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++)
-            {
-                var cookie = jQuery.trim(cookies[i]);
-                if (cookie.substring(0, name.length + 1) === (name + '='))
-                {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-
-    var csrftoken = getCookie('csrftoken');
-
-
-	$('.patient-name').click(function()
-	{
-		var get_patient = $(this).text();
-
-		$.ajax(
-        {
-            url:'{% url "checkout:checkout" %}',
-            data:
-            {
-                'get_patient': get_patient,
-            },
-
-            success: function(data)
-            {
-            	// console.log("get_patient: ", get_patient);
-            	$(".checkout-add-more-patient").html('<div class="dropdown checkout-add-more-patient"><button patient-id="" class="btn dropdown-toggle selected-patient" type="button" id="dropdownMenuButton select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + get_patient + '</button></div>');
-            },
-        });
-	});
-
-	var amount = $(".total-charges").text();
-	amount = Number(amount.replace(/[^0-9\.-]+/g,""));
-	let obj = amount
 
 	var options =
 	{
@@ -533,13 +446,11 @@ $(document).ready(function()
 		amount: "{{ amount }}",
 		currency: "{{ currency }}",
 		name: "{{ store_name }}",
-		description: "Test Transaction",
 		image: "http://127.0.0.1:8000/assets/images/shrinivasdiagnostics_logo.png",
 		order_id: "{{ razorpay_order_id }}",
 		callback_url: "{{ callback_url }}",
-		redirect: true,
 		prefill: {
-            "name": "{{ name }}",
+            "name": "{{ full_name }}",
             "email": "{{ email }}",
             "contact": "{{ phone_number }}"
         },
@@ -547,27 +458,138 @@ $(document).ready(function()
             "address": "ShrinivasDiagnostic Lab Office"
         },
         theme: {
-            "color": "#3399cc"
+            "color": "#528FF0"
         }
 	};
 
 	var rzp1 = new Razorpay(options);
 
+	// $("input[type='button']").click(function()
+	// {
+	// 	alert("Your are a - " + radioValue);
+
+	// 	var radioValue = $("input[name='payment_mode']:checked").val();
+	// 	if(radioValue)
+	// 	{
+	// 		alert("Your are a - " + radioValue);
+	// 	}
+	// });
+
+	// var radioValue = $("input[name='payment_mode']:checked").val();
+	// console.log("radioValue", radioValue);
+
+	$('input:radio[name="payment_mode"]').change(function(e)
+	{
+		var payment_mode = "{{ payment_mode }}";
+	// 	e.preventDefault();
+		// var payment_mode = $(this).val();
+		// console.log("payment_mode", payment_mode);
+
+		if ($(this).is(':checked') && $(this).val() == 'Online')
+		{
+			// var payment_mode = $('input:radio[name="payment_mode"]').val();
+			// e.preventDefault();
+			// document.getElementById("pay-btn").onclick = function(e)
+			// $('#add_payment_details_btn').click(function(e)
+			// {
+			// console.log("Online");
+			console.log("payment_mode", payment_mode);
+			// $('#add_payment_details_btn').submit(function(e)
+			// {
+			rzp1.open();
+			// e.preventDefault();
+			// });
+        }
+        else
+        {
+			// $('#add_payment_details_btn').click(function(e)
+			// {
+				// console.log("payment_mode Cash", payment_mode);
+			// console.log("Cash");
+			console.log("payment_mode", payment_mode);
+			// $('#add_payment_details_btn').submit(function(e)
+			// {
+			// 	e.preventDefault();
+			// 	rzp1.open();
+			// });
+        }
+	})
+
+	// if("input[type='button']").is(":checked"))
+	// if($("input[name='payment_mode']:checked").val() === 'Radio');
+	// // $("input[@name=Online]:checked").val();
+	// // if("input[type='button']").is(":checked"))
+	// {
+	// 	// console.log("payment_mode: ", payment_mode);
+	// 	console.log("Your");
+	// }
+
+	// if($("input[data-name='Online']").is(":checked"))
+	// {
+	// 	console.log("payment_mode: ", payment_mode);
+	// }
+
 	$('#add_payment_details_btn').click(function(e)
 	{
-		var payment_mode = $('input[name="payment_mode"]:checked').val();
+		var payment_mode = "{{ payment_mode }}";
+	// 	// e.preventDefault();
+	// 	// console.log("Cash!!");
+	// 	// var payment_mode = $(this).val();
+		// console.log("payment_mode", payment_mode);
 
-		if(payment_mode === 'Online')
-		{
-			rzp1.open();
-			e.preventDefault();
-		}
-		if(payment_mode === 'Cash')
-		{
-			// console.log("payment_mode", payment_mode);
-		}
-	});
+	// 	$('input:radio[name="payment_mode"]').change(function(e)
+	// 	{
+	// 		e.preventDefault();
 
+	// 		if ($(this).is(':checked') && $(this).val() == 'Online')
+	// 		{
+	// 			// console.log("Online!!");
+	// 			// document.getElementById("pay-btn").onclick = function(e)
+	//         }
+	//         else
+	//         {
+	//         	// console.log("Cash!!");
+	//         }
+		})
+
+
+	// 	var payment_mode = $('input[name="payment_mode"]:checked').val();
+	// 	console.log("payment_mode: ", payment_mode);
+
+	// 	document.getElementById("pay-btn").onclick = function(e)
+	// 	{
+	// 		rzp1.open();
+	// 		e.preventDefault();
+	// 	};
+	// 	// if ($('input[name="payment_mode"]').is(":checked"))
+	// 	// if (payment_mode === 'Online').is(":checked"))
+	// 	// {
+	// 	// 	alert("is check");
+		// }
+
+	// 	if($('input[name="payment_mode"]:checked').val() === 'Online')
+	// 	{
+	// 		alert("is check");
+	// 		e.preventDefault();
+	// 		e.stopPropagation();
+	// 		$(".add_payment_details_btn").unbind('click');
+	// 		rzp1.open();
+	// 		console.log("payment_mode: ", payment_mode);
+	// 	}
+	// 	if(payment_mode === 'Cash')
+	// 	{
+	// 		console.log("payment_mode", payment_mode);
+	// 	}
+	// });
+
+	// $('#add_payment_details_btn').submit(function(e)
+	// {
+	// 	if(payment_mode === 'Online')
+	// 	{
+	// 		e.preventDefault();
+	// 		rzp1.open();
+	// 	}
+	// });
 });
 </script>
 

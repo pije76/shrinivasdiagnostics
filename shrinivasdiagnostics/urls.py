@@ -19,32 +19,37 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from shop.views import *
-from checkout.views import *
+from order.views import *
 from accounts.views import *
 
 from djoser import views as djoser_views
 # from rest_framework_jwt import views as jwt_views
 
 urlpatterns = [
-    path('', include('core.urls')),
+    path('', include('homepage.urls')),
     path('admin/', admin.site.urls),
 
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
-    # path('checkout/', checkout, name='checkout'),
-    path('checkout/', include('checkout.urls')),
-    # path("callback/", callback, name="callback"),
-	# path('payment/', paymenthandler, name='paymenthandler'),
+    # path('order/', order, name='order'),
+    path('checkout/', include('order.urls')),
+    path("callback/", callback, name="callback"),
+	path('payment/', paymenthandler, name='paymenthandler'),
     # path("payment/", order_payment, name="order_payment"),
     path('my-orders/', my_orders, name='my_orders'),
 
-    path('summernote/', include('django_summernote.urls')),
-    path('selectable/', include('selectable.urls')),
+    path('search/', include('haystack.urls')),
+    path('book-blood-test-online-in-india/autocomplete/', productlist_search, name='productlist_search'),
+    # path('search/autocomplete/', productlist_search(view_class=SearchView, template='index.html', form_class=ProductSearchForm), name='haystack_search'),
 
-    path('profile/', include('accounts.urls')),
+    path('account/', include('accounts.urls')),
     path('api/', include('djoser.urls')),
     path('api/', include('djoser.urls.jwt')),
+
+    path('summernote/', include('django_summernote.urls')),
+    # path('selectable/', include('selectable.urls')),
+    # path("select2/", include("django_select2.urls")),
 
     # re_path(r'^user/view/$', djoser_views.UserView.as_view(), name='user-view'),
     # re_path(r'^user/delete/$', djoser_views.UserDeleteView.as_view(), name='user-delete'),

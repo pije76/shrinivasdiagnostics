@@ -4,19 +4,11 @@
 {% load i18n %}
 
 {% block head_title %}
-{{ product.name }}
+{{ page_title }}
 {% endblock %}
 
 {% block extra_style %}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/flexslider.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/toastr.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/sweetalert2.min.css' %}" rel="stylesheet" type="text/css">
 <style>
 input#search-bar-header:focus::-webkit-input-placeholder {
 transition: opacity 0.45s ease;
@@ -40,17 +32,6 @@ word-wrap: break-word;
 </style>
 {% endblock %}
 
-{% block extra_jscript %}
-<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
-{% endblock %}
 
 {% block content %}
 
@@ -110,7 +91,7 @@ word-wrap: break-word;
 								<div class="sidebar">
 									<h3 class="heading-small-v-2">Add Patient</h3>
 
-									<form action="/checkout/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_patient_for_test" id="add-patient-for-test-form" class="schedule-home-form" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<div class="form-group pb-0 mb-0">
 											<input class="custom-form-control alpha_space_only" name="name" id="name" type="text" placeholder="Name" maxlength="60">
@@ -180,7 +161,7 @@ word-wrap: break-word;
 
 								<div class="sidebar">
 									<h3 class="heading-small-v-2">Add Patient</h3>
-									<form action="/checkout/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_profile" id="add-profile-for-test-form" class="schedule-profile-form" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="user_id" value="43142">
 										<div class="form-group pb-0 mb-0">
@@ -298,7 +279,7 @@ word-wrap: break-word;
 
 									<small class="schedule-home-form" style="display:none" >Add Your Billing Details</small>
 
-									<form action="/checkout/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_billing_address" id="add_billing_address_form" class="schedule-home-form" style="display:none" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input autocomplete="false" name="hidden" type="text" style="display:none;">
 										<div class="form-group">
@@ -359,7 +340,7 @@ word-wrap: break-word;
 
 							<div id="collapse-item-3" class="collapse checkout-collapse-body" aria-labelledby="headingThree" data-parent="#checkout-collapse-item-3">
 								<div class="card-body">
-									<form action="/checkout/add_home_collection_address" id="home_collection_address_form" class="m-t-10" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_home_collection_address" id="home_collection_address_form" class="m-t-10" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="home_collection_id" value="" />
 										<small>Do you want us to collect sample from your home?</small>
@@ -437,7 +418,7 @@ word-wrap: break-word;
 
 							<div id="collapse-item-4" class="collapse checkout-collapse-body" aria-labelledby="headingFour" data-parent="#checkout-collapse-item-4">
 								<div class="card-body">
-									<form action="/checkout/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post" accept-charset="utf-8">
+									<form action="/checkout/add_home_collection_other_details" id="home_collection_other_details_form" class="m-t-10" method="post">
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="is_home_collection" value="" />
 										<input type="hidden" name="home_collection_other_detail_id" value="" />
@@ -480,7 +461,7 @@ word-wrap: break-word;
 
 							<div id="collapse-item-5" class="collapse checkout-collapse-body" aria-labelledby="headingFive" data-parent="#checkout-collapse-item-5">
 								<div class="card-body">
-									<form action="{% url 'order_payment' %}" id="add_payment_details_form" method="post" accept-charset="utf-8">
+									<form action="{% url 'order_payment' %}" id="add_payment_details_form" method="post">
 										{% csrf_token %}
 										<input type="hidden" name="csrf_test_name" value="26424dddac305e9f479f8c929363d4e2" />
 										<input type="hidden" name="billing_id" value="15644" />
@@ -542,3 +523,16 @@ word-wrap: break-word;
 
 {% endblock %}
 
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
+
+{% block extra_jscript %}
+{% endblock %}

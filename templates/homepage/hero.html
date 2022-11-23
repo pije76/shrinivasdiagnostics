@@ -1,0 +1,74 @@
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+<!-- hero section start -->
+<section class="hero">	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-6 col-md-12 col-sm-12 schedule-home-collection">
+				<div class="schedule-home-card aos-init aos-animate"  data-aos="fade-right" data-aos-duration="1000">
+					<div class="region region-schedule-home-collection">
+						<div id="block-webform-5" class="block block-webform block-webform-block">
+							<form action="" method="POST" class="webform-submission-form webform-submission-add-form webform-submission-schedule-a-home-collection-form webform-submission-schedule-a-home-collection-add-form js-webform-disable-autosubmit js-webform-details-toggle webform-details-toggle" id="webform-submission-schedule-a-home-collection-add-form">
+								<h3>Schedule a Home Collection</h3>
+								<p>Choose from a range of comprehensive tests and packages and book home collection from the comfort of your home.</p>
+								{% csrf_token %}
+								<div data-webform-key="schedule_a_home_collection" id="edit-schedule-a-home-collection" class="js-form-wrapper form-wrapper">
+									<div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-name form-item-name form-no-label">
+										{% render_field bforms.full_name|add_class:"custom-form-control form-text required" type="text" placeholder="What is your name?*" %}
+									</div>
+									<div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-mobile-no- form-item-mobile-no- form-no-label">
+										{% render_field bforms.phone_number|add_class:"custom-form-control form-text required" type="text" placeholder="Mobile number*" %}
+									</div>
+									<div class="path-city-wrapper js-form-item form-item js-form-type-webform-autocomplete form-type-webform-autocomplete js-form-item-city-n form-item-city-n form-no-label">
+										{% render_field bforms.city|add_class:"path-city-auto form-autocomplete form-text webform-autocomplete ui-autocomplete-input" type="text" placeholder="City" %}
+									</div>
+								</div>
+								<div class="form-actions webform-actions js-form-wrapper form-wrapper" id="edit-actions">
+									<input class="webform-button--next button js-form-submit form-submit" type="submit" id="edit-actions-wizard-next" name="op" value="Submit" />
+								</div>
+								<input autocomplete="off" type="hidden" name="form_build_id" value="form-fw-dMAm8vUqmqnO4bDAq-wzVQuW8rywJGjOJG71yUHo" />
+								<input type="hidden" name="form_id" value="webform_submission_schedule_a_home_collection_add_form" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-12 col-sm-12" >
+				<div class="flexslider23 aos-init aos-animate" id="hero-slider44" data-aos="fade-left" data-aos-duration="1000">
+					<div class="region region-home-slider">
+						<div class="views-element-container block block-views block-views-blockslider-block-1" id="block-views-block-slider-block-1">
+							<div>
+								<div class="view view-slider view-id-slider view-display-id-block_1">
+									<div class="view-content">
+										<div>
+											<div id="homeflexslider" class="optionset-default">
+												<ul class="slides">
+													<li>
+														<div class="views-field views-field-field-image">
+															<div class="field-content">
+																<img src="/assets/images/Web-image-5.jpg" width="800" height="593" alt="Covid 19 antibody test" loading="lazy" typeof="foaf:Image" />
+															</div>
+														</div>
+														<div class="flex-caption">
+															<h3>COVID-19 Antibody Test</h3>
+															<p>Know your Antibody levels and the effectiveness of COVID vaccine</p>
+															<a href="/book-blood-test-online-in-india" title="see-details" target="_self">See Details</a>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- hero section end -->

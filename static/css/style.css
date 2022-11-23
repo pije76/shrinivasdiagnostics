@@ -17114,7 +17114,7 @@ form.webform-submission-header-search-form-form {
     margin-top: 20px;
 }
 form.webform-submission-header-search-form-form .search-city-wrapper.js-form-item-city-name {
-    width: 27% !important;
+    width: 20%;
     margin-bottom: 0 !important;
     height: 40px;
 }
@@ -24046,3 +24046,5 @@ form.webform-submission-header-search-form-form .search-city-wrapper.js-form-ite
     margin-top: 0;
 }
 }
+
+

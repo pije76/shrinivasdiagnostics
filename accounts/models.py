@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 from .managers import UserManager
 
 from phonenumber_field.modelfields import PhoneNumberField
-from cities_light.models import City, Country
+from cities_light.models import *
 
 
 
@@ -29,7 +29,7 @@ RELATION_CHOICES = (
 
 # Create your models here.
 class Profile(AbstractBaseUser, PermissionsMixin):
-	name = models.CharField(max_length=255, null=True, blank=True)
+	full_name = models.CharField(max_length=255, null=True, blank=True)
 	email = models.EmailField(verbose_name='Email', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(null=True, blank=False)
 	otp = models.CharField(max_length=12, null=True, blank=True)
@@ -59,18 +59,18 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 	  self.email = self.__class__.objects.normalize_email(self.email)
 
 	def clean_title(self):
-		return self.cleaned_data['name'].capitalize()
+		return self.cleaned_data['full_name'].capitalize()
 
 
 	# def get_display_name(self):
-	#   if self.name != '':
-	#       return self.name
+	#   if self.full_name != '':
+	#       return self.full_name
 	#   else:
 	#       return self.username
 
 	# def get_name(self):
-	#   name = '%s %s' % (self.first_name, self.last_name)
-	#   return name.strip()
+	#   full_name = '%s %s' % (self.first_name, self.last_name)
+	#   return full_name.strip()
 	#   # return self.email
 
 	# def get_short_name(self):
@@ -93,9 +93,10 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 class Address(models.Model):
 	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_address')
 	address = models.CharField(max_length=255, null=True, blank=True)
-	state = models.CharField(max_length=255, null=True, blank=True)
-	city = models.ForeignKey(City, on_delete=models.CASCADE)
-	country = models.ForeignKey(Country, on_delete=models.CASCADE)
+	# state = models.CharField(max_length=255, null=True, blank=True)
+	state = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)
+	city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
+	country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True, blank=True)
 	location = models.CharField(max_length=255, null=True, blank=True)
 	pin_code = models.CharField(max_length=255, null=True, blank=True)
 	zip = models.CharField(max_length=100, null=True, blank=True)
@@ -113,7 +114,7 @@ class Address(models.Model):
 
 class Patient(models.Model):
 	user_patient = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_patient')
-	name = models.CharField(max_length=255, null=True, blank=True)
+	full_name = models.CharField(max_length=255, null=True, blank=True)
 	email = models.EmailField(verbose_name='Email', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(blank=True)
 	birth_date = models.DateField(null=True, blank=False)
@@ -125,5 +126,5 @@ class Patient(models.Model):
 		verbose_name_plural = _("Patient")
 
 	def __str__(self):
-		return self.name
+		return self.full_name
 	

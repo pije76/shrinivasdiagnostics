@@ -1,0 +1,9 @@
+@media (min-width: 961px)
+form.webform-submission-header-search-form-form .search-city-wrapper.js-form-item-city-name {
+    width: 25% !important;
+}
+
+@media (min-width: 961px)
+.search-det {
+    width: 80% !important;
+}

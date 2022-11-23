@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock %}
+
+{% block extra_style %}
+<link href="{% static 'css/based.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<!-- main header section end -->
+<section class="sec1">
+	<div class="container">
+		<div class="row">
+			<div class="breadcam-bg breadcam">
+				<div class="container common-container four_content ">
+					<div class="region region-highlighted">
+						<div class="hidden"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include "core/hero_schedule.html" %}
+
+{% include "core/health_packages.html" %}
+
+{% include "core/tests_section.html" %}
+
+{% endblock %}
+
+
+<script src="{% static 'js/modernizr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/modernizr-additional-tests.js' %}" type="text/javascript"></script>
+
+{% block extra_jscript %}
+{% endblock %}

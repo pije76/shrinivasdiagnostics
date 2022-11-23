@@ -49,7 +49,7 @@ def product_detail(request, pk):
 	product = get_object_or_404(Product, id=pk, available=True)
 	page_title = product
 	user_id = Profile.objects.get(email = request.user)
-	user_order = Order.objects.filter(user=user_id).count()
+	user_order = Order.objects.filter(user=user_id, ordered=False).count()
 	cart_product_form=CartAddProductForm()
 
 	context = {
@@ -63,14 +63,14 @@ def product_detail(request, pk):
 
 
 def add_to_cart(request, pk):
-	item = get_object_or_404(Product, pk=pk)
-	order_item, created = Order.objects.get_or_create(product=item, user = request.user, ordered = False)
-	order_qs = Checkout.objects.filter(user=request.user, ordered= False)
+	product = get_object_or_404(Product, pk=pk)
+	order_item, created = Order.objects.get_or_create(product=product, user=request.user, ordered=False)
+	order_qs = Checkout.objects.filter(user=request.user, ordered=False)
 
 	if order_qs.exists():
 		order = order_qs[0]
 
-		if order.items.filter(product__pk=item.pk).exists():
+		if order.items.filter(product__pk=product.pk).exists():
 			order_item.quantity += 1
 			order_item.save()
 			messages.info(request, "Added quantity Item")
@@ -88,14 +88,14 @@ def add_to_cart(request, pk):
 
 
 def remove_from_cart(request, pk):
-	item = get_object_or_404(Product, pk=pk)
+	product = get_object_or_404(Product, pk=pk)
 	order_qs = Checkout.objects.filter(user=request.user, ordered=False)
 	if order_qs.exists():
 		order = order_qs[0]
-		if order.items.filter(product__pk=item.pk).exists():
-			order_item = Order.objects.filter(product=item, user=request.user, ordered=False)[0]
+		if order.items.filter(product__pk=product.pk).exists():
+			order_item = Order.objects.filter(product=product, user=request.user, ordered=False)[0]
 			order_item.delete()
-			messages.info(request, "Item \""+order_item.product.product_name+"\" remove from your cart")
+			messages.info(request, "Item \""+order_item.product.title+"\" remove from your cart")
 			return redirect("shopping_cart")
 		else:
 			messages.info(request, "This Item not in your cart")
@@ -106,12 +106,12 @@ def remove_from_cart(request, pk):
 
 
 def reduce_quantity_item(request, pk):
-	item = get_object_or_404(Product, pk=pk)
+	product = get_object_or_404(Product, pk=pk)
 	order_qs = Checkout.objects.filter(user=request.user, ordered=False)
 	if order_qs.exists():
 		order = order_qs[0]
-		if order.items.filter(product__pk=item.pk).exists():
-			order_item = Order.objects.filter(product=item, user=request.user, ordered=False)[0]
+		if order.items.filter(product__pk=product.pk).exists():
+			order_item = Order.objects.filter(product=product, user=request.user, ordered=False)[0]
 			if order_item.quantity > 1:
 				order_item.quantity -= 1
 				order_item.save()
@@ -133,7 +133,7 @@ def get_add_to_cart_url(request, pk):
 def shopping_cart(request):
 	page_title = _('Cart | ShrinivasDiagnostic')
 	user_id = Profile.objects.get(email = request.user)
-	user_order = Order.objects.filter(user=user_id).count()
+	user_order = Order.objects.filter(user=user_id, ordered=False).count()
 	total_price = request.GET.get('total_price')
 	print("total_price:", total_price)
 	print('user_order', user_order)
@@ -163,7 +163,7 @@ def checkout(request):
 	page_title = _('Checkout | ShrinivasDiagnostic')
 	user_id = Profile.objects.get(email = request.user)
 	patients = Patient.objects.filter(user_patient=user_id)
-	user_order = Order.objects.filter(user=user_id).count()
+	user_order = Order.objects.filter(user=user_id, ordered=False).count()
 	products = Order.objects.filter(user=user_id)
 	cart_order = Checkout.objects.get(user=request.user, ordered=False)
 	total_payment = Order.objects.filter(user=request.user)
@@ -291,7 +291,7 @@ def callback(request):
 	else:
 		payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
 		razorpay_order_id = json.loads(request.POST.get("error[metadata]")).get(
-			"order_id"
+			"id"
 		)
 		order = Order.objects.get(razorpay_order_id=razorpay_order_id)
 		order.payment_id = payment_id

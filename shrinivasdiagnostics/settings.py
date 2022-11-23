@@ -45,30 +45,29 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'accounts',
-    'core',
+    'homepage',
+    'schedule',
     'shop',
-    'checkout',
+    'order',
 
-    'cities_light',
-    'phonenumber_field',
-    'django_summernote',
 	'crispy_forms',
 	'crispy_bootstrap5',
     'widget_tweaks',
     'bootstrap_modal_forms',
-	'selectable',
-    'selectable_select2',
-    'jquery',
-    'staticfiles_select2',
-    'paypal.standard.ipn',
 
+    'cities_light',
+    'phonenumber_field',
+    'paypal.standard.ipn',
     'rest_framework',
+
+    'whoosh_index',
+    'haystack',
     'djoser',
     'django_otp',
     'django_otp.plugins.otp_totp',
     # 'django_otp.plugins.otp_hotp',
     'django_otp.plugins.otp_static',
-
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -178,7 +177,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-
 MESSAGE_LEVEL = message_constants.DEBUG
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -187,6 +185,8 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'
 
 ####################################################################################################
 
@@ -202,15 +202,6 @@ CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en']
 CITIES_LIGHT_INCLUDE_COUNTRIES = ['IN']
 CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT',]
 
-# SELECT2_JS = 'easy_select2/vendor/select2-4.0.13/js/select2.min.js'
-# SELECT2_JS = 'easy_select2/js/easy_select2.js'
-# SELECT2_CSS = 'css/select2.css'
-# SELECT2_CSS = 'easy_select2/css/easy_select2.css'
-# SELECT2_USE_BUNDLED_JQUERY = True
-# SELECT2_USE_BUNDLED_SELECT2 = True
-# SELECT2_BOOTSTRAP = True
-# SELECT2_CACHE_BACKEND = "select2"
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
@@ -218,44 +209,34 @@ BOOTSTRAP4 = {
 	'include_jquery': True,
 }
 
-SELECTABLE_ESCAPED_KEYS = ('label', 'value')
-
-FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'
-
-CART_SESSION_ID = 'cart'
-
 # # Razorpay settings
 ############ test ##################### 
 
-RAZORPAY_KEY_ID = 'rzp_test_M3FiS15dd7cPbJ'
-RAZORPAY_KEY_SECRET = 'D9lt3eTUvmutnUYBJRb1wwMC'
+RAZORPAY_KEY_ID = 'rzp_test_3o6kPVKOmgfnM9'
+RAZORPAY_KEY_SECRET = 'FsXFP5HO2Tb8uhjPcGYcMki8'
 
 # ########## live #####################
 # RAZORPAY_PUBLIC_KEY = 'rzp_test_tA7AbSk6m2cdv2'
 # RAZORPAY_SECRET_KEY = 'vPGDTwajuC4X6KDxln8ZvQRv'
 
-# # Braintree settings
-# BRAINTREE_MERCHANT_ID = 'BRAINTREE_MERCHANT_ID' # Merchant ID 
-# BRAINTREE_PUBLIC_KEY = 'BRAINTREE_PUBLIC_KEY' # Public Key 
-# BRAINTREE_PRIVATE_KEY = 'BRAINTREE_PRIVATE_KEY' # Private key 
-
 # # Paypal settings
 # PAYPAL_RECEIVER_EMAIL = 'PAYPAL_RECEIVER_EMAIL'
 PAYPAL_TEST = True
 
+
+WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh_index/')
+# WHOOSH_INDEX = os.path.join(os.path.dirname(__file__), 'whoosh_index')
+
 HAYSTACK_CONNECTIONS = {
     'default': 
     {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'URL': 'http://127.0.0.1:9200/',
-        # 'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
-        'INDEX_NAME': 'shop_products',
+        # 'ENGINE': 'haystack.backends.elasticsearch5_backend.Elasticsearch5SearchEngine',
+        # 'URL': 'http://127.0.0.1:9200/',
+        # 'INDEX_NAME': 'haystack',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': WHOOSH_INDEX,
     },
 }
-
-STRIPE_KEY = ""
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -270,6 +251,13 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+    },
+
+}
 
 ####################################################################################################
 

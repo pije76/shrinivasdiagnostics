@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.get_absolute_url }}
+{{ object.samplecutoff }}
+{{ object.report }}
+{{ object.speciment }}
+{{ object.price }}

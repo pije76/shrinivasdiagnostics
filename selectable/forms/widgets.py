@@ -235,7 +235,6 @@ class _BaseMultipleSelectWidget(SelectableMultiWidget, SelectableMediaMixin):
         value = ['', value]
         return super().render(name, value, attrs, renderer)
 
-
 class AutoCompleteSelectMultipleWidget(_BaseMultipleSelectWidget):
 
     primary_widget = AutoCompleteWidget
