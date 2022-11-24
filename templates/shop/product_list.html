@@ -414,6 +414,18 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
+    $('input:checkbox[name="sort_by"]').click(function()
+    {
+        if($(this).is(':checked') && $(this).val() == 'test')
+        {
+            console.log("test");
+            // e.preventDefault();
+        }
+        if($(this).is(':checked') && $(this).val() == 'packages')
+        {
+            console.log("packages");
+        }
+    })
     // var data_from_url = "{{ user_order }}";
 
     // // var input = document.getElementById('#search-bar-2');

@@ -9,6 +9,7 @@ class OrderAdmin(admin.ModelAdmin):
         'item_order',
         'product',
         'quantity',
+        'order_date',
     ]
 
 
@@ -21,7 +22,7 @@ class CheckoutAdmin(admin.ModelAdmin):
         'signature_id',
         'status',
         'amount',
-        'ordered_date',
+        'checkout_date',
         'billing_address',
     ]
 

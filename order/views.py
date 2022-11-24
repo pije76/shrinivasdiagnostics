@@ -82,6 +82,7 @@ def checkout(request):
 			checkout.update(amount=amount)
 			for object in checkout:
 				object.save()
+			messages.success(request, 'THANKS YOUR PAYMENT HAS BEEN RECEIVED')
 			return redirect(reverse('my_orders'))
 
 	else:
@@ -127,13 +128,13 @@ def callback(request):
 			order.save()
 			# return render(request, "checkout/callback.html", context={"status": order.status})
 			messages.success(request, 'THANKS YOUR PAYMENT HAS BEEN RECEIVED')
-			return redirect(reverse('checkout'))
+			return redirect(reverse('order:checkout'))
 		else:
 			order.status = "failure"
 			order.save()
 			# return render(request, "checkout/callback.html", context={"status": order.status})
 			messages.warning(request, 'SORRY, YOUR PAYMENT HAS BEEN FAILED')
-			return redirect(reverse('checkout'))
+			return redirect(reverse('order:checkout'))
 	else:
 		payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
 		provider_order_id = json.loads(request.POST.get("error[metadata]")).get("order_id")

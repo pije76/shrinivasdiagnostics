@@ -7,6 +7,10 @@ from .models import *
 from accounts.models import *
 from shop.models import *
 
+PAYMENT_TYPE = (
+    ('online', 'Online'),
+    ('cash', 'Cash On Order'),
+)
 
 PAYMENT_STATUS = (
     ('success', 'Success'),
@@ -21,6 +25,7 @@ class Order(models.Model):
     item_order = models.BooleanField(default=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=False, related_name='order_product')
     quantity = models.IntegerField(default=1)
+    order_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         # return self.user.ordered
@@ -53,12 +58,13 @@ class Checkout(models.Model):
     amount = models.FloatField(null=True, blank=False)
     status = models.CharField(default="pending", choices=PAYMENT_STATUS, max_length=254, blank=False, null=False)
     provider_order_id = models.CharField(max_length=40, null=False, blank=False)
-    payment_id = models.CharField(max_length=36, null=False, blank=False)
     signature_id = models.CharField(max_length=128, null=False, blank=False)
+    payment_type = models.CharField(default="cash", choices=PAYMENT_TYPE, max_length=36, null=False, blank=False)
+    payment_id = models.CharField(max_length=36, null=False, blank=False)
     ordered = models.BooleanField(default=False)
     # ordered = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name='checkout_ordered')
     billing_address = models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True)
-    ordered_date = models.DateTimeField(auto_now_add=True)
+    checkout_date = models.DateTimeField(auto_now_add=True)
     items = models.ManyToManyField(Order)
 
     def __str__(self):

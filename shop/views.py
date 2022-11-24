@@ -184,8 +184,8 @@ def add_to_cart(request, pk):
 			messages.info(request, "Item \""+order_item.product.title+"\" added to your cart")
 			return redirect("shopping_cart")
 	else:
-		ordered_date = timezone.now()
-		order = Checkout.objects.create(user=request.user, ordered_date=ordered_date)
+		checkout_date = timezone.now()
+		order = Checkout.objects.create(user=request.user, checkout_date=checkout_date)
 		order.items.add(order_item)
 		messages.info(request, "Item \""+order_item.product.title+"\" added to your cart")
 		return redirect("shopping_cart")
