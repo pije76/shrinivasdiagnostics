@@ -1,10 +1,43 @@
-{% extends 'base.html' %}
+{% extends 'base_shop.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block extra_style %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style_shopdetail.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
 {% block content %}
-<div class="text-center" style="margin-top:20%">
-    {% if status == "Success" %}
-    <h2>THANKS YOUR PAYMENT HAS BEEN RECEIVED</h2>
-    {% else %}
-    <h2>SORRY, YOUR PAYMENT HAS BEEN FAILED</h2>
-    {% endif %}
+
+<!-- Inner checkout items start -->
+<div class="inner-checkout">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-sm-12">
+				<div class="flex-inline">
+
+				{% if status == "Success" %}
+
+				<h2>THANKS YOUR PAYMENT HAS BEEN RECEIVED</h2>
+				{% else %}
+				<h2>SORRY, YOUR PAYMENT HAS BEEN FAILED</h2>
+				{% endif %}
+
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
+
 {% endblock %}
