@@ -76,21 +76,16 @@ def index(request):
 		return render(request, 'homepage/home.html', context)
 
 def productlist_search(request):
-	results = None
+	sqs = None
 
 	if request.method == "GET":
 		if "q" in request.GET:
 			query = str(request.GET.get("q"))
-			# Add extra code here to parse the "content" query string parameter...
-			# * Get content type to search for
-			# content_type = request.GET.get("content")
-			# * Assign the model or models to a list for the "models" call
 			search_models = []
 			search_models = [Product]
-			# * Add a "models" call to limit the search results to the particular models
-			results = SearchQuerySet().all().filter(q=query).models(*search_models)
+			sqs = SearchQuerySet().all().filter(q=query).models(*search_models)
 
 			context = {
-				'results': results,
+				'sqs': sqs,
 			}
 	return render(request, "shop/product_list.html", context)

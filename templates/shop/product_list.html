@@ -14,6 +14,8 @@
 
 {% block extra_style %}
 <link href="{% static 'css/style_shoplist.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/autocomplete.css' %}" rel="stylesheet" type="text/css">
 <style>
     input#search-bar-header:focus::-webkit-input-placeholder {
         transition: opacity 0.45s ease;
@@ -54,7 +56,7 @@
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <div class="filter-bar-top">
-                    <form action="/book-blood-test-online-in-india/" id="test_location_search_header_form" method="GET">
+                    <form action="/book-blood-test-online-in-india/" method="GET" id="test_location_search_header_form">
                         <input type="text" class="city-search box" placeholder="Search City" value="" name="q" readonly />
                         <input type="hidden" name="test_location_id" id="city-holder" value="100" />
                     </form>
@@ -92,13 +94,13 @@
                                 <div class="form-group checkbox-group">
                                     <div class="inner-group">
                                         <label class="container-check">Test
-                                            <input type="checkbox" name="sort_by" value="1">
+                                            <input type="checkbox" name="sort_by" value="test">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Packages
-                                            <input type="checkbox" name="sort_by" value="2">
+                                            <input type="checkbox" name="sort_by" value="packages">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -118,43 +120,43 @@
                                 <div class="form-group checkbox-group">
                                     <div class="inner-group">
                                         <label class="container-check">Adrenal gland
-                                            <input type="checkbox"  name="organs" value="2">
+                                            <input type="checkbox"  name="organs" value="adrenal-gland">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Bone
-                                            <input type="checkbox"  name="organs" value="1">
+                                            <input type="checkbox"  name="organs" value="bone">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Heart
-                                            <input type="checkbox"  name="organs" value="7">
+                                            <input type="checkbox"  name="organs" value="heart">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Kidney
-                                            <input type="checkbox"  name="organs" value="5">
+                                            <input type="checkbox"  name="organs" value="kidney">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Liver
-                                            <input type="checkbox"  name="organs" value="3">
+                                            <input type="checkbox"  name="organs" value="liver">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Pancreas
-                                            <input type="checkbox"  name="organs" value="4">
+                                            <input type="checkbox"  name="organs" value="pancreas">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group">
                                         <label class="container-check">Thyroid
-                                            <input type="checkbox"  name="organs" value="6">                                            
+                                            <input type="checkbox"  name="organs" value="thyroid">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -176,25 +178,25 @@
                                 <div class="form-group checkbox-group">
                                     <div class="inner-group health_conditions" style=display:block>
                                         <label class="container-check">Diabetes
-                                            <input type="checkbox" name="health_conditions" value="3">
+                                            <input type="checkbox" name="health_conditions" value="diabetes">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group health_conditions" style=display:block>
                                         <label class="container-check">Industrial diseases
-                                            <input type="checkbox" name="health_conditions" value="4">
+                                            <input type="checkbox" name="health_conditions" value="industrial-diseases">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group health_conditions" style=display:block>
                                         <label class="container-check">Myasthenia gravis
-                                            <input type="checkbox" name="health_conditions" value="1">
+                                            <input type="checkbox" name="health_conditions" value="myasthenia-gravis">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="inner-group health_conditions" style=display:block>
                                         <label class="container-check">Nutritional disorders
-                                            <input type="checkbox" name="health_conditions" value="2">
+                                            <input type="checkbox" name="health_conditions" value="nutritional-disorders">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -223,7 +225,7 @@
                     </div>
                 </div>
                 <div class="row package-lists">
-                    {% for item in results %}
+                    {% for item in sqs %}
                                         <div class="col-md-6 col-sm-12 test_and_packages">
                         <div class="package" id="210056">
                             <div class="custom-head123">
@@ -375,6 +377,23 @@
     </div>
 </div>
 
+<div class="easy-autocomplete-container" id="eac-container-search-bar-2-header">
+    <ul style="display: none;">
+        <li class="">
+            <div class="eac-item">Adrenocorticotropic Hormone (ACTH), <b>IHC</b> -(HP01)</div>
+        </li>
+        <li class="">
+            <div class="eac-item">ALK-1, <b>IHC</b> -(HP02)</div>
+        </li>
+        <li class="">
+            <div class="eac-item">Alpha-1-Antitrypsin, <b>IHC</b> -(HP03)</div>
+        </li>
+        <li class="">
+            <div class="eac-item">Anti Human Gross Cystic Disease Fluid Protein-15 (GCDFP-15), <b>IHC</b> -(HP46)</div>
+        </li>
+    </ul>
+</div>
+
 {% endblock %}
 
 <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
@@ -389,41 +408,122 @@
 
 
 {% block extra_jscript %}
+<link href="{% static 'js/jquery-1.11.1.js' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'js/jquery.dimensions.js' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'js/autocomplete.js' %}" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 $(document).ready(function()
 {
-    var data_from_url = "{{ user_order }}";
-    console.log("data_from_url: ", data_from_url);
+    // var data_from_url = "{{ user_order }}";
 
+    // // var input = document.getElementById('#search-bar-2');
+    // // var input = document.querySelector('#search-bar-2').value;
+    // var input = document.querySelector('[name="q"]').value;
 
-    $('#id_ticker_code').change(function(e)
-    {
-        e.preventDefault();
-        var get_ticker = $("#id_ticker_code").val();
+    // console.log("input", input);
 
-        $.ajax(
-        {
-            method: 'GET',
-            url: urls,
-            dataType: 'json',
-            data: {
-                'get_ticker': get_ticker,
-                // 'get_halfway_yearly': get_halfway_yearly,
-            },
-            success: function(data)
-            {
-                if(!data["valid"])
-                {
-                    // console.log("data2: ", data);
-                    // console.log("get_ticker2: ", get_ticker);
-                    $("button").removeClass("button_hide");
-                }
-            },
-            cache: false
-        });
+    // var options = {
+    //     url: "autocomplete/?q=produk1",
+    //     getValue: "sqs",
+    //     list: {
+    //         match: {
+    //             enabled: true
+    //         }
+    //     },
+    //     theme: "square"
+    // };
 
-    });
+    // $("#search-bar-2").easyAutocomplete(options);
 
+    // var Autocomplete = function(options)
+    // {
+    //     this.form_selector = options.form_selector
+    //     this.url = options.url || '/book-blood-test-online-in-india/autocomplete/'
+    //     this.delay = parseInt(options.delay || 300)
+    //     this.minimum_length = parseInt(options.minimum_length || 3)
+    //     this.form_elem = null
+    //     this.query_box = null
+    // }
+
+    // Autocomplete.prototype.setup = function()
+    // {
+    //     var self = this
+    //     this.form_elem = $(this.form_selector)
+    //     this.query_box = this.form_elem.find('input[name=q]')
+
+    //     // Watch the input box.
+    //     this.query_box.on('keyup', function()
+    //     {
+    //         var query = self.query_box.val()
+    //         if(query.length < self.minimum_length)
+    //         {
+    //             return false
+    //         }
+    //         self.fetch(query)
+    //     })
+
+    //     // On selecting a result, populate the search field.
+    //     this.form_elem.on('click', '.ac-result', function(ev)
+    //     {
+    //         self.query_box.val($(this).text())
+    //         $('.ac-results').remove()
+    //         return false
+    //     })
+    // }
+
+    // Autocomplete.prototype.fetch = function(query)
+    // {
+    //     var self = this
+    //     $.ajax(
+    //     {
+    //         url: this.url,
+    //         data: {
+    //             'q': query
+    //         },
+    //         success: function(data)
+    //         {
+    //             self.show_results(data)
+    //         }
+    //     })
+    // }
+
+    // Autocomplete.prototype.show_results = function(data)
+    // {
+    //     // Remove any existing results.
+    //     $('.ac-results').remove()
+    //     var results = data.results || []
+    //     var results_wrapper = $('<div class="ac-results"></div>')
+    //     var base_elem = $('<div class="result-wrapper"><a href="#" class="ac-result"></a></div>')
+    //     if(results.length > 0)
+    //     {
+    //         for(var res_offset in results)
+    //         {
+    //             var elem = base_elem.clone()
+    //             // Don't use .html(...) here, as you open yourself to XSS.
+    //             // Really, you should use some form of templating.
+    //             elem.find('.ac-result').text(results[res_offset])
+    //             results_wrapper.append(elem)
+    //         }
+    //     }
+    //     else
+    //     {
+    //         var elem = base_elem.clone()
+    //         elem.text("No results found.")
+    //         results_wrapper.append(elem)
+    //     }
+
+    //     this.query_box.after(results_wrapper)
+    // }
+
+    // $(document).ready(function()
+    // {
+    //     window.autocomplete = new Autocomplete(
+    //     {
+    //         form_selector: '.autocomplete-me'
+    //     }
+    // )
+    //     window.autocomplete.setup()
+    // })
 });
 </script>
 {% endblock %}

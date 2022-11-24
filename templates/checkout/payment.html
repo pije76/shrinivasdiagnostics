@@ -1,104 +1,33 @@
-{% extends 'base_shop.html' %}
-
-{% load static %}
-{% load i18n %}
-
-{% block head_title %}
-{{ product.name }}
-{% endblock %}
-
-{% block extra_style %}
-<link href="{% static 'css/style_search.css' %}" rel="stylesheet" type="text/css">
-<style>
-input#search-bar-header:focus::-webkit-input-placeholder {
-transition: opacity 0.45s ease;
-opacity: 0;
-}
-
-input#search-bar-header:focus::-moz-placeholder {
-transition: opacity 0.45s ease;
-opacity: 0;
-}
-
-input#search-bar-header:focus:-ms-placeholder {
-transition: opacity 0.45s ease;
-opacity: 0;
-}
-
-div,
-.profile-item {
-word-wrap: break-word;
-}
-</style>
-{% endblock %}
-
-
 {% block content %}
-<!-- Inner checkout items start -->
-<div class="inner-checkout">
-  <div class="container">
+<form method="POST">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    var options =
+    {
+    	key: "{{ razorpay_key }}",
+    	amount: "{{ amount }}",
+    	currency: "{{ currency }}",
+    	name: "{{ store_name }}",
+    	image: "http://127.0.0.1:8000/assets/images/shrinivasdiagnostics_logo.png",
+    	order_id: "{{ provider_order_id }}",
+    	callback_url: "{{ callback_url }}",
+    	redirect: true,
+    	prefill: {
+    		"name": "{{ full_name }}",
+    		"email": "{{ email }}",
+    		"contact": "{{ phone_number }}"
+    	},
+    	notes: {
+    		"address": "ShrinivasDiagnostic Lab Office"
+    	},
+    	theme: {
+    		"color": "#528FF0"
+    	}
+    };
 
-    <div class="row">
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+	</script>
+</form>
 
-      <div class="col-lg-8 col-md-8 col-sm-12">
-        <form action="{% url 'order_payment' %}" method='POST'>
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Name</label>
-            <input type="name" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Amount</label>
-            <input type="number" name="amount" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div>
-            <button type="submit" class="btn btn-primary">Pay Now</button>
-          </div>
-        </form>
-      </div>
-
-    <!-- Sidebar Summary -->
-    <div class="col-lg-4 col-md-4 col-sm-12">
-
-      <div class="checkout-summary">
-        <div class="heading-small-v-2">Summary</div>
-        <div class="row m-t-40">
-          <div class="summary-item-name col-md-9" id="12261">TSH 3rd Generation </div>
-          <div class="summary-item-price col-md-3">&#8377;200.00</div>
-          <div class="summary-patient-name col-md-12">Patient : </div>
-        </div>
-
-        <div class="flex-inline border" style="border-left: 0px!important; border-right: 0px!important; border-bottom: 0px!important; padding: 10px 0; margin-bottom: 15px;">
-          <p>Subtotal</p>
-          <p class="subtotal">&#8377;</p>
-        </div>
-        <div class="flex-inline home-collection-charges" style="display:none">
-          <p class="text-right"><span style="display: inline-block; float:left;"> Home Collection charge </span> &#8377;
-            <!-- <span id="collection-charges" style="float:right;">0</span> -->
-            <span id="collection-charges" style="float:right;">0</span>
-          </p>
-        </div>
-        <div class="flex-inline border strong-summary-text">
-          <p>Total</p>
-          <p class="total-charges">&#8377; </p>
-        </div>
-      </div>
-    </div>
-
-    </div>
-  </div>
-</div>
-{% endblock %}
-
-<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
-
-{% block extra_jscript %}
 {% endblock %}

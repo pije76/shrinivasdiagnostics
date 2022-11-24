@@ -16,8 +16,8 @@ class CheckoutAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'ordered',
-        'order_id',
-        'razorpay_order_id',
+        'payment_id',
+        'provider_order_id',
         'signature_id',
         'status',
         'amount',

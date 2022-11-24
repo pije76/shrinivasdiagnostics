@@ -370,10 +370,7 @@
 										<small class="m-b-10">Select payment mode</small>
 										<div class="form-group checkbox-group">
 											<div class="inner-group">
-												<label class="container-check">Online
-													<input type="hidden" class="razorpay_key" name="{{ razorpay_key }}" value="{{ razorpay_key }}" />
-													<input type="hidden" class="razorpay_order_id" name="{{ razorpay_order_id }}" value="{{ razorpay_order_id }}" />
-													<input type="hidden" class="currency" name="{{ currency }}" value="{{ currency }}" />
+												<label class="container-check" checked="checked">Online
 													<input type="radio" name="payment_mode" value="Online">
 													<span class="checkmark"></span>
 												</label>
@@ -435,161 +432,51 @@
 {% endblock %}
 
 
+
 {% block extra_jscript %}
 <script type='text/javascript'>
 $(document).ready(function()
 {
+	var amount = "{{ cart_order.get_total_price }}";
+	amount = parseInt(amount, 0);
 
-	var options =
+	$('input:radio[name="payment_mode"]').click(function(e)
 	{
-		key: "{{ razorpay_key }}",
-		amount: "{{ amount }}",
-		currency: "{{ currency }}",
-		name: "{{ store_name }}",
-		image: "http://127.0.0.1:8000/assets/images/shrinivasdiagnostics_logo.png",
-		order_id: "{{ razorpay_order_id }}",
-		callback_url: "{{ callback_url }}",
-		prefill: {
-            "name": "{{ full_name }}",
-            "email": "{{ email }}",
-            "contact": "{{ phone_number }}"
-        },
-        notes: {
-            "address": "ShrinivasDiagnostic Lab Office"
-        },
-        theme: {
-            "color": "#528FF0"
-        }
-	};
-
-	var rzp1 = new Razorpay(options);
-
-	// $("input[type='button']").click(function()
-	// {
-	// 	alert("Your are a - " + radioValue);
-
-	// 	var radioValue = $("input[name='payment_mode']:checked").val();
-	// 	if(radioValue)
-	// 	{
-	// 		alert("Your are a - " + radioValue);
-	// 	}
-	// });
-
-	// var radioValue = $("input[name='payment_mode']:checked").val();
-	// console.log("radioValue", radioValue);
-
-	$('input:radio[name="payment_mode"]').change(function(e)
-	{
-		var payment_mode = "{{ payment_mode }}";
-	// 	e.preventDefault();
-		// var payment_mode = $(this).val();
-		// console.log("payment_mode", payment_mode);
+		var payment_mode = $(this).val();
 
 		if ($(this).is(':checked') && $(this).val() == 'Online')
 		{
-			// var payment_mode = $('input:radio[name="payment_mode"]').val();
+			console.log("amount", amount);
+			console.log("amount", typeof(amount));
 			// e.preventDefault();
-			// document.getElementById("pay-btn").onclick = function(e)
-			// $('#add_payment_details_btn').click(function(e)
-			// {
-			// console.log("Online");
-			console.log("payment_mode", payment_mode);
-			// $('#add_payment_details_btn').submit(function(e)
-			// {
-			rzp1.open();
-			// e.preventDefault();
-			// });
-        }
-        else
-        {
-			// $('#add_payment_details_btn').click(function(e)
-			// {
-				// console.log("payment_mode Cash", payment_mode);
-			// console.log("Cash");
-			console.log("payment_mode", payment_mode);
-			// $('#add_payment_details_btn').submit(function(e)
-			// {
-			// 	e.preventDefault();
-			// 	rzp1.open();
-			// });
-        }
+		}
+		else
+		{
+			// console.log("payment_mode", payment_mode);
+		}
+
+		$.ajax(
+		{
+			url: "/checkout/",
+			type: "POST",
+			dataType: "json",
+			data:
+			{
+				csrfmiddlewaretoken: '{{ csrf_token }}',
+				payment_mode: payment_mode,
+				amount: amount,
+			},
+			success : function(json)
+			{
+				// alert("Successfully sent the URL to Django");
+			},
+			error : function(xhr,errmsg,err)
+			{
+				// alert("Could not send URL to Django. Error: " + xhr.status + ": " + xhr.responseText);
+			}
+		});
+
 	})
-
-	// if("input[type='button']").is(":checked"))
-	// if($("input[name='payment_mode']:checked").val() === 'Radio');
-	// // $("input[@name=Online]:checked").val();
-	// // if("input[type='button']").is(":checked"))
-	// {
-	// 	// console.log("payment_mode: ", payment_mode);
-	// 	console.log("Your");
-	// }
-
-	// if($("input[data-name='Online']").is(":checked"))
-	// {
-	// 	console.log("payment_mode: ", payment_mode);
-	// }
-
-	$('#add_payment_details_btn').click(function(e)
-	{
-		var payment_mode = "{{ payment_mode }}";
-	// 	// e.preventDefault();
-	// 	// console.log("Cash!!");
-	// 	// var payment_mode = $(this).val();
-		// console.log("payment_mode", payment_mode);
-
-	// 	$('input:radio[name="payment_mode"]').change(function(e)
-	// 	{
-	// 		e.preventDefault();
-
-	// 		if ($(this).is(':checked') && $(this).val() == 'Online')
-	// 		{
-	// 			// console.log("Online!!");
-	// 			// document.getElementById("pay-btn").onclick = function(e)
-	//         }
-	//         else
-	//         {
-	//         	// console.log("Cash!!");
-	//         }
-		})
-
-
-	// 	var payment_mode = $('input[name="payment_mode"]:checked').val();
-	// 	console.log("payment_mode: ", payment_mode);
-
-	// 	document.getElementById("pay-btn").onclick = function(e)
-	// 	{
-	// 		rzp1.open();
-	// 		e.preventDefault();
-	// 	};
-	// 	// if ($('input[name="payment_mode"]').is(":checked"))
-	// 	// if (payment_mode === 'Online').is(":checked"))
-	// 	// {
-	// 	// 	alert("is check");
-		// }
-
-	// 	if($('input[name="payment_mode"]:checked').val() === 'Online')
-	// 	{
-	// 		alert("is check");
-	// 		e.preventDefault();
-	// 		e.stopPropagation();
-	// 		$(".add_payment_details_btn").unbind('click');
-	// 		rzp1.open();
-	// 		console.log("payment_mode: ", payment_mode);
-	// 	}
-	// 	if(payment_mode === 'Cash')
-	// 	{
-	// 		console.log("payment_mode", payment_mode);
-	// 	}
-	// });
-
-	// $('#add_payment_details_btn').submit(function(e)
-	// {
-	// 	if(payment_mode === 'Online')
-	// 	{
-	// 		e.preventDefault();
-	// 		rzp1.open();
-	// 	}
-	// });
 });
 </script>
 

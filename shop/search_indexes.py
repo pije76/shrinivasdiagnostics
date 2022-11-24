@@ -20,7 +20,8 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     # description = indexes.EdgeNgramField(model_attr="description", null=True)
     # category = indexes.CharField(model_attr='category', faceted=True)
 
-    content_auto = indexes.EdgeNgramField(model_attr='title')
+    # We add this for autocomplete.
+    title_auto = indexes.EdgeNgramField(model_attr='title')
 
     # suggestions = indexes.FacetCharField()
 
@@ -29,5 +30,5 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(available="True")
-        # return Product.objects.filter(available="True")
+        # return self.get_model().objects.filter(available="True")
+        return Product.objects.filter(available="True")

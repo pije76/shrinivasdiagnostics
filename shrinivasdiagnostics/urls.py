@@ -34,8 +34,8 @@ urlpatterns = [
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
     # path('order/', order, name='order'),
     path('checkout/', include('order.urls')),
-    path("callback/", callback, name="callback"),
-	path('payment/', paymenthandler, name='paymenthandler'),
+    # path("callback/", callback, name="callback"),
+	# path('payment/', paymenthandler, name='paymenthandler'),
     # path("payment/", order_payment, name="order_payment"),
     path('my-orders/', my_orders, name='my_orders'),
 

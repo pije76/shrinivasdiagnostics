@@ -50,19 +50,19 @@ class Order(models.Model):
 
 class Checkout(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='checkout_user')
-    order_id = models.CharField(_("Order ID"), max_length=36, null=False, blank=False)
-    razorpay_order_id = models.CharField(_("Razorpay Order ID"), max_length=40, null=False, blank=False)
-    ordered = models.BooleanField(default=False)
-    status = models.CharField(default="pending", choices=PAYMENT_STATUS, max_length=254, blank=False, null=False)
-    # ordered = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name='checkout_ordered')
     amount = models.FloatField(null=True, blank=False)
+    status = models.CharField(default="pending", choices=PAYMENT_STATUS, max_length=254, blank=False, null=False)
+    provider_order_id = models.CharField(max_length=40, null=False, blank=False)
+    payment_id = models.CharField(max_length=36, null=False, blank=False)
     signature_id = models.CharField(max_length=128, null=False, blank=False)
+    ordered = models.BooleanField(default=False)
+    # ordered = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name='checkout_ordered')
     billing_address = models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True)
     ordered_date = models.DateTimeField(auto_now_add=True)
     items = models.ManyToManyField(Order)
 
     def __str__(self):
-        return self.order_id
+        return self.payment_id
 
     @property
     def get_total_price(self):

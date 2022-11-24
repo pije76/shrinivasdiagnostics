@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -25,26 +25,41 @@ from accounts.forms import *
 
 from order.models import *
 
-import json
+# import json
+import simplejson as json
+
 def productlist_search(request):
-	results = None
+	sqs = None
 
 	if request.method == "GET":
 		if "q" in request.GET:
 			query = str(request.GET.get("q"))
-			# Add extra code here to parse the "content" query string parameter...
-			# * Get content type to search for
-			# content_type = request.GET.get("content")
-			# * Assign the model or models to a list for the "models" call
 			search_models = []
 			search_models = [Product]
-			# * Add a "models" call to limit the search results to the particular models
-			results = SearchQuerySet().all().filter(q=query).models(*search_models)
+			sqs = SearchQuerySet().all().filter(q=query).models(*search_models)
+			# sqs = SearchQuerySet().autocomplete(title_auto=query).models(*search_models)
+			# suggestions = [result.title for result in sqs]
+			# suggestions = [{'text':result.title, 'url':generate_url(result), }
+			# 	for result in sqs
+			# ]
+
+			# the_data = json.dumps(
+			# {
+			# 	'sqs': suggestions,
+				# 'query': query
+				# 'sqs': sqs
+			# })
 
 			context = {
-				'results': results,
+				'sqs': sqs,
 			}
+
+			# return JsonResponse({'sqs': suggestions})
 	return render(request, "shop/product_list.html", context)
+	# return HttpResponse(the_data, content_type='application/json')
+	# return HttpResponse(the_data, mimetype='application/json')
+	# return JsonResponse(the_data, safe=False)
+	# return JsonResponse({'sqs': suggestions})
 
 # @api_view(['POST'])
 # def productlist_search(request):
@@ -65,11 +80,6 @@ def product_list(request, category_slug=None):
 	object_list = Product.objects.filter(available=True)
 	user_id = request.user.is_authenticated
 	user_order = Order.objects.filter(user=user_id, item_order=False).count()
-	# sqs = SearchQuerySet().autocomplete(content_auto=request.POST.get('q', ''))
-	# sqs = SearchQuerySet().filter(content_auto=request.GET.get('q', ''))
-	# sqs = SearchQuerySet().models(Product).autocomplete(content_auto=request.GET.get('q', ''))
-	sqs = SearchQuerySet().filter(content_auto=request.GET.get('q', ''))
-	# sqs = SearchQuerySet().autocomplete(content_auto=request.GET.get('q', ''))
 
 	is_ajax = request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
@@ -110,7 +120,7 @@ def product_detail(request, pk):
 	product = get_object_or_404(Product, id=pk, available=True)
 	page_title = product
 	user_id = Profile.objects.get(email=request.user)
-	user_order = Order.objects.filter(user=user_id, order=False).count()
+	user_order = Order.objects.filter(user=user_id, item_order=False).count()
 	cart_product_form=CartAddProductForm()
 
 	context = {
@@ -122,6 +132,8 @@ def product_detail(request, pk):
 
 	return render(request, 'shop/product_detail.html', context)
 
+
+@login_required(login_url='/')
 
 def shopping_cart(request):
 	page_title = _('Cart | ShrinivasDiagnostic')
@@ -186,7 +198,7 @@ def remove_from_cart(request, pk):
 	if order_qs.exists():
 		order = order_qs[0]
 		if order.items.filter(product__pk=item.pk).exists():
-			order_item = Order.objects.filter(product=item, user=request.user, order=False)[0]
+			order_item = Order.objects.filter(product=item, user=request.user, item_order=False)[0]
 			order_item.delete()
 			messages.info(request, "Item \""+order_item.product.title+"\" remove from your cart")
 			return redirect("shopping_cart")
@@ -204,7 +216,7 @@ def reduce_quantity_item(request, pk):
 	if order_qs.exists():
 		order = order_qs[0]
 		if order.items.filter(product__pk=item.pk).exists():
-			order_item = Order.objects.filter(product=item, user=request.user, order=False)[0]
+			order_item = Order.objects.filter(product=item, user=request.user, item_order=False)[0]
 			if order_item.quantity > 1:
 				order_item.quantity -= 1
 				order_item.save()
@@ -224,9 +236,14 @@ def get_add_to_cart_url(request, pk):
 
 
 def autocomplete(request):
-	sqs = SearchQuerySet().autocomplete(content_auto=request.GET.get('q', ''))[:5]
-	# sqs = SearchQuerySet().autocomplete(content_auto='q')
-	# sqs = SearchQuerySet().filter(content_auto=request.GET.get('q', ''))
+	sqs = SearchQuerySet().autocomplete(title_auto=request.GET.get('q', ''))[:5]
+	# sqs = SearchQuerySet().autocomplete(title_auto='q')
+	# sqs = SearchQuerySet().filter(title_auto=request.GET.get('q', ''))
+	# sqs = SearchQuerySet().autocomplete(title_auto=request.POST.get('q', ''))
+	# sqs = SearchQuerySet().filter(title_auto=request.GET.get('q', ''))
+	# sqs = SearchQuerySet().models(Product).autocomplete(title_auto=request.GET.get('q', ''))
+	# sqs = SearchQuerySet().filter(title_auto=request.GET.get('q', ''))
+	# sqs = SearchQuerySet().autocomplete(title_auto=request.GET.get('q', ''))
 
 	# s = []
 	# for result in sqs:

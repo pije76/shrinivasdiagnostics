@@ -12,6 +12,27 @@ LABEL = (
 	('patient', 'Patient')
 )
 
+CATEGORY = (
+	('test', 'Test'),
+	('packages', 'Packages')
+)
+
+ORGAN = (
+	('adrenal-gland', 'Adrenal gland'),
+	('bone', 'Bone'),
+	('heart', 'Heart'),
+	('kidney', 'Kidney'),
+	('liver', 'Liver'),
+	('pancreas', 'Pancreas'),
+	('thyroid', 'Thyroid'),
+)
+
+CONDITION = (
+	('diabetes', 'Diabetes'),
+	('industrial-diseases', 'Industrial diseases'),
+	('myasthenia-gravis', 'Myasthenia gravis'),
+	('nutritional-disorders', 'Nutritional disorders'),
+)
 
 def pdf_upload_path(instance, filename):
 	return f'upload/report/{instance.created_date.strftime("%Y-%m-%d")}_test_{filename}'

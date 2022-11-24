@@ -181,16 +181,16 @@ def checkout(request):
 		# razorpay_order = razorpay_client.order.create({"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"})
 		razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, payment_capture='0'))
 		# print("razorpay_order:", razorpay_order)
-		razorpay_order_id = razorpay_order['id']
+		provider_order_id = razorpay_order['id']
 		callback_url = 'paymenthandler/'
-		# order = Payment.objects.create(user=user_id, amount=amount, razorpay_order_id=razorpay_order["id"])
+		# order = Payment.objects.create(user=user_id, amount=amount, provider_order_id=razorpay_order["id"])
 		# print("order:", order)
 		# order.save()
 
 		print("amount1", amount)
 
 		context = {
-			"razorpay_order_id": razorpay_order_id,
+			"provider_order_id": provider_order_id,
 			"razorpay_merchant_key": settings.RAZORPAY_KEY_ID,
 			"callback_url": callback_url,
 			"amount": amount,
@@ -268,10 +268,10 @@ def callback(request):
 		return razorpay_client.utility.verify_payment_signature(response_data)
 
 	if "razorpay_signature" in request.POST:
-		payment_id = request.POST.get("razorpay_payment_id", "")
-		razorpay_order_id = request.POST.get("razorpay_order_id", "")
+		payment_id = request.POST.get("provider_order_id", "")
+		provider_order_id = request.POST.get("provider_order_id", "")
 		signature_id = request.POST.get("razorpay_signature", "")
-		order = Order.objects.get(razorpay_order_id=razorpay_order_id)
+		order = Order.objects.get(provider_order_id=provider_order_id)
 		order.payment_id = payment_id
 		order.signature_id = signature_id
 		order.save()
@@ -290,10 +290,10 @@ def callback(request):
 			return render(request, "shop/callback.html", context)
 	else:
 		payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
-		razorpay_order_id = json.loads(request.POST.get("error[metadata]")).get(
+		provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
 			"id"
 		)
-		order = Order.objects.get(razorpay_order_id=razorpay_order_id)
+		order = Order.objects.get(provider_order_id=provider_order_id)
 		order.payment_id = payment_id
 		order.status = PaymentStatus.FAILURE
 		order.save()
@@ -309,12 +309,12 @@ def callback(request):
 def paymenthandler(request):
 	if request.method == "POST":
 		try:
-			payment_id = request.POST.get('razorpay_payment_id', '')
-			razorpay_order_id = request.POST.get('razorpay_order_id', '')
+			payment_id = request.POST.get('provider_order_id', '')
+			provider_order_id = request.POST.get('provider_order_id', '')
 			signature = request.POST.get('razorpay_signature', '')
 			params_dict = {
-				'razorpay_order_id': razorpay_order_id,
-				'razorpay_payment_id': payment_id,
+				'provider_order_id': provider_order_id,
+				'provider_order_id': payment_id,
 				'razorpay_signature': signature
 			}
 
@@ -343,7 +343,7 @@ def order_payment(request):
 	if request.method == "POST":
 		# razorpay_order = razorpay_client.order.create({"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"})
 		razorpay_order = razorpay_client.order.create({"amount": amount, "currency": "INR", "payment_capture": "1"})
-		order = Payment.objects.create(user=name, amount=amount, razorpay_order_id=razorpay_order["id"])
+		order = Payment.objects.create(user=name, amount=amount, provider_order_id=razorpay_order["id"])
 		order.save()
 
 		context = {
@@ -464,7 +464,7 @@ def update_billingaddress(request, id):
 
 # def autocomplete(request):
 #     sqs = SearchQuerySet().autocomplete(
-#         content_auto=request.GET.get(
+#         title_auto=request.GET.get(
 #             'query',
 #             ''))[
 #         :5]
