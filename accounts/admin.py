@@ -54,18 +54,6 @@ class ProfileAdmin(admin.ModelAdmin):
         # obj.sun_sign = self.full_name
         # super().save_model(request, obj, form, change)
 
-class AddressAdmin(admin.ModelAdmin):
-# class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
-    list_display = [
-        'user',
-        'address',
-        'state',
-        'city',
-        'country',
-        'location',
-        'pin_code',
-        'zip',
-    ]
 
 class PatientAdmin(admin.ModelAdmin):
 # class MemberProfileAdmin(Select2AdminFilterMixin, admin.ModelAdmin):
@@ -80,5 +68,4 @@ class PatientAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Address, AddressAdmin)
 admin.site.register(Patient, PatientAdmin)

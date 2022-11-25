@@ -1,6 +1,8 @@
 from django import forms
 
 from .models import *
+from accounts.models import *
+from address.models import *
 
 from haystack.forms import FacetedSearchForm, SearchForm
 from haystack.inputs import Exact

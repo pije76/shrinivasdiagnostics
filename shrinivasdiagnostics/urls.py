@@ -47,7 +47,7 @@ urlpatterns = [
     path('api/', include('djoser.urls')),
     path('api/', include('djoser.urls.jwt')),
 
-    path('summernote/', include('django_summernote.urls')),
+    # path('summernote/', include('django_summernote.urls')),
     # path('selectable/', include('selectable.urls')),
     # path("select2/", include("django_select2.urls")),
 

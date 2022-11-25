@@ -22,6 +22,8 @@ from bootstrap_modal_forms.forms import *
 from datetime import datetime, date
 
 from .models import *
+from address.models import *
+
 # from .lookups import *
 # from subscription.models import *
 
@@ -70,3 +72,15 @@ class PatientForm(forms.Form):
     full_name = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))
     email = forms.EmailField(required=False, label="", widget=forms.HiddenInput(attrs={'class': "form-control"}))
     phone_number = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))
+
+
+class ChangeUserAddress(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    user = forms.CharField(max_length=100, required=True, label='', widget=forms.TextInput(attrs={'class': "form-control"}))
+    address = forms.EmailField(required=False, label='', widget=forms.TextInput(attrs={'class': "form-control"}))
+
+    class Meta:
+        model = Address
+        fields = ('user', 'address')

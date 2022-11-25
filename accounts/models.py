@@ -7,10 +7,10 @@ from django.contrib.auth import get_user_model
 
 from .managers import UserManager
 
+from shop.models import *
+
 from phonenumber_field.modelfields import PhoneNumberField
-from cities_light.models import *
-
-
+# from cities_light.models import *
 
 GENDER_CHOICES = (
 	("male", _('Male')),
@@ -90,36 +90,15 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 	#   return
 
 
-class Address(models.Model):
-	user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_address')
-	address = models.CharField(max_length=255, null=True, blank=True)
-	# state = models.CharField(max_length=255, null=True, blank=True)
-	state = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)
-	city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
-	country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True, blank=True)
-	location = models.CharField(max_length=255, null=True, blank=True)
-	pin_code = models.CharField(max_length=255, null=True, blank=True)
-	zip = models.CharField(max_length=100, null=True, blank=True)
-
-	class Meta:
-		verbose_name = _('Address')
-		verbose_name_plural = _("Address")
-
-	def __str__(self):
-		return self.address
-
-	def get_address(self):
-		return self.address
-
-
 class Patient(models.Model):
-	user_patient = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_patient')
 	full_name = models.CharField(max_length=255, null=True, blank=True)
 	email = models.EmailField(verbose_name='Email', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(blank=True)
-	birth_date = models.DateField(null=True, blank=False)
+	birth_date = models.DateField(null=True, blank=True)
 	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None, blank=True, null=True)
 	relation = models.CharField(max_length=255, choices=RELATION_CHOICES, default=None, blank=True, null=True)
+	user_patient = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False, related_name='user_patient')
+	test_package = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True, related_name='test_patient')
 
 	class Meta:
 		verbose_name = _('Patient')

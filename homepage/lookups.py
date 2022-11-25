@@ -3,7 +3,7 @@ from django.db.models import Q
 from shop.models import *
 from .models import *
 
-from cities_light.models import City
+# from cities_light.models import City
 from selectable.base import ModelLookup
 from selectable.registry import registry
 

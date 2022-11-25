@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import *
 
 from accounts.models import *
+from address.models import *
 from shop.models import *
 
 PAYMENT_TYPE = (
@@ -63,7 +64,7 @@ class Checkout(models.Model):
     payment_id = models.CharField(max_length=36, null=False, blank=False)
     ordered = models.BooleanField(default=False)
     # ordered = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name='checkout_ordered')
-    billing_address = models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True)
+    billing_address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True, null=True)
     checkout_date = models.DateTimeField(auto_now_add=True)
     items = models.ManyToManyField(Order)
 

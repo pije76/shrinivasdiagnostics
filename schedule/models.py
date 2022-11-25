@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from accounts.models import *
 
-from cities_light.models import City, Country
+# from cities_light.models import City, Country
 
 # Create your models here.
 class Schedule(models.Model):

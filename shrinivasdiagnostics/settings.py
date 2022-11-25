@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'accounts',
+    'address',
     'homepage',
     'schedule',
     'shop',
@@ -54,10 +55,12 @@ INSTALLED_APPS = [
 	'crispy_bootstrap5',
     'widget_tweaks',
     'bootstrap_modal_forms',
+    'frontend_forms',
+    'django_select2',
 
     'cities_light',
     'phonenumber_field',
-    'paypal.standard.ipn',
+    # 'paypal.standard.ipn',
     'rest_framework',
 
     'whoosh_index',
@@ -67,7 +70,7 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_totp',
     # 'django_otp.plugins.otp_hotp',
     'django_otp.plugins.otp_static',
-    'django_summernote',
+    # 'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -188,6 +191,7 @@ MESSAGE_TAGS = {
 
 FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'
 
+CITIES_LIGHT_APP_NAME = 'address'
 ####################################################################################################
 
 LOGIN_REDIRECT_URL = 'core:homepage'

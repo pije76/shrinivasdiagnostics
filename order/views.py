@@ -20,7 +20,6 @@ client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_S
 def checkout(request):
 	page_title = _('Checkout | ShrinivasDiagnostic')
 	user_id = Profile.objects.get(email=request.user)
-	patients = Patient.objects.filter(user_patient=user_id)
 	products = Order.objects.filter(user=user_id)
 	user_address = Address.objects.filter(user=user_id)
 	user_order = Order.objects.filter(user=user_id, item_order=False).count()
@@ -28,6 +27,7 @@ def checkout(request):
 	full_name = user_id.full_name
 	phone_number = user_id.phone_number
 	email = user_id.email
+	patients = Patient.objects.filter(user_patient=user_id)
 
 	total_payment = Order.objects.filter(user=user_id)
 	try:
@@ -48,6 +48,20 @@ def checkout(request):
 	store_name = "ShrinivasDiagnostic"
 
 	if request.method == 'POST':
+		# formA = PatientForm(request.POST or None, instance=request.user)
+		# formB = ChangeUserAddress(request.POST or None, instance=request.user)
+
+		# if form.is_valid():
+		# 	profile = form.save(commit=False)
+		# 	profile.user = form.cleaned_data['user']
+		# 	profile.address = form.cleaned_data['address']
+		# 	profile.save()
+
+		# 	messages.success(request, _('Your profile has been change successfully.'))
+		# 	return HttpResponseRedirect('/account/')
+		# else:
+		# 	messages.warning(request, form.errors)
+
 		if request.POST.get('payment_mode') == 'Online':
 			razorpay_order = client.order.create({"amount": int(amount) * 100, "currency": currency, "payment_capture": "1"})
 			provider_order_id = razorpay_order['id']

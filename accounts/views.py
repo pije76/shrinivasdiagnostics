@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 from .models import *
 from .forms import *
@@ -124,6 +125,50 @@ def profile_detail(request, pk):
 	}
 
 	return render(request, 'accounts/profile.html', context)
+
+
+@login_required
+def change_profile(request):
+    schema_name = connection.schema_name
+    patients = UserProfile.objects.filter(username=request.user.username)
+    logos = Client.objects.filter(schema_name=schema_name)
+    titles = Client.objects.filter(schema_name=schema_name).values_list('title', flat=True).first()
+    page_title = _('Change Profile')
+    icnumbers = UserProfile.objects.filter(full_name=request.user)
+    form = ChangeUserProfile(prefix='profile')
+    themes = request.session.get('theme')
+
+    if request.method == 'POST':
+        form = ChangeUserProfile(request.POST or None, instance=request.user)
+
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.full_name = form.cleaned_data['full_name']
+            profile.email = form.cleaned_data['email']
+            profile.ic_number = form.cleaned_data['ic_number']
+            profile.save()
+
+            messages.success(request, _('Your profile has been change successfully.'))
+            return HttpResponseRedirect('/account/')
+        else:
+            messages.warning(request, form.errors)
+
+    else:
+        form = ChangeUserProfile(instance=request.user)
+
+    context = {
+        'patients': patients,
+        'logos': logos,
+        'titles': titles,
+        'page_title': page_title,
+        'navbar': 'account',
+        'icnumbers': icnumbers,
+        'form': form,
+        "themes": themes,
+    }
+
+    return render(request, 'account/change.html', context)
+
 
 
 def get_user_totp_device(self, user, confirmed=None):
