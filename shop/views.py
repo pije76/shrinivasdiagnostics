@@ -11,12 +11,6 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, TemplateView, View
 
-from rest_framework.decorators import api_view, renderer_classes
-from rest_framework.response import Response
-
-from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView, SearchView
-from haystack.query import SearchQuerySet
-
 from .models import *
 from .forms import *
 
@@ -25,8 +19,17 @@ from accounts.forms import *
 
 from order.models import *
 
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.response import Response
+
+from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView, SearchView
+from haystack.query import SearchQuerySet
+from email_split import email_split
+
 # import json
 import simplejson as json
+import uuid
+import shortuuid
 
 def productlist_search(request):
 	sqs = None
@@ -170,6 +173,8 @@ def add_to_cart(request, pk):
 	item = get_object_or_404(Product, pk=pk)
 	order_item, created = Order.objects.get_or_create(product=item, user=request.user, item_order=False)
 	order_qs = Checkout.objects.filter(user=request.user, ordered=False)
+	user_id = Profile.objects.get(email=request.user)
+	email = user_id.email
 
 	if order_qs.exists():
 		order = order_qs[0]
@@ -185,7 +190,14 @@ def add_to_cart(request, pk):
 			return redirect("shopping_cart")
 	else:
 		checkout_date = timezone.now()
-		order = Checkout.objects.create(user=request.user, checkout_date=checkout_date)
+		unique_id = uuid.uuid4()
+		unique_id = str(unique_id)
+		email = email_split(email)
+		# unique_id = email.local + "-" + unique_id
+		unique_id = shortuuid.ShortUUID(alphabet="abcdefg1234").random(length=22)
+		# print(email.domain)
+		# print(email.local)
+		order = Checkout.objects.create(user=request.user, payment_type=unique_id, checkout_date=checkout_date)
 		order.items.add(order_item)
 		messages.info(request, "Item \""+order_item.product.title+"\" added to your cart")
 		return redirect("shopping_cart")

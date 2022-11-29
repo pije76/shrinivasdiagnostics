@@ -28,6 +28,7 @@ from djoser import views as djoser_views
 urlpatterns = [
     path('', include('homepage.urls')),
     path('admin/', admin.site.urls),
+    path('admin/', include('massadmin.urls')),
 
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),

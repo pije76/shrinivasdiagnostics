@@ -10,9 +10,14 @@ from .forms import *
 from accounts.models import *
 from accounts.forms import *
 
+from email_split import email_split
+
 import razorpay
 import json
 import time
+import uuid
+import shortuuid
+from datetime import datetime, date
 
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
@@ -92,7 +97,15 @@ def checkout(request):
 			for object in order:
 				object.save()
 			checkout = Checkout.objects.filter(user=user_id)
+			unique_id = uuid.uuid4()
+			unique_id = str(unique_id)
+			email = email_split(email)
+			# unique_id = email.local + "-" + unique_id
+			unique_id = shortuuid.ShortUUID(alphabet="abcdefg1234").random(length=22)
+			checkout.update(payment_id=unique_id)
+			checkout.update(payment_type="cash")
 			checkout.update(status="waiting")
+			checkout.update(ordered=True)
 			checkout.update(amount=amount)
 			for object in checkout:
 				object.save()
@@ -125,6 +138,15 @@ def checkout(request):
 
 @csrf_exempt
 def callback(request):
+
+	today = date.today()
+
+	try:
+		user_id = Profile.objects.get(email=request.user)
+	except Profile.DoesNotExist:
+		user_id = Profile.objects.filter(email=request.user)
+
+
 	def verify_signature(response_data):
 		client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 		return client.utility.verify_payment_signature(response_data)
@@ -133,19 +155,31 @@ def callback(request):
 		payment_id = request.POST.get("payment_id", "")
 		provider_order_id = request.POST.get("razorpay_order_id", "")
 		signature_id = request.POST.get("razorpay_signature", "")
-		order = Checkout.objects.get(provider_order_id=provider_order_id)
-		order.payment_id = payment_id
-		order.signature_id = signature_id
-		order.save()
-		if not verify_signature(request.POST):
-			order.status = "success"
+		# user_id = Profile.objects.get(email=request.user)
+		# user_id = Profile.objects.get(email=request.user)
+		# order = Checkout.objects.filter(provider_order_id=provider_order_id, checkout_date=today).update(payment_id=payment_id,signature_id=signature_id)
+		order = Checkout.objects.get(user=user_id)
+		# order = Checkout.objects.filter(user=user_id, checkout_date=today).first()
+		for obj in order:
+			obj.provider_order_id = provider_order_id
+			obj.payment_id = payment_id
+			obj.signature_id = signature_id
+			obj.save()
+		# order = Checkout.objects.update(provider_order_id=provider_order_id, checkout_date=today, payment_id=payment_id, signature_id=signature_id)
+
+		print("verify_signature", verify_signature)
+		if verify_signature(request.POST):
+			# order.status = "success"
+			# order.save()
+			order = Checkout.objects.filter(provider_order_id=provider_order_id, checkout_date=today).update(status="success")
 			order.save()
 			# return render(request, "checkout/callback.html", context={"status": order.status})
 			messages.success(request, 'THANKS YOUR PAYMENT HAS BEEN RECEIVED')
 			return redirect(reverse('order:checkout'))
 		else:
-			order.status = "failure"
-			order.save()
+			obj.status = 'failure'
+			obj.save()
+			# order = Checkout.objects.filter(provider_order_id=provider_order_id, checkout_date=today).update(status="failure")
 			# return render(request, "checkout/callback.html", context={"status": order.status})
 			messages.warning(request, 'SORRY, YOUR PAYMENT HAS BEEN FAILED')
 			return redirect(reverse('order:checkout'))

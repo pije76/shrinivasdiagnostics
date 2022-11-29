@@ -217,10 +217,11 @@
 <script type='text/javascript'>
 $(document).ready(function()
 {
-
-    var total_price = document.querySelector('.total-charges').innerHTML;
+    var total_price = "{{ cart_order.get_total_price }}";
+    // var total_price = document.querySelector('.total-charges').innerHTML;
     // var total_price = parseFloat(total_price.replace(/₹/g, ""));
     total_price = Number(total_price.replace(/[^0-9\.-]+/g,""));
+    console.log("total_price", total_price);
 
     $.ajax(
     {

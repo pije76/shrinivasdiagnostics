@@ -17,6 +17,7 @@ class CheckoutAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'ordered',
+        'payment_type',
         'payment_id',
         'provider_order_id',
         'signature_id',

@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'bootstrap_modal_forms',
     'frontend_forms',
     'django_select2',
+    'massadmin',
 
     'cities_light',
     'phonenumber_field',

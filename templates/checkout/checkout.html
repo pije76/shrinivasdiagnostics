@@ -434,9 +434,33 @@
 
 
 {% block extra_jscript %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script type='text/javascript'>
 $(document).ready(function()
 {
+    var options =
+    {
+    	key: "{{ razorpay_key }}",
+    	amount: "{{ amount }}",
+    	currency: "{{ currency }}",
+    	name: "{{ store_name }}",
+    	image: "http://127.0.0.1:8000/assets/images/shrinivasdiagnostics_logo.png",
+    	order_id: "{{ provider_order_id }}",
+    	callback_url: "{{ callback_url }}",
+    	redirect: true,
+    	prefill: {
+    		"name": "{{ full_name }}",
+    		"email": "{{ email }}",
+    		"contact": "{{ phone_number }}"
+    	},
+    	notes: {
+    		"address": "ShrinivasDiagnostic Lab Office"
+    	},
+    	theme: {
+    		"color": "#528FF0"
+    	}
+    };
+
 	var amount = "{{ cart_order.get_total_price }}";
 	amount = parseInt(amount, 0);
 

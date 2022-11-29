@@ -61,7 +61,10 @@ class Checkout(models.Model):
     provider_order_id = models.CharField(max_length=40, null=False, blank=False)
     signature_id = models.CharField(max_length=128, null=False, blank=False)
     payment_type = models.CharField(default="cash", choices=PAYMENT_TYPE, max_length=36, null=False, blank=False)
-    payment_id = models.CharField(max_length=36, null=False, blank=False)
+    payment_id = models.CharField(max_length=32, null=False, blank=False)
+    # payment_id = models.CharField(primary_key=False, editable=False, max_length=10)
+    # payment_name = models.CharField(max_length=100)
+
     ordered = models.BooleanField(default=False)
     # ordered = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name='checkout_ordered')
     billing_address = models.ForeignKey(Address, on_delete=models.CASCADE, blank=True, null=True)
