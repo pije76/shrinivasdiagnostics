@@ -1,0 +1,16 @@
+{% extends auth_base_template %}
+
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}
+{% trans "Email Verification" %}
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+  <p>{% trans 'Please confirm your email address to complete the registration' %}.</p>
+  </div>
+</div>
+{% endblock %}

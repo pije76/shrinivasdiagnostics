@@ -31,6 +31,7 @@ import simplejson as json
 import uuid
 import shortuuid
 
+
 def productlist_search(request):
 	sqs = None
 
@@ -136,8 +137,7 @@ def product_detail(request, pk):
 	return render(request, 'shop/product_detail.html', context)
 
 
-@login_required(login_url='/')
-
+@login_required()
 def shopping_cart(request):
 	page_title = _('Cart | ShrinivasDiagnostic')
 	user_id = Profile.objects.get(email=request.user)
@@ -169,6 +169,7 @@ def shopping_cart(request):
 		return redirect("shop:product_list")
 
 
+@login_required()
 def add_to_cart(request, pk):
 	item = get_object_or_404(Product, pk=pk)
 	order_item, created = Order.objects.get_or_create(product=item, user=request.user, item_order=False)

@@ -104,7 +104,7 @@ def checkout(request):
 			unique_id = shortuuid.ShortUUID(alphabet="abcdefg1234").random(length=22)
 			checkout.update(payment_id=unique_id)
 			checkout.update(payment_type="cash")
-			checkout.update(status="waiting")
+			checkout.update(status="success")
 			checkout.update(ordered=True)
 			checkout.update(amount=amount)
 			for object in checkout:
@@ -171,7 +171,9 @@ def callback(request):
 		if verify_signature(request.POST):
 			# order.status = "success"
 			# order.save()
-			order = Checkout.objects.filter(provider_order_id=provider_order_id, checkout_date=today).update(status="success")
+			order = Checkout.objects.filter(provider_order_id=provider_order_id, checkout_date=today)
+			order.status = "success"
+			# order.update(status="success")
 			order.save()
 			# return render(request, "checkout/callback.html", context={"status": order.status})
 			messages.success(request, 'THANKS YOUR PAYMENT HAS BEEN RECEIVED')

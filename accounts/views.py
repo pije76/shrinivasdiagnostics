@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import *
 from .forms import *
+from order.models import *
 
 from bootstrap_modal_forms.generic import BSModalLoginView
 
@@ -80,6 +81,7 @@ def profile_detail(request, pk):
 	phone_number = user_id.phone_number
 	email = user_id.email
 	user_address = Address.objects.filter(user=user_id)
+	user_order = Order.objects.filter(user=user_id, item_order=False).count()
 
 	initial_dict = {
 		# 'full_name': get_fullname,
@@ -122,6 +124,7 @@ def profile_detail(request, pk):
 		'email': email,
 		'user_address': user_address,
 		'user_id': user_id,
+		'user_order': user_order,
 	}
 
 	return render(request, 'accounts/profile.html', context)

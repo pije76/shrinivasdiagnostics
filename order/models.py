@@ -16,7 +16,6 @@ PAYMENT_TYPE = (
 PAYMENT_STATUS = (
     ('success', 'Success'),
     ('failure', 'Failure'),
-    ('waiting', 'Waiting'),
     ('pending', 'Pending'),
 )
 

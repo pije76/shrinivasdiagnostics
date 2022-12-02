@@ -1,0 +1,86 @@
+{% extends auth_base_template %}
+
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load i18n %}
+{% load static %}
+
+{% block style %}
+<link href="{% static 'css/select2.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/bootstrap-datetimepicker.css' %}" rel="stylesheet" type="text/css">
+<style>
+	.datetimepicker{z-index:1151 !important;}
+</style>
+{% endblock %}
+
+{% block extrahead %}
+	<script src="{% static 'js/jquery-3.0.0.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/moment.min.js' %}"></script>
+	<script src="{% static 'easy_select2/vendor/select2/js/select2.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+	{{ form.media }}
+{% endblock %}
+
+
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+		<h1>{% trans "Sign Up" %}</h1>
+		<form class="signup" id="signup_form" method="post" action="{% url 'homepage:index' %}">
+			{% csrf_token %}
+			<p>
+			{{ form.full_name|as_crispy_field }}
+			{{ form.username|as_crispy_field }}
+			{{ form.email|as_crispy_field }}
+			{{ form.password|as_crispy_field }}
+			{{ form.birth_date|as_crispy_field }}
+			{{ form.captcha|as_crispy_field }}
+			</p>
+
+			<input type="hidden" name="next" value="{% url 'homepage:index' %}" />
+			<button type="submit" class="btn btn-primary">{% trans 'Register' %}</button>
+		</form>
+	</div>
+</div>
+<br />
+<div class="row justify-content-center">
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+		<p>{% blocktrans %}Already have an account? Then please <a href="/login/">Sign In</a>.{% endblocktrans %}</p>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block jscript %}
+<script type='text/javascript'>
+$(document).ready(function()
+{
+	// $.extend(true, $.fn.datetimepicker, {
+	//     icons: {
+	//         time: 'far fa-clock',
+	//         date: 'far fa-calendar',
+	//         up: 'fas fa-arrow-up',
+	//         down: 'fas fa-arrow-down',
+	//         previous: 'fas fa-chevron-left',
+	//         next: 'fas fa-chevron-right',
+	//         today: 'fas fa-calendar-check',
+	//         clear: 'far fa-trash-alt',
+	//         close: 'far fa-times-circle'
+	//     }
+	// });
+
+	// $('#id_birth_date').wrapAll("<div class='row' style='border:none;'></div>");
+	// $('#id_birth_date').wrap("<div class='col' style='border:none;'></div>");
+	// $("#id_birth_date").datetimepicker(
+	// {
+		// format: 'L',
+		// format:'DD-MM-YYYY',
+		// defaultDate: currentDate,
+	// 	showTodayButton: true,
+	// 	showClear: true,
+	// 	showClose: true,
+	// });
+});
+</script>
+{% endblock %}

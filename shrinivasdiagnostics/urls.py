@@ -29,6 +29,8 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('admin/', admin.site.urls),
     path('admin/', include('massadmin.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('account/', include('accounts.urls')),
 
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
@@ -44,7 +46,6 @@ urlpatterns = [
     path('book-blood-test-online-in-india/autocomplete/', productlist_search, name='productlist_search'),
     # path('search/autocomplete/', productlist_search(view_class=SearchView, template='index.html', form_class=ProductSearchForm), name='haystack_search'),
 
-    path('account/', include('accounts.urls')),
     path('api/', include('djoser.urls')),
     path('api/', include('djoser.urls.jwt')),
 

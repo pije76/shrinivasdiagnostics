@@ -1,0 +1,79 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+{% load i18n %}
+{% load static %}
+
+{% block style %}
+<link href="{% static 'css/select2.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/bootstrap-datetimepicker.css' %}" rel="stylesheet" type="text/css">
+<style>
+	.datetimepicker{z-index:1151 !important;}
+</style>
+{% endblock %}
+
+{% block extrahead %}
+	<script src="{% static 'js/jquery-3.0.0.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/moment.min.js' %}"></script>
+	<script src="{% static 'easy_select2/vendor/select2/js/select2.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+	{{ form.media }}
+{% endblock %}
+
+
+{% block content %}
+
+<form id="signup_form" method="post" action="{% url 'homepage:index' %}">
+{% csrf_token %}
+	<div class="modal-header">
+		<h3 class="modal-title">{% trans "Sign Up" %}</h3>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div class="modal-body">
+		<p>{{ form|crispy }}</p>
+		<input type="hidden" name="next" value="{% url 'homepage:index' %}" />
+		<p>{% blocktrans %}Already have an account? Then please{% endblocktrans %} <a href="/login/">{% trans 'Log In' %}</a>.</p>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" class="primaryAction btn btn-primary" data_from_url="{% url 'homepage:index' %}">{% trans 'Sign Up' %}</button>
+	</div>
+</form>
+
+{% endblock %}
+
+{% block jscript %}
+<script type='text/javascript'>
+$(document).ready(function()
+{
+	// $.extend(true, $.fn.datetimepicker, {
+	//     icons: {
+	//         time: 'far fa-clock',
+	//         date: 'far fa-calendar',
+	//         up: 'fas fa-arrow-up',
+	//         down: 'fas fa-arrow-down',
+	//         previous: 'fas fa-chevron-left',
+	//         next: 'fas fa-chevron-right',
+	//         today: 'fas fa-calendar-check',
+	//         clear: 'far fa-trash-alt',
+	//         close: 'far fa-times-circle'
+	//     }
+	// });
+
+	// $('#id_birth_date').wrapAll("<div class='row' style='border:none;'></div>");
+	// $('#id_birth_date').wrap("<div class='col' style='border:none;'></div>");
+	// $("#id_birth_date").datetimepicker(
+	// {
+		// format: 'L',
+		// format:'DD-MM-YYYY',
+		// defaultDate: currentDate,
+	// 	showTodayButton: true,
+	// 	showClear: true,
+	// 	showClose: true,
+	// });
+});
+</script>
+{% endblock %}

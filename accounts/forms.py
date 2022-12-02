@@ -7,7 +7,7 @@ from django.forms import ModelForm, HiddenInput
 from django.http import Http404
 from django.utils.translation import gettext_lazy as _
 
-# from allauth.account.forms import LoginForm, SignupForm
+from allauth.account.forms import LoginForm, SignupForm
 # from bootstrap_datepicker_plus import *
 from bootstrap_modal_forms.forms import *
 # from bootstrap_modal_forms.mixins import *
@@ -43,6 +43,31 @@ class MyLoginForm(AuthenticationForm):
         # fields = '__all__'
         
     phone_number = forms.CharField(required=False, label="", widget=forms.TextInput(attrs={'class': "form-control"}))
+
+class MySignUpForm(SignupForm):
+
+    full_name = forms.CharField(max_length=100, required=False, label=_('Full Name:'), widget=forms.TextInput(attrs={'class': "form-control"}))
+    email = forms.EmailField(required=False, label='', widget=forms.TextInput(attrs={'class': "form-control"}))
+
+    def save(self, request):
+        user = super().save(request)
+        user.full_name = self.cleaned_data['full_name']
+        user.email = self.cleaned_data['email']
+        user.is_active = True
+        user.is_admin = False
+        user.save()
+        return user
+
+class ChangeUserProfile(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    full_name = forms.CharField(max_length=100, required=True, label='', widget=forms.TextInput(attrs={'class': "form-control"}))
+    email = forms.EmailField(required=False, label='', widget=forms.TextInput(attrs={'class': "form-control"}))
+
+    class Meta:
+        model = Profile
+        fields = ('full_name', 'email')
 
 
 class ProfileForm(forms.ModelForm):

@@ -46,10 +46,14 @@ INSTALLED_APPS = [
 
     'accounts',
     'address',
-    'homepage',
+    'core',
     'schedule',
     'shop',
     'order',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
 	'crispy_forms',
 	'crispy_bootstrap5',
@@ -172,12 +176,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.Profile'
-
 AUTHENTICATION_BACKENDS = [
 
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+AUTH_USER_MODEL = 'accounts.Profile'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_FORMS = {'signup': 'accounts.forms.MySignUpForm'}
+
+# LOGIN_URL = 'accounts:user_login'
+# LOGIN_REDIRECT_URL = 'accounts:user_login'
+LOGIN_REDIRECT_URL = 'accounts/login/'
+LOGOUT_URL = 'core:homepage'
 
 SITE_ID = 1
 
@@ -194,9 +210,6 @@ FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'
 
 CITIES_LIGHT_APP_NAME = 'address'
 ####################################################################################################
-
-LOGIN_REDIRECT_URL = 'core:homepage'
-
 SUMMERNOTE_THEME = 'bs4'
 
 PHONENUMBER_DB_FORMAT = 'E164'
