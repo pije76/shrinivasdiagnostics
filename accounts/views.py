@@ -62,8 +62,8 @@ class MyLoginView(BSModalLoginView):
 	success_message = 'Success: You were successfully logged in.'
 	success_url = reverse_lazy('core:homepage')
 	extra_context = dict(success_url=reverse_lazy('core:homepage'))
-    # next = request.POST.get('next', '/')
-    # return HttpResponseRedirect(next)
+	# next = request.POST.get('next', '/')
+	# return HttpResponseRedirect(next)
 
 #   # def get_form_kwargs(self):
 #   #   kwargs = super().get_form_kwargs()
@@ -132,58 +132,33 @@ def profile_detail(request, pk):
 
 @login_required
 def change_profile(request):
-    schema_name = connection.schema_name
-    patients = UserProfile.objects.filter(username=request.user.username)
-    logos = Client.objects.filter(schema_name=schema_name)
-    titles = Client.objects.filter(schema_name=schema_name).values_list('title', flat=True).first()
-    page_title = _('Change Profile')
-    icnumbers = UserProfile.objects.filter(full_name=request.user)
-    form = ChangeUserProfile(prefix='profile')
-    themes = request.session.get('theme')
+	user_id = Profile.objects.get(email=request.user)
+	page_title = _('Change Profile')
+	form = ChangeUserProfile(prefix='profile')
 
-    if request.method == 'POST':
-        form = ChangeUserProfile(request.POST or None, instance=request.user)
+	if request.method == 'POST':
+		form = ChangeUserProfile(request.POST or None, instance=request.user)
 
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.full_name = form.cleaned_data['full_name']
-            profile.email = form.cleaned_data['email']
-            profile.ic_number = form.cleaned_data['ic_number']
-            profile.save()
+		if form.is_valid():
+			profile = form.save(commit=False)
+			profile.full_name = form.cleaned_data['full_name']
+			profile.email = form.cleaned_data['email']
+			profile.ic_number = form.cleaned_data['ic_number']
+			profile.save()
 
-            messages.success(request, _('Your profile has been change successfully.'))
-            return HttpResponseRedirect('/account/')
-        else:
-            messages.warning(request, form.errors)
+			messages.success(request, _('Your profile has been change successfully.'))
+			return HttpResponseRedirect('/account/')
+		else:
+			messages.warning(request, form.errors)
 
-    else:
-        form = ChangeUserProfile(instance=request.user)
+	else:
+		form = ChangeUserProfile(instance=request.user)
 
-    context = {
-        'patients': patients,
-        'logos': logos,
-        'titles': titles,
-        'page_title': page_title,
-        'navbar': 'account',
-        'icnumbers': icnumbers,
-        'form': form,
-        "themes": themes,
-    }
+	context = {
+		'user_id': user_id,
+		'page_title': page_title,
+		'form': form,
+	}
 
-    return render(request, 'account/change.html', context)
+	return render(request, 'account/change.html', context)
 
-
-
-def get_user_totp_device(self, user, confirmed=None):
-    devices = devices_for_user(user, confirmed=confirmed)
-    for device in devices:
-        if isinstance(device, TOTPDevice):
-            return device
-
-    def get(self, request, format=None):
-        user=request.user
-        device = get_device(self, user)
-        if not device:
-            device = user.totpdevice_set.create(confirmed=False)
-        url = device.config_url
-        return Response(url, status=status.HTTP_201_CREATED)

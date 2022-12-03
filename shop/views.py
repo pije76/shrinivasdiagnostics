@@ -77,6 +77,7 @@ def productlist_search(request):
 
 # 	return Response(searched_data)
 
+
 def product_list(request, category_slug=None):
 	page_title = _('Book Blood Test Online in India with Ease with Shrinivas Diagnostics Labs')
 	category = None
@@ -119,7 +120,7 @@ def product_list(request, category_slug=None):
 	return render(request, 'shop/product_list.html', context)
 
 
-
+@login_required()
 def product_detail(request, pk):
 	product = get_object_or_404(Product, id=pk, available=True)
 	page_title = product

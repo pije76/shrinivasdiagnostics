@@ -57,6 +57,11 @@ class Category(models.Model):
 	def get_absolute_url(self):
 		return reverse('shop:product_list_by_category', args=[self.slug])
 
+	@property
+	def image_url(self):
+		if self.image and hasattr(self.image, 'url'):
+			return self.image.url
+
 
 class Product(models.Model):
 	title = models.CharField(max_length=255, null=True, blank=False, db_index=True)

@@ -27,6 +27,7 @@ def index(request):
 	user_id = request.user.is_authenticated
 	user_order = Order.objects.filter(user=user_id, item_order=False).count()
 	products = Product.objects.filter(available=True)
+	categories = Category.objects.all()
 
 	initial_dict = {
 		# 'ticker_code': get_ticker_id,
@@ -72,6 +73,7 @@ def index(request):
 			'products': products,
 			'aforms': aforms,
 			'bforms': bforms,
+			'categories': categories,
 		}
 		return render(request, 'homepage/home.html', context)
 

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load account %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block style %}
+<link href="{% static 'css/account.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block headtitle %}
+    {{ page_title }} | {{ titles.title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row isi dataaccount">
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-12">
+                <h4>{% trans "Change Profile" %}</h4>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <form method="post">
+                {% csrf_token %}
+
+                    <div class="form-group row">
+                        <label for="lastname" class="col-4 col-form-label">{% trans "Full Name*" %}</label>
+                        <div class="col-6">
+                            {{ form.full_name|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-4 col-form-label">{% trans "Email*" %}</label>
+                        <div class="col-6">
+                            {{ form.email|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="ic_number" class="col-4 col-form-label">{% trans "IC Number" %}</label>
+                        <div class="col-6">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" name="action">{% trans "Change Profile" %}</button>
+                    <a class="btn btn-danger" href="{{ login_url }}">{% trans "Cancel" %}</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

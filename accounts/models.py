@@ -33,7 +33,6 @@ class Profile(AbstractBaseUser, PermissionsMixin):
 	username = models.CharField(max_length=255, blank=True, null=True)
 	email = models.EmailField(verbose_name='Email', error_messages={'unique':"This email has already been registered.",}, max_length=255, unique=True)
 	phone_number = PhoneNumberField(null=True, blank=False)
-	otp = models.CharField(max_length=12, null=True, blank=True)
 	phone_verified = models.BooleanField(default=False)
 	birth_date = models.DateField(null=True, blank=True)
 	gender = models.CharField(max_length=255, choices=GENDER_CHOICES, default=None, blank=True, null=True)

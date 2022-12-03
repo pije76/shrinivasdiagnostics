@@ -19,7 +19,7 @@
 											<div class="best-seller">Best Seller</div>
 											<h2 class="health-title">{{ item.title }}</h2>
 											<span class="health-price"><i class="fa fa-inr" aria-hidden="true"></i> {{ item.price }}</span>
-											<span class="act-price"><i class="fa fa-inr" aria-hidden="true"></i>{{ item.price }}</span>
+											<span class="act-price"><i class="fa fa-inr" aria-hidden="true"></i>{{ item.discount_price }}</span>
 											<div class="test-20"> Tests</div>
 											<form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post">
 											{% csrf_token %}
@@ -30,46 +30,15 @@
 										</div>
 										<div class="content-section">
 											<div class="pkg-dtls">
-												<div class="comp-name">Heart (8 Tests)</div>
-												<div class="test-data">Total Cholesterol</div>
-												<div class="test-data"> Triglycerides</div>
-												<div class="test-data"> HDL Cholesterol</div>
-												<div class="test-data"> Non HDL Cholesterol</div>
-												<div class="test-data"> LDL Cholesterol (Calculated)</div>
-												<div class="test-data"> VLDL Cholesterol</div>
-												<div class="test-data"> Total Cholesterol / HDL Ratio</div>
-												<div class="test-data"> LDL / HDL Ratio</div>
-												<div class="comp-name">Diabetes (1 Tests)</div>
-												<div class="test-data">FBS</div>
-												<div class="comp-name">Kidney (8 Tests)</div>
-												<div class="test-data">Urea</div>
-												<div class="test-data"> BUN</div>
-												<div class="test-data"> Creatinine</div>
-												<div class="test-data"> Bun/Creatinine Ratio</div>
-												<div class="test-data"> Uric Acid</div>
-												<div class="test-data"> Serum Sodium</div>
-												<div class="test-data"> Serum Potassium</div>
-												<div class="test-data"> Serum Chloride </div>
-												<div class="comp-name">Bones (2 Tests)</div>
-												<div class="test-data">Calcium</div>
-												<div class="test-data"> Phosphorus</div>
-												<div class="comp-name">Thyroid (3 Tests)</div>
-												<div class="test-data">T3</div>
-												<div class="test-data"> T4</div>
-												<div class="test-data"> TSH</div>
-												<div class="comp-name">Liver (12 Tests)</div>
-												<div class="test-data">Bilirubin (Total</div>
-												<div class="test-data"> Direct</div>
-												<div class="test-data"> Indirect)</div>
-												<div class="test-data"> SGOT</div>
-												<div class="test-data"> SGPT</div>
-												<div class="test-data"> AST/ALT Ratio</div>
-												<div class="test-data"> ALP</div>
-												<div class="test-data"> GGT</div>
-												<div class="test-data"> Protein</div>
-												<div class="test-data"> Albumin</div>
-												<div class="test-data">  Globulin</div>
-												<div class="test-data"> A:G Ratio</div>
+												<div class="comp-name">{{ item.category }}</div>
+												<div class="test-data">{{ item.prerequisites }}</div>
+												<div class="test-data">{{ item.samplecutoff }}</div>
+												<div class="test-data">{{ item.report }}</div>
+												<div class="test-data">{{ item.component }}</div>
+												<div class="test-data">{{ item.speciment }}</div>
+												<div class="test-data">{{ item.method }}</div>
+												<div class="test-data">{{ item.cutofftime }}</div>
+												<div class="test-data">{{ item.quantitytemperature }}</div>
 											</div>
 										</div>
 									</div>

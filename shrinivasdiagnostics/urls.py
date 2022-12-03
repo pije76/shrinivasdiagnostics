@@ -30,13 +30,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin/', include('massadmin.urls')),
     path('accounts/', include('allauth.urls')),
-    path('account/', include('accounts.urls')),
+    path('profile/', include('accounts.urls')),
 
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
     # path('order/', order, name='order'),
     path('checkout/', include('order.urls')),
+    path('checkout/', include('address.urls')),
     # path("callback/", callback, name="callback"),
 	# path('payment/', paymenthandler, name='paymenthandler'),
     # path("payment/", order_payment, name="order_payment"),
@@ -48,16 +49,6 @@ urlpatterns = [
 
     path('api/', include('djoser.urls')),
     path('api/', include('djoser.urls.jwt')),
-
-    # path('summernote/', include('django_summernote.urls')),
-    # path('selectable/', include('selectable.urls')),
-    # path("select2/", include("django_select2.urls")),
-
-    # re_path(r'^user/view/$', djoser_views.UserView.as_view(), name='user-view'),
-    # re_path(r'^user/delete/$', djoser_views.UserDeleteView.as_view(), name='user-delete'),
-    # re_path(r'^user/create/$', djoser_views.UserCreateView.as_view(), name='user-create'),
-    # re_path(r'^user/login/$', jwt_views.ObtainJSONWebToken.as_view(), name='user-login'),
-    # re_path(r'^user/login/refresh/$', jwt_views.RefreshJSONWebToken.as_view(), name='user-login-refresh'),
 ]
 
 if settings.DEBUG:
