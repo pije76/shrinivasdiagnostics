@@ -209,7 +209,7 @@ def my_orders(request):
 		'total_order': total_order,
 	}
 
-	return render(request, 'accounts/myorder.html', context)
+	return render(request, 'account/myorder.html', context)
 
 
 

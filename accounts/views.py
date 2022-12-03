@@ -56,7 +56,7 @@ def user_login(request):
 # class MyLoginView(BSModalUpdateView):
 # class MyLoginView(LoginView):
 class MyLoginView(BSModalLoginView):
-	template_name = 'accounts/login_modal.html'
+	template_name = 'account/login_modal.html'
 	authentication_form = MyLoginForm
 	form_class = MyLoginForm
 	success_message = 'Success: You were successfully logged in.'
@@ -127,7 +127,7 @@ def profile_detail(request, pk):
 		'user_order': user_order,
 	}
 
-	return render(request, 'accounts/profile.html', context)
+	return render(request, 'account/profile.html', context)
 
 
 @login_required

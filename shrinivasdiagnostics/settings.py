@@ -183,11 +183,14 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_FORMS = {'signup': 'accounts.forms.MySignUpForm'}
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
 
 # LOGIN_URL = 'accounts:user_login'
 # LOGIN_REDIRECT_URL = 'accounts:user_login'
 LOGIN_REDIRECT_URL = '/accounts/login/'
 LOGOUT_URL = 'core:homepage'
+
 
 SITE_ID = 1
 

@@ -36,6 +36,7 @@ def update_billingaddress(request, id):
     user_id = Profile.objects.get(email=request.user)
     page_title = _('Checkout | ShrinivasDiagnostic')
     user_address = Address.objects.filter(user=user_id)
+    print("user_address", user_address)
 
     if request.method == "POST":
         form = Update_BillingForm(request.POST or None, instance=post)
@@ -51,7 +52,7 @@ def update_billingaddress(request, id):
             messages.warning(request, form.errors)
     else:
         context = {
-            'form': form,
+            "form": form,
             "page_title": page_title,
             "user_address": user_address,
         }

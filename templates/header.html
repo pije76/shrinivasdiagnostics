@@ -124,7 +124,7 @@
 														<div class="views-field views-field-field-image">
 															<div class="field-content">
 																{% if user.is_authenticated %}
-																	<a href="{% url 'accounts:profile_detail' item.id %}" id="login-open" class="use-ajax sf-depth-1 prf-login" title="Profile" style="pointer-events: all;">
+																	<a href="/accounts/logout" id="login-open" class="use-ajax sf-depth-1 prf-login" title="Profile" style="pointer-events: all;">
 																		<img class="img-fluid" src="/assets/images/profile.png" alt="profile">
 																	</a>
 																{% else %}

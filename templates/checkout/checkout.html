@@ -61,7 +61,7 @@
 													<p>{{ item.city.name }}</p>
 													<p>{{ item.state }}</p>
 													<p>{{ item.zip }}</p>
-													<a href="{% url 'address:update_billingaddress' item.id %}" class="action action-editaddress" address-id="15644" user-address-id="15644"><span>Edit</span></a>
+													<a href="{% url 'address:update_billingaddress' item.id %}" class="action action-editaddress" address-id="{% url 'address:update_billingaddress' item.id %}" user-address-id="{% url 'address:update_billingaddress' item.id %}"><span>Edit</span></a>
 												</div>
 												{% endfor %}
 											</div>

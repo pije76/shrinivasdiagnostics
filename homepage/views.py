@@ -28,6 +28,12 @@ def index(request):
 	user_order = Order.objects.filter(user=user_id, item_order=False).count()
 	products = Product.objects.filter(available=True)
 	categories = Category.objects.all()
+	# user_profile = Profile.objects.filter(id=user_id).values_list('id', True)
+	if user_id:
+		user_profile = Profile.objects.get(email=request.user)
+		userprofile = user_profile.id
+	else:
+		pass
 
 	initial_dict = {
 		# 'ticker_code': get_ticker_id,
@@ -76,6 +82,17 @@ def index(request):
 			'categories': categories,
 		}
 		return render(request, 'homepage/home.html', context)
+
+	context = {
+		'page_title': page_title,
+		'user_order': user_order,
+		'products': products,
+		'aforms': aforms,
+		'bforms': bforms,
+		'categories': categories,
+		'user_profile': userprofile,
+	}
+	return render(request, 'homepage/home.html', context)
 
 def productlist_search(request):
 	sqs = None

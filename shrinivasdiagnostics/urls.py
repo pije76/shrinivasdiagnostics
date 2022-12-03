@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin/', include('massadmin.urls')),
     path('accounts/', include('allauth.urls')),
-    path('profile/', include('accounts.urls')),
+    path('account/', include('accounts.urls')),
 
     path('book-blood-test-online-in-india/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
