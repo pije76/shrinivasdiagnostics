@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to site title</title>
+    <!-- Bootstrap -->
+    <link href="assets/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons  -->
+    <link href="assets/fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
+    <link href="assets/icofont/icofont.min.css" rel="stylesheet">
+
+    <!-- owlcarousel Slider -->
+    <link href="assets/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/owlcarousel/owl.theme.default.min.css" rel="stylesheet" />
+
+
+    <!-- Custom css -->
+
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/reponsive.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="custom_nav">
+        <div class="nav_brand">
+            <a href="index.html"> <img src="assets/images/logo/logo.png" alt=""></a>
+        </div>
+        <div class="nav_right flex-grow-1">
+            <div class="nav_top">
+                <div class="nav_search">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="icofont-search-2"></i></span>
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+            </div>
+            <div class="nav_bottom">
+                <div class="nav_b_l">
+                    <ul class="nav custom_nav_menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">HOME</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">BOOK A TEST</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LAB LOCATOR</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav_contact">
+            <ul class="nav custom_nav_menu">
+                <li class="nav-item mobile_hide">
+                    <a class="nav-link call_us" href="tel:8987768777"><i class="fa-solid fa-phone"></i> Call Us 89877 68777</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link circle_menu" href="cart.html"><i
+                            class="fa-solid fa-cart-shopping"></i><span>02</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link circle_menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightProfile"
+                        aria-controls="offcanvasRight" href="#"><i class="fa-solid fa-user"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav_menu flex-grow-1 text-end">
+            <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                src="assets/images/icons/menu.svg" alt="">
+        </div>
+    </nav>
+
+    <!-- Profile side bar  -->
+    <div class="offcanvas offcanvas-end bsr_SideBar" tabindex="-1" id="offcanvasRightProfile"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <img class="side_bar_logo" src="assets/images/logo/logo.png" alt="">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column side_bar">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">ORDER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PROFILE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LOGOUT</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mobile side bar  -->
+    <div class="offcanvas offcanvas-end bsr_SideBar" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <img class="side_bar_logo" src="assets/images/logo/logo.png" alt="">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column side_bar">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">BOOK A TEST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LAB LOCATOR</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <section class="search_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="flex_and_justify">
+                        <div>
+                            <h2 class="home_title">Order Overview</h2>
+                        </div>
+                        <div>
+                            <a href="#" class="btn_cart"><i class="fa-solid fa-plus"></i> Add Tests</a>
+                        </div>
+                    </div>
+
+                    <div class="cart_box">
+                        <div class="cart_left">
+                            <h4>Complete Blood Count (CBC)</h4>
+                            <a href="#">Remove</a>
+                        </div>
+                        <div class="cart_right">
+                            <h4>₹ 350</h4>
+                            <div class="input-group number-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="bbtn bl" data-dir="dwn" type="button"><i class="fas fa-minus"></i></button>
+                                </div>
+                                <input type="text" class=" text-center" value="1">
+                                <div class="input-group-append">
+                                    <button class="bbtn br" data-dir="up" type="button"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart_box">
+                        <div class="cart_left">
+                            <h4>Complete Blood Count (CBC)</h4>
+                            <a href="#">Remove</a>
+                        </div>
+                        <div class="cart_right">
+                            <h4>₹ 350</h4>
+                            <div class="input-group number-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="bbtn bl" data-dir="dwn" type="button"><i class="fas fa-minus"></i></button>
+                                </div>
+                                <input type="text" class=" text-center" value="1">
+                                <div class="input-group-append">
+                                    <button class="bbtn br" data-dir="up" type="button"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <h2 class="home_title">Summary</h2>
+                    <div class="sub_total_box">
+                        <div class="total_box">
+                            <p>Subtotal</p>
+                            <p>₹ 770</p>
+                        </div>
+                        <div class="total_box">                            
+                            <p><b>Total</b></p>
+                            <p><b>₹ 770</b></p>
+                        </div>
+                        <button class="btn_submit mt-4">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart_section2">
+        <div class="container">
+            <h2 class="home_title">People also booked these tests</h2>
+            <div id="list-slider" class="owl-carousel owl-theme list_slider">
+                <div class="item">
+                    <div class="listing_box">
+                        <div class="listing_header">
+                            <div class="best_seller">Best Seller</div>
+                            <h3>Healthkind Active</h3>
+                            <p>₹399 <span>₹599</span></p>
+
+                            <div class="testes_tag">Tests</div>
+                            <a href="#" class="add_cart">Add to Cart</a>
+                        </div>
+                        <div class="listing_body custom_scroll">
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="listing_box">
+                        <div class="listing_header">
+                            <div class="best_seller">Best Seller</div>
+                            <h3>Healthkind Active</h3>
+                            <p>₹399 <span>₹599</span></p>
+
+                            <div class="testes_tag">Tests</div>
+                            <a href="#" class="add_cart">Add to Cart</a>
+                        </div>
+                        <div class="listing_body custom_scroll">
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_title">Heart (1 Tests)</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                            <p class="l_text">Lipid Profile</p>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <h4 class="footer_title">Pages</h4>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="#">Disclaimer</a>
+                    <a class="nav-link" href="#">Disclosures</a>
+                </nav>
+            </div>
+            <div class="col-6 col-md-3">
+                <h4 class="footer_title">Demos</h4>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="#">Book a Test</a>
+                    <a class="nav-link" href="#">Privacy Policy</a>
+                    <a class="nav-link" href="#">Health Packages</a>
+                </nav>
+            </div>
+            <div class="col-6 col-md-3">
+                <h4 class="footer_title">Demos</h4>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="#">Terms of Use</a>
+                    <a class="nav-link" href="#">Sitemap</a>
+                </nav>
+            </div>
+            <div class="col-6 col-md-3">
+                <h4 class="footer_title">Follow us</h4>
+                <ul class="social_footer">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
+                <nav class="nav flex-column mt-3">
+                    <a class="nav-link" href="#">Download now</a>
+                    <a class="nav-link" href="#">Documentation</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container footer_link">  
+        <p class="footer_copy">© 2022 Shrinivas Diagnostics. All Rights Reserved. Site by <a href="https://hypemax.com" target="_blank" style="color: #00a996;text-decoration: none;">Hypemax</a></p>
+    </div>
+</footer>
+
+
+
+
+
+
+
+    <script src="assets/bootstrap5/js/bootstrap.bundle.js"></script>
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/owlcarousel/owl.carousel.js"></script>
+    <script src="assets/js.js"></script>
+
+    <script>
+        $(document).on('click', '.number-spinner button', function () {    
+        var btn = $(this),
+            oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+            newVal = 0;
+        
+        if (btn.attr('data-dir') == 'up') {
+            newVal = parseInt(oldValue) + 1;
+        } else {
+            if (oldValue > 1) {
+                newVal = parseInt(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        btn.closest('.number-spinner').find('input').val(newVal);
+    });
+    </script>
+</body>
+
+</html>
