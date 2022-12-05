@@ -56,7 +56,7 @@ def user_login(request):
 # class MyLoginView(BSModalUpdateView):
 # class MyLoginView(LoginView):
 class MyLoginView(BSModalLoginView):
-	template_name = 'account/login_modal.html'
+	template_name = 'accounts/login_modal.html'
 	authentication_form = MyLoginForm
 	form_class = MyLoginForm
 	success_message = 'Success: You were successfully logged in.'
@@ -127,7 +127,7 @@ def profile_detail(request, pk):
 		'user_order': user_order,
 	}
 
-	return render(request, 'account/myprofile.html', context)
+	return render(request, 'accounts/myprofile.html', context)
 
 
 @login_required
@@ -147,7 +147,7 @@ def change_profile(request):
 			profile.save()
 
 			messages.success(request, _('Your profile has been change successfully.'))
-			return HttpResponseRedirect('/account/')
+			return HttpResponseRedirect('/accounts/')
 		else:
 			messages.warning(request, form.errors)
 
@@ -160,5 +160,5 @@ def change_profile(request):
 		'form': form,
 	}
 
-	return render(request, 'account/change.html', context)
+	return render(request, 'accounts/change.html', context)
 
