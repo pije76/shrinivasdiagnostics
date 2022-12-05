@@ -8,7 +8,6 @@ from django.utils.translation import gettext_lazy as _
 
 from shop.models import *
 from .models import *
-from .lookups import *
 
 from crispy_forms.bootstrap import *
 from crispy_forms.helper import *
