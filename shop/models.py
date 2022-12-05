@@ -12,9 +12,11 @@ LABEL = (
 	('patient', 'Patient')
 )
 
-CATEGORY = (
-	('test', 'Test'),
-	('packages', 'Packages')
+CATEGORY_CHOICES = (
+	('organ', 'Organ'),
+	('condition', 'Condition'),
+	# ('test', 'Test'),
+	# ('packages', 'Packages')
 )
 
 ORGAN = (
@@ -42,7 +44,9 @@ def upload_path_category(instance, filename):
 
 
 class Category(models.Model):
-	title = models.CharField(max_length=255, null=True, blank=False, db_index=True)
+	# title = models.CharField(max_length=255, null=True, blank=False, db_index=True)
+	title = models.CharField(max_length=255, null=True, blank=True)
+	category = models.CharField(max_length=255, choices=CATEGORY_CHOICES, default="organ", null=True, blank=True)
 	slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
 	image = models.ImageField(upload_to=upload_path_category, blank=True, null=True)
 
@@ -57,6 +61,10 @@ class Category(models.Model):
 	def get_absolute_url(self):
 		return reverse('shop:product_list_by_category', args=[self.slug])
 
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.title)
+		super().save(*args, **kwargs)
+
 	@property
 	def image_url(self):
 		if self.image and hasattr(self.image, 'url'):
@@ -67,6 +75,7 @@ class Product(models.Model):
 	title = models.CharField(max_length=255, null=True, blank=False, db_index=True)
 	slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='product_category')
+	# category = models.CharField(max_length=255, choices=CATEGORY_CHOICES, default="organ", null=True, blank=True)
 	tags = models.CharField(max_length=255, null=True, blank=True)
 	price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=True)
 	discount_price = models.DecimalField(_("Discount Price"), max_digits=10, decimal_places=2, blank=True, null=True)

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}
+{{ page_title }}
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block extra_style %}
+{% endblock %}
+
+
+{% block content %}
+
+<section class="profile_section">
+	<div class="container">
+		<h2 class="home_title">Account Profile</h2>
+		<div class="marketplace-wrapper">
+			<div class="left-filter">
+				<div class="left_menu">
+					<ul>
+						<li><a class="" href="{% url 'my_orders' %}">Orders</a></li>
+						<li><a class="active" href="{% url 'accounts:profile_detail' user_id.pk %}">Profile</a></li>
+						{# <li><a class="" href="download-report.html">Download Report</a></li> #}
+					</ul>
+				</div>
+			</div>
+			<div class="right-cont">
+				<h4 class="mb-3">Profile</h4>
+				<div class="profile_box">
+					<p>Name</p>
+					<h4>{{ full_name }}</h4>
+					<p>Email</p>
+					<h4>{{ email }}</h4>
+					<p>Phone</p>
+					<h4>{{ phone_number }}</h4>
+					<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn_cart">Edit</a>
+				</div>
+				<h4 class="mb-3">Address</h4>
+				<div class="profile_box add_box">
+					<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Add Address</a>
+				</div>
+				{% for item in user_address %}
+				<div class="profile_box">
+					<p>Address</p>
+					<h4>{{ item.address }}</h4>
+					<p>State</p>
+					<h4>{{ item.state }}</h4>
+					<p>City</p>
+					<h4>{{ item.city }}</h4>
+					<p>Location</p>
+					<h4>{{ item.location }}</h4>
+					<p>Pincode</p>
+					<h4>{{ item.pincode }}</h4>
+					<a href="#" class="btn_cart">Edit</a>
+				</div>
+				{% endfor %}
+				<h4 class="mb-3">Patients</h4>
+				<div class="profile_box add_box">
+					<a href="#"><i class="fa-solid fa-plus"></i> Add Patient</a>
+				</div>
+				<div class="profile_box">
+					<p>Name</p>
+					<h4>Lorem ipsum dolor</h4>
+					<p>Email</p>
+					<h4>Lorem ipsum dolor</h4>
+					<p>Mobile</p>
+					<h4>Lorem ipsum dolor</h4>
+					<p>Date of Birth</p>
+					<h4>Lorem ipsum dolor</h4>
+					<p>Gender</p>
+					<h4>Lorem ipsum dolor</h4>
+					<p>Relation</p>
+					<h4>Lorem ipsum dolor</h4>
+					<a href="#" class="btn_cart">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form action="index.html">
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">Name</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">Email address</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">Phone</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlInput1" class="form-label">Gender</label>
+						<select class="form-select" aria-label="Default select example">
+							<option>Select Gender</option>
+							<option value="1">Male</option>
+							<option value="2">Female</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn_cart">Save changes</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+ <script src="{% static 'bootstrap5/js/bootstrap.bundle.js' %}" type="text/javascript"></script>
+<script src="{% static 'jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'owlcarousel/owl.carousel.js' %}" type="text/javascript"></script>
+<script src="{% static 'js.js' %}" type="text/javascript"></script>
+
+{% block extra_jscript %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type='text/javascript'>
+$(document).ready(function()
+{
+		$(document).on('click', '.number-spinner button', function () {
+			var btn = $(this),
+				oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+				newVal = 0;
+
+			if (btn.attr('data-dir') == 'up') {
+				newVal = parseInt(oldValue) + 1;
+			} else {
+				if (oldValue > 1) {
+					newVal = parseInt(oldValue) - 1;
+				} else {
+					newVal = 1;
+				}
+			}
+			btn.closest('.number-spinner').find('input').val(newVal);
+		});
+
+});
+</script>
+
+{% endblock %}

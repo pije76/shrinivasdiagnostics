@@ -1,53 +1,65 @@
 <!-- tests section start -->
-<section class="tests-section">
+<section class="home_section section_pb">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 col-md-12 col-sm-12 aos-init aos-animate" data-aos="fade-right" data-aos-duration="1000">
-				<h2 class="heading-2">Test by Parts</h2>
-				<div class="row">
-					<div class="region region-test-by-body-parts">
-						<div class="views-element-container block block-views block-views-blocktest-by-body-parts-block-1" id="block-views-block-test-by-body-parts-block-1">
-							<div>
-								<div class="view view-test-by-body-parts view-id-test_by_body_parts view-display-id-block_1 js-view-dom-id-fe9b18894d2450e6fd8e02bd9c34d2accbeb7f4504d1773d59f60700738c9eba">
-									<div class="view-content">
-										{% for item in categories %}
-										<div class="views-row">
-											<a target="_self" href="{{ item.title }}">
-												<span class="img-bparts">
-													<img src="{{ item.image_url }}" width="40" height="40" alt="Heart" loading="lazy" typeof="Image" class="image-style-thumbnail" />
-												</span>
-												<span class="title-bparts">Heart</span>
-											</a>
-										</div>
-										{% endfor %}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			<div class="col-md-12 col-lg-6">
+				<h2 class="home_title">Test by Body Parts</h2>
+				<div class="body_part">
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/heart.png" alt="">
+						<p>Heart</p>
+					</a>
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/liver.png" alt="">
+						<p>Liver</p>
+					</a>
+
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/kidney.png" alt="">
+						<p>Kidney</p>
+					</a><a href="#" class="part_list">
+						<img src="assets/images/icons/bone.png" alt="">
+						<p>Bone</p>
+					</a>
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/thyroid.png" alt="">
+						<p>Thyroid</p>
+					</a>
+				</div>
+				<h2 class="home_title mt-4">Test by Condition</h2>
+				<div class="body_part">
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/diabetes.png" alt="">
+						<p>Diabetes</p>
+					</a>
+
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/kidney.png" alt="">
+						<p>Kidney</p>
+					</a>
+					<a href="#" class="part_list">
+						<img src="assets/images/icons/thyroid.png" alt="">
+						<p>Thyroid</p>
+					</a>
 				</div>
 			</div>
+			<div class="col-md-12 col-lg-6">
+				<h2 class="home_title mobile_margin2">Most Popular Tests</h2>
 
-			<div class="col-md-12 col-lg-5 col-sm-12 offset-md-1 offset-lg-1" data-aos="fade-left" data-aos-duration="1000">
-				<div class="popular-tests-box m-t-75">
-					<h3 class="heading-small">Most Popular Tests</h3>
-					<div class="region region-most-popular-test">
-						<div id="block-mostpopulartestsblock" class="block block-unee-packages-tests block-popular-tests-block">
-							{% for item in products %}
-							<div class="popular-tests">
-								<div class="icon">
-									<img src="/assets/images/scope.png" class="img-fluid" alt="popular test">
-								</div>
-								<h6>{{ item.title }}</h6>
-								<a href="{% url 'shop:add_to_cart' item.pk %}" class="btn"> Buy Now</a>
-							</div>
-							{% endfor %}
-						</div>
+				{% for item in products %}
+				<div class="pop_tests">
+					<img src="/assets/images/scope.png" alt="">
+					<div class="flex-fill">
+						<p class="m-0">
+							<a class="product_detail" href="{{ item.get_absolute_url }}" title="{{ item.title }}">{{ item.title }}</a>
+						</p>
 					</div>
+					<a href="{% url 'shop:add_to_cart' item.pk %}" class="buy_now_list">Buy Now</a>
 				</div>
-			</div>
+				{% endfor %}
 
-		</div>		
+			</div>
+		</div>
 	</div>
 </section>
 <!-- tests section end -->

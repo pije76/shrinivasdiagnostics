@@ -1,153 +1,110 @@
+{% load static %}
+{% load i18n %}
+
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% load crispy_forms_field %}
 
 
 <!-- main header section start -->
-<section class="main-top-header">
-	<header class="site-header">
-		<div class="container-fluid">
-			<div class="row">
+<nav class="custom_nav">
+	<div class="nav_brand">
+		<a href="/">
+			<img src="{% static 'images/logo/logo.png' %}" alt="">
+		</a>
+	</div>
 
-				<div class="col-lg-3 col-md-4 col-sm-12 flex logo-custom-1">
-					<div class="logo">
-						<div class="region region-logo">
-							<div class="views-element-container block block-views block-views-blockpathkind-system-block-1" id="block-views-block-pathkind-system-block-1">
-								<div>
-									<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_1">
-										<div class="view-content">
-											<div class="views-row">
-												<div class="views-field views-field-field-image">
-													<div class="field-content">
-														<a href="/" title="logo">
-															<img class="img-fluid" src="/assets/images/shrinivasdiagnostics_logo.png" alt="logo" />
-														</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+	<div class="nav_right flex-grow-1">
+		<div class="nav_top">
+			<div class="nav_search">
+				<form action="/book-blood-test-online-in-india/autocomplete/" method="GET" class="webform-submission-form" id="webform-submission-header-search-form-add-form">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="basic-addon1"><i class="icofont-search-2"></i></span>
+						<input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
 					</div>
-				</div>
-
-				<div class="col-lg-5 col-md-8 col-sm-12 search-custom-1">
-					<div class="city-search-section">
-						<div class="search-center">
-							<div class="region region-search">
-								<div id="block-webform-6" class="block block-webform block-webform-block">
-									<form action="/book-blood-test-online-in-india/autocomplete/" method="GET" class="webform-submission-form webform-submission-add-form webform-submission-header-search-form-form webform-submission-header-search-form-add-form js-webform-details-toggle webform-details-toggle" id="webform-submission-header-search-form-add-form">
-										<div class="search-city-wrapper js-form-item form-item js-form-type-webform-autocomplete form-type-webform-autocomplete js-form-item-city-name form-item-city-name form-no-label">
-											<input class="search-city-auto form-autocomplete form-text webform-autocomplete" type="text" id="edit-city-name" name="city_name" value="" size="60" maxlength="255" placeholder="Search City" readonly />
-										</div>
-										<div id="edit-markup" class="js-form-item form-item js-form-type-webform-markup form-type-webform-markup js-form-item-markup form-item-markup form-no-label">
-											<a href="#" id="header-search-submit" class="btn">Submit</a>
-										</div>
-										<input autocomplete="off" type="hidden" name="form_build_id" value="form-mLwle7aSRtQAqwQ3rA7xKjR4jxxwE8B3dZ5btVy3ZCs" />
-										<input type="hidden" name="form_id" value="webform_submission_header_search_form_add_form" />
-									</form>
-								</div>
-								<div class="search-det">
-									<form action="/book-blood-test-online-in-india/autocomplete/" method="GET">
-										<div class="easy-autocomplete" style="width: 453.891px;">
-											<input type="text" id="test_search_input_field_header" name="q" class="search-det test_search_input_field_header" placeholder="Search for a test, health package or Labs" autocomplete="off"autocapitalize="off" autocorrect="off" autofocus="autofocus" role="combobox" spellcheck="false">
-											<div class="easy-autocomplete-container" id="eac-container-test_search_input_field_header">
-												<ul style="display: none;"></ul>
-											</div>
-											<i class="fa fa-search"></i>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-12 col-sm-12 text-right md-0 icon-custom-1">
-					<div class="right-infos">
-						<ul>
-							<li class="call">
-								<div class="region region-call-us">
-									<div class="views-element-container block block-views block-views-blockpathkind-system-block-2" id="block-views-block-pathkind-system-block-2">
-										<div>
-											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_2">
-												<div class="view-content">
-													<div class="views-row">
-														<div class="views-field views-field-field-image">
-															<div class="field-content">
-																<a href="tel:7500075111" title="call us">
-																	<div class="img">
-																		<img src="/assets/images/call-us.png" class="img-fluid" alt="call us">
-																	</div>Call Us 75000 75111
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="cart">
-								<div class="region region-cart">
-									<div class="views-element-container block block-views block-views-blockpathkind-system-block-3" id="block-views-block-pathkind-system-block-3">
-										<div>
-											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_3 js-view-dom-id-3f2575c4738f498487813c4627bb9058cda40955ace97ca34296da0153905495">
-												<div class="view-content">
-													<div class="views-row">
-														<div class="views-field views-field-field-image">
-															<div class="field-content">
-																<a href="/shopping-cart/" title="Cart">
-																	<img class="img-fluid" src="/assets/images/cart.png" alt="cart" /> 
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<span class="cart-badge" style="display: block;"><span>{{ user_order }}</span></span>
-							</li>
-							<li class="user">
-								<div class="region region-profile">
-									<div class="views-element-container block block-views block-views-blockpathkind-system-block-4" id="block-views-block-pathkind-system-block-4-2">
-										<div>
-											<div class="view view-pathkind-system view-id-pathkind_system view-display-id-block_4">
-												<div class="view-content">
-													<div class="views-row">
-														<div class="views-field views-field-field-image">
-															<div class="field-content">
-																{% if user.is_authenticated %}
-																	<a href="/accounts/logout" id="login-open" class="use-ajax sf-depth-1 prf-login" title="Profile" style="pointer-events: all;">
-																		<img class="img-fluid" src="/assets/images/profile.png" alt="profile">
-																	</a>
-																{% else %}
-																	<a href="{{ login_url }}" id="login-open" class="use-ajax sf-depth-1 prf-login" title="Hi Sign in" style="pointer-events: all;">
-																		<img class="img-fluid" src="/assets/images/profile.png" alt="profile">
-																	</a>
-																{% endif %}
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-
+				</form>
 			</div>
 		</div>
-	</header>
-		
-	{% include "navbar.html" %}
-</section>
+
+		<div class="nav_bottom">
+			<div class="nav_b_l">
+				<ul class="nav custom_nav_menu">
+					<li class="nav-item">
+						<a class="nav-link" href="/">HOME</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/book-blood-test-online-in-india/">BOOK A TEST</a>
+					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="#">LAB LOCATOR</a>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="nav_contact">
+		<ul class="nav custom_nav_menu">
+			<li class="nav-item mobile_hide">
+				<a class="nav-link call_us" href="tel:8987768777"><i class="fa-solid fa-phone"></i> Call Us 89877 68777</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link circle_menu" href="/shopping-cart/">
+					<i class="fa-solid fa-cart-shopping"></i><span>02</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link circle_menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightProfile" aria-controls="offcanvasRight" href="#"><i class="fa-solid fa-user"></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="nav_menu flex-grow-1 text-end">
+		<img data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" src="{% static 'images/icons/menu.svg' %}" alt="">
+	</div>
+</nav>
+
+<!-- Profile side bar  -->
+<div class="offcanvas offcanvas-end bsr_SideBar" tabindex="-1" id="offcanvasRightProfile" aria-labelledby="offcanvasRightLabel">
+	<div class="offcanvas-header">
+		<img class="side_bar_logo" src="{% static 'images/logo/logo.png' %}" alt="">
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		<ul class="nav flex-column side_bar">
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'my_orders' %}">ORDER</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'accounts:profile_detail' request.user.pk %}">PROFILE</a>
+			</li>
+			<li class="nav-item">
+				{% if user.is_authenticated %}
+				<a class="nav-link" href="{% url 'account_logout' %}">LOGOUT</a>
+				{% else %}
+       			<a class="nav-link" href="{% url 'account_login' %}">LOGIN</a>
+       			{% endif %}
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- Mobile side bar  -->
+<div class="offcanvas offcanvas-end bsr_SideBar" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+	<div class="offcanvas-header">
+		<img class="side_bar_logo" src="{% static 'images/logo/logo.png' %}" alt="">
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		<ul class="nav flex-column side_bar">
+			<li class="nav-item">
+				<a class="nav-link" href="/">HOME</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/book-blood-test-online-in-india/">BOOK A TEST</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">LAB LOCATOR</a>
+			</li>
+		</ul>
+	</div>
+</div>

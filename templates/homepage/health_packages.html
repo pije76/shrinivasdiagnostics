@@ -1,71 +1,40 @@
 <!-- Health Packages section start-->
-<section class="health-packages">
-	<div class="container container aos-init aos-animate" data-aos="zoom-out" data-aos-duration="1000">
-		<div class="row">
-			<div class="col-md-12">
-				<h2 class="heading">Popular Health Packages</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="region region-health-packages-section">
-				<div id="block-popularhealthpackageblock" class="block block-unee-packages-tests block-popular-health-package-block">
-					<div id="temp-health" class="flexslider optionset-blog-slider">
-						<div class="flex-viewport" style="overflow: hidden; position: relative;">
-							<ul class="slides" style="width: 1600%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-								{% for item in products %}
-								<li data-thumb-alt="" style="width: 271px; margin-right: 16px; float: left; display: block;">
-									<div class="temp-health">
-										<div class="inner-pkg">
-											<div class="best-seller">Best Seller</div>
-											<h2 class="health-title">{{ item.title }}</h2>
-											<span class="health-price"><i class="fa fa-inr" aria-hidden="true"></i> {{ item.price }}</span>
-											<span class="act-price"><i class="fa fa-inr" aria-hidden="true"></i>{{ item.discount_price }}</span>
-											<div class="test-20"> Tests</div>
-											<form action="{% url 'shop:add_to_cart' item.pk %}" class="form-inline add-to-cart-form" method="post">
-											{% csrf_token %}
-												<span class="health-buynow 1">
-													<a href="{% url 'shop:add_to_cart' item.pk %}" class="btn pkg-addtocart" id="10056">Add to Cart</a>
-												</span>
-											</form>
-										</div>
-										<div class="content-section">
-											<div class="pkg-dtls">
-												<div class="comp-name">{{ item.category }}</div>
-												<div class="test-data">{{ item.prerequisites }}</div>
-												<div class="test-data">{{ item.samplecutoff }}</div>
-												<div class="test-data">{{ item.report }}</div>
-												<div class="test-data">{{ item.component }}</div>
-												<div class="test-data">{{ item.speciment }}</div>
-												<div class="test-data">{{ item.method }}</div>
-												<div class="test-data">{{ item.cutofftime }}</div>
-												<div class="test-data">{{ item.quantitytemperature }}</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								{% endfor %}
-							</ul>
-						</div>
-						<ol class="flex-control-nav flex-control-paging">
-							<li><a href="#" class="flex-active">1</a></li>
-							<li><a href="#" class="">2</a></li>
-							<li><a href="#" class="">3</a></li>
-							<li><a href="#" class="">4</a></li>
-							<li><a href="#" class="">5</a></li>
-						</ol>
-						<ul class="flex-direction-nav">
-							<li class="flex-nav-prev">
-								<a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a>
-							</li>
-							<li class="flex-nav-next">
-								<a class="flex-next" href="#" tabindex="-1">Next</a>
-							</li>
-						</ul>
+<section class="home_section">
+	<div class="container">
+		<h2 class="home_title">Popular Health Packages</h2>
+		<div id="list-slider" class="owl-carousel owl-theme list_slider">
+
+			{% for item in products %}
+			<div class="item">
+				<div class="listing_box">
+					<div class="listing_header">
+						<div class="best_seller">Best Seller</div>
+						<h3><a class="product_detail" href="{{ item.get_absolute_url }}" title="{{ item.title }}">{{ item.title }}</a></h3>
+						<p>₹{{ item.discount_price }}<span>₹{{ item.price }}</span></p>
+
+						<div class="testes_tag">Tests</div>
+						<form action="{% url 'shop:add_to_cart' item.pk %}" method="POST">
+						{% csrf_token %}
+							<a href="{% url 'shop:add_to_cart' item.pk %}" class="add_cart">Add to Cart</a>
+						</form>
+					</div>
+					<div class="listing_body custom_scroll">
+						<p class="l_title">{{ item.category }}</p>
+						<p class="l_text">{{ item.prerequisites }}</p>
+						<p class="l_text">{{ item.samplecutoff }}</p>
+						<p class="l_text">{{ item.report }}</p>
+						<p class="l_title">{{ item.category }}</p>
+						<p class="l_text">{{ item.speciment }}</p>
+						<p class="l_text">{{ item.method }}</p>
+						<p class="l_title">{{ item.category }}</p>
+						<p class="l_text">{{ item.quantitytemperature }}</p>
+						<p class="l_text">{{ item.quantitytemperature }}</p>
 					</div>
 				</div>
 			</div>
+			{% endfor %}
+
 		</div>
 	</div>
-</section>
-<!-- Health Packages section end-->
+</section><!-- Health Packages section end-->
 

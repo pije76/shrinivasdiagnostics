@@ -1,352 +1,335 @@
-{% extends 'base_profile.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% load static %}
-{% load i18n %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to site title</title>
+    <!-- Bootstrap -->
+    <link href="assets/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons  -->
+    <link href="assets/fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
+    <link href="assets/icofont/icofont.min.css" rel="stylesheet">
 
-{% block head_title %}
-{{ page_title }}
-{% endblock %}
-
-{% block extra_style %}
-<link href="{% static 'css/style_accounts.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style_profile1.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style_myorder.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/desktop.css' %}" rel="stylesheet" type="text/css">
-<style>
-input#search-bar-header:focus::-webkit-input-placeholder
-{
-	transition: opacity 0.45s ease;
-	opacity: 0;
-}
-
-input#search-bar-header:focus::-moz-placeholder
-{
-	transition: opacity 0.45s ease;
-	opacity: 0;
-}
-
-input#search-bar-header:focus:-ms-placeholder
-{
-	transition: opacity 0.45s ease;
-	opacity: 0;
-}
-
-div, .profile-item
-{
-	word-wrap: break-word;
-}
-</style>
-{% endblock %}
+    <!-- owlcarousel Slider -->
+    <link href="assets/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/owlcarousel/owl.theme.default.min.css" rel="stylesheet" />
 
 
-{% block content %}
+    <!-- Custom css -->
 
-<div class="inner-content inner-page-account">
-	<div class="container">
-		<div class="row m-b-20">
-			<div class="col-md-8 col-sm-12">
-				<h1 class="heading-small">Account Profile | ShrinivasDiagnostic</h1>
-			</div>
-			<div class="col-md-4 col-sm-12 text-right">
-				<a href="/accounts/logout/" class="btn action-btn">Logout</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-12">
-				<div class="side-menu">
-					<ul>
-						<li><a href="{% url 'my_orders' %}">Orders</a></li>
-						<li><a href="{% url 'accounts:profile_detail' user_id.pk %}" class="active">Profile</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-9 col-md-9 col-sm-12">
-				<div class="profile-right">
-					<h2>Profile</h2>
-					<div class="profile-box">
-						<div class="profile-item">
-							<h6>Name</h6>
-							<h1>{{ full_name }}</h1>
-						</div>
-						<div class="profile-item">
-							<h6>Email</h6>
-							<h1>{{ email }}</h1>
-						</div>
-						<div class="profile-item">
-							<h6>Phone</h6>
-							<h1>{{ phone_number }}</h1>
-						</div>
-						<a href="#" class="action-profile">Edit</a>
-					</div>
-					<h2>Address</h2>
-					<div class="row">
-						<div class="col-md-6 m-b-30">
-							<div class="add-details">
-								{% for item in user_address %}
-								<p>{{ item.address }}
-									<br>{{ item.city }}
-									<br>{{ item.state }}
-									<br>{{ item.zip }}
-								</p>
-								{% endfor %}
-								<a class="action action-editaddress" address-id="15644">
-									<img src="/assets/images/edit-png.png">
-									<span>Edit Address</span>
-								</a>
-								<div class="default-address-div">
-									<input type="radio" daddress-id="15644" auser-id="43142" checked class="default-address">Make Default
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="add-details add-more">
-								<a class="action action-address">
-									<img src="/assets/images/add.svg">
-									<span>Add Address</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<h2>Patients</h2>
-					<div class="row">
-						<div class="col-md-4 m-b-30">
-							<div class="patient-box">
-								<div class="img">
-									<h1>q</h1>
-								</div>
-								<h3>Qqqq</h3>
-								<p>Male, 145 yrs</p>
-								<a class="action action-editpatients" patient-id="45411">
-									<img src="/assets/images/edit-png.png">
-								</a>
-								<button type="button" class="btn btn-xs sa-delete" data-id="45411" data-url="users/users_public/deletepatient/45411">
-									<i class="fa fa-trash"></i>
-								</button>
-							</div>
-						</div>
-						<div class="col-md-4 m-b-30">
-							<div class="patient-box add-more">
-								<a class="action action-patients">
-									<img src="/assets/images/add.svg">
-									<span>Add Patient</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="edit-profile" style="display:none;">
-				<a href="#" class="close-sidebar share-close" id="profile-close"><img src="/assets/images/close.png" class="img-fluid"></a>
-				<div class="sidebar-inner">
-					<div class="header">
-						<img src="/assets/images/white-logo.png">
-					</div>
-					<div class="sidebar">
-						<h3 class="heading-small-v-2">Edit Profile</h3>
-						<form action="/users/Users_public/edit_user_profile" id="userProfileForm" method="post">
-							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
-							<input type="hidden" name="user_id" value="43142" />
-							<div class="form-group">
-								<!-- <label for="name" class="required">Name</label> -->
-								<input type="text" name="name" id="name" class="m-b-20 custom-form-control alpha_space_only" placeholder="Name" value="Tes" maxlength="60"/>
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="email" class="required">Email</label> -->
-								<input type="email" name="email" id="email" class="m-b-20 custom-form-control email_only" placeholder="Email" value="tes@test.com" maxlength="255"/>
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="mobile" class="required">Mobile No.</label> -->
-								<input type="text" readonly name="mobile" id="mobile" class="m-b-20 custom-form-control number_only" placeholder="Mobile No." value="8968306095" maxlength="10"/>
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="mobile" class="required">Birthday</label> -->
-								<input class="m-b-20 custom-form-control" name="birthdate" id="birthdate" type="text" placeholder="Date of Birth" onfocus="(this.type='date')" value="1985-12-01">
-								<span class="form-error"></span>
-							</div>
-							<div class="form-group">
-								<select name="gender" class="custom-form-control" id="gender">
-									<option value="">Select Gender</option>
-									<option value="1" selected="selected">Male</option>
-									<option value="2">Female</option>
-									<option value="3">Other</option>
-								</select>
-								<span class="form-error"></span>
-							</div>
-							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="add-address" style="display:none;">
-				<a href="#" class="close-sidebar share-close" id="addaddress-close"><img src="/assets/images/close.png" class="img-fluid"></a>
-				<div class="sidebar-inner">
-					<div class="header">
-						<img src="/assets/images/white-logo.png">
-					</div>
-					<div class="sidebar">
-						<h3 class="heading-small-v-2">Add Address</h3>
-						<form action="/users/Users_public/add_user_address" id="userAddressForm" method="post">
-							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
-							<input type="hidden" name="user_id" value="43142" />
-							<div class="form-group">
-								<!-- <label for="address" class="required">Address</label> -->
-								<input type="text" name="address" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Address" id="address" value=""/>
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="state_id" class="required">State</label> -->
-								<input type="text" id="state_id" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Change State" />
-								<input type="hidden" name="state_id" id="addprofile-state-holder" />
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="city_id" class="required">City</label> -->
-								<input type="text" id="city_id" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Change City" />
-								<input type="hidden" name="city_id" id="addprofile-city-holder" />
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="location_id" class="required">Location</label> -->
-								<input type="text" id="location_id" class="m-b-20 custom-form-control" autocomplete="off" placeholder="Change Location" />
-								<input type="hidden" name="location_id" id="addprofile-location-holder" />
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="pincode" class="required">Pincode</label> -->
-								<input type="text" name="pincode" id="pincode" class="m-b-20 custom-form-control number_only" maxlength="6" autocomplete="off" placeholder="Pincode" value=""/>
-								<div class="form-error"></div>
-							</div>
-							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<style>
-			.form-group .easy-autocomplete
-			{
-				width: 100%!important;
-			}
-			</style>
-			<div class="edit-address" style="display:none;">
-				<a href="#" class="close-sidebar share-close" id="address-close"><img src="/assets/images/close.png" class="img-fluid"></a>
-				<div class="sidebar-inner">
-					<div class="header">
-						<img src="/assets/images/white-logo.png">
-					</div>
-					<div class="sidebar">
-						<h3 class="heading-small-v-2">Edit Address</h3>
-						<form action="/users/Users_public/edit_user_address" id="userEditAddressForm" method="post">
-							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
-							<input type="hidden" name="address_id" value="" id="editaddress_id">
-							<div class="form-group">
-								<!-- <label for="address" class="required">Address</label> -->
-								<input type="text" name="address" class="m-b-20 custom-form-control address_1" placeholder="Address" id="address2" value=""/>
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="state_id" class="required">State</label> -->
-								<input type="text" id="state_id2" class="m-b-20 custom-form-control" placeholder="Change State" />
-								<input type="hidden" name="state_id" id="profile-state-holder" />
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="city_id" class="required">City</label> -->
-								<input type="text" id="city_id2" class="m-b-20 custom-form-control" placeholder="Change City" />
-								<input type="hidden" name="city_id" id="profile-city-holder" />
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="location_id" class="required">Location</label> -->
-								<input type="text" id="location_id2" class="m-b-20 custom-form-control" placeholder="Change Location" />
-								<input type="hidden" name="location_id" id="profile-location-holder" />
-								<div class="form-error"></div>
-							</div>
-							<div class="form-group">
-								<!-- <label for="pincode" class="required">Pincode</label> -->
-								<input type="text" name="pincode" id="pincode2" class="m-b-20 custom-form-control number_only" placeholder="Pincode" value="" maxlength="6"/>
-								<div class="form-error"></div>
-							</div>
-							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="edit-patients" style="display:none;">
-				<a href="#" class="close-sidebar share-close" id="patient-close"><img src="/assets/images/close.png" class="img-fluid"></a>
-				<div class="sidebar-inner">
-					<div class="header">
-						<img src="/assets/images/white-logo.png">
-					</div>
-					<div class="sidebar">
-						<h3 class="heading-small-v-2">Add Patient</h3>
-						<form action="/users/Users_public/add_patient" id="userPatientForm" method="post">
-							<input type="hidden" name="csrf_test_name" value="e6487d3b977967b94f50ce77b9726223" />
-							<input type="hidden" name="user_id" value="43142" />
-							<input type="hidden" name="patient_id" id="patient_id" >
-							<div class="form-group">
-								<input class="custom-form-control alpha_space_only" name="name" id="name1" type="text" placeholder="Name" maxlength="60">
-								<span class="form-error"></span>
-							</div>
-							<div class="form-group">
-								<input class="custom-form-control email_only" name="email" id="email1" type="email" placeholder="Email" maxlength="255">
-								<span class="form-error"></span>
-							</div>
-							<div class="form-group">
-								<input class="custom-form-control number_only" name="mobile" id="mobile1" type="text" placeholder="Mobile" maxlength="10">
-								<span class="form-error"></span>
-							</div>
-							<div class="form-group">
-								<input class="custom-form-control" name="birthdate" id="birthdate1" type="text" placeholder="Date of Birth" onfocus="(this.type='date')">
-								<span class="form-error"></span>
-							</div>
-							<div class="row flex-custom-gender">
-								<div class="form-group">
-									<select name="gender" class="custom-form-control" id="gender1">
-										<option value="" selected="selected">Select Gender</option>
-										<option value="1">Male</option>
-										<option value="2">Female</option>
-										<option value="3">Other</option>
-									</select>
-									<span class="form-error"></span>
-								</div>
-								<div class="form-group">
-									<select name="relation" class="custom-form-control" id="relation1">
-										<option value="" selected="selected">Select Relation</option>
-										<option value="1">Father</option>
-										<option value="2">Mother</option>
-										<option value="3">Spouse</option>
-										<option value="4">Son</option>
-										<option value="5">Daughter</option>
-										<option value="6">Family</option>
-									</select>
-									<span class="form-error"></span>
-								</div>
-							</div>
-							<button type="submit" class="btn-2"><i class="fa fa-save"></i> Save</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/reponsive.css" rel="stylesheet">
 
-{% endblock %}
+</head>
+
+<body>
+
+    <nav class="custom_nav">
+        <div class="nav_brand">
+            <a href="index.html"> <img src="assets/images/logo/logo.png" alt=""></a>
+        </div>
+        <div class="nav_right flex-grow-1">
+            <div class="nav_top">
+                <div class="nav_search">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="icofont-search-2"></i></span>
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+            </div>
+            <div class="nav_bottom">
+                <div class="nav_b_l">
+                    <ul class="nav custom_nav_menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">HOME</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">BOOK A TEST</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LAB LOCATOR</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav_contact">
+            <ul class="nav custom_nav_menu">
+                <li class="nav-item mobile_hide">
+                    <a class="nav-link call_us" href="tel:8987768777"><i class="fa-solid fa-phone"></i> Call Us 89877 68777</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link circle_menu" href="cart.html"><i
+                            class="fa-solid fa-cart-shopping"></i><span>02</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link circle_menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightProfile"
+                        aria-controls="offcanvasRight" href="#"><i class="fa-solid fa-user"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav_menu flex-grow-1 text-end">
+            <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                src="assets/images/icons/menu.svg" alt="">
+        </div>
+    </nav>
+
+    <!-- Profile side bar  -->
+    <div class="offcanvas offcanvas-end bsr_SideBar" tabindex="-1" id="offcanvasRightProfile"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <img class="side_bar_logo" src="assets/images/logo/logo.png" alt="">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column side_bar">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">ORDER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PROFILE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LOGOUT</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mobile side bar  -->
+    <div class="offcanvas offcanvas-end bsr_SideBar" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <img class="side_bar_logo" src="assets/images/logo/logo.png" alt="">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column side_bar">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">BOOK A TEST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LAB LOCATOR</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 
-<script src="{% static 'js/jquery-3.6.0.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/select2.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/site.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/toastr.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.flexslider.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/sweetalert2.min.js' %}" type="text/javascript"></script>
 
-{% block extra_jscript %}
-{% endblock %}
+    <section class="profile_section">
+        <div class="container">
+            <h2 class="home_title">Account Profile</h2>
+            <div class="marketplace-wrapper">
+                <div class="left-filter">
+                    <div class="left_menu">
+                        <ul>
+                            <li><a class="" href="order.html">Orders</a></li>
+                            <li><a class="active" href="profile.html">Profile</a></li>
+                            <li><a class="" href="download-report.html">Download Report</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-cont">
+                    <h4 class="mb-3">Profile</h4>
+                    <div class="profile_box">
+                        <p>Name</p>
+                        <h4>User Name</h4>
+                        <p>Email</p>
+                        <h4>user@gmail.com</h4>
+                        <p>Phone</p>
+                        <h4>+91-9876543210</h4>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn_cart">Edit</a>
+                    </div>
+                    <h4 class="mb-3">Address</h4>
+                    <div class="profile_box add_box">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Add Address</a>
+                    </div>
+                    <div class="profile_box">
+                        <p>Address</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>State</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>City</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Location</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Pincode</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <a href="#" class="btn_cart">Edit</a>
+                    </div>
+                    <h4 class="mb-3">Patients</h4>
+                    <div class="profile_box add_box">
+                        <a href="#"><i class="fa-solid fa-plus"></i> Add Patient</a>
+                    </div>
+                    <div class="profile_box">
+                        <p>Name</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Email</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Mobile</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Date of Birth</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Gender</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <p>Relation</p>
+                        <h4>Lorem ipsum dolor</h4>
+                        <a href="#" class="btn_cart">Edit</a>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="index.html">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Name</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Phone</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Gender</label>                    
+                            <select class="form-select" aria-label="Default select example">                            
+                                <option>Select Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                          </select>
+                        </div>
+
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn_cart">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <h4 class="footer_title">Pages</h4>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">Disclaimer</a>
+                        <a class="nav-link" href="#">Disclosures</a>
+                    </nav>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h4 class="footer_title">Demos</h4>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="#">Book a Test</a>
+                        <a class="nav-link" href="#">Privacy Policy</a>
+                        <a class="nav-link" href="#">Health Packages</a>
+                    </nav>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h4 class="footer_title">Demos</h4>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="#">Terms of Use</a>
+                        <a class="nav-link" href="#">Sitemap</a>
+                    </nav>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h4 class="footer_title">Follow us</h4>
+                    <ul class="social_footer">
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    </ul>
+                    <nav class="nav flex-column mt-3">
+                        <a class="nav-link" href="#">Download now</a>
+                        <a class="nav-link" href="#">Documentation</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container footer_link">
+            <p class="footer_copy">© 2022 Shrinivas Diagnostics. All Rights Reserved. Site by <a href="https://hypemax.com" target="_blank" style="color: #00a996;text-decoration: none;">Hypemax</a></p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <script src="assets/bootstrap5/js/bootstrap.bundle.js"></script>
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/owlcarousel/owl.carousel.js"></script>
+    <script src="assets/js.js"></script>
+
+    <script>
+        $(document).on('click', '.number-spinner button', function () {
+            var btn = $(this),
+                oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+                newVal = 0;
+
+            if (btn.attr('data-dir') == 'up') {
+                newVal = parseInt(oldValue) + 1;
+            } else {
+                if (oldValue > 1) {
+                    newVal = parseInt(oldValue) - 1;
+                } else {
+                    newVal = 1;
+                }
+            }
+            btn.closest('.number-spinner').find('input').val(newVal);
+        });
+    </script>
+</body>
+
+</html>

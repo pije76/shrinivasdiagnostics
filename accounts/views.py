@@ -127,7 +127,7 @@ def profile_detail(request, pk):
 		'user_order': user_order,
 	}
 
-	return render(request, 'account/profile.html', context)
+	return render(request, 'account/myprofile.html', context)
 
 
 @login_required

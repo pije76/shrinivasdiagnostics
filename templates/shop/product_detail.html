@@ -1,4 +1,4 @@
-{% extends 'base_shop.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 {% load i18n %}
@@ -11,31 +11,9 @@
 {% endblock %}
 
 {% block extra_style %}
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/style_shopdetail.css' %}" rel="stylesheet" type="text/css">
-<style>
-    input#search-bar-header:focus::-webkit-input-placeholder {
-        transition: opacity 0.45s ease;
-        opacity: 0;
-      }
-
-      input#search-bar-header:focus::-moz-placeholder {
-        transition: opacity 0.45s ease;
-        opacity: 0;
-      }
-
-      input#search-bar-header:focus:-ms-placeholder {
-        transition: opacity 0.45s ease;
-        opacity: 0;
-      }
-
-      div,
-      .profile-item {
-        word-wrap: break-word;
-      }
-  }
-</style>
 {% endblock %}
+
+
 
 {% block content %}
 

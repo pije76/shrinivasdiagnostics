@@ -186,10 +186,13 @@ ACCOUNT_FORMS = {'signup': 'accounts.forms.MySignUpForm'}
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
 
-# LOGIN_URL = 'accounts:user_login'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'homepage:index'
 # LOGIN_REDIRECT_URL = 'accounts:user_login'
-LOGIN_REDIRECT_URL = '/accounts/login/'
-LOGOUT_URL = 'core:homepage'
+# LOGIN_REDIRECT_URL = '/accounts/login/'
+# LOGOUT_REDIRECT_URL = 'accounts:user_login'
+# LOGIN_URL = 'homepage:index'
+# LOGOUT_URL = 'homepage:index'
 
 
 SITE_ID = 1
