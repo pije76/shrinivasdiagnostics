@@ -32,7 +32,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('account/', include('accounts.urls')),
 
-    path('book-blood-test-online-in-india/', include('shop.urls')),
+    path('book-test/', include('shop.urls')),
     path('package-description/<pk>/', product_detail, name='product_detail'),
     path('shopping-cart/', shopping_cart, name='shopping_cart'),
     # path('order/', order, name='order'),
@@ -44,7 +44,7 @@ urlpatterns = [
     path('my-orders/', my_orders, name='my_orders'),
 
     path('search/', include('haystack.urls')),
-    path('book-blood-test-online-in-india/autocomplete/', productlist_search, name='productlist_search'),
+    path('book-test/autocomplete/', productlist_search, name='productlist_search'),
     # path('search/autocomplete/', productlist_search(view_class=SearchView, template='index.html', form_class=ProductSearchForm), name='haystack_search'),
 
     path('api/', include('djoser.urls')),

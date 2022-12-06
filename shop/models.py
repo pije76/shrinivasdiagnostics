@@ -51,9 +51,9 @@ class Category(models.Model):
 	image = models.ImageField(upload_to=upload_path_category, blank=True, null=True)
 
 	class Meta:
-		ordering=('title',)
-		verbose_name ='category'
-		verbose_name_plural='categories'
+		ordering = ('title',)
+		verbose_name = 'Category'
+		verbose_name_plural = 'Categories'
 
 	def __str__(self):
 		return self.title

@@ -17,146 +17,158 @@
 
 {% block content %}
 
-    <section class="search_section">
-        <div class="container">
-            <div class="marketplace-wrapper">
-                <div class="left-filter">
-                    <div class="filter_title">
-                        <h4>Filters</h4>
-                    </div>
-                    <div class="filter-box">
-                        <h4>Sort list by</h4>
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="status1" name="status">
-                                <label class="check-lbl" for="status1">All</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status2" name="status">
-                                <label class="check-lbl" for="status2">Open</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status3" name="status">
-                                <label class="check-lbl" for="status3">Awarded</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status4" name="status">
-                                <label class="check-lbl" for="status4">Pending</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status5" name="status">
-                                <label class="check-lbl" for="status5">Canceled</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="filter-box">
-                        <h4>Organ</h4>
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="status1" name="status">
-                                <label class="check-lbl" for="status1">All</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status2" name="status">
-                                <label class="check-lbl" for="status2">Open</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status3" name="status">
-                                <label class="check-lbl" for="status3">Awarded</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status4" name="status">
-                                <label class="check-lbl" for="status4">Pending</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status5" name="status">
-                                <label class="check-lbl" for="status5">Canceled</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="filter-box">
-                        <h4>Condition</h4>
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="status1" name="status">
-                                <label class="check-lbl" for="status1">All</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status2" name="status">
-                                <label class="check-lbl" for="status2">Open</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status3" name="status">
-                                <label class="check-lbl" for="status3">Awarded</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status4" name="status">
-                                <label class="check-lbl" for="status4">Pending</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="status5" name="status">
-                                <label class="check-lbl" for="status5">Canceled</label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="right-cont">
-                    <div class="sort-or-search">
-                        <div class="search-holder">
-                            <input type="search" placeholder="Search">
-                            <input type="submit" value="Search">
-                        </div>
-                        <div class="sort-by">
-                            <span>Sort by:</span>
-                            <label class="cat-select">
-                                <select>
-                                    <option>Date</option>
-                                    <option>Month</option>
-                                    <option>Year</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
+	<section class="search_section">
+		<div class="container">
+			<div class="marketplace-wrapper">
+				<div class="left-filter">
+					<div class="filter_title">
+						<h4>Filters</h4>
+					</div>
 
-                    <div class="row">
+					<h3>Categories</h3>
+					<ul>
+						<li {% if not category %}class="selected"{% endif %}>
+							<a href="{% url 'shop:product_list' %}">All</a>
+						</li>
+						{% for item in categories %}
+						<li {% if category.slug == item.slug %}class="selected" {% endif %}>
+							<a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+					<div class="filter-box">
+						<h4>Sort list by</h4>
+						<ul>
+							<li>
+								<input type="checkbox" id="status1" name="status">
+								<label class="check-lbl" for="status1">All</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status2" name="status">
+								<label class="check-lbl" for="status2">Open</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status3" name="status">
+								<label class="check-lbl" for="status3">Awarded</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status4" name="status">
+								<label class="check-lbl" for="status4">Pending</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status5" name="status">
+								<label class="check-lbl" for="status5">Canceled</label>
+							</li>
+						</ul>
+					</div>
+					<div class="filter-box">
+						<h4>Organ</h4>
+						<ul>
+							<li>
+								<input type="checkbox" id="status1" name="status">
+								<label class="check-lbl" for="status1">All</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status2" name="status">
+								<label class="check-lbl" for="status2">Open</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status3" name="status">
+								<label class="check-lbl" for="status3">Awarded</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status4" name="status">
+								<label class="check-lbl" for="status4">Pending</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status5" name="status">
+								<label class="check-lbl" for="status5">Canceled</label>
+							</li>
+						</ul>
+					</div>
+					<div class="filter-box">
+						<h4>Condition</h4>
+						<ul>
+							<li>
+								<input type="checkbox" id="status1" name="status">
+								<label class="check-lbl" for="status1">All</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status2" name="status">
+								<label class="check-lbl" for="status2">Open</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status3" name="status">
+								<label class="check-lbl" for="status3">Awarded</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status4" name="status">
+								<label class="check-lbl" for="status4">Pending</label>
+							</li>
+							<li>
+								<input type="checkbox" id="status5" name="status">
+								<label class="check-lbl" for="status5">Canceled</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="right-cont">
+					<div class="sort-or-search">
+						<div class="search-holder">
+							<input type="search" placeholder="Search">
+							<input type="submit" value="Search">
+						</div>
+						<div class="sort-by">
+							<span>Sort by:</span>
+							<label class="cat-select">
+								<select>
+									<option>Date</option>
+									<option>Month</option>
+									<option>Year</option>
+								</select>
+							</label>
+						</div>
+					</div>
 
-                        {% for item in object_list %}
-                        <div class="col-md-4">
-                            <div class="listing_box search_listing">
-                                <div class="listing_header">
-                                    <div class="best_seller">Best Seller</div>
-                                    <a class="product_detail" title="{{ item.title }}" href="{{ item.get_absolute_url }}">
-                                        <h3>{{ item.title }}</h3>
-                                    </a>
-                                    <p>₹{{ item.discount_price }} <span>₹{{ item.price }}</span></p>
+					<div class="row">
 
-                                    <div class="testes_tag">Tests</div>
-                                    <form action="{% url 'shop:add_to_cart' item.pk %}" method="POST">
-                                    {% csrf_token %}
-                                        <a href="{% url 'shop:add_to_cart' item.pk %}" class="add_cart">Add to Cart</a>
-                                    </form>
-                                </div>
-                                <div class="listing_body custom_scroll">
-                                    <p class="l_title">{{ item.category }}</p>
-                                    <p class="l_text">{{ item.prerequisites }}</p>
-                                    <p class="l_text">{{ item.samplecutoff }}</p>
-                                    <p class="l_text">{{ item.report }}</p>
-                                    <p class="l_title">{{ item.category }}</p>
-                                    <p class="l_text">{{ item.speciment }}</p>
-                                    <p class="l_text">{{ item.method }}</p>
-                                    <p class="l_title">{{ item.category }}</p>
-                                    <p class="l_text">{{ item.quantitytemperature }}</p>
-                                    <p class="l_text">{{ item.quantitytemperature }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
+						{% for item in object_list %}
+						<div class="col-md-4">
+							<div class="listing_box search_listing">
+								<div class="listing_header">
+									<div class="best_seller">Best Seller</div>
+									<a class="product_detail" title="{{ item.title }}" href="{{ item.get_absolute_url }}">
+										<h3>{{ item.title }}</h3>
+									</a>
+									<p>₹{{ item.discount_price }} <span>₹{{ item.price }}</span></p>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+									<div class="testes_tag">Tests</div>
+									<form action="{% url 'shop:add_to_cart' item.pk %}" method="POST">
+									{% csrf_token %}
+										<a href="{% url 'shop:add_to_cart' item.pk %}" class="add_cart">Add to Cart</a>
+									</form>
+								</div>
+								<div class="listing_body custom_scroll">
+									<p class="l_title">{{ item.category }}</p>
+									<p class="l_text">{{ item.prerequisites }}</p>
+									<p class="l_text">{{ item.samplecutoff }}</p>
+									<p class="l_text">{{ item.report }}</p>
+									<p class="l_title">{{ item.category }}</p>
+									<p class="l_text">{{ item.speciment }}</p>
+									<p class="l_text">{{ item.method }}</p>
+									<p class="l_title">{{ item.category }}</p>
+									<p class="l_text">{{ item.quantitytemperature }}</p>
+									<p class="l_text">{{ item.quantitytemperature }}</p>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 {% endblock %}
 
@@ -164,128 +176,128 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('input:checkbox[name="sort_by"]').click(function()
-    {
-        if($(this).is(':checked') && $(this).val() == 'test')
-        {
-            console.log("test");
-            // e.preventDefault();
-        }
-        if($(this).is(':checked') && $(this).val() == 'packages')
-        {
-            console.log("packages");
-        }
-    })
-    // var data_from_url = "{{ user_order }}";
+	$('input:checkbox[name="sort_by"]').click(function()
+	{
+		if($(this).is(':checked') && $(this).val() == 'test')
+		{
+			console.log("test");
+			// e.preventDefault();
+		}
+		if($(this).is(':checked') && $(this).val() == 'packages')
+		{
+			console.log("packages");
+		}
+	})
+	// var data_from_url = "{{ user_order }}";
 
-    // // var input = document.getElementById('#search-bar-2');
-    // // var input = document.querySelector('#search-bar-2').value;
-    // var input = document.querySelector('[name="q"]').value;
+	// // var input = document.getElementById('#search-bar-2');
+	// // var input = document.querySelector('#search-bar-2').value;
+	// var input = document.querySelector('[name="q"]').value;
 
-    // console.log("input", input);
+	// console.log("input", input);
 
-    // var options = {
-    //     url: "autocomplete/?q=produk1",
-    //     getValue: "sqs",
-    //     list: {
-    //         match: {
-    //             enabled: true
-    //         }
-    //     },
-    //     theme: "square"
-    // };
+	// var options = {
+	//     url: "autocomplete/?q=produk1",
+	//     getValue: "sqs",
+	//     list: {
+	//         match: {
+	//             enabled: true
+	//         }
+	//     },
+	//     theme: "square"
+	// };
 
-    // $("#search-bar-2").easyAutocomplete(options);
+	// $("#search-bar-2").easyAutocomplete(options);
 
-    // var Autocomplete = function(options)
-    // {
-    //     this.form_selector = options.form_selector
-    //     this.url = options.url || '/book-blood-test-online-in-india/autocomplete/'
-    //     this.delay = parseInt(options.delay || 300)
-    //     this.minimum_length = parseInt(options.minimum_length || 3)
-    //     this.form_elem = null
-    //     this.query_box = null
-    // }
+	// var Autocomplete = function(options)
+	// {
+	//     this.form_selector = options.form_selector
+	//     this.url = options.url || '/book-test/autocomplete/'
+	//     this.delay = parseInt(options.delay || 300)
+	//     this.minimum_length = parseInt(options.minimum_length || 3)
+	//     this.form_elem = null
+	//     this.query_box = null
+	// }
 
-    // Autocomplete.prototype.setup = function()
-    // {
-    //     var self = this
-    //     this.form_elem = $(this.form_selector)
-    //     this.query_box = this.form_elem.find('input[name=q]')
+	// Autocomplete.prototype.setup = function()
+	// {
+	//     var self = this
+	//     this.form_elem = $(this.form_selector)
+	//     this.query_box = this.form_elem.find('input[name=q]')
 
-    //     // Watch the input box.
-    //     this.query_box.on('keyup', function()
-    //     {
-    //         var query = self.query_box.val()
-    //         if(query.length < self.minimum_length)
-    //         {
-    //             return false
-    //         }
-    //         self.fetch(query)
-    //     })
+	//     // Watch the input box.
+	//     this.query_box.on('keyup', function()
+	//     {
+	//         var query = self.query_box.val()
+	//         if(query.length < self.minimum_length)
+	//         {
+	//             return false
+	//         }
+	//         self.fetch(query)
+	//     })
 
-    //     // On selecting a result, populate the search field.
-    //     this.form_elem.on('click', '.ac-result', function(ev)
-    //     {
-    //         self.query_box.val($(this).text())
-    //         $('.ac-results').remove()
-    //         return false
-    //     })
-    // }
+	//     // On selecting a result, populate the search field.
+	//     this.form_elem.on('click', '.ac-result', function(ev)
+	//     {
+	//         self.query_box.val($(this).text())
+	//         $('.ac-results').remove()
+	//         return false
+	//     })
+	// }
 
-    // Autocomplete.prototype.fetch = function(query)
-    // {
-    //     var self = this
-    //     $.ajax(
-    //     {
-    //         url: this.url,
-    //         data: {
-    //             'q': query
-    //         },
-    //         success: function(data)
-    //         {
-    //             self.show_results(data)
-    //         }
-    //     })
-    // }
+	// Autocomplete.prototype.fetch = function(query)
+	// {
+	//     var self = this
+	//     $.ajax(
+	//     {
+	//         url: this.url,
+	//         data: {
+	//             'q': query
+	//         },
+	//         success: function(data)
+	//         {
+	//             self.show_results(data)
+	//         }
+	//     })
+	// }
 
-    // Autocomplete.prototype.show_results = function(data)
-    // {
-    //     // Remove any existing results.
-    //     $('.ac-results').remove()
-    //     var results = data.results || []
-    //     var results_wrapper = $('<div class="ac-results"></div>')
-    //     var base_elem = $('<div class="result-wrapper"><a href="#" class="ac-result"></a></div>')
-    //     if(results.length > 0)
-    //     {
-    //         for(var res_offset in results)
-    //         {
-    //             var elem = base_elem.clone()
-    //             // Don't use .html(...) here, as you open yourself to XSS.
-    //             // Really, you should use some form of templating.
-    //             elem.find('.ac-result').text(results[res_offset])
-    //             results_wrapper.append(elem)
-    //         }
-    //     }
-    //     else
-    //     {
-    //         var elem = base_elem.clone()
-    //         elem.text("No results found.")
-    //         results_wrapper.append(elem)
-    //     }
+	// Autocomplete.prototype.show_results = function(data)
+	// {
+	//     // Remove any existing results.
+	//     $('.ac-results').remove()
+	//     var results = data.results || []
+	//     var results_wrapper = $('<div class="ac-results"></div>')
+	//     var base_elem = $('<div class="result-wrapper"><a href="#" class="ac-result"></a></div>')
+	//     if(results.length > 0)
+	//     {
+	//         for(var res_offset in results)
+	//         {
+	//             var elem = base_elem.clone()
+	//             // Don't use .html(...) here, as you open yourself to XSS.
+	//             // Really, you should use some form of templating.
+	//             elem.find('.ac-result').text(results[res_offset])
+	//             results_wrapper.append(elem)
+	//         }
+	//     }
+	//     else
+	//     {
+	//         var elem = base_elem.clone()
+	//         elem.text("No results found.")
+	//         results_wrapper.append(elem)
+	//     }
 
-    //     this.query_box.after(results_wrapper)
-    // }
+	//     this.query_box.after(results_wrapper)
+	// }
 
-    // $(document).ready(function()
-    // {
-    //     window.autocomplete = new Autocomplete(
-    //     {
-    //         form_selector: '.autocomplete-me'
-    //     }
-    // )
-    //     window.autocomplete.setup()
-    // })
+	// $(document).ready(function()
+	// {
+	//     window.autocomplete = new Autocomplete(
+	//     {
+	//         form_selector: '.autocomplete-me'
+	//     }
+	// )
+	//     window.autocomplete.setup()
+	// })
 });
 </script>
 {% endblock %}

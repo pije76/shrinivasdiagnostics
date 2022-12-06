@@ -25,8 +25,20 @@ class ProductAdmin(admin.ModelAdmin):
         'updated',
     ]
     # list_filter=['available','created','updated']
-    list_editable=['price', 'discount_price', 'available']
-    prepopulated_fields={'slug':('title',)}
+    list_editable = [
+        'title',
+        'slug',
+        'category',
+        'tags',
+        'price',
+        'discount_price',
+        'available',
+        'speciment',
+        'prerequisites',
+        'samplecutoff',
+        'available',
+    ]
+    prepopulated_fields = {'slug':('title',)}
 
 
 admin.site.register(Category, CategoryAdmin)
