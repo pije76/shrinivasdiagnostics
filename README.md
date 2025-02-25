@@ -1,2 +1,2 @@
 # shrinivasdiagnostics
-Django project for shrinivasdiagnostics.com
+Django project for shrinivasdiagnostics.com & pathkindlabs.com
